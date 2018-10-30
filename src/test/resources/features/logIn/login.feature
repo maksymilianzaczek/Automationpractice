@@ -10,7 +10,7 @@ Feature: Login
 
   Scenario: User with wrong credentials can't login
     Given customer is on home page
-    When he logs in using wrong credentials
+    When he tries to log in using wrong password
     Then he is not logged in
 
   Scenario: User can log out

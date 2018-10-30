@@ -4,10 +4,10 @@ Feature: Add new address
     Given logged in customer is on address page
 
   Scenario: As logged in customer I'm able to add new address
-    When he adds new address correctly
+    When he adds new address with proper data
     Then new address is created
 
-   # user can't add new address incorrectly, so he gets error message
+
   Scenario: User can't add new address incorrectly
-    When he adds new address incorrectly
-    Then new adress is not created
+    When he tries to add new address with empty fields
+    Then new address is not created

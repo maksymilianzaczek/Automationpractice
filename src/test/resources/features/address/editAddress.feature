@@ -1,4 +1,4 @@
-Feature: edit current adress
+Feature: edit current address
 
   Background:
     Given logged in customer is on address page
@@ -8,5 +8,5 @@ Feature: edit current adress
     Then address is updated
 
   Scenario: User changes current address incorrectly
-    When he changes current address incorrectly
+    When he tries to change new address he leaves empty fields
     Then address is not updated
