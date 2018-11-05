@@ -17,3 +17,8 @@ Feature: Login
     Given logged in customer is on home page
     When he logs out
     Then he is logged out
+
+  Scenario: User with wrong email and correct password can't login
+    Given customer is on home page
+    When he tries to log in using wrong login
+    Then he is not logged in
