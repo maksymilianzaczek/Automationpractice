@@ -8,6 +8,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.assertj.core.api.SoftAssertions;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -23,20 +24,15 @@ public class RegisterFeatures {
     private RegistrationPage registrationPage;
 
 
-    @Given("^User is on home page$")
-    public void userIsOnHomePage() {
+    @Given("^User is on login page$")
+    public void userIsOnLoginPage() {
         homePage.open();
-    }
-
-
-    @When("^he types unique e-mail$")
-    public void heTypesUniqueEMail() {
-        loginPage.typeEmailRegistration(randomEmail);
-    }
-
-    private void typeUniqueEmail(String email) {
         headerBox.clickOnSignIn();
-        loginPage.typeEmailRegistration(email);
+    }
+
+    @When("^he submits form with unique e-mail$")
+    public void heTypesUniqueEmail() {
+        loginPage.typeEmailRegistration(randomEmail);
         loginPage.clickOnCreateAnAccount();
     }
 
@@ -73,7 +69,25 @@ public class RegisterFeatures {
     }
 
     @When("^he submits form with incorrect e-mail$")
-    public void heSubmitsFormWithIncorrectEMail() {
-        loginPage.
+    public void heSubmitsFormWithIncorrectEmail() {
+        loginPage.typeEmailRegistration("####@!!!.com");
+        loginPage.clickOnCreateAnAccount();
     }
+
+    @When("^incorrectly submits form on second registration page$")
+    public void incorrectlySubmitsFormOnSecondRegistrationPage() {
+        registrationPage.typePostCode("402140214");
+        registrationPage.clickRegisterButton();
+    }
+
+    @Then("^error message is displayed$")
+    public void errorMessageIsDisplayed() {
+        final boolean isValidationMessageDisplayed = loginPage.isValidationMessageDisplayed();
+        final boolean isSignOutButtonVisible = headerBox.isSignOutButtonVisible();
+        final SoftAssertions softAssertions = new SoftAssertions();
+        softAssertions.assertThat(isValidationMessageDisplayed).isTrue();
+        softAssertions.assertThat(isSignOutButtonVisible).isFalse();
+        softAssertions.assertAll();
+    }
+
 }
