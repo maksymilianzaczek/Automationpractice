@@ -1,5 +1,7 @@
 package automationpractice.com.features;
 
+import automationpractice.com.data.UserInformations;
+import automationpractice.com.domain.RegistrationData;
 import automationpractice.com.pages.HeaderBox;
 import automationpractice.com.pages.HomePage;
 import automationpractice.com.pages.LoginPage;
@@ -38,27 +40,29 @@ public class RegisterFeatures {
 
     @When("^on second registration page he submits fields with correct data$")
     public void onSecondRegistrationPageHeSubmitsFieldsWithCorrectData() {
+
+        final RegistrationData registrationData = UserInformations.NEW_ACCOUNT_CREATION;
         registrationPage.clickOnTitle();
-        registrationPage.typeFirstName();
-        registrationPage.typeLastName();
-        registrationPage.typeEmail();
-        registrationPage.typePasswd();
+        registrationPage.typeFirstName(registrationData.getFirstName());
+        registrationPage.typeLastName(registrationData.getLastName());
+        registrationPage.typeEmail(registrationData.getEmail());
+        registrationPage.typePasswd(registrationData.getPassword());
         registrationPage.clickDayList();
         registrationPage.clickDaySelect();
         registrationPage.clickMonthsList();
         registrationPage.clickMonthsSelect();
         registrationPage.clickYearsList();
         registrationPage.clickYearsSelect();
-        registrationPage.typeFirstNameAddress();
-        registrationPage.typeLastNameAddress();
-        registrationPage.typeAddress();
-        registrationPage.typeCity();
-        registrationPage.clickStateList();
-        registrationPage.clickStateSelect();
-        registrationPage.typePostCode();
+        registrationPage.typeFirstNameAddress(registrationData.getFirstNameAddress());
+        registrationPage.typeLastNameAddress(registrationData.getLastNameAddress());
+        registrationPage.typeAddress(registrationData.getAddress());
+        registrationPage.typeCity(registrationData.getCity());
+        registrationPage.clickStateList(registrationData.getState());
+        registrationPage.clickStateSelect(registrationData.getState());
+        registrationPage.typePostCode(registrationData.getZipCode());
         registrationPage.clickCountryList();
         registrationPage.clickCountrySelect();
-        registrationPage.typeMobilePhone();
+        registrationPage.typeMobilePhone(registrationData.getMobilePhone());
         registrationPage.clickRegisterButton();
     }
 

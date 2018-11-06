@@ -56,19 +56,19 @@ public class RegistrationPage {
     }
 
     public void typeFirstName() {
-        firstNameCustomerInput.type("Maks");
+        firstNameCustomerInput.type();
     }
 
     public void typeLastName() {
-        lastNameCustomerInput.type("Zaczek");
+        lastNameCustomerInput.type();
     }
 
     public void typeEmail() {
-        emailInput.type("max.zaczek@gmai.com");
+        emailInput.type();
     }
 
     public void typePasswd() {
-        passwordInput.type("12345678");
+        passwordInput.type();
     }
 
     public void clickDayList() { dayList.click(); }
@@ -83,25 +83,25 @@ public class RegistrationPage {
 
     public void clickYearsSelect() { yearsSelect.click(); }
 
-    public void typeFirstNameAddress() { firstnameAddressInput.type("Maks"); }
+    public void typeFirstNameAddress() { firstnameAddressInput.type(); }
 
-    public void typeLastNameAddress() { lastNameCustomerInput.type("Zaczek"); }
+    public void typeLastNameAddress() { lastNameCustomerInput.type(); }
 
-    public void typeAddress() { addressInput.type("Wroclawska"); }
+    public void typeAddress() { addressInput.type(); }
 
-    public void typeCity() { cityInput.type("Wroclaw"); }
+    public void typeCity() { cityInput.type(); }
 
     public void clickStateList() { stateList.click(); }
 
     public void clickStateSelect() { stateSelect.click(); }
 
-    public void typePostCode() { postcode.type("55555"); }
+    public void typePostCode() { postcode.type(); }
 
     public void clickCountryList() { countryList.click(); }
 
     public void clickCountrySelect() { countrySelect.click(); }
 
-    public void typeMobilePhone() { mobilePhone.type("505505505"); }
+    public void typeMobilePhone() { mobilePhone.type(); }
 
     public void clickRegisterButton() { registerButton.click(); }
 

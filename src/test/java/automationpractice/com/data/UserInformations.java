@@ -6,7 +6,7 @@ public class UserInformations {
     public static final RegistrationData NEW_ACCOUNT_CREATION = new RegistrationData(
             "firstName",
             "lastName",
-            "email",
+            "email@gmai.com",
             "password",
             "dateOfBirth",
             "firstNameAddress",
@@ -16,5 +16,5 @@ public class UserInformations {
             "state",
             "zipCode",
             "country",
-            "mobilePhone");
+            "515515515 nb");
 }
