@@ -1,10 +1,9 @@
 package automationpractice.com.data;
 
-import automationpractice.com.domain.Registration;
-
-public class AccountCreation {
-    public static final AccountCreation NEW_ACCOUNT_CREATION = new AccountCreation(
-       name = "firstName",
+public class UsersInformations
+{
+    public static final UsersInformations NEW_ACCOUNT_CREATION = new UsersInformations(
+        "firstName",
             "lastName",
             "email",
             "password",
