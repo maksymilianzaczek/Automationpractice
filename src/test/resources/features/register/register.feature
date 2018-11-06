@@ -3,7 +3,7 @@ Feature: Register user
   Scenario: Register user correctly
     Given User is on home page
     When he types unique e-mail
-    And on second registeration page he submits fields with correct data
+    And on second registration page he submits fields with correct data
     Then new user is registered
 
   Scenario: User tries to register by typing incorrect e-mail
@@ -11,7 +11,7 @@ Feature: Register user
     When he submits form with incorrect e-mail
     Then error message is displayed
 
-  Scenario: User ries to register by typing incorrect data
+  Scenario: User tries to register by typing incorrect data
     Given User is on home page
     When he types new correct e-mail
     And incorrectly submits form on second registration page
