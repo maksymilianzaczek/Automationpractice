@@ -16,5 +16,5 @@ public class UserInformations {
             "state",
             "zipCode",
             "country",
-            "515515515 nb");
+            "515515515");
 }
