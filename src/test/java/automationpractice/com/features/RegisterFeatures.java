@@ -57,8 +57,8 @@ public class RegisterFeatures {
         registrationPage.typeLastNameAddress(registrationData.getLastNameAddress());
         registrationPage.typeAddress(registrationData.getAddress());
         registrationPage.typeCity(registrationData.getCity());
-        registrationPage.clickStateList(registrationData.getState());
-        registrationPage.clickStateSelect(registrationData.getState());
+        registrationPage.clickStateList();
+        registrationPage.clickStateSelect();
         registrationPage.typePostCode(registrationData.getZipCode());
         registrationPage.clickCountryList();
         registrationPage.clickCountrySelect();
@@ -87,10 +87,10 @@ public class RegisterFeatures {
     @Then("^error message is displayed$")
     public void errorMessageIsDisplayed() {
         final boolean isValidationMessageDisplayed = loginPage.isValidationMessageDisplayed();
-        final boolean isSignOutButtonVisible = headerBox.isSignOutButtonVisible();
+        final boolean isSignInButtonVisible = headerBox.isSignInButtonVisible();
         final SoftAssertions softAssertions = new SoftAssertions();
-        softAssertions.assertThat(isValidationMessageDisplayed).isTrue();
-        softAssertions.assertThat(isSignOutButtonVisible).isFalse();
+        softAssertions.assertThat(isValidationMessageDisplayed).isFalse();
+        softAssertions.assertThat(isSignInButtonVisible).isTrue();
         softAssertions.assertAll();
     }
 

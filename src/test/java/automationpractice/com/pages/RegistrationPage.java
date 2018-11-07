@@ -55,55 +55,89 @@ public class RegistrationPage {
         titleButton.click();
     }
 
-    public void typeFirstName() {
-        firstNameCustomerInput.type();
+    public void typeFirstName(final String firstName) {
+        firstNameCustomerInput.type(firstName);
     }
 
-    public void typeLastName() {
-        lastNameCustomerInput.type();
+    public void typeLastName(final String lastName) {
+        lastNameCustomerInput.type(lastName);
     }
 
-    public void typeEmail() {
-        emailInput.type();
+    public void typeEmail(final String email) {
+        emailInput.type(email);
     }
 
-    public void typePasswd() {
-        passwordInput.type();
+    public void typePasswd(final String passwd) {
+        passwordInput.type(passwd);
     }
 
-    public void clickDayList() { dayList.click(); }
+    public void clickDayList() {
+        dayList.click();
+    }
 
-    public void clickDaySelect() { daySelect.click(); }
+    public void clickDaySelect() {
+        daySelect.click();
+    }
 
-    public void clickMonthsList() { monthsList.click(); }
+    public void clickMonthsList() {
+        monthsList.click();
+    }
 
-    public void clickMonthsSelect() { monthsSelect.click(); }
+    public void clickMonthsSelect() {
+        monthsSelect.click();
+    }
 
-    public void clickYearsList() { yearsList.click(); }
+    public void clickYearsList() {
+        yearsList.click();
+    }
 
-    public void clickYearsSelect() { yearsSelect.click(); }
+    public void clickYearsSelect() {
+        yearsSelect.click();
+    }
 
-    public void typeFirstNameAddress() { firstnameAddressInput.type(); }
+    public void typeFirstNameAddress(final String firstNameAddress) {
+        firstnameAddressInput.type(firstNameAddress);
+    }
 
-    public void typeLastNameAddress() { lastNameCustomerInput.type(); }
+    public void typeLastNameAddress(final String lastNameAddress) {
+        lastNameCustomerInput.type(lastNameAddress);
+    }
 
-    public void typeAddress() { addressInput.type(); }
+    public void typeAddress(final String address) {
+        addressInput.type(address);
+    }
 
-    public void typeCity() { cityInput.type(); }
+    public void typeCity(final String city) {
+        cityInput.type(city);
+    }
 
-    public void clickStateList() { stateList.click(); }
+    public void clickStateList() {
+        stateList.click();
+    }
 
-    public void clickStateSelect() { stateSelect.click(); }
+    public void clickStateSelect() {
+        stateSelect.click();
+    }
 
-    public void typePostCode() { postcode.type(); }
+    public void typePostCode(final String postCode) {
+        postcode.type(postCode);
+    }
 
-    public void clickCountryList() { countryList.click(); }
+    public void clickCountryList() {
+        countryList.click();
+    }
 
-    public void clickCountrySelect() { countrySelect.click(); }
+    public void clickCountrySelect() {
+        countrySelect.click();
+    }
 
-    public void typeMobilePhone() { mobilePhone.type(); }
+    public void typeMobilePhone(final String mobilephone) {
+        mobilePhone.type(mobilephone);
+    }
 
-    public void clickRegisterButton() { registerButton.click(); }
+    public void clickRegisterButton() {
+        registerButton.click();
+    }
 
 
 }
