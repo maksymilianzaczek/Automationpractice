@@ -16,15 +16,15 @@ public class RegistrationPage extends PageObject {
     private WebElementFacade emailInput;
     @FindBy(id = "passwd")
     private WebElementFacade passwordInput;
-    @FindBy(id = "days")
+    @FindBy(id = "uniform-days")
     private WebElementFacade dayList;
-    @FindBy(xpath = "//*[@id='days']/option[10]")
+    @FindBy(xpath = "//*[@id='days']/option[10]") 
     private WebElementFacade daySelect;
-    @FindBy(id = "months")
+    @FindBy(id = "uniform-months")
     private WebElementFacade monthsList;
     @FindBy(xpath = "//*[@id='months']/option[4]")
     private WebElementFacade monthsSelect;
-    @FindBy(id = "years")
+    @FindBy(id = "uniform-years")
     private WebElementFacade yearsList;
     @FindBy(xpath = "//*[@id='years']/option[7]")
     private WebElementFacade yearsSelect;
@@ -36,13 +36,13 @@ public class RegistrationPage extends PageObject {
     private WebElementFacade addressInput;
     @FindBy(id = "city")
     private WebElementFacade cityInput;
-    @FindBy(id = "id_state")
+    @FindBy(id = "uniform-id_state")
     private WebElementFacade stateList;
     @FindBy(xpath = "//*[@id='id_state']/option[13]")
     private WebElementFacade stateSelect;
     @FindBy(id = "postcode")
     private WebElementFacade postcode;
-    @FindBy(id = "id_country")
+    @FindBy(id = "uniform-id_country")
     private WebElementFacade countryList;
     @FindBy(xpath = "//*[@id='id_country']/option[2]")
     private WebElementFacade countrySelect;
