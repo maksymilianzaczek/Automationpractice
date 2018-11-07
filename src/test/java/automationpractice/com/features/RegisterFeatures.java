@@ -84,8 +84,8 @@ public class RegisterFeatures {
         registrationPage.clickRegisterButton();
     }
 
-    @Then("^error message is displayed$")
-    public void errorMessageIsDisplayed() {
+    @Then("^error message is displayed on login page$")
+    public void errorMessageIsDisplayedOnLoginPage() {
         final boolean isValidationMessageDisplayed = loginPage.isValidationMessageDisplayed();
         final boolean isSignInButtonVisible = headerBox.isSignInButtonVisible();
         final SoftAssertions softAssertions = new SoftAssertions();
@@ -94,4 +94,13 @@ public class RegisterFeatures {
         softAssertions.assertAll();
     }
 
+    @Then("^error message is displayed on home page$")
+    public void errorMessageIsDisplayedOnHomePage() {
+        final boolean isValidationMessageDisplayed = loginPage.isValidationMessageDisplayed();
+        final boolean isSignInButtonVisible = headerBox.isSignInButtonVisible();
+        final SoftAssertions softAssertions = new SoftAssertions();
+        softAssertions.assertThat(isValidationMessageDisplayed).isTrue();
+        softAssertions.assertThat(isSignInButtonVisible).isTrue();
+        softAssertions.assertAll();
+    }
 }
