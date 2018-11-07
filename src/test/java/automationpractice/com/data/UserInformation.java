@@ -2,7 +2,7 @@ package automationpractice.com.data;
 
 import automationpractice.com.domain.RegistrationData;
 
-public class UserInformations {
+public class UserInformation {
     public static final RegistrationData NEW_ACCOUNT_CREATION = new RegistrationData(
             "firstName",
             "lastName",
@@ -14,7 +14,7 @@ public class UserInformations {
             "address",
             "city",
             "state",
-            "zipCode",
+            "55555",
             "country",
             "515515515");
 }

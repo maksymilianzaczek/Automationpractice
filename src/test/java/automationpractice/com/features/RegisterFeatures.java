@@ -1,6 +1,6 @@
 package automationpractice.com.features;
 
-import automationpractice.com.data.UserInformations;
+import automationpractice.com.data.UserInformation;
 import automationpractice.com.domain.RegistrationData;
 import automationpractice.com.pages.HeaderBox;
 import automationpractice.com.pages.HomePage;
@@ -41,11 +41,10 @@ public class RegisterFeatures {
     @When("^on second registration page he submits fields with correct data$")
     public void onSecondRegistrationPageHeSubmitsFieldsWithCorrectData() {
 
-        final RegistrationData registrationData = UserInformations.NEW_ACCOUNT_CREATION;
+        final RegistrationData registrationData = UserInformation.NEW_ACCOUNT_CREATION;
         registrationPage.clickOnTitle();
         registrationPage.typeFirstName(registrationData.getFirstName());
         registrationPage.typeLastName(registrationData.getLastName());
-        registrationPage.typeEmail(registrationData.getEmail());
         registrationPage.typePasswd(registrationData.getPassword());
         registrationPage.clickDayList();
         registrationPage.clickDaySelect();
@@ -57,12 +56,12 @@ public class RegisterFeatures {
         registrationPage.typeLastNameAddress(registrationData.getLastNameAddress());
         registrationPage.typeAddress(registrationData.getAddress());
         registrationPage.typeCity(registrationData.getCity());
-        registrationPage.clickStateList();
-        registrationPage.clickStateSelect();
         registrationPage.typePostCode(registrationData.getZipCode());
+        registrationPage.typeMobilePhone(registrationData.getMobilePhone());
         registrationPage.clickCountryList();
         registrationPage.clickCountrySelect();
-        registrationPage.typeMobilePhone(registrationData.getMobilePhone());
+        registrationPage.clickStateList();
+        registrationPage.clickStateSelect();
         registrationPage.clickRegisterButton();
     }
 

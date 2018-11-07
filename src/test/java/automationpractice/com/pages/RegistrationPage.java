@@ -18,7 +18,7 @@ public class RegistrationPage extends PageObject {
     private WebElementFacade passwordInput;
     @FindBy(id = "uniform-days")
     private WebElementFacade dayList;
-    @FindBy(xpath = "//*[@id='days']/option[10]") 
+    @FindBy(xpath = "//*[@id='days']/option[10]")
     private WebElementFacade daySelect;
     @FindBy(id = "uniform-months")
     private WebElementFacade monthsList;
@@ -138,6 +138,7 @@ public class RegistrationPage extends PageObject {
 
     public void clickRegisterButton() {
         registerButton.click();
+        waitABit(30000);
     }
 
 
