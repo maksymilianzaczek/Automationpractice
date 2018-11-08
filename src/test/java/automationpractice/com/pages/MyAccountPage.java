@@ -6,4 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class MyAccountPage extends PageObject {
 
+    public void clickMyAddresses() {
+
+    }
 }
