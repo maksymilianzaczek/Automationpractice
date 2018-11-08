@@ -5,10 +5,11 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class Registration
+public class RegistrationData
 {
     private String firstName;
     private String lastName;
+    private String email;
     private String password;
     private String dateOfBirth;
     private String firstNameAddress;

@@ -3,9 +3,6 @@ package automationpractice.com.pages;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.support.FindBy;
-import org.w3c.dom.html.HTMLInputElement;
-
-import java.util.ServiceLoader;
 
 
 public class LoginPage extends PageObject {
@@ -44,6 +41,6 @@ public class LoginPage extends PageObject {
     }
 
     public void typeEmailRegistration(final String email) {
-            emailInput.type(email);
+        emailInput.type(email);
     }
 }

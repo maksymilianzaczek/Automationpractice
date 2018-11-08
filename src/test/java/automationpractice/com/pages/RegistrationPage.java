@@ -1,9 +1,10 @@
 package automationpractice.com.pages;
 
+import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.support.FindBy;
 
-public class RegistrationPage {
+public class RegistrationPage extends PageObject {
 
     @FindBy(id = "id_gender1")
     private WebElementFacade titleButton;
@@ -15,17 +16,17 @@ public class RegistrationPage {
     private WebElementFacade emailInput;
     @FindBy(id = "passwd")
     private WebElementFacade passwordInput;
-    @FindBy(id = "days")
+    @FindBy(id = "uniform-days")
     private WebElementFacade dayList;
-    @FindBy(xpath = "//*[@id="days"]/option[10]")
+    @FindBy(xpath = "//*[@id='days']/option[10]")
     private WebElementFacade daySelect;
-    @FindBy(id = "months")
+    @FindBy(id = "uniform-months")
     private WebElementFacade monthsList;
-    @FindBy(xpath = "//*[@id="months"]/option[4]")
+    @FindBy(xpath = "//*[@id='months']/option[4]")
     private WebElementFacade monthsSelect;
-    @FindBy(id = "years")
+    @FindBy(id = "uniform-years")
     private WebElementFacade yearsList;
-    @FindBy(xpath = "//*[@id="years"]/option[7]")
+    @FindBy(xpath = "//*[@id='years']/option[7]")
     private WebElementFacade yearsSelect;
     @FindBy(id = "firstname")
     private WebElementFacade firstnameAddressInput;
@@ -35,15 +36,15 @@ public class RegistrationPage {
     private WebElementFacade addressInput;
     @FindBy(id = "city")
     private WebElementFacade cityInput;
-    @FindBy(id = "id_state")
+    @FindBy(id = "uniform-id_state")
     private WebElementFacade stateList;
-    @FindBy(xpath = "//*[@id="id_state"]/option[13]")
+    @FindBy(xpath = "//*[@id='id_state']/option[13]")
     private WebElementFacade stateSelect;
     @FindBy(id = "postcode")
     private WebElementFacade postcode;
-    @FindBy(id = "id_country")
+    @FindBy(id = "uniform-id_country")
     private WebElementFacade countryList;
-    @FindBy(xpath = "//*[@id="id_country"]/option[2]")
+    @FindBy(xpath = "//*[@id='id_country']/option[2]")
     private WebElementFacade countrySelect;
     @FindBy(id = "phone_mobile")
     private WebElementFacade mobilePhone;
@@ -55,55 +56,90 @@ public class RegistrationPage {
         titleButton.click();
     }
 
-    public void typeFirstName() {
-        firstNameCustomerInput.type("Maks");
+    public void typeFirstName(final String firstName) {
+        firstNameCustomerInput.type(firstName);
     }
 
-    public void typeLastName() {
-        lastNameCustomerInput.type("Zaczek");
+    public void typeLastName(final String lastName) {
+        lastNameCustomerInput.type(lastName);
     }
 
-    public void typeEmail() {
-        emailInput.type("max.zaczek@gmai.com");
+    public void typeEmail(final String email) {
+        emailInput.type(email);
     }
 
-    public void typePasswd() {
-        passwordInput.type("12345678");
+    public void typePasswd(final String passwd) {
+        passwordInput.type(passwd);
     }
 
-    public void clickDayList() { dayList.click(); }
+    public void clickDayList() {
+        dayList.click();
+    }
 
-    public void clickDaySelect() { daySelect.click(); }
+    public void clickDaySelect() {
+        daySelect.click();
+    }
 
-    public void clickMonthsList() { monthsList.click(); }
+    public void clickMonthsList() {
+        monthsList.click();
+    }
 
-    public void clickMonthsSelect() { monthsSelect.click(); }
+    public void clickMonthsSelect() {
+        monthsSelect.click();
+    }
 
-    public void clickYearsList() { yearsList.click(); }
+    public void clickYearsList() {
+        yearsList.click();
+    }
 
-    public void clickYearsSelect() { yearsSelect.click(); }
+    public void clickYearsSelect() {
+        yearsSelect.click();
+    }
 
-    public void typeFirstNameAddress() { firstnameAddressInput.type("Maks"); }
+    public void typeFirstNameAddress(final String firstNameAddress) {
+        firstnameAddressInput.type(firstNameAddress);
+    }
 
-    public void typeLastNameAddress() { lastNameCustomerInput.type("Zaczek"); }
+    public void typeLastNameAddress(final String lastNameAddress) {
+        lastNameCustomerInput.type(lastNameAddress);
+    }
 
-    public void typeAddress() { addressInput.type("Wroclawska"); }
+    public void typeAddress(final String address) {
+        addressInput.type(address);
+    }
 
-    public void typeCity() { cityInput.type("Wroclaw"); }
+    public void typeCity(final String city) {
+        cityInput.type(city);
+    }
 
-    public void clickStateList() { stateList.click(); }
+    public void clickStateList() {
+        stateList.click();
+    }
 
-    public void clickStateSelect() { stateSelect.click(); }
+    public void clickStateSelect() {
+        stateSelect.click();
+    }
 
-    public void typePostCode() { postcode.type("55555"); }
+    public void typePostCode(final String postCode) {
+        postcode.type(postCode);
+    }
 
-    public void clickCountryList() { countryList.click(); }
+    public void clickCountryList() {
+        countryList.click();
+    }
 
-    public void clickCountrySelect() { countrySelect.click(); }
+    public void clickCountrySelect() {
+        countrySelect.click();
+    }
 
-    public void typeMobilePhone() { mobilePhone.type("505505505"); }
+    public void typeMobilePhone(final String mobilephone) {
+        mobilePhone.type(mobilephone);
+    }
 
-    public void clickRegisterButton() { registerButton.click(); }
+    public void clickRegisterButton() {
+        registerButton.click();
+        waitABit(30000);
+    }
 
 
 }

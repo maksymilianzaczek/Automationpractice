@@ -1,5 +1,7 @@
 package automationpractice.com.features;
 
+import automationpractice.com.data.UserInformation;
+import automationpractice.com.domain.RegistrationData;
 import automationpractice.com.pages.HeaderBox;
 import automationpractice.com.pages.HomePage;
 import automationpractice.com.pages.LoginPage;
@@ -8,6 +10,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.assertj.core.api.SoftAssertions;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -23,46 +26,42 @@ public class RegisterFeatures {
     private RegistrationPage registrationPage;
 
 
-    @Given("^User is on home page$")
-    public void userIsOnHomePage() {
+    @Given("^User is on login page$")
+    public void userIsOnLoginPage() {
         homePage.open();
-    }
-
-
-    @When("^he types unique e-mail$")
-    public void heTypesUniqueEMail() {
-        loginPage.typeEmailRegistration(randomEmail);
-    }
-
-    private void typeUniqueEmail(String email) {
         headerBox.clickOnSignIn();
-        loginPage.typeEmailRegistration(email);
+    }
+
+    @When("^he submits form with unique e-mail$")
+    public void heTypesUniqueEmail() {
+        loginPage.typeEmailRegistration(randomEmail);
         loginPage.clickOnCreateAnAccount();
     }
 
     @When("^on second registration page he submits fields with correct data$")
     public void onSecondRegistrationPageHeSubmitsFieldsWithCorrectData() {
+
+        final RegistrationData registrationData = UserInformation.NEW_ACCOUNT_CREATION;
         registrationPage.clickOnTitle();
-        registrationPage.typeFirstName();
-        registrationPage.typeLastName();
-        registrationPage.typeEmail();
-        registrationPage.typePasswd();
+        registrationPage.typeFirstName(registrationData.getFirstName());
+        registrationPage.typeLastName(registrationData.getLastName());
+        registrationPage.typePasswd(registrationData.getPassword());
         registrationPage.clickDayList();
         registrationPage.clickDaySelect();
         registrationPage.clickMonthsList();
         registrationPage.clickMonthsSelect();
         registrationPage.clickYearsList();
         registrationPage.clickYearsSelect();
-        registrationPage.typeFirstNameAddress();
-        registrationPage.typeLastNameAddress();
-        registrationPage.typeAddress();
-        registrationPage.typeCity();
-        registrationPage.clickStateList();
-        registrationPage.clickStateSelect();
-        registrationPage.typePostCode();
+        registrationPage.typeFirstNameAddress(registrationData.getFirstNameAddress());
+        registrationPage.typeLastNameAddress(registrationData.getLastNameAddress());
+        registrationPage.typeAddress(registrationData.getAddress());
+        registrationPage.typeCity(registrationData.getCity());
+        registrationPage.typePostCode(registrationData.getZipCode());
+        registrationPage.typeMobilePhone(registrationData.getMobilePhone());
         registrationPage.clickCountryList();
         registrationPage.clickCountrySelect();
-        registrationPage.typeMobilePhone();
+        registrationPage.clickStateList();
+        registrationPage.clickStateSelect();
         registrationPage.clickRegisterButton();
     }
 
@@ -73,7 +72,34 @@ public class RegisterFeatures {
     }
 
     @When("^he submits form with incorrect e-mail$")
-    public void heSubmitsFormWithIncorrectEMail() {
-        loginPage.
+    public void heSubmitsFormWithIncorrectEmail() {
+        loginPage.typeEmailRegistration("####@!!!.com");
+        loginPage.clickOnCreateAnAccount();
+    }
+
+    @When("^incorrectly submits form on second registration page$")
+    public void incorrectlySubmitsFormOnSecondRegistrationPage() {
+        registrationPage.typePostCode("402140214");
+        registrationPage.clickRegisterButton();
+    }
+
+    @Then("^error message is displayed on login page$")
+    public void errorMessageIsDisplayedOnLoginPage() {
+        final boolean isValidationMessageDisplayed = loginPage.isValidationMessageDisplayed();
+        final boolean isSignInButtonVisible = headerBox.isSignInButtonVisible();
+        final SoftAssertions softAssertions = new SoftAssertions();
+        softAssertions.assertThat(isValidationMessageDisplayed).isFalse();
+        softAssertions.assertThat(isSignInButtonVisible).isTrue();
+        softAssertions.assertAll();
+    }
+
+    @Then("^error message is displayed on home page$")
+    public void errorMessageIsDisplayedOnHomePage() {
+        final boolean isValidationMessageDisplayed = loginPage.isValidationMessageDisplayed();
+        final boolean isSignInButtonVisible = headerBox.isSignInButtonVisible();
+        final SoftAssertions softAssertions = new SoftAssertions();
+        softAssertions.assertThat(isValidationMessageDisplayed).isTrue();
+        softAssertions.assertThat(isSignInButtonVisible).isTrue();
+        softAssertions.assertAll();
     }
 }
