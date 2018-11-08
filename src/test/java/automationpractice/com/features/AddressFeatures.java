@@ -26,6 +26,7 @@ public class AddressFeatures {
         loginPage.typeLogin(login);
         loginPage.typePassword(password);
         loginPage.clickOnSignIn();
+
     }
 
 

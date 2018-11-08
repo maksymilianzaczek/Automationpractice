@@ -13,7 +13,7 @@ public class UserInformation {
             "lastNameAddress",
             "address",
             "city",
-            "state",
+            "Arizona",
             "55555",
             "country",
             "515515515");

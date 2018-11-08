@@ -1,4 +1,6 @@
 package automationpractice.com.pages;
 
-public class AddressPage {
+import net.serenitybdd.core.pages.PageObject;
+
+public class AddressPage extends PageObject {
 }

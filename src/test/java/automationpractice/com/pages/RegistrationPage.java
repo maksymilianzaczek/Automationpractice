@@ -2,6 +2,7 @@ package automationpractice.com.pages;
 
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 
 public class RegistrationPage extends PageObject {
@@ -113,6 +114,7 @@ public class RegistrationPage extends PageObject {
     }
 
     public void clickStateList() {
+        find(By.xpath("//*[@id='id_state']//*[contains(text(), 'Arizona')]"));
         stateList.click();
     }
 
@@ -138,7 +140,6 @@ public class RegistrationPage extends PageObject {
 
     public void clickRegisterButton() {
         registerButton.click();
-        waitABit(30000);
     }
 
 
