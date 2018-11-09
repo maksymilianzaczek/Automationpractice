@@ -14,4 +14,12 @@ public class AddressPage extends PageObject {
     public void clickAddNewAddressButton() {
         addNewAddressButton.click();
     }
+
+    public boolean isNewAddressNameVisible() {
+
+    }
+
+    public void clickDeleteButton() {
+
+    }
 }

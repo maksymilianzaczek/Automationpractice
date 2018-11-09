@@ -1,13 +1,6 @@
 package automationpractice.com.features;
 
-import automationpractice.com.pages.HeaderBox;
-import automationpractice.com.pages.HomePage;
-import automationpractice.com.pages.LoginPage;
-import automationpractice.com.pages.MyAccountPage;
-import automationpractice.com.pages.NewAddressPage;
-import automationpractice.com.pages.AddressPage;
-import automationpractice.com.pages.RegistrationPage;
-import cucumber.api.PendingException;
+import automationpractice.com.pages.*;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -41,17 +34,17 @@ public class AddressFeatures {
     @When("^he opens new address page and adds new address with proper data$")
     public void heOpensNewAddressPageAndAddsNewAddressWithProperData() {
         addressPage.clickAddNewAddressButton();
-        newAddressPage.typeAddressFirstName();
-        newAddressPage.typeAddressLastName();
+        newAddressPage.typeFirstNameAddress();
+        newAddressPage.typeLastNameAddress();
         newAddressPage.typeAddress();
         newAddressPage.typeCity();
         newAddressPage.clickStateList();
         newAddressPage.clickStateSelect();
-        newAddressPage.typePostalCode();
+        newAddressPage.typePostCode();
         newAddressPage.clickCountryList();
         newAddressPage.clickCountrySelect();
         newAddressPage.typeMobilePhone();
-        newAddressPage.typeAddressName("MyAddress");
+        newAddressPage.typeTitle("Title ");
         newAddressPage.clickSaveNewAddressButton();
     }
 
@@ -63,7 +56,7 @@ public class AddressFeatures {
 
     @And("^new created address is deleted$")
     public void newCreatedAddressIsDeleted() {
-    addressPage.clickDeleteButton();
+        addressPage.clickDeleteButton();
         final boolean isNewAddressNameDisplayed = addressPage.isNewAddressNameVisible();
         assertThat(isNewAddressNameDisplayed).isFalse();
     }

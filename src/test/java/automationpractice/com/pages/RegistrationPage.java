@@ -30,7 +30,7 @@ public class RegistrationPage extends PageObject {
     @FindBy(xpath = "//*[@id='years']/option[7]")
     private WebElementFacade yearsSelect;
     @FindBy(id = "firstname")
-    private WebElementFacade firstnameAddressInput;
+    private WebElementFacade firstNameAddressInput;
     @FindBy(id = "lastname")
     private WebElementFacade lastnameAddressInput;
     @FindBy(id = "address1")
@@ -98,11 +98,11 @@ public class RegistrationPage extends PageObject {
     }
 
     public void typeFirstNameAddress(final String firstNameAddress) {
-        firstnameAddressInput.type(firstNameAddress);
+        firstNameAddressInput.type(firstNameAddress);
     }
 
     public void typeLastNameAddress(final String lastNameAddress) {
-        lastNameCustomerInput.type(lastNameAddress);
+        lastnameAddressInput.type(lastNameAddress);
     }
 
     public void typeAddress(final String address) {
