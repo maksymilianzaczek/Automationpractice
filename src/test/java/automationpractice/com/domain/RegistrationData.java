@@ -1,6 +1,7 @@
 package automationpractice.com.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 
 @Getter
