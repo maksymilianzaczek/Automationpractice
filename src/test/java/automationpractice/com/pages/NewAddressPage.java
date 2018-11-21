@@ -2,66 +2,77 @@ package automationpractice.com.pages;
 
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.ServiceLoader;
+import java.awt.*;
 
 public class NewAddressPage extends PageObject {
 
-
     @FindBy(id = "firstname")
-    private WebElementFacade firstNameAddressInput;
+    private WebElementFacade firstNameInput;
+
     @FindBy(id = "lastname")
-    private WebElementFacade lastnameAddressInput;
+    private WebElementFacade lastNameInput;
+
     @FindBy(id = "address1")
-    private WebElementFacade addressInput;
+    private WebElementFacade addresRowInput;
+
     @FindBy(id = "city")
-    private WebElementFacade cityInput;
+    private WebElementFacade cityNameInput;
+
     @FindBy(id = "uniform-id_state")
     private WebElementFacade stateList;
-    @FindBy(xpath = "//*[@id='id_state']/option[13]")
-    private WebElementFacade stateSelect;
+
+    @FindBy(xpath = " //*[@id='id_state']/option[6]")
+    private WebElementFacade selectState;
+
     @FindBy(id = "postcode")
-    private WebElementFacade postcode;
+    private WebElementFacade postalCodeInput;
+
     @FindBy(id = "uniform-id_country")
     private WebElementFacade countryList;
-    @FindBy(xpath = "//*[@id='id_country']/option[2]")
-    private WebElementFacade countrySelect;
-    @FindBy(id = "phone_mobile")
-    private WebElementFacade mobilePhone;
+
+    @FindBy(xpath = "//*[@id='id_country']/option[1]")
+    private WebElementFacade selectCountry;
+
+    @FindBy(id = "phone")
+    private WebElementFacade mobilePhoneNumberInput;
+
     @FindBy(id = "alias")
-    private WebElementFacade title;
+    private WebElementFacade titleInput;
+
     @FindBy(id = "submitAddress")
     private WebElementFacade saveNewAddressButton;
 
-    public void typeFirstNameAddress(final String firstNameAddress) {
-        firstNameAddressInput.type(firstNameAddress);
+    @FindBy(xpath = "//*[@class='alert alert-danger']")
+    private WebElementFacade errorMessageOnNewAddressPage;
+
+    public void typeAddressFirstName() {
+        firstNameInput.type("Maciej");
     }
 
-    public void typeLastNameAddress(final String lastNameAddress) {
-        lastnameAddressInput.type(lastNameAddress);
+    public void typeAddressLastName() {
+        lastNameInput.type("test");
     }
 
-    public void typeAddress(final String address) {
-        addressInput.type(address);
+    public void typeAddress() {
+        addresRowInput.type("address");
     }
 
-    public void typeCity(final String city) {
-        cityInput.type(city);
+    public void typeCity() {
+        cityNameInput.type("Wrocław");
     }
 
     public void clickStateList() {
-        find(By.xpath("//*[@id='id_state']//*[contains(text(), 'Arizona')]"));
         stateList.click();
     }
 
     public void clickStateSelect() {
-        stateSelect.click();
+        selectState.click();
     }
 
-    public void typePostCode(final String postCode) {
-        postcode.type(postCode);
+    public void typePostalCode() {
+        postalCodeInput.type("55555");
     }
 
     public void clickCountryList() {
@@ -69,22 +80,22 @@ public class NewAddressPage extends PageObject {
     }
 
     public void clickCountrySelect() {
-        countrySelect.click();
+        selectCountry.click();
     }
 
-    public void typeMobilePhone(final String mobilephone) {
-        mobilePhone.type(mobilephone); }
+    public void typeMobilePhone() {
+        mobilePhoneNumberInput.type("111 222 333");
+    }
 
-        public void typeTitle(final String title)
-
-
+    public void typeTitle(String myAddress) {
+        titleInput.click();
+    }
 
     public void clickSaveNewAddressButton() {
         saveNewAddressButton.click();
     }
 
-
-    public boolean isErrorMessageForVisible() {
-        return s.isVisible;
+    public boolean isErrorMessageForNewAddressVisible() {
+        return errorMessageOnNewAddressPage.isVisible();
     }
 }

@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends PageObject {
 
+
     @FindBy(id = "email")
     private WebElementFacade loginInput;
     @FindBy(id = "passwd")
@@ -19,6 +20,8 @@ public class LoginPage extends PageObject {
     private WebElementFacade createAnAccountButton;
     @FindBy(id = "email_create")
     private WebElementFacade emailInput;
+    @FindBy(className = "account")
+    private WebElementFacade myProfileButton;
 
     public void typeLogin(final String login) {
         loginInput.type(login);
@@ -42,5 +45,9 @@ public class LoginPage extends PageObject {
 
     public void typeEmailRegistration(final String email) {
         emailInput.type(email);
+    }
+
+    public void clickOnMyProfile() {
+        myProfileButton.click();
     }
 }

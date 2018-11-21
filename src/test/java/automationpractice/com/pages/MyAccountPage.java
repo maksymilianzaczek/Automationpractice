@@ -6,7 +6,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class MyAccountPage extends PageObject {
 
-    public void clickMyAddresses() {
+    @FindBy(className = "icon-building")
+    private WebElementFacade myAddressButton;
 
+    public void clickMyAddresses() {
+        myAddressButton.click();
     }
 }

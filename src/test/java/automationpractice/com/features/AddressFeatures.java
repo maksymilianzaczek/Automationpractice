@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class AddressFeatures {
 
-    final private String login = "maks.zaczek@solsoft.pl";
+    final private String login = "maciej.stafijowski@solsoft.pl";
     final private String password = "12345678";
 
     private HomePage homePage;
@@ -34,17 +34,17 @@ public class AddressFeatures {
     @When("^he opens new address page and adds new address with proper data$")
     public void heOpensNewAddressPageAndAddsNewAddressWithProperData() {
         addressPage.clickAddNewAddressButton();
-        newAddressPage.typeFirstNameAddress();
-        newAddressPage.typeLastNameAddress();
+        newAddressPage.typeAddressFirstName();
+        newAddressPage.typeAddressLastName();
         newAddressPage.typeAddress();
         newAddressPage.typeCity();
-        newAddressPage.clickStateList();
-        newAddressPage.clickStateSelect();
-        newAddressPage.typePostCode();
+        newAddressPage.typePostalCode();
         newAddressPage.clickCountryList();
         newAddressPage.clickCountrySelect();
         newAddressPage.typeMobilePhone();
-        newAddressPage.typeTitle("Title ");
+        newAddressPage.typeTitle("Title");
+        newAddressPage.clickStateList();
+        newAddressPage.clickStateSelect();
         newAddressPage.clickSaveNewAddressButton();
     }
 
