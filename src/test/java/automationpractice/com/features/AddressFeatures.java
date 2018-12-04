@@ -1,13 +1,8 @@
 package automationpractice.com.features;
 
-import automationpractice.com.pages.HeaderBox;
-import automationpractice.com.pages.HomePage;
-import automationpractice.com.pages.LoginPage;
-import automationpractice.com.pages.MyAccountPage;
-import automationpractice.com.pages.NewAddressPage;
-import automationpractice.com.pages.AddressPage;
-import automationpractice.com.pages.RegistrationPage;
-import cucumber.api.PendingException;
+import automationpractice.com.data.NewAddressInformations;
+import automationpractice.com.domain.NewAddressData;
+import automationpractice.com.pages.*;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -17,7 +12,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class AddressFeatures {
 
-    final private String login = "maks.zaczek@solsoft.pl";
+
+    final private String login = "maciej.stafijowski@solsoft.pl";
     final private String password = "12345678";
 
     private HomePage homePage;
@@ -26,6 +22,8 @@ public class AddressFeatures {
     private MyAccountPage myAccountPage;
     private NewAddressPage newAddressPage;
     private AddressPage addressPage;
+    private NewAddressInformations newAddressInformations;
+    private NewAddressData newAddressData;
 
     @Given("^logged in customer is on address page$")
     public void loggedInCustomerIsOnAddressPage() {
@@ -40,32 +38,32 @@ public class AddressFeatures {
 
     @When("^he opens new address page and adds new address with proper data$")
     public void heOpensNewAddressPageAndAddsNewAddressWithProperData() {
+        final NewAddressData newAddressData = NewAddressInformations.NEW_ADDRESS_INFORMATIONS;
         addressPage.clickAddNewAddressButton();
-        newAddressPage.typeAddressFirstName();
-        newAddressPage.typeAddressLastName();
-        newAddressPage.typeAddress();
-        newAddressPage.typeCity();
-        newAddressPage.clickStateList();
-        newAddressPage.clickStateSelect();
-        newAddressPage.typePostalCode();
+        newAddressPage.typeFirstNameAddress(newAddressData.getFirstNameAddress());
+        newAddressPage.typeLastNameAddress(newAddressData.getLastNameAddress());
+        newAddressPage.typeAddress(newAddressData.getAddress());
+        newAddressPage.typeCity(newAddressData.getCity());
+        newAddressPage.typePostCode(newAddressData.getZipCode());
         newAddressPage.clickCountryList();
         newAddressPage.clickCountrySelect();
-        newAddressPage.typeMobilePhone();
-        newAddressPage.typeAddressName("MyAddress");
+        newAddressPage.typeMobilePhone(newAddressData.getMobilePhone());
+        newAddressPage.typeTitle(newAddressData.getNewAddresName());
+        newAddressPage.clickStateList();
+        newAddressPage.clickStateSelect(newAddressData.getState());
         newAddressPage.clickSaveNewAddressButton();
     }
 
     @Then("^new address is created$")
     public void newAddressIsCreated() {
-        final boolean isNewAddressNameDisplayed = addressPage.isNewAddressNameVisible();
-        assertThat(isNewAddressNameDisplayed).isTrue();
+        assertThat(addressPage.isNewAddressNameVisible()).isTrue();
     }
 
     @And("^new created address is deleted$")
     public void newCreatedAddressIsDeleted() {
-    addressPage.clickDeleteButton();
-        final boolean isNewAddressNameDisplayed = addressPage.isNewAddressNameVisible();
-        assertThat(isNewAddressNameDisplayed).isFalse();
+        addressPage.clickDeleteButton();
+        addressPage.getDriver().switchTo().alert().accept();
+        assertThat(addressPage.isNewAddressNameVisible()).isFalse();
     }
 
 
