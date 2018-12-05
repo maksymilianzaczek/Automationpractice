@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class AddressPage extends PageObject {
 
 
-    private final String DELETE_BUTTON_XPATH_PATTERN = "//*[contains(text(), '%S')]//ancestor::*[contains(@class, 'address') and not(contains(@class, 'addresses'))]//*[contains(@class,'icon-remove')]";
+    private final String DELETE_BUTTON_XPATH_PATTERN = "//*[contains(text(), '%s')]//ancestor::*[contains(@class, 'address') and not(contains(@class, 'addresses'))]//*[contains(@class,'icon-remove')]";
 
     @FindBy(xpath = "//*[contains(@class,'button-medium')and not(@rel)]")
     private WebElementFacade addNewAddressButton;
@@ -23,7 +23,7 @@ public class AddressPage extends PageObject {
     }
 
     public void clickDeleteButton(final String addressName) {
-        final String deleteButtonXpath = String.format(DELETE_BUTTON_XPATH_PATTERN, addressName.toLowerCase());
+        final String deleteButtonXpath = String.format(DELETE_BUTTON_XPATH_PATTERN, addressName);
         find(By.xpath(deleteButtonXpath)).click();
     }
 

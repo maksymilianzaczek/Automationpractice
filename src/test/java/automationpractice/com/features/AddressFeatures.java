@@ -54,9 +54,9 @@ public class AddressFeatures {
 
     @And("^new created address is deleted$")
     public void newCreatedAddressIsDeleted() {
-        addressPage.clickDeleteButton(NEW_ADDRESS_INFORMATION.getNewAddressName().toLowerCase());
+        addressPage.clickDeleteButton(NEW_ADDRESS_INFORMATION.getNewAddressName());
         addressPage.acceptAlert();
-        assertThat(addressPage.getAddressNameList()).doesNotContain(NEW_ADDRESS_INFORMATION.getNewAddressName().toLowerCase());
+        assertThat(addressPage.getAddressNameList()).doesNotContain(NEW_ADDRESS_INFORMATION.getNewAddressName().toUpperCase());
     }
 
 
