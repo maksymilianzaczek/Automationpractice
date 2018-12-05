@@ -1,9 +1,9 @@
 package automationpractice.com.data;
 
-import automationpractice.com.domain.NewAddressData;
+import automationpractice.com.domain.RegistrationData;
 
-public class NewAddressInformations {
-    public static final NewAddressData NEW_ADDRESS_INFORMATIONS = new NewAddressData(
+public class NewUserInformation {
+    public static final RegistrationData NEW_ACCOUNT_CREATION = new RegistrationData(
             "firstName",
             "lastName",
             "email@gmai.com",
@@ -16,6 +16,5 @@ public class NewAddressInformations {
             "Arizona",
             "55555",
             "country",
-            "515515515",
-            "newAddress");
+            "515515515");
 }

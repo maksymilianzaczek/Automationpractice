@@ -3,6 +3,8 @@ package automationpractice.com.domain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.util.GregorianCalendar;
+
 @Getter
 @AllArgsConstructor
 public class NewAddressData {
@@ -10,7 +12,7 @@ public class NewAddressData {
     private String lastName;
     private String email;
     private String password;
-    private String dateOfBirth;
+    private GregorianCalendar dateOfBirth;
     private String firstNameAddress;
     private String lastNameAddress;
     private String address;
@@ -19,6 +21,6 @@ public class NewAddressData {
     private String zipCode;
     private String country;
     private String mobilePhone;
-    private String newAddresName;
+    private String newAddressName;
 }
 
