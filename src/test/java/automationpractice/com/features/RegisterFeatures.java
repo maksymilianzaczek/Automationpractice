@@ -1,6 +1,6 @@
 package automationpractice.com.features;
 
-import automationpractice.com.data.UserInformation;
+import automationpractice.com.data.NewUserInformation;
 import automationpractice.com.domain.RegistrationData;
 import automationpractice.com.pages.HeaderBox;
 import automationpractice.com.pages.HomePage;
@@ -41,7 +41,7 @@ public class RegisterFeatures {
     @When("^on second registration page he submits fields with correct data$")
     public void onSecondRegistrationPageHeSubmitsFieldsWithCorrectData() {
 
-        final RegistrationData registrationData = UserInformation.NEW_ACCOUNT_CREATION;
+        final RegistrationData registrationData = NewUserInformation.NEW_ACCOUNT_CREATION;
         registrationPage.clickOnTitle();
         registrationPage.typeFirstName(registrationData.getFirstName());
         registrationPage.typeLastName(registrationData.getLastName());
