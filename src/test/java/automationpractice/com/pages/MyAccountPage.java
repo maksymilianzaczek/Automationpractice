@@ -9,7 +9,7 @@ public class MyAccountPage extends PageObject {
 
     @FindBy(className = "icon-building")
     private WebElementFacade myAddress;
-    @FindBy(className = "logo img-responsive")
+    @FindBy(id = "header_logo")
     private WebElementFacade myStore;
 
     public void clickMyAddresses() {
