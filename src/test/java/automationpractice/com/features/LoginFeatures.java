@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class LoginFeatures {
 
-    final private String login = "maciej.stafijowski@solsfot.pl";
+    final private String login = "maciej.stafijowski@solsoft.pl";
     final private String password = "12345678";
 
     private HomePage homePage;
