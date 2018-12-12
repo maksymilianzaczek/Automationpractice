@@ -9,7 +9,7 @@ public class FirstProductPage extends PageObject {
     @FindBy(id = "add_to_cart")
     private WebElementFacade clickOnAddToCartButton;
 
-    @FindBy(xpath = "//*[@class='btn btn-default button button-medium']")
+    @FindBy(xpath = "//*[contains(@class,'button-medium')]//*[contains(@class,'icon-chevron-right')]")
     private WebElementFacade clickProceedToCheckoutButton;
 
     @FindBy(className = "icon-plus")
@@ -18,14 +18,17 @@ public class FirstProductPage extends PageObject {
     @FindBy(className = "icon-minus")
     private WebElementFacade clickMinusQuantityButton;
 
-    @FindBy(xpath = "//*[@id='group_1']//*[@title='M']")
+    @FindBy(xpath = "//*[@id='group_1']//option[2]")
     private WebElementFacade selectMSize;
 
-    @FindBy(xpath = "//*[@id='group_1']//*[@title='L']")
+    @FindBy(xpath = "//*[@id='group_1']//option[3]")
     private WebElementFacade selectLSize;
 
     @FindBy(id = "color_14")
     private WebElementFacade changeColorToBlue;
+
+//    @FindBy(className = "btn-twitter")
+//    private WebElementFacade clickOnTwitterButton;
 
     public void clickOnAddToCartButton() {
         clickOnAddToCartButton.click();
@@ -51,4 +54,8 @@ public class FirstProductPage extends PageObject {
     public void changeColorToBlue() {
         changeColorToBlue.click();
     }
+
+//    public void clickOnTwitterButton() {
+//        clickOnTwitterButton.click();
+//    }
 }
