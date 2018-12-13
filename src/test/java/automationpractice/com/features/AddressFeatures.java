@@ -63,8 +63,8 @@ public class AddressFeatures {
     }
 
 
-    @Then("^new created address is deleted 1$")
-    public void newCreatedAddressIsDeleted1() {
+    @Then("^new created address is deleted after test$")
+    public void newCreatedAddressIsDeletedAfterTest() {
 
         headerBox.clickOnLoggedUser();
         myAccountPage.clickMyAddresses();

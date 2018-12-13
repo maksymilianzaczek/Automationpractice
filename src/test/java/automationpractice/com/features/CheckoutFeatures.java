@@ -8,8 +8,6 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Assert;
 
 public class CheckoutFeatures {
@@ -144,21 +142,20 @@ public class CheckoutFeatures {
 
     @When("^user change quantity used plus and minus button after added to cart$")
     public void userChangeQuantityUsedPlusAndMinusButtonAfterAddedToCart() {
-
-//        checkoutPage.clickPlusQuantityButtonInSummaryLabel();
-//        checkoutPage.clickPlusQuantityButtonInSummaryLabel();
-//        checkoutPage.clickPlusQuantityButtonInSummaryLabel();
-//        checkoutPage.clickPlusQuantityButtonInSummaryLabel();
-//        checkoutPage.clickMinusQuantityButtonInSummaryLabel();
-
-
-
         checkoutPage.clickPlusQuantityButtonInSummaryLabel();
-        checkoutPage.clickMinusQuantityButtonInSummaryLabel();
+        checkoutPage.clickPlusQuantityButtonInSummaryLabel();
+        checkoutPage.clickPlusQuantityButtonInSummaryLabel();
+        checkoutPage.clickPlusQuantityButtonInSummaryLabel();
         checkoutPage.clickPlusQuantityButtonInSummaryLabel();
         checkoutPage.clickPlusQuantityButtonInSummaryLabel();
         checkoutPage.clickMinusQuantityButtonInSummaryLabel();
+        checkoutPage.clickMinusQuantityButtonInSummaryLabel();
+        checkoutPage.clickMinusQuantityButtonInSummaryLabel();
         checkoutPage.clickPlusQuantityButtonInSummaryLabel();
+        checkoutPage.clickMinusQuantityButtonInSummaryLabel();
+        checkoutPage.clickPlusQuantityButtonInSummaryLabel();
+        checkoutPage.clickMinusQuantityButtonInSummaryLabel();
+        checkoutPage.clickMinusQuantityButtonInSummaryLabel();
     }
 
     @Then("^checkout page has three items$")
@@ -175,7 +172,7 @@ public class CheckoutFeatures {
 
     @When("^user choices new address as delivery address$")
     public void userChoicesNewAddressAsDeliveryAddress() {
-        checkoutPage.selectMyAddressList();
+        checkoutPage.selectDeliveryAddressFromList();
     }
 
 
@@ -190,6 +187,61 @@ public class CheckoutFeatures {
                 + ", " + NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getState()
                 + " " + NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getZipCode())
                 ,checkoutPage.isDeliveryAddressCorrectCityAndStateAndZipCode());
+    }
 
+    @When("^user choices new address as billing address$")
+    public void userChoicesNewAddressAsBillingAddress() {
+        checkoutPage.selectBillingAddressFromList();
+    }
+
+    @Then("^the new address is selected as billing address$")
+    public void theNewAddressIsSelectedAsBillingAddress() {
+        Assert.assertEquals((NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getFirstNameAddress()
+                        + " " +NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getLastNameAddress())
+                ,checkoutPage.isBillingAddressCorrectNameAndLastName());
+
+
+        Assert.assertEquals((NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getCity()
+                        + ", " + NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getState()
+                        + " " + NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getZipCode())
+                ,checkoutPage.isBillingAddressCorrectCityAndStateAndZipCode());
+    }
+
+    @When("^user choices new address as delivery and billing address$")
+    public void userChoicesNewAddressAsDeliveryAndBillingAddress() {
+        checkoutPage.selectDeliveryAndBillingAddressFromList();
+    }
+
+    @Then("^the new address is selected as delivery and billing address$")
+    public void theNewAddressIsSelectedAsDeliveryAndBillingAddress() {
+        theNewAddressIsSelectedAsDeliveryAddress();
+        theNewAddressIsSelectedAsBillingAddress();
+    }
+
+    @When("^he confirms every step up to the tab shipping and he do not click agree checkbox in shipping label and click proceed to checkout$")
+    public void heConfirmsEveryStepUpToTheTabShippingAndHeDoNotClickAgreeCheckboxInShippingLabelAndClickProceedToCheckout() {
+        checkoutPage.clickOnProceedToCheckoutButtonInSummaryLabel();
+        checkoutPage.clickOnProceedToCheckoutButtonInAddressLabel();
+        checkoutPage.clickOnProceedToCheckoutButtonInShippingLabel();
+    }
+
+
+    @Then("^new alert is appear$")
+    public void newAlertIsAppear() {
+        Assert.assertTrue(checkoutPage.newAlertAppear());
+    }
+
+
+    @When("^new alert is appear and user close it and click agree checkbox and continue$")
+    public void newAlertIsAppearAndUserCloseItAndClickAgreeCheckboxAndContinue() {
+        checkoutPage.closeAlertInShippingLabel();
+        checkoutPage.clickAgreeCheckbox();
+        checkoutPage.clickOnProceedToCheckoutButtonInShippingLabel();
+    }
+
+
+    @Then("^user is in payment label$")
+    public void userIsInPaymentLabel() {
+        Assert.assertTrue(checkoutPage.isPaymentLabel());
     }
 }

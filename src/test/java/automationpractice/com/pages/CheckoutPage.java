@@ -1,12 +1,11 @@
 package automationpractice.com.pages;
 
-import automationpractice.com.data.NewAddressInformation;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.zip.GZIPInputStream;
 
 import static automationpractice.com.data.NewAddressInformation.NEW_ADDRESS_INFORMATION_1;
 
@@ -59,6 +58,24 @@ public class CheckoutPage extends PageObject {
     @FindBy(xpath = "//*[@id='address_delivery']//*[@class='address_city address_state_name address_postcode']")
     private WebElementFacade cityAndStateAndZipCodeInDeliveryAddress;
 
+    @FindBy(xpath = "//*[@id='center_column']//*[@class='checkbox addressesAreEquals']")
+    private WebElementFacade clickDisagreeUseTheDeliveryAddressAsTheBillingAddress;
+
+    @FindBy(xpath = "//*[@id='address_invoice']//*[@class='address_firstname address_lastname']")
+    private WebElementFacade nameAndLastInBillingAddress;
+
+    @FindBy(xpath = "//*[@id='address_invoice']//*[@class='address_city address_state_name address_postcode']")
+    private WebElementFacade cityAndStateAndZipCodeInBillingAddress;
+
+    @FindBy(className = "fancybox-error")
+    private WebElementFacade newAlertAppearInShippingLabel;
+
+    @FindBy(className = "page-heading")
+    private WebElementFacade isPaymentLabel;
+
+    @FindBy(xpath = "//*[contains(@class,'fancybox-close')]")
+    private WebElementFacade closeAlertInShippingLabel;
+
     public void clickOnProceedToCheckoutButtonInSummaryLabel() {
         clickOnProceedToCheckoutButtonInSummaryLabel.click();
     }
@@ -105,11 +122,12 @@ public class CheckoutPage extends PageObject {
 
     public void clickPlusQuantityButtonInSummaryLabel() {
         clickPlusQuantityButtonInSummaryLabel.click();
-
+        waitABit(2000);
     }
 
     public void clickMinusQuantityButtonInSummaryLabel() {
         clickMinusQuantityButtonInSummaryLabel.click();
+        waitABit(2000);
     }
 
     public void clickAddANewAddressButton() {
@@ -131,8 +149,19 @@ public class CheckoutPage extends PageObject {
         newAddressPage.clickSaveNewAddressButton();
     }
 
-    public void selectMyAddressList() {
+    public void selectDeliveryAddressFromList() {
         find(By.xpath("//*[@id='id_address_delivery']//*[contains(text(), '"+NEW_ADDRESS_INFORMATION_1.getNewAddressName()+"')]")).click();
+    }
+
+    public void selectBillingAddressFromList() {
+        clickDisagreeUseTheDeliveryAddressAsTheBillingAddress.click();
+        waitABit(1000);
+        find(By.xpath("//*[@id='id_address_invoice']//*[contains(text(), '"+NEW_ADDRESS_INFORMATION_1.getNewAddressName()+"')]")).click();
+    }
+
+    public void selectDeliveryAndBillingAddressFromList() {
+        selectDeliveryAddressFromList();
+        selectBillingAddressFromList();
     }
 
     public String isDeliveryAddressCorrectNameAndLastName() {
@@ -141,5 +170,27 @@ public class CheckoutPage extends PageObject {
 
     public String isDeliveryAddressCorrectCityAndStateAndZipCode() {
         return cityAndStateAndZipCodeInDeliveryAddress.getText();
+    }
+
+    public String isBillingAddressCorrectNameAndLastName() {
+        return nameAndLastInBillingAddress.getText();
+    }
+
+    public String isBillingAddressCorrectCityAndStateAndZipCode() {
+        return cityAndStateAndZipCodeInBillingAddress.getText();
+    }
+
+
+    public boolean newAlertAppear() {
+        return newAlertAppearInShippingLabel.isVisible();
+    }
+
+    public void closeAlertInShippingLabel() {
+        closeAlertInShippingLabel.click();
+        waitABit(500);
+    }
+
+    public boolean isPaymentLabel() {
+        return isPaymentLabel.getText().contains("PLEASE CHOOSE YOUR PAYMENT METHOD");
     }
 }
