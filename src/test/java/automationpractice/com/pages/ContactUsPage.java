@@ -45,9 +45,11 @@ public class ContactUsPage extends PageObject {
     public void clickOnSubjectHeadingList() {
         subjectHeadingList.click();
     }
-   /* find(By.xpath("//*[@id='id_contact']//*[contains(text(), 'Customer service')]"));*/
+
     public void clickOnSubjectHeadingSelect() {
-        subjectHeadingSelect.click();
+        find(By.xpath("//*[@id='id_contact']//*[contains(text(), 'Customer service')]")).click();
+//        subjectHeadingSelect.click();
+
     }
 
 

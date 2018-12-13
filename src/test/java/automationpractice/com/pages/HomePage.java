@@ -14,7 +14,7 @@ public class HomePage extends PageObject
 
     @FindBy(xpath = "//*[contains(@class,'replace-2x img-responsive') and contains(@title,'Faded Short Sleeve T-shirts')]")
     private WebElementFacade clickOnNewProductImage;
-    @FindBy(className = "alert alert-success")
+    @FindBy(xpath = "//*[contains(@class,'alert-success')]")     //    @FindBy(className = "alert alert-success")
     private WebElementFacade SuccessfulMessage;
 
     public boolean isValidationMessageDisplayed() {
@@ -26,4 +26,5 @@ public class HomePage extends PageObject
     }
 
     public boolean isSuccessfulNewsletterMessageDisplayed() { return SuccessfulMessage.isVisible(); }
+
 }
