@@ -7,7 +7,7 @@ import java.util.GregorianCalendar;
 
 @Getter
 @AllArgsConstructor
-public class NewAddressData {
+public class AddressData {
     private String firstName;
     private String lastName;
     private String email;
@@ -21,6 +21,6 @@ public class NewAddressData {
     private String zipCode;
     private String country;
     private String mobilePhone;
-    private String newAddressName;
+    private String addressName;
 }
 

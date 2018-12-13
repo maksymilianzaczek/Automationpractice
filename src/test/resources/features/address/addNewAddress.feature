@@ -9,6 +9,6 @@ Feature: Add new address
     And new created address is deleted
 
 
-#  Scenario: User can't add new address
-#    When he tries to add new address with empty fields
-#    Then new address is not created
+  Scenario: User can't add new address
+    When he tries to add new address with empty fields
+    Then new address is not created
