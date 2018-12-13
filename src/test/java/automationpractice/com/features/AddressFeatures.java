@@ -8,7 +8,10 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
 
+import java.util.List;
+
 import static automationpractice.com.data.NewAddressInformation.NEW_ADDRESS_INFORMATION;
+import static automationpractice.com.data.NewAddressInformation.NEW_ADDRESS_INFORMATION_1;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class AddressFeatures {
@@ -59,6 +62,16 @@ public class AddressFeatures {
         assertThat(addressPage.getAddressNameList()).doesNotContain(NEW_ADDRESS_INFORMATION.getNewAddressName().toUpperCase());
     }
 
+
+    @Then("^new created address is deleted 1$")
+    public void newCreatedAddressIsDeleted1() {
+
+        headerBox.clickOnLoggedUser();
+        myAccountPage.clickMyAddresses();
+        addressPage.clickDeleteButton(NEW_ADDRESS_INFORMATION_1.getNewAddressName());
+        addressPage.acceptAlert();
+        assertThat(addressPage.getAddressNameList()).doesNotContain(NEW_ADDRESS_INFORMATION_1.getNewAddressName());
+    }
 
     @When("^he tries to add new address with empty fields$")
     public void heTriesToAddNewAddressWithEmptyFields() {

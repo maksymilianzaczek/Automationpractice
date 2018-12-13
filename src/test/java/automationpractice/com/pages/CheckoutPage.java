@@ -34,16 +34,16 @@ public class CheckoutPage extends PageObject {
     @FindBy(className = "cart_quantity_input")
     private WebElementFacade firstWindowWithTheNumberOfItems;
 
-    @FindBy(xpath = "//*[@id='product_1_5_0_121046']/td[2]/small[2]/a")
+    @FindBy(xpath = "//*[contains(@class,'stock-management-on')]//*[contains(@class,'odd')]//*[@class='cart_description']/small[2]/a")
     private WebElementFacade isSizeL;
 
-    @FindBy(xpath = "//*[@id='product_1_2_0_121046']/td[2]/small[2]/a")
+    @FindBy(xpath = "//*[contains(@class,'stock-management-on')]//*[contains(@class,'odd')]//*[@class='cart_description']/small[2]/a")
     private WebElementFacade isBlueColor;
 
-    @FindBy(id = "cart_quantity_up_1_1_0_121046")
+    @FindBy(xpath = "//*[contains(@class,'button-plus')]//*[@class='icon-plus']")
     private WebElementFacade clickPlusQuantityButtonInSummaryLabel;
 
-    @FindBy(id = "cart_quantity_down_1_1_0_121046")
+    @FindBy(xpath = "//*[contains(@class,'button-minus')]//*[@class='icon-minus']")
     private WebElementFacade clickMinusQuantityButtonInSummaryLabel;
 
     @FindBy(xpath = "//*[contains(@class,'address_add submit')]//*[contains(@class,'button')]")

@@ -8,6 +8,8 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Assert;
 
 public class CheckoutFeatures {
@@ -143,9 +145,11 @@ public class CheckoutFeatures {
     @When("^user change quantity used plus and minus button after added to cart$")
     public void userChangeQuantityUsedPlusAndMinusButtonAfterAddedToCart() {
         checkoutPage.clickPlusQuantityButtonInSummaryLabel();
+        checkoutPage.clickMinusQuantityButtonInSummaryLabel();
         checkoutPage.clickPlusQuantityButtonInSummaryLabel();
         checkoutPage.clickPlusQuantityButtonInSummaryLabel();
         checkoutPage.clickMinusQuantityButtonInSummaryLabel();
+        checkoutPage.clickPlusQuantityButtonInSummaryLabel();
     }
 
     @Then("^checkout page has three items$")
@@ -177,7 +181,6 @@ public class CheckoutFeatures {
                 + ", " + NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getState()
                 + " " + NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getZipCode())
                 ,checkoutPage.isDeliveryAddressCorrectCityAndStateAndZipCode());
+
     }
-
-
 }
