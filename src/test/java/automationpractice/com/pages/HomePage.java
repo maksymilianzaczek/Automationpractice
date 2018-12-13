@@ -4,6 +4,8 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.support.FindBy;
 
+import javax.swing.*;
+
 public class HomePage extends PageObject
 {
 
@@ -12,6 +14,8 @@ public class HomePage extends PageObject
 
     @FindBy(xpath = "//*[contains(@class,'replace-2x img-responsive') and contains(@title,'Faded Short Sleeve T-shirts')]")
     private WebElementFacade clickOnNewProductImage;
+    @FindBy(className = "alert alert-success")
+    private WebElementFacade SuccessfulMessage;
 
     public boolean isValidationMessageDisplayed() {
         return homePageError.isVisible();
@@ -21,4 +25,5 @@ public class HomePage extends PageObject
         clickOnNewProductImage.click();
     }
 
+    public boolean isSuccessfulNewsletterMessageDisplayed() { return SuccessfulMessage.isVisible(); }
 }
