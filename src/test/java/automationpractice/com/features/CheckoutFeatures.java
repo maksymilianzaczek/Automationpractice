@@ -144,6 +144,15 @@ public class CheckoutFeatures {
 
     @When("^user change quantity used plus and minus button after added to cart$")
     public void userChangeQuantityUsedPlusAndMinusButtonAfterAddedToCart() {
+
+//        checkoutPage.clickPlusQuantityButtonInSummaryLabel();
+//        checkoutPage.clickPlusQuantityButtonInSummaryLabel();
+//        checkoutPage.clickPlusQuantityButtonInSummaryLabel();
+//        checkoutPage.clickPlusQuantityButtonInSummaryLabel();
+//        checkoutPage.clickMinusQuantityButtonInSummaryLabel();
+
+
+
         checkoutPage.clickPlusQuantityButtonInSummaryLabel();
         checkoutPage.clickMinusQuantityButtonInSummaryLabel();
         checkoutPage.clickPlusQuantityButtonInSummaryLabel();

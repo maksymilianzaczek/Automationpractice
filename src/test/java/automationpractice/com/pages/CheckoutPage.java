@@ -5,6 +5,8 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static automationpractice.com.data.NewAddressInformation.NEW_ADDRESS_INFORMATION_1;
 
@@ -103,6 +105,7 @@ public class CheckoutPage extends PageObject {
 
     public void clickPlusQuantityButtonInSummaryLabel() {
         clickPlusQuantityButtonInSummaryLabel.click();
+
     }
 
     public void clickMinusQuantityButtonInSummaryLabel() {
