@@ -3,7 +3,6 @@ package automationpractice.com.features;
 import automationpractice.com.data.NewAddressInformation;
 import automationpractice.com.pages.*;
 import automationpractice.com.steps.LoginSteps;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -36,8 +35,8 @@ public class CheckoutFeatures {
         firstProductPage.clickProceedToCheckoutButton();
     }
 
-    @And("^he confirms every step to make order$")
-    public void heConfirmsEveryStepToMakeOrder() {
+    @When("^he confirms every step to make order and pay by bank wire$")
+    public void heConfirmsEveryStepToMakeOrderAndPayByBankWire() {
         checkoutPage.clickOnProceedToCheckoutButtonInSummaryLabel();
         checkoutPage.clickOnProceedToCheckoutButtonInAddressLabel();
         checkoutPage.clickAgreeCheckbox();
@@ -45,7 +44,7 @@ public class CheckoutFeatures {
         checkoutPage.clickPayByBankWireButton();
     }
 
-    @And("^he confirms order$")
+    @When("^he confirms order$")
     public void heConfirmsOrder() {
         checkoutPage.clickIConfirmMyOrder();
     }
@@ -53,6 +52,15 @@ public class CheckoutFeatures {
     @Then("^order is created$")
     public void orderIsCreated() {
         Assert.assertTrue(checkoutPage.isOrderConfirmationMessage());
+    }
+
+    @When("^he confirms every step to make order and pay by check$")
+    public void heConfirmsEveryStepToMakeOrderAndPayByCheck() {
+        checkoutPage.clickOnProceedToCheckoutButtonInSummaryLabel();
+        checkoutPage.clickOnProceedToCheckoutButtonInAddressLabel();
+        checkoutPage.clickAgreeCheckbox();
+        checkoutPage.clickOnProceedToCheckoutButtonInShippingLabel();
+        checkoutPage.clickPayByCheckButton();
     }
 
     @When("^user select first item from homepage change quantity used plus and minus button before added to cart$")
@@ -129,7 +137,6 @@ public class CheckoutFeatures {
 //
 //    }
 
-
     @Given("^logged customer is on home page and user select first item from homepage and added it into cart$")
     public void loggedCustomerIsOnHomePageAndUserSelectFirstItemFromHomepageAndAddedItIntoCart() {
         homePage.open();
@@ -175,18 +182,16 @@ public class CheckoutFeatures {
         checkoutPage.selectDeliveryAddressFromList();
     }
 
-
     @Then("^the new address is selected as delivery address$")
     public void theNewAddressIsSelectedAsDeliveryAddress() {
         Assert.assertEquals((NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getFirstNameAddress()
-                + " " +NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getLastNameAddress())
-                ,checkoutPage.isDeliveryAddressCorrectNameAndLastName());
-
+                        + " " + NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getLastNameAddress())
+                , checkoutPage.isDeliveryAddressCorrectNameAndLastName());
 
         Assert.assertEquals((NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getCity()
-                + ", " + NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getState()
-                + " " + NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getZipCode())
-                ,checkoutPage.isDeliveryAddressCorrectCityAndStateAndZipCode());
+                        + ", " + NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getState()
+                        + " " + NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getZipCode())
+                , checkoutPage.isDeliveryAddressCorrectCityAndStateAndZipCode());
     }
 
     @When("^user choices new address as billing address$")
@@ -197,14 +202,13 @@ public class CheckoutFeatures {
     @Then("^the new address is selected as billing address$")
     public void theNewAddressIsSelectedAsBillingAddress() {
         Assert.assertEquals((NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getFirstNameAddress()
-                        + " " +NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getLastNameAddress())
-                ,checkoutPage.isBillingAddressCorrectNameAndLastName());
-
+                        + " " + NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getLastNameAddress())
+                , checkoutPage.isBillingAddressCorrectNameAndLastName());
 
         Assert.assertEquals((NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getCity()
                         + ", " + NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getState()
                         + " " + NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getZipCode())
-                ,checkoutPage.isBillingAddressCorrectCityAndStateAndZipCode());
+                , checkoutPage.isBillingAddressCorrectCityAndStateAndZipCode());
     }
 
     @When("^user choices new address as delivery and billing address$")
@@ -225,12 +229,10 @@ public class CheckoutFeatures {
         checkoutPage.clickOnProceedToCheckoutButtonInShippingLabel();
     }
 
-
     @Then("^new alert is appear$")
     public void newAlertIsAppear() {
         Assert.assertTrue(checkoutPage.newAlertAppear());
     }
-
 
     @When("^new alert is appear and user close it and click agree checkbox and continue$")
     public void newAlertIsAppearAndUserCloseItAndClickAgreeCheckboxAndContinue() {
@@ -239,9 +241,52 @@ public class CheckoutFeatures {
         checkoutPage.clickOnProceedToCheckoutButtonInShippingLabel();
     }
 
-
     @Then("^user is in payment label$")
     public void userIsInPaymentLabel() {
         Assert.assertTrue(checkoutPage.isPaymentLabel());
+    }
+
+    @Then("^payment by wire is made$")
+    public void paymentByWireIsMade() {
+        Assert.assertTrue(checkoutPage.isSelectedPayByBankWire());
+    }
+
+    @Then("^payment by check is made$")
+    public void paymentByCheckIsMade() {
+        Assert.assertTrue(checkoutPage.isSelectedPayByCheck());
+    }
+
+    @When("^he return to the payment selection and chooses payment by check$")
+    public void heReturnToThePaymentSelectionAndChoosesPaymentByCheck() {
+        checkoutPage.clickOtherPaymentMethods();
+        checkoutPage.clickPayByCheckButton();
+    }
+
+    @When("^he return to the payment selection and chooses payment by bank wire$")
+    public void heReturnToThePaymentSelectionAndChoosesPaymentByBankWire() {
+        checkoutPage.clickOtherPaymentMethods();
+        checkoutPage.clickPayByBankWireButton();
+    }
+
+    @When("^user confirms every step up to the tab address and type a comment$")
+    public void userConfirmsEveryStepUpToTheTabAddressAndTypeAComment() {
+        checkoutPage.clickOnProceedToCheckoutButtonInSummaryLabel();
+        checkoutPage.addCommentInAddressTab();
+    }
+
+    @When("^user confirms every step from tab address to confirms order$")
+    public void userConfirmsEveryStepFromTabAddressToConfirmsOrder() {
+        checkoutPage.clickOnProceedToCheckoutButtonInAddressLabel();
+        checkoutPage.clickAgreeCheckbox();
+        checkoutPage.clickOnProceedToCheckoutButtonInShippingLabel();
+        checkoutPage.clickPayByBankWireButton();
+        checkoutPage.clickIConfirmMyOrder();
+        checkoutPage.clickBackToOrdersButtonInPaymentTab();
+        checkoutPage.clickDetailsButtonForLastOneOrders();
+    }
+
+    @Then("^is comment about address in last one orders$")
+    public void isCommentAboutAddressInLastOneOrders() {
+        Assert.assertTrue(checkoutPage.isCommentAboutAddressInLastOneOrders());
     }
 }

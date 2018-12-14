@@ -4,8 +4,7 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.zip.GZIPInputStream;
+import org.w3c.dom.html.HTMLInputElement;
 
 import static automationpractice.com.data.NewAddressInformation.NEW_ADDRESS_INFORMATION_1;
 
@@ -25,6 +24,9 @@ public class CheckoutPage extends PageObject {
 
     @FindBy(className = "bankwire")
     private WebElementFacade clickPayByBankWireButton;
+
+    @FindBy(className = "cheque")
+    private WebElementFacade clickPayByCheckButton;
 
     @FindBy(xpath = "//*[@id='cart_navigation']/button")
     private WebElementFacade clickIConfirmMyOrder;
@@ -76,6 +78,24 @@ public class CheckoutPage extends PageObject {
     @FindBy(xpath = "//*[contains(@class,'fancybox-close')]")
     private WebElementFacade closeAlertInShippingLabel;
 
+    @FindBy(xpath = "//*[@class='box cheque-box']//*[@class='page-subheading']")
+    private WebElementFacade selectedPayMethod;
+
+    @FindBy(xpath = "//*[@id='cart_navigation']//*[contains(@class,'button-exclusive')]")
+    private WebElementFacade clickOtherPaymentMethods;
+
+    @FindBy(xpath = "//*[@id='ordermsg']//*[@class='form-control']")
+    private WebElementFacade addCommentInAddressTab;
+
+    @FindBy(xpath = "//*[@id='center_column']//*[contains(@class,'btn-default')]")
+    private WebElementFacade clickBackToOrdersButtonInPaymentTab;
+
+    @FindBy(xpath = "//*[@id='order-list']//*[@class='first_item ']//*[contains(@class,'button-small')]")
+    private WebElementFacade clickDetailsButtonForLastOneOrders;
+
+    @FindBy(xpath = "//*[@id='block-order-detail']//*[contains(text(),'entrance from the yard')]" )
+    private WebElementFacade isCommentAboutAddressInLastOneOrders;
+
     public void clickOnProceedToCheckoutButtonInSummaryLabel() {
         clickOnProceedToCheckoutButtonInSummaryLabel.click();
     }
@@ -94,6 +114,10 @@ public class CheckoutPage extends PageObject {
 
     public void clickPayByBankWireButton() {
         clickPayByBankWireButton.click();
+    }
+
+    public void clickPayByCheckButton() {
+        clickPayByCheckButton.click();
     }
 
     public void clickIConfirmMyOrder() {
@@ -180,7 +204,6 @@ public class CheckoutPage extends PageObject {
         return cityAndStateAndZipCodeInBillingAddress.getText();
     }
 
-
     public boolean newAlertAppear() {
         return newAlertAppearInShippingLabel.isVisible();
     }
@@ -192,5 +215,33 @@ public class CheckoutPage extends PageObject {
 
     public boolean isPaymentLabel() {
         return isPaymentLabel.getText().contains("PLEASE CHOOSE YOUR PAYMENT METHOD");
+    }
+
+    public boolean isSelectedPayByBankWire() {
+        return selectedPayMethod.getText().contains("BANK-WIRE");
+    }
+
+    public boolean isSelectedPayByCheck() {
+        return selectedPayMethod.getText().contains("CHECK PAYMENT");
+    }
+
+    public void clickOtherPaymentMethods() {
+        clickOtherPaymentMethods.click();
+    }
+
+    public void addCommentInAddressTab() {
+        addCommentInAddressTab.type("entrance from the yard!");
+    }
+
+    public void clickBackToOrdersButtonInPaymentTab() {
+        clickBackToOrdersButtonInPaymentTab.click();
+    }
+
+    public void clickDetailsButtonForLastOneOrders() {
+        clickDetailsButtonForLastOneOrders.click();
+    }
+
+    public boolean isCommentAboutAddressInLastOneOrders() {
+        return isCommentAboutAddressInLastOneOrders.getText().contains("entrance from the yard");
     }
 }

@@ -1,9 +1,16 @@
 Feature: Checkout
 
-  Scenario: User is able to make an order from the cart
+  Scenario: User is able to make an order from the cart and pay by bank wire
     Given logged customer is on home page
     When user select first item from homepage and added it into cart
-    And he confirms every step to make order
+    And he confirms every step to make order and pay by bank wire
+    And he confirms order
+    Then order is created
+
+  Scenario: User is able to make an order from the cart and pay bu check
+    Given logged customer is on home page
+    When user select first item from homepage and added it into cart
+    And he confirms every step to make order and pay by check
     And he confirms order
     Then order is created
 
@@ -37,7 +44,7 @@ Feature: Checkout
     When  user input new address
     And   user choices new address as delivery address
     Then the new address is selected as delivery address
-    And new created address is deleted 1
+    And new created address is deleted after test
 
   Scenario: User is able to add address and select it as billing address
     Given logged customer is on home page and user select first item from homepage and added it into cart
@@ -65,6 +72,20 @@ Feature: Checkout
     And he confirms every step up to the tab shipping and he do not click agree checkbox in shipping label and click proceed to checkout
     And new alert is appear and user close it and click agree checkbox and continue
     Then user is in payment label
+
+  Scenario: user add comment about order
+    Given logged customer is on home page
+    When user select first item from homepage and added it into cart
+    And user confirms every step up to the tab address and type a comment
+    And user confirms every step from tab address to confirms order
+    Then is comment about address in last one orders
+
+
+
+
+
+
+
 
 
 
