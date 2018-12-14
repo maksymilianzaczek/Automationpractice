@@ -9,6 +9,7 @@ import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Assert;
 
+
 public class CheckoutFeatures {
 
     private HomePage homePage;
@@ -103,39 +104,6 @@ public class CheckoutFeatures {
     public void checkoutPageHasItemInDifferentColor() {
         Assert.assertTrue(checkoutPage.isBlueColor());
     }
-
-//    @When("^user select first item from homepage and chose twitter$")
-//    public void userSelectFirstItemFromHomepageAndChoseTwitter() {
-//        homePage.clickOnNewProductImage();
-//        firstProductPage.clickOnTwitterButton();
-//
-////        firstProductPage.clickOnAddToCartButton();
-////        firstProductPage.clickProceedToCheckoutButton();
-//
-//        System.out.println("!!!!!!!");
-//        System.out.println("!!!!!!!");
-//        System.out.println("!!!!!!!");
-//        System.out.println(firstProductPage.getTitle());
-////        firstProductPage.getDriver().switchTo().window("twitter");
-//
-//        Set<String> windowHandles = firstProductPage.getDriver().getWindowHandles();
-//        for (String s : windowHandles){
-//            System.out.println(s);
-//        }
-////        firstProductPage.getDriver().switchTo().frame("2147483679");
-//        firstProductPage.getDriver().switchTo().window("Opublikuj tweet na Twitterze");
-//
-//        System.out.println("!!!!!!!");
-//        System.out.println("!!!!!!!");
-//        System.out.println("!!!!!!!");
-//        System.out.println(firstProductPage.getTitle());
-//
-//    }
-//
-//    @Then("^new page in twitter domain is open$")
-//    public void newPageInTwitterDomainIsOpern() {
-//
-//    }
 
     @Given("^logged customer is on home page and user select first item from homepage and added it into cart$")
     public void loggedCustomerIsOnHomePageAndUserSelectFirstItemFromHomepageAndAddedItIntoCart() {
@@ -289,4 +257,52 @@ public class CheckoutFeatures {
     public void isCommentAboutAddressInLastOneOrders() {
         Assert.assertTrue(checkoutPage.isCommentAboutAddressInLastOneOrders());
     }
+
+    @When("^user select first item from homepage and chose twitter$")
+    public void userSelectFirstItemFromHomepageAndChoseTwitter() {
+        homePage.clickOnNewProductImage();
+        firstProductPage.clickOnTwitterButton();
+        firstProductPage.checkoutToTweeterWindow();
+    }
+
+    @Then("^new page in twitter domain is open$")
+    public void newPageInTwitterDomainIsOpern() {
+        Assert.assertTrue(firstProductPage.isTwitterDomain());
+    }
+
+    @When("^user select first item from homepage and chose facebook$")
+    public void userSelectFirstItemFromHomepageAndChoseFacebook() {
+        homePage.clickOnNewProductImage();
+        firstProductPage.clickOnFacebookButton();
+        firstProductPage.checkoutToFacebookWindow();
+    }
+
+    @Then("^new page in facebook domain is open$")
+    public void newPageInFacebookDomainIsOpen() {
+        Assert.assertTrue(firstProductPage.isFacebookDomain());
+    }
+
+    @When("^user select first item from homepage and chose google plus$")
+    public void userSelectFirstItemFromHomepageAndChoseGooglePlus() {
+        homePage.clickOnNewProductImage();
+        firstProductPage.clickOnGooglePlusButton();
+        firstProductPage.checkoutToGooglePlusWindow();
+    }
+
+    @Then("^new page in google plus domain is open$")
+    public void newPageInGooglePlusDomainIsOpen() {
+        Assert.assertTrue(firstProductPage.isGooglePlusDomain());
+    }
+
+//    @When("^user select first item from homepage and chose pinterest$")
+//    public void userSelectFirstItemFromHomepageAndChosePinterest() {
+//        homePage.clickOnNewProductImage();
+//        firstProductPage.clickOnPinteresButton();
+//        firstProductPage.checkoutToPinteresWindow();
+//    }
+//
+//    @Then("^new page in pinterest domain is open$")
+//    public void newPageInPinterestDomainIsOpen() {
+//        Assert.assertTrue(firstProductPage.isPinterestDomain());
+//    }
 }

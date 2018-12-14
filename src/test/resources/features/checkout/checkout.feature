@@ -29,11 +29,6 @@ Feature: Checkout
     When user select first item from homepage and change color
     Then checkout page has item in different color
 
-#  Scenario: User is able to share information about item with friends in twitter
-##    Given logged customer is on home page
-##    When user select first item from homepage and chose twitter
-##    Then new page in twitter domain is open
-
   Scenario: User is able to change quantity of items after added into cart
     Given logged customer is on home page and user select first item from homepage and added it into cart
     When  user change quantity used plus and minus button after added to cart
@@ -79,6 +74,26 @@ Feature: Checkout
     And user confirms every step up to the tab address and type a comment
     And user confirms every step from tab address to confirms order
     Then is comment about address in last one orders
+
+  Scenario: User is able to share information about item with friends using twitter
+    Given logged customer is on home page
+    When user select first item from homepage and chose twitter
+    Then new page in twitter domain is open
+
+  Scenario: User is able to share information about item with friends using facebook
+    Given logged customer is on home page
+    When user select first item from homepage and chose facebook
+    Then new page in facebook domain is open
+
+  Scenario: User is able to share information about item with friends using google plus
+    Given logged customer is on home page
+    When user select first item from homepage and chose google plus
+    Then new page in google plus domain is open
+
+#  Scenario: User is able to share information about item with friends using pinterest
+#    Given logged customer is on home page
+#    When user select first item from homepage and chose pinterest
+#    Then new page in pinterest domain is open
 
 
 
