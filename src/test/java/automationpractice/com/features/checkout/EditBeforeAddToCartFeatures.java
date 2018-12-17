@@ -1,6 +1,5 @@
-package automationpractice.com.features.checkoutFeatures;
+package automationpractice.com.features.checkout;
 
-import automationpractice.com.features.AddressFeatures;
 import automationpractice.com.pages.*;
 import automationpractice.com.steps.LoginSteps;
 import cucumber.api.java.en.Then;
@@ -8,15 +7,11 @@ import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Assert;
 
-public class EditBeforeAddToCart {
+public class EditBeforeAddToCartFeatures {
 
     private HomePage homePage;
-    private HeaderBox headerBox;
-    private LoginPage loginPage;
-    private MyAccountPage myAccountPage;
     private FirstProductPage firstProductPage;
     private CheckoutPage checkoutPage;
-    private AddressFeatures addressFeatures;
     @Steps
     private LoginSteps loginSteps;
 

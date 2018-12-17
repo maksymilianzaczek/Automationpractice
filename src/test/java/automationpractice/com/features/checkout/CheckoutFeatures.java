@@ -1,6 +1,5 @@
-package automationpractice.com.features.checkoutFeatures;
+package automationpractice.com.features.checkout;
 
-import automationpractice.com.features.AddressFeatures;
 import automationpractice.com.steps.LoginSteps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -13,31 +12,17 @@ import automationpractice.com.pages.*;
 public class CheckoutFeatures {
 
     private HomePage homePage;
-    private HeaderBox headerBox;
-    private LoginPage loginPage;
     private MyAccountPage myAccountPage;
     private FirstProductPage firstProductPage;
     private CheckoutPage checkoutPage;
-    private AddressFeatures addressFeatures;
     @Steps
     private LoginSteps loginSteps;
-
 
     @Given("^logged customer is on home page$")
     public void loggedCustomerIsOnHomePage() {
         homePage.open();
         loginSteps.login();
         myAccountPage.clickMyStore();
-    }
-
-    @When("^he confirms order$")
-    public void heConfirmsOrder() {
-        checkoutPage.clickIConfirmMyOrder();
-    }
-
-    @Then("^order is created$")
-    public void orderIsCreated() {
-        Assert.assertTrue(checkoutPage.isOrderConfirmationMessage());
     }
 
     @Given("^logged customer is on home page and user select first item from homepage and added it into cart$")

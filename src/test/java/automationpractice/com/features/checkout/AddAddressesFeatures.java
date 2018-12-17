@@ -1,4 +1,4 @@
-package automationpractice.com.features.checkoutFeatures;
+package automationpractice.com.features.checkout;
 
 import automationpractice.com.data.NewAddressInformation;
 import automationpractice.com.features.AddressFeatures;
@@ -9,18 +9,11 @@ import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Assert;
 
-public class AddAddresses {
+public class AddAddressesFeatures {
 
-    private HomePage homePage;
-    private HeaderBox headerBox;
-    private LoginPage loginPage;
-    private MyAccountPage myAccountPage;
-    private FirstProductPage firstProductPage;
     private CheckoutPage checkoutPage;
-    private AddressFeatures addressFeatures;
     @Steps
     private LoginSteps loginSteps;
-    private AddressPage addressPage;
 
 
     @When("^user input new address$")
