@@ -90,10 +90,11 @@ Feature: Checkout
     When user select first item from homepage and chose google plus
     Then new page in google plus domain is open
 
-#  Scenario: User is able to share information about item with friends using pinterest
-#    Given logged customer is on home page
-#    When user select first item from homepage and chose pinterest
-#    Then new page in pinterest domain is open
+  Scenario: User is able to share information about item with friends using pinterest
+    Given logged customer is on home page
+    When user select first item from homepage and chose pinterest
+    Then new page in pinterest domain is open
+
 
 
 

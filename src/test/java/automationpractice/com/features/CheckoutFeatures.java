@@ -266,7 +266,7 @@ public class CheckoutFeatures {
     }
 
     @Then("^new page in twitter domain is open$")
-    public void newPageInTwitterDomainIsOpern() {
+    public void newPageInTwitterDomainIsOpen() {
         Assert.assertTrue(firstProductPage.isTwitterDomain());
     }
 
@@ -290,19 +290,19 @@ public class CheckoutFeatures {
     }
 
     @Then("^new page in google plus domain is open$")
-    public void newPageInGooglePlusDomainIsOpen() {
+    public void newPageInPDomainIsOpen() {
         Assert.assertTrue(firstProductPage.isGooglePlusDomain());
     }
 
-//    @When("^user select first item from homepage and chose pinterest$")
-//    public void userSelectFirstItemFromHomepageAndChosePinterest() {
-//        homePage.clickOnNewProductImage();
-//        firstProductPage.clickOnPinteresButton();
-//        firstProductPage.checkoutToPinteresWindow();
-//    }
-//
-//    @Then("^new page in pinterest domain is open$")
-//    public void newPageInPinterestDomainIsOpen() {
-//        Assert.assertTrue(firstProductPage.isPinterestDomain());
-//    }
+    @When("^user select first item from homepage and chose pinterest$")
+    public void userSelectFirstItemFromHomepageAndChosePinterest() {
+        homePage.clickOnNewProductImage();
+        firstProductPage.clickOnPinteresButton();
+        firstProductPage.checkoutToPinterestWindow();
+    }
+
+    @Then("^new page in pinterest domain is open$")
+    public void newPageInPinterestDomainIsOpen() {
+        Assert.assertTrue(firstProductPage.isPinterestDomain());
+    }
 }

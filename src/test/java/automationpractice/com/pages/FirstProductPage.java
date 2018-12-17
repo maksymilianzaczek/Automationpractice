@@ -1,13 +1,8 @@
 package automationpractice.com.pages;
 
-import com.opera.core.systems.OperaWebElement;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import org.w3c.dom.html.HTMLInputElement;
-
-import java.util.Set;
 
 public class FirstProductPage extends PageObject {
 
@@ -86,30 +81,40 @@ public class FirstProductPage extends PageObject {
     }
 
     public void checkoutToTweeterWindow() {
-//        System.out.println(getDriver().getCurrentUrl());
-//        Set<String> windowHandles = getDriver().getWindowHandles();  //zbior otwartych okien
-//        for(String s : windowHandles){
-//            System.out.println(s);
-//        }
-        getDriver().switchTo().window("2147483679");
         waitABit(1000);
+        for (String s : getDriver().getWindowHandles()) {
+            if (!s.equals("2147483649")) {
+                getDriver().switchTo().window(s);
+            }
+        }
     }
 
-
     public void checkoutToFacebookWindow() {
-        getDriver().switchTo().window("2147483679");
         waitABit(1000);
+        for (String s : getDriver().getWindowHandles()) {
+            if (!s.equals("2147483649")) {
+                getDriver().switchTo().window(s);
+            }
+        }
     }
 
     public void checkoutToGooglePlusWindow() {
-        getDriver().switchTo().window("2147483679");
         waitABit(1000);
+        for (String s : getDriver().getWindowHandles()) {
+            if (!s.equals("2147483649")) {
+                getDriver().switchTo().window(s);
+            }
+        }
     }
 
-//    public void checkoutToPinteresWindow() {
-//        getDriver().switchTo().window("2147483679");
-//        waitABit(6000);
-//    }
+    public void checkoutToPinterestWindow() {
+        waitABit(3000);
+        for (String s : getDriver().getWindowHandles()) {
+            if (!s.equals("2147483649")) {
+                getDriver().switchTo().window(s);
+            }
+        }
+    }
 
     public boolean isTwitterDomain() {
         return getDriver().getCurrentUrl().contains("https://twitter.");
@@ -123,7 +128,7 @@ public class FirstProductPage extends PageObject {
         return getDriver().getCurrentUrl().contains("plus.google");
     }
 
-//    public boolean isPinterestDomain() {
-//        return getDriver().getCurrentUrl().contains("pl.pinterest");
-//    }
+    public boolean isPinterestDomain() {
+        return getDriver().getCurrentUrl().contains("pinterest");
+    }
 }
