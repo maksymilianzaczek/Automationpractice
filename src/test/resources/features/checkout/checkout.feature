@@ -38,15 +38,3 @@ Feature: Checkout
     And user confirms every step up to the tab address and type a comment
     And user confirms every step from tab address to confirms order
     Then is comment about address in last one orders
-
-
-
-
-
-
-
-
-
-
-
-

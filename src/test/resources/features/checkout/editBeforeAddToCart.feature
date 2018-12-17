@@ -14,14 +14,3 @@ Feature: Edit order before added into cart
   Scenario: User is able to change color of items before added into cart
     When user select first item from homepage and change color
     Then checkout page has item in different color
-
-
-
-
-
-
-
-
-
-
-
