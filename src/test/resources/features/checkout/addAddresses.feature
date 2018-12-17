@@ -21,14 +21,3 @@ Feature: Checkout
     Then the new address is selected as delivery and billing address
     And new created address is deleted after test
 
-
-
-
-
-
-
-
-
-
-
-

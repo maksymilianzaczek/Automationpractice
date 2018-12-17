@@ -2,7 +2,7 @@ Feature: Checkout
 
   Scenario: User is able to change quantity of items after added into cart
     Given logged customer is on home page and user select first item from homepage and added it into cart
-    When  user change quantity used plus and minus button after added to carth
+    When  user change quantity used plus and minus button after added to cart
     Then checkout page has three items
 
   Scenario: user not mark checkbox terms of services
