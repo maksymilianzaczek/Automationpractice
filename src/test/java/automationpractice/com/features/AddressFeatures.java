@@ -8,6 +8,8 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
 
+import java.util.List;
+
 import static automationpractice.com.data.NewAddressInformation.NEW_ADDRESS_INFORMATION;
 import static automationpractice.com.data.NewAddressInformation.NEW_ADDRESS_INFORMATION_1;
 import static org.assertj.core.api.Assertions.assertThat;
