@@ -1,19 +1,15 @@
-package automationpractice.com.features.checkout;
+package automationpractice.com.features;
 
 import automationpractice.com.pages.FirstProductPage;
 import automationpractice.com.pages.HomePage;
-import automationpractice.com.steps.LoginSteps;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import net.thucydides.core.annotations.Steps;
 import org.junit.Assert;
 
-public class ShareInformationAboutItemFeatures {
+public class SocialMediaFeatures {
 
     private HomePage homePage;
     private FirstProductPage firstProductPage;
-    @Steps
-    private LoginSteps loginSteps;
 
     @When("^user select first item from homepage and chose twitter$")
     public void userSelectFirstItemFromHomepageAndChoseTwitter() {
