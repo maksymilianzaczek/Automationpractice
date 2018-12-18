@@ -1,4 +1,4 @@
-Feature: Checkout
+Feature: Add billing and delivery addresses
 
   Background:
 #   To much ands. Cant it be logged in customer is on cart box with added item/product
