@@ -1,4 +1,4 @@
-Feature: Checkout
+Feature: Add billing and delivery addresses
 
   Background:
     Given logged customer is on home page and user select first item from homepage and added it into cart

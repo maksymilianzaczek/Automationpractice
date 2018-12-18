@@ -1,4 +1,4 @@
-Feature: Checkout
+Feature: All path from choose to pay
 
   Scenario: User is able to make an order from the cart and pay by bank wire
     Given logged customer is on home page
