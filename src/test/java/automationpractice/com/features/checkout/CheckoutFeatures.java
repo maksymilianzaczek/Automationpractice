@@ -1,9 +1,6 @@
 package automationpractice.com.features.checkout;
 
-import automationpractice.com.pages.CheckoutPage;
-import automationpractice.com.pages.FirstProductPage;
-import automationpractice.com.pages.HomePage;
-import automationpractice.com.pages.MyAccountPage;
+import automationpractice.com.pages.*;
 import automationpractice.com.steps.LoginSteps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -17,10 +14,16 @@ public class CheckoutFeatures {
 
     private HomePage homePage;
     private MyAccountPage myAccountPage;
-    private FirstProductPage firstProductPage;
+    private ProductDetailsPage productDetailsPage;
 
-    //    Why it is firstProductPage? It can't be ProductDetailsPage?
+    //    Why it is productDetailsPage? It can't be ProductDetailsPage?
     private CheckoutPage checkoutPage;
+
+    private SummaryCheckoutPage summaryCheckoutPage;
+    private AddressCheckoutPage addressCheckoutPage;
+    private ShippingCheckoutPage shippingCheckoutPage;
+    private PaymentCheckoutPage paymentCheckoutPage;
+    private OrderHistoryAndDetailsPage orderHistoryAndDetailsPage;
 
     @Steps
     private LoginSteps loginSteps;
@@ -43,83 +46,83 @@ public class CheckoutFeatures {
 /*      It will be better if you take list of products here, and after that you click first:
         productTitle = homePage.getProductsTitles().get(0);
         homePage.clickOnProduct(productTitle);        */
-        firstProductPage.clickOnAddToCartButton();
-        firstProductPage.clickProceedToCheckoutButton();
+        productDetailsPage.clickOnAddToCartButton();
+        productDetailsPage.clickProceedToCheckoutButton();
 //        That shouldn't be on productPage. Create CartBox or something like that
     }
 
     @When("^user change quantity used plus and minus button after added to cart$")
     public void userChangeQuantityUsedPlusAndMinusButtonAfterAddedToCart() {
-        checkoutPage.clickPlusQuantityButtonInSummaryLabel();
-        checkoutPage.clickPlusQuantityButtonInSummaryLabel();
-        checkoutPage.clickPlusQuantityButtonInSummaryLabel();
-        checkoutPage.clickPlusQuantityButtonInSummaryLabel();
-        checkoutPage.clickPlusQuantityButtonInSummaryLabel();
-        checkoutPage.clickPlusQuantityButtonInSummaryLabel();
-        checkoutPage.clickMinusQuantityButtonInSummaryLabel();
-        checkoutPage.clickMinusQuantityButtonInSummaryLabel();
-        checkoutPage.clickMinusQuantityButtonInSummaryLabel();
-        checkoutPage.clickPlusQuantityButtonInSummaryLabel();
-        checkoutPage.clickMinusQuantityButtonInSummaryLabel();
-        checkoutPage.clickPlusQuantityButtonInSummaryLabel();
-        checkoutPage.clickMinusQuantityButtonInSummaryLabel();
-        checkoutPage.clickMinusQuantityButtonInSummaryLabel();
+        summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
+        summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
+        summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
+        summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
+        summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
+        summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
+        summaryCheckoutPage.clickMinusQuantityButtonInSummaryLabel();
+        summaryCheckoutPage.clickMinusQuantityButtonInSummaryLabel();
+        summaryCheckoutPage.clickMinusQuantityButtonInSummaryLabel();
+        summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
+        summaryCheckoutPage.clickMinusQuantityButtonInSummaryLabel();
+        summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
+        summaryCheckoutPage.clickMinusQuantityButtonInSummaryLabel();
+        summaryCheckoutPage.clickMinusQuantityButtonInSummaryLabel();
 //        Too much.
     }
 
     @Then("^checkout page has three items$")
     public void checkoutPageHasThreeItems() {
-        Assert.assertEquals("3", checkoutPage.isQuantityAfterAddToCartEqualsThree());
+        Assert.assertEquals("3", summaryCheckoutPage.isQuantityAfterAddToCartEqualsThree());
 //        Here it should be checkoutPage.getProductQuantity(productTitle);
 //        Also I don't like that hardcoded three - if you remove one line from previous step test will fail
     }
 
     @When("^he confirms every step up to the tab shipping and he do not click agree checkbox in shipping label and click proceed to checkout$")
     public void heConfirmsEveryStepUpToTheTabShippingAndHeDoNotClickAgreeCheckboxInShippingLabelAndClickProceedToCheckout() {
-        checkoutPage.clickOnProceedToCheckoutButtonInSummaryLabel();
-        checkoutPage.clickOnProceedToCheckoutButtonInAddressLabel();
-        checkoutPage.clickOnProceedToCheckoutButtonInShippingLabel();
+        summaryCheckoutPage.clickOnProceedToCheckoutButtonInSummaryLabel();
+        addressCheckoutPage.clickOnProceedToCheckoutButtonInAddressLabel();
+        shippingCheckoutPage.clickOnProceedToCheckoutButtonInShippingLabel();
     }
 
     @Then("^new alert is appear$")
     public void newAlertIsAppear() {
-        Assert.assertTrue(checkoutPage.newAlertAppear());
+        Assert.assertTrue(shippingCheckoutPage.newAlertAppear());
 //        isAlertDisplayed() (why new?)
     }
 
     @When("^new alert is appear and user close it and click agree checkbox and continue$")
     public void newAlertIsAppearAndUserCloseItAndClickAgreeCheckboxAndContinue() {
-        checkoutPage.closeAlertInShippingLabel();
-        checkoutPage.clickAgreeCheckbox();
-        checkoutPage.clickOnProceedToCheckoutButtonInShippingLabel();
+        shippingCheckoutPage.closeAlertInShippingLabel();
+        shippingCheckoutPage.clickAgreeCheckbox();
+        shippingCheckoutPage.clickOnProceedToCheckoutButtonInShippingLabel();
     }
 
     @Then("^user is in payment label$")
     public void userIsInPaymentLabel() {
-        Assert.assertTrue(checkoutPage.isPaymentLabel());
+        Assert.assertTrue(paymentCheckoutPage.isPaymentLabel());
 //        is payment label what?
     }
 
     @When("^user confirms every step up to the tab address and type a comment$")
     public void userConfirmsEveryStepUpToTheTabAddressAndTypeAComment() {
-        checkoutPage.clickOnProceedToCheckoutButtonInSummaryLabel();
-        checkoutPage.addCommentInAddressTab();
+        summaryCheckoutPage.clickOnProceedToCheckoutButtonInSummaryLabel();
+        addressCheckoutPage.addCommentInAddressTab();
     }
 
     @When("^user confirms every step from tab address to confirms order$")
     public void userConfirmsEveryStepFromTabAddressToConfirmsOrder() {
-        checkoutPage.clickOnProceedToCheckoutButtonInAddressLabel();
-        checkoutPage.clickAgreeCheckbox();
-        checkoutPage.clickOnProceedToCheckoutButtonInShippingLabel();
-        checkoutPage.clickPayByBankWireButton();
-        checkoutPage.clickIConfirmMyOrder();
-        checkoutPage.clickBackToOrdersButtonInPaymentTab();
-        checkoutPage.clickDetailsButtonForLastOneOrders();
+        addressCheckoutPage.clickOnProceedToCheckoutButtonInAddressLabel();
+        shippingCheckoutPage.clickAgreeCheckbox();
+        shippingCheckoutPage.clickOnProceedToCheckoutButtonInShippingLabel();
+        paymentCheckoutPage.clickPayByBankWireButton();
+        paymentCheckoutPage.clickIConfirmMyOrder();
+        paymentCheckoutPage.clickBackToOrdersButtonInPaymentTab();
+        orderHistoryAndDetailsPage.clickDetailsButtonForLastOneOrders();
     }
 
     @Then("^is comment about address in last one orders$")
     public void isCommentAboutAddressInLastOneOrders() {
-        Assert.assertTrue(checkoutPage.isCommentAboutAddressInLastOneOrders());
+        Assert.assertTrue(orderHistoryAndDetailsPage.isCommentAboutAddressInLastOneOrders());
 //        isCommentAboutAddressInLastOneOrders what? exist, displayed, invisible?
     }
 }

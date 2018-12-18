@@ -1,50 +1,48 @@
 package automationpractice.com.features.checkout;
 
 import automationpractice.com.pages.CheckoutPage;
-import automationpractice.com.pages.FirstProductPage;
+import automationpractice.com.pages.ProductDetailsPage;
 import automationpractice.com.pages.HomePage;
-import automationpractice.com.steps.LoginSteps;
+import automationpractice.com.pages.PaymentCheckoutPage;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import net.thucydides.core.annotations.Steps;
 import org.junit.Assert;
 
 public class PaymentFeatures {
 
     private HomePage homePage;
-    private FirstProductPage firstProductPage;
+    private ProductDetailsPage productDetailsPage;
     private CheckoutPage checkoutPage;
-    @Steps
-    private LoginSteps loginSteps;
-//    never used
+
+    private PaymentCheckoutPage paymentCheckoutPage;
 
     @When("^user select first item from homepage and added it into cart$")
     public void userSelectFirstItemFromHomepageAndAddedItIntoCart() {
         homePage.clickOnNewProductImage();
-        firstProductPage.clickOnAddToCartButton();
-        firstProductPage.clickProceedToCheckoutButton();
+        productDetailsPage.clickOnAddToCartButton();
+        productDetailsPage.clickProceedToCheckoutButton();
     }
 
     @Then("^payment by wire is made$")
     public void paymentByWireIsMade() {
-        Assert.assertTrue(checkoutPage.isSelectedPayByBankWire());
+        Assert.assertTrue(paymentCheckoutPage.isSelectedPayByBankWire());
     }
 
 
     @Then("^payment by check is made$")
     public void paymentByCheckIsMade() {
-        Assert.assertTrue(checkoutPage.isSelectedPayByCheck());
+        Assert.assertTrue(paymentCheckoutPage.isSelectedPayByCheck());
     }
 
     @When("^he return to the payment selection and chooses payment by check$")
     public void heReturnToThePaymentSelectionAndChoosesPaymentByCheck() {
-        checkoutPage.clickOtherPaymentMethods();
-        checkoutPage.clickPayByCheckButton();
+        paymentCheckoutPage.clickOtherPaymentMethods();
+        paymentCheckoutPage.clickPayByCheckButton();
     }
 
     @When("^he return to the payment selection and chooses payment by bank wire$")
     public void heReturnToThePaymentSelectionAndChoosesPaymentByBankWire() {
-        checkoutPage.clickOtherPaymentMethods();
-        checkoutPage.clickPayByBankWireButton();
+        paymentCheckoutPage.clickOtherPaymentMethods();
+        paymentCheckoutPage.clickPayByBankWireButton();
     }
 }
