@@ -4,13 +4,13 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.support.FindBy;
 
-public class AboutUsPage extends PageObject {
+public class BestSellersPage extends PageObject {
 
     @FindBy(xpath = "//*[contains(@class,'navigation_page')]")
-    private WebElementFacade AboutUsText;
+    private WebElementFacade BestSellersText;
 
-    public boolean isAboutUsTextDisplayed() {
-        return AboutUsText.isVisible();
-    }
+    public boolean isBestSellersTextDisplayed() {
+        return BestSellersText.isVisible();
+            }
+
 }
-

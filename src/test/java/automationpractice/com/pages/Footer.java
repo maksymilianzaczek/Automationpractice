@@ -13,7 +13,13 @@ public class Footer extends PageObject {
     @FindBy(name = "submitNewsletter")
     private WebElementFacade newsletterSaveButton;
     @FindBy(xpath = "//*[@title='About us']")
-    private WebElementFacade AboutUsButton;
+    private WebElementFacade aboutUsButton;
+    @FindBy(xpath = "//*[@title='Best sellers']")
+    private WebElementFacade bestSellerButton;
+    @FindBy(xpath = "//*[@title='Contact us']")
+    private WebElementFacade contactUsButton;
+    @FindBy()
+    private WebElementFacade myAddressButton;
 
     public void typeEmailRegistration(final String email) {
         newsletter.type(email);
@@ -24,6 +30,19 @@ public class Footer extends PageObject {
     }
 
     public void clickOnAboutUsButton() {
-        AboutUsButton.click();
+        aboutUsButton.click();
+    }
+
+    public void clickOnBestSellerButton() {
+        bestSellerButton.click();
+    }
+
+    public void clickOnContactUsButton() {
+        contactUsButton.click();
+    }
+
+    public void clickOnMyAddressButton() {
+        myAddressButton.click();
     }
 }
+

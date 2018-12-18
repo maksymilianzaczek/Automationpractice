@@ -5,6 +5,8 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 
+import javax.swing.*;
+
 public class ContactUsPage extends PageObject {
 
 
@@ -24,6 +26,8 @@ public class ContactUsPage extends PageObject {
     private WebElementFacade SuccessfullMessageSent;
     @FindBy(className = "alert alert-danger")
     private WebElementFacade ErrorMessageSent;
+    @FindBy(xpath = "//*[contains(@class,'navigation_page')]")
+    private WebElementFacade ContactUsText;
 
 
     public boolean isSuccessfullMessageSentVisible() {
@@ -61,6 +65,10 @@ public class ContactUsPage extends PageObject {
         SendMessage.click();
     }
 
+    public boolean isContactUsTextDisplayed() {
+        return ContactUsText.isVisible();
+
+    }
 }
 
 
