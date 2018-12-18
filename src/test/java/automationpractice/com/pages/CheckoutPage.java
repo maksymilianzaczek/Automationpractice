@@ -9,10 +9,14 @@ import static automationpractice.com.data.NewAddressInformation.NEW_ADDRESS_INFO
 
 public class CheckoutPage extends PageObject {
 
+//    You can create several checkout page - summaryCheckoutPage, SignInCheckoutPage...
+
     @FindBy(className = "standard-checkout")
     private WebElementFacade clickOnProceedToCheckoutButtonInSummaryLabel;
 
     @FindBy(xpath = "//*[@class='button btn btn-default button-medium']")
+    //It will be better to take this element
+    //    @FindBy(name = "processAddress")
     private WebElementFacade clickOnProceedToCheckoutButtonInAddressLabel;
 
     @FindBy(className = "standard-checkout")
@@ -28,9 +32,11 @@ public class CheckoutPage extends PageObject {
     private WebElementFacade clickPayByCheckButton;
 
     @FindBy(xpath = "//*[@id='cart_navigation']/button")
+    //
     private WebElementFacade clickIConfirmMyOrder;
 
     @FindBy(xpath = "//*[@class='navigation_page']")
+//    I think it will be better to use className="alert-success"
     private WebElementFacade isOrderConfirmationMessage;
 
     @FindBy(className = "cart_quantity_input")
@@ -41,6 +47,7 @@ public class CheckoutPage extends PageObject {
 
     @FindBy(xpath = "//*[contains(@class,'stock-management-on')]//*[contains(@class,'odd')]//*[@class='cart_description']/small[2]/a")
     private WebElementFacade isBlueColor;
+//    that two xpath are the same...
 
     @FindBy(xpath = "//*[contains(@class,'button-plus')]//*[@class='icon-plus']")
     private WebElementFacade clickPlusQuantityButtonInSummaryLabel;

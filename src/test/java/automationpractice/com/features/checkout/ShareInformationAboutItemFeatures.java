@@ -1,6 +1,7 @@
 package automationpractice.com.features.checkout;
 
-import automationpractice.com.pages.*;
+import automationpractice.com.pages.FirstProductPage;
+import automationpractice.com.pages.HomePage;
 import automationpractice.com.steps.LoginSteps;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -24,6 +25,7 @@ public class ShareInformationAboutItemFeatures {
     @Then("^new page in twitter domain is open$")
     public void newPageInTwitterDomainIsOpen() {
         Assert.assertTrue(firstProductPage.isTwitterDomain());
+//        is twitter domain what?
     }
 
     @When("^user select first item from homepage and chose facebook$")

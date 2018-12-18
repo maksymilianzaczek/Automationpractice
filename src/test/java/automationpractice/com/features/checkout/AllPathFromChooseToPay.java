@@ -8,6 +8,7 @@ import net.thucydides.core.annotations.Steps;
 import org.junit.Assert;
 
 public class AllPathFromChooseToPay {
+//    class name - forgot about Features on the end
 
     private CheckoutPage checkoutPage;
     @Steps
@@ -30,6 +31,7 @@ public class AllPathFromChooseToPay {
     @Then("^order is created$")
     public void orderIsCreated() {
         Assert.assertTrue(checkoutPage.isOrderConfirmationMessage());
+//        isOrderConfirmationMessageDisplayed()
     }
 
     @When("^he confirms every step to make order and pay by check$")

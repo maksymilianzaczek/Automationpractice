@@ -2,6 +2,7 @@ Feature: Select payment option
 
   Background:
     Given logged customer is on home page
+#    I think here in given you should be on checkout page
 
   Scenario: User selects pay by bank wire option
     When user select first item from homepage and added it into cart

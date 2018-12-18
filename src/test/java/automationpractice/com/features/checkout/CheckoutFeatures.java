@@ -1,5 +1,9 @@
 package automationpractice.com.features.checkout;
 
+import automationpractice.com.pages.CheckoutPage;
+import automationpractice.com.pages.FirstProductPage;
+import automationpractice.com.pages.HomePage;
+import automationpractice.com.pages.MyAccountPage;
 import automationpractice.com.steps.LoginSteps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -7,14 +11,17 @@ import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Assert;
 
-import automationpractice.com.pages.*;
+//try to use assertj, not junit
 
 public class CheckoutFeatures {
 
     private HomePage homePage;
     private MyAccountPage myAccountPage;
     private FirstProductPage firstProductPage;
+
+    //    Why it is firstProductPage? It can't be ProductDetailsPage?
     private CheckoutPage checkoutPage;
+
     @Steps
     private LoginSteps loginSteps;
 
@@ -23,6 +30,7 @@ public class CheckoutFeatures {
         homePage.open();
         loginSteps.login();
         myAccountPage.clickMyStore();
+//        We have something like headerBox. I think this method should be there
     }
 
     @Given("^logged customer is on home page and user select first item from homepage and added it into cart$")
@@ -30,9 +38,14 @@ public class CheckoutFeatures {
         homePage.open();
         loginSteps.login();
         myAccountPage.clickMyStore();
+//        that 3 lines are in previous step. You could create private method for that here, or you can create it in loginSteps
         homePage.clickOnNewProductImage();
+/*      It will be better if you take list of products here, and after that you click first:
+        productTitle = homePage.getProductsTitles().get(0);
+        homePage.clickOnProduct(productTitle);        */
         firstProductPage.clickOnAddToCartButton();
         firstProductPage.clickProceedToCheckoutButton();
+//        That shouldn't be on productPage. Create CartBox or something like that
     }
 
     @When("^user change quantity used plus and minus button after added to cart$")
@@ -51,11 +64,14 @@ public class CheckoutFeatures {
         checkoutPage.clickPlusQuantityButtonInSummaryLabel();
         checkoutPage.clickMinusQuantityButtonInSummaryLabel();
         checkoutPage.clickMinusQuantityButtonInSummaryLabel();
+//        Too much.
     }
 
     @Then("^checkout page has three items$")
     public void checkoutPageHasThreeItems() {
         Assert.assertEquals("3", checkoutPage.isQuantityAfterAddToCartEqualsThree());
+//        Here it should be checkoutPage.getProductQuantity(productTitle);
+//        Also I don't like that hardcoded three - if you remove one line from previous step test will fail
     }
 
     @When("^he confirms every step up to the tab shipping and he do not click agree checkbox in shipping label and click proceed to checkout$")
@@ -68,6 +84,7 @@ public class CheckoutFeatures {
     @Then("^new alert is appear$")
     public void newAlertIsAppear() {
         Assert.assertTrue(checkoutPage.newAlertAppear());
+//        isAlertDisplayed() (why new?)
     }
 
     @When("^new alert is appear and user close it and click agree checkbox and continue$")
@@ -80,6 +97,7 @@ public class CheckoutFeatures {
     @Then("^user is in payment label$")
     public void userIsInPaymentLabel() {
         Assert.assertTrue(checkoutPage.isPaymentLabel());
+//        is payment label what?
     }
 
     @When("^user confirms every step up to the tab address and type a comment$")
@@ -102,5 +120,6 @@ public class CheckoutFeatures {
     @Then("^is comment about address in last one orders$")
     public void isCommentAboutAddressInLastOneOrders() {
         Assert.assertTrue(checkoutPage.isCommentAboutAddressInLastOneOrders());
+//        isCommentAboutAddressInLastOneOrders what? exist, displayed, invisible?
     }
 }
