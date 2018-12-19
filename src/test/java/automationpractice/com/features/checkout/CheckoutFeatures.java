@@ -28,35 +28,6 @@ public class CheckoutFeatures {
         loginSteps.loginAndMoveIntoMyStorePage();
     }
 
-//    @Given("^logged customer is on home page and user select first item from homepage and added it into cart$")
-//    public void loggedCustomerIsOnHomePageAndUserSelectFirstItemFromHomepageAndAddedItIntoCart() {
-//        homePage.open();
-//        loginSteps.login();
-//        myAccountPage.clickMyStore();
-////        that 3 lines are in previous step. You could create private method for that here, or you can create it in loginSteps
-//        homePage.clickOnNewProductImage();
-///*      It will be better if you take list of products here, and after that you click first:
-//        productTitle = homePage.getProductsTitles().get(0);
-//        homePage.clickOnProduct(productTitle);        */
-//        productDetailsPage.clickOnAddToCartButton();
-//        productDetailsPage.clickProceedToCheckoutButton();
-////        That shouldn't be on productPage. Create CartBox or something like that
-//    }
-
-
-//    @When("^he confirms every step up to the tab shipping and he do not click agree checkbox in shipping label and click proceed to checkout$")
-//    public void heConfirmsEveryStepUpToTheTabShippingAndHeDoNotClickAgreeCheckboxInShippingLabelAndClickProceedToCheckout() {
-//        summaryCheckoutPage.clickOnProceedToCheckoutButtonInSummaryLabel();
-//        addressCheckoutPage.clickOnProceedToCheckoutButtonInAddressLabel();
-//        shippingCheckoutPage.clickOnProceedToCheckoutButtonInShippingLabel();
-//    }
-
-//    @When("^user confirms every step up to the tab address and type a comment$")
-//    public void userConfirmsEveryStepUpToTheTabAddressAndTypeAComment() {
-//        summaryCheckoutPage.clickOnProceedToCheckoutButtonInSummaryLabel();
-//        addressCheckoutPage.addCommentInAddressTab();
-//    }
-
 
     @Given("^user add first item into cart$")
     public void userAddFirstItemIntoCart() {
