@@ -6,11 +6,12 @@ import org.openqa.selenium.support.FindBy;
 
 public class MyPersonalInfoPage extends PageObject {
 
-    @FindBy(xpath = "//*[contains(@class,'navigation_page')]")
+    @FindBy(xpath = "//*[contains(@class,'navigation_page') and contains(text(), 'Your personal information')]")
     private WebElementFacade MyPersonalInfoText;
 
 
-    public boolean isMyPersonalInfoTextDisplayed() { return MyPersonalInfoText.isVisible();
+    public boolean isMyPersonalInfoTextDisplayed() {
+        return MyPersonalInfoText.isVisible();
     }
 }
 

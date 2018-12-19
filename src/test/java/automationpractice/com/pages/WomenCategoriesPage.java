@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 public class WomenCategoriesPage extends PageObject {
 
 
-    @FindBy(xpath = "//*[contains(@class,'navigation_page')]")
+    @FindBy(xpath = "//*[contains(@class,'navigation_page') and contains(text(), 'Women')]")
     private WebElementFacade WomenCategoriesText;
 
 

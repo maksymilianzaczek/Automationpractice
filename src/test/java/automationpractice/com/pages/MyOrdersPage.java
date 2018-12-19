@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 public class MyOrdersPage extends PageObject {
 
 
-    @FindBy(xpath = "//*[contains(@class,'navigation_page')]")
+    @FindBy(xpath = "//*[contains(@class,'navigation_page') and contains(text(), 'Order history')]")
     private WebElementFacade MyOrdersText;
 
 

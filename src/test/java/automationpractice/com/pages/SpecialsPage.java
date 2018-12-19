@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class SpecialsPage extends PageObject {
 
-    @FindBy(xpath = "//*[contains(@class,'navigation_page')]")
+    @FindBy(xpath = "//*[contains(@class,'navigation_page') and contains(text(), 'Price drop')]")
     private WebElementFacade SpecialsText;
 
     public boolean isSpecialsTextDisplayed() {  return SpecialsText.isVisible();

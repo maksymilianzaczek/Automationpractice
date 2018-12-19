@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class TermsAndConditionsOfUsePage extends PageObject {
 
-    @FindBy(xpath = "//*[contains(@class,'navigation_page')]")
+    @FindBy(xpath = "//*[contains(@class,'navigation_page') and contains(text(), 'Terms and conditions of use')]")
     private WebElementFacade TermsAndConditionsOfUseText;
 
 

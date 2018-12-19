@@ -26,7 +26,7 @@ public class ContactUsPage extends PageObject {
     private WebElementFacade SuccessfullMessageSent;
     @FindBy(className = "alert alert-danger")
     private WebElementFacade ErrorMessageSent;
-    @FindBy(xpath = "//*[contains(@class,'navigation_page')]")
+    @FindBy(xpath = "//*[contains(@class,'navigation_page') and contains(text(), 'Contact')]")
     private WebElementFacade ContactUsText;
 
 
