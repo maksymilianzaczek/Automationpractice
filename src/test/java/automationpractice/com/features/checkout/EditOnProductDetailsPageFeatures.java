@@ -11,7 +11,7 @@ import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Assert;
 
-public class EditBeforeAddToCartFeatures {
+public class EditOnProductDetailsPageFeatures {
 
     private HomePage homePage;
     private ProductDetailsPage productDetailsPage;

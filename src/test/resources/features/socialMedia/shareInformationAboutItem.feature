@@ -1,10 +1,10 @@
 Feature: Share information about item
 #  That shouldn't be in checkout folder
 
-  Background:
-    Given logged customer is on home page
+#  Background:
+#    Given logged customer is on home page
 #    I think here we should be on product details page, not on homepage
-
+#
 #  Scenario: User is able to share information about item with friends using twitter
 #    When user select first item from homepage and chose twitter
 #    Then new page in twitter domain is open
