@@ -9,7 +9,6 @@ public class EditBeforeAddToCartFeatures {
 
     private HomePage homePage;
     private ProductDetailsPage productDetailsPage;
-    private CheckoutPage checkoutPage;
     private MyAccountPage myAccountPage;
 
     private SummaryCheckoutPage summaryCheckoutPage;

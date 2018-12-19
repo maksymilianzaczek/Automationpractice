@@ -7,10 +7,8 @@ import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Assert;
 
-public class AllPathFromChooseToPay {
-//    class name - forgot about Features on the end
+public class AllPathFromChooseToPayFeatures {
 
-    private CheckoutPage checkoutPage;
     @Steps
     private LoginSteps loginSteps;
 

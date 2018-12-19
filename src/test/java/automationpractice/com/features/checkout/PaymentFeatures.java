@@ -1,6 +1,5 @@
 package automationpractice.com.features.checkout;
 
-import automationpractice.com.pages.CheckoutPage;
 import automationpractice.com.pages.ProductDetailsPage;
 import automationpractice.com.pages.HomePage;
 import automationpractice.com.pages.PaymentCheckoutPage;
@@ -12,8 +11,6 @@ public class PaymentFeatures {
 
     private HomePage homePage;
     private ProductDetailsPage productDetailsPage;
-    private CheckoutPage checkoutPage;
-
     private PaymentCheckoutPage paymentCheckoutPage;
 
     @When("^user select first item from homepage and added it into cart$")

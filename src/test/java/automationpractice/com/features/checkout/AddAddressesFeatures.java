@@ -2,25 +2,15 @@ package automationpractice.com.features.checkout;
 
 import automationpractice.com.data.NewAddressInformation;
 import automationpractice.com.pages.AddressCheckoutPage;
-import automationpractice.com.pages.CheckoutPage;
 import automationpractice.com.pages.SummaryCheckoutPage;
-import automationpractice.com.steps.LoginSteps;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import net.thucydides.core.annotations.Steps;
 import org.junit.Assert;
-
-//Unused import
 
 public class AddAddressesFeatures {
 
-    private CheckoutPage checkoutPage;
-
     private SummaryCheckoutPage summaryCheckoutPage;
     private AddressCheckoutPage addressCheckoutPage;
-
-
-
 
     @When("^user input new address$")
     public void userInputNewAddress() {

@@ -15,10 +15,6 @@ public class CheckoutFeatures {
     private HomePage homePage;
     private MyAccountPage myAccountPage;
     private ProductDetailsPage productDetailsPage;
-
-    //    Why it is productDetailsPage? It can't be ProductDetailsPage?
-    private CheckoutPage checkoutPage;
-
     private SummaryCheckoutPage summaryCheckoutPage;
     private AddressCheckoutPage addressCheckoutPage;
     private ShippingCheckoutPage shippingCheckoutPage;

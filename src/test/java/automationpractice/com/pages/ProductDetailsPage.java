@@ -76,7 +76,7 @@ public class ProductDetailsPage extends PageObject {
         clickOnGooglePlusButton.click();
     }
 
-    public void clickOnPinteresButton() {
+    public void clickOnPinterestButton() {
         clickOnPinteresButton.click();
     }
 
@@ -116,19 +116,19 @@ public class ProductDetailsPage extends PageObject {
         }
     }
 
-    public boolean isTwitterDomain() {
+    public boolean isTwitterDomainDisplayed() {
         return getDriver().getCurrentUrl().contains("https://twitter.");
     }
 
-    public boolean isFacebookDomain() {
+    public boolean isFacebookDomainDisplayed() {
         return getDriver().getCurrentUrl().contains("https://www.facebook.");
     }
 
-    public boolean isGooglePlusDomain() {
+    public boolean isGooglePlusDomainDisplayed() {
         return getDriver().getCurrentUrl().contains("plus.google");
     }
 
-    public boolean isPinterestDomain() {
+    public boolean isPinterestDomainDisplayed() {
         return getDriver().getCurrentUrl().contains("pinterest");
     }
 }

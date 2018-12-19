@@ -20,7 +20,7 @@ public class SocialMediaFeatures {
 
     @Then("^new page in twitter domain is open$")
     public void newPageInTwitterDomainIsOpen() {
-        Assert.assertTrue(productDetailsPage.isTwitterDomain());
+        Assert.assertTrue(productDetailsPage.isTwitterDomainDisplayed());
 //        is twitter domain what?
     }
 
@@ -33,7 +33,7 @@ public class SocialMediaFeatures {
 
     @Then("^new page in facebook domain is open$")
     public void newPageInFacebookDomainIsOpen() {
-        Assert.assertTrue(productDetailsPage.isFacebookDomain());
+        Assert.assertTrue(productDetailsPage.isFacebookDomainDisplayed());
     }
 
     @When("^user select first item from homepage and chose google plus$")
@@ -45,19 +45,19 @@ public class SocialMediaFeatures {
 
     @Then("^new page in google plus domain is open$")
     public void newPageInPDomainIsOpen() {
-        Assert.assertTrue(productDetailsPage.isGooglePlusDomain());
+        Assert.assertTrue(productDetailsPage.isGooglePlusDomainDisplayed());
     }
 
     @When("^user select first item from homepage and chose pinterest$")
     public void userSelectFirstItemFromHomepageAndChosePinterest() {
         homePage.clickOnNewProductImage();
-        productDetailsPage.clickOnPinteresButton();
+        productDetailsPage.clickOnPinterestButton();
         productDetailsPage.checkoutToPinterestWindow();
     }
 
     @Then("^new page in pinterest domain is open$")
     public void newPageInPinterestDomainIsOpen() {
-        Assert.assertTrue(productDetailsPage.isPinterestDomain());
+        Assert.assertTrue(productDetailsPage.isPinterestDomainDisplayed());
     }
 
 }
