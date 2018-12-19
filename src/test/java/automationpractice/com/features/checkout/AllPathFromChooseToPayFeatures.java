@@ -18,8 +18,8 @@ public class AllPathFromChooseToPayFeatures {
     private PaymentCheckoutPage paymentCheckoutPage;
 
 
-    @When("^he confirms every step to make order and pay by bank wire$")
-    public void heConfirmsEveryStepToMakeOrderAndPayByBankWire() {
+    @When("^user confirms every step to make order and pay by bank wire$")
+    public void userConfirmsEveryStepToMakeOrderAndPayByBankWire() {
         summaryCheckoutPage.clickOnProceedToCheckoutButtonInSummaryLabel();
         addressCheckoutPage.clickOnProceedToCheckoutButtonInAddressLabel();
         shippingCheckoutPage.clickAgreeCheckbox();
@@ -27,19 +27,18 @@ public class AllPathFromChooseToPayFeatures {
         paymentCheckoutPage.clickPayByBankWireButton();
     }
 
-    @When("^he confirms order$")
-    public void heConfirmsOrder() {
+    @When("user confirms order$")
+    public void userConfirmsOrder() {
         paymentCheckoutPage.clickIConfirmMyOrder();
     }
 
     @Then("^order is created$")
     public void orderIsCreated() {
-        Assert.assertTrue(paymentCheckoutPage.isOrderConfirmationMessage());
-//        isOrderConfirmationMessageDisplayed()
+        Assert.assertTrue(paymentCheckoutPage.isOrderConfirmationMessageVisible());
     }
 
-    @When("^he confirms every step to make order and pay by check$")
-    public void heConfirmsEveryStepToMakeOrderAndPayByCheck() {
+    @When("^user confirms every step to make order and pay by check$")
+    public void userConfirmsEveryStepToMakeOrderAndPayByCheck() {
         summaryCheckoutPage.clickOnProceedToCheckoutButtonInSummaryLabel();
         addressCheckoutPage.clickOnProceedToCheckoutButtonInAddressLabel();
         shippingCheckoutPage.clickAgreeCheckbox();

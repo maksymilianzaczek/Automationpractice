@@ -1,20 +1,20 @@
 Feature: Checkout
 
-#  Scenario: User is able to change quantity of items in summary checkout page
-#  Given user add first item into cart
-#  When user change quantity in summary checkout page
-#  Then summary checkout page has three items
-#
-#  Scenario: user not mark checkbox terms of services in shipping checkout page
-#    Given user add first item into cart
-#    When user click proceed to checkout in summary address and shipping tab
-#    Then alert is displayed in shipping checkout page
-#
-#  Scenario: user not mark checkbox terms of services and after the alert appear mark it
-#    Given user add first item into cart
-#    When user click proceed to checkout in summary address and shipping tab
-#    And user click agree checkbox and click proceed to checkout
-#    Then user is in payment checkout tab
+  Scenario: User is able to change quantity of items in summary checkout page
+  Given user add first item into cart
+  When user change quantity in summary checkout page
+  Then summary checkout page has three items
+
+  Scenario: user not mark checkbox terms of services in shipping checkout page
+    Given user add first item into cart
+    When user click proceed to checkout in summary address and shipping tab
+    Then alert is displayed in shipping checkout page
+
+  Scenario: user not mark checkbox terms of services and after the alert appear mark it
+    Given user add first item into cart
+    When user click proceed to checkout in summary address and shipping tab
+    And user click agree checkbox and click proceed to checkout
+    Then user is in payment checkout tab
 
   Scenario: user add comment about order in address checkout page
     Given user add first item into cart

@@ -18,7 +18,7 @@ public class PaymentCheckoutPage extends PageObject {
 
     @FindBy(xpath = "//*[@class='navigation_page']")
 //    I think it will be better to use className="alert-success"
-    private WebElementFacade isOrderConfirmationMessage;
+    private WebElementFacade orderConfirmationMessage;
 
     @FindBy(className = "page-heading")
     private WebElementFacade paymentLabel;
@@ -51,8 +51,8 @@ public class PaymentCheckoutPage extends PageObject {
         clickIConfirmMyOrder.click();
     }
 
-    public boolean isOrderConfirmationMessage() {
-        return isOrderConfirmationMessage.isVisible();
+    public boolean isOrderConfirmationMessageVisible() {
+        return orderConfirmationMessage.isVisible();
     }
 
     public boolean isUserIsInPaymentCheckoutTab() {
