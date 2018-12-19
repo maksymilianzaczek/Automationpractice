@@ -6,7 +6,8 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
-import org.junit.Assert;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class PaymentFeatures {
 
@@ -15,7 +16,6 @@ public class PaymentFeatures {
     private PaymentCheckoutPage paymentCheckoutPage;
     @Steps
     private LoginSteps loginSteps;
-    private HeaderBox headerBox;
     private SummaryCheckoutPage summaryCheckoutPage;
     private AddressCheckoutPage addressCheckoutPage;
     private ShippingCheckoutPage shippingCheckoutPage;
@@ -24,7 +24,6 @@ public class PaymentFeatures {
     public void userIsInPaymentCheckoutPage() {
         homePage.open();
         loginSteps.loginAndMoveIntoMyStorePage();
-//        headerBox.clickMyStore();
         homePage.clickOnNewProductImage();
         productDetailsPage.clickOnAddToCartButton();
         productDetailsPage.clickProceedToCheckoutButton();
@@ -41,7 +40,7 @@ public class PaymentFeatures {
 
     @Then("^payment by bank wire is made$")
     public void paymentByBankWireIsMade() {
-        Assert.assertTrue(paymentCheckoutPage.isSelectedPayByBankWire());
+        assertThat(paymentCheckoutPage.isSelectedPayByBankWire()).isTrue();
     }
 
     @When("^user pay by check$")
@@ -51,12 +50,12 @@ public class PaymentFeatures {
 
     @Then("^payment by check is made$")
     public void paymentByCheckIsMade() {
-        Assert.assertTrue(paymentCheckoutPage.isSelectedPayByCheck());
+        assertThat(paymentCheckoutPage.isSelectedPayByCheck()).isTrue();
     }
 
     @When("^user return to the payment selection$")
     public void userReturnToThePaymentSelection() {
-        paymentCheckoutPage.clickOtherPaymentMethods();
+        paymentCheckoutPage.clickOtherPaymentMethodButton();
     }
 
 }

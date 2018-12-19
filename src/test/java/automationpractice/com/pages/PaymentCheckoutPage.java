@@ -12,32 +12,23 @@ public class PaymentCheckoutPage extends PageObject {
     @FindBy(className = "cheque")
     private WebElementFacade clickPayByCheckButton;
 
-    @FindBy(xpath = "//*[@id='cart_navigation']/button")
-    //
+    @FindBy(xpath = "//*[@id='cart_navigation']//*[contains(text(),'confirm')]")
     private WebElementFacade clickIConfirmMyOrder;
 
-    @FindBy(xpath = "//*[@class='navigation_page']")
-//    I think it will be better to use className="alert-success"
+    @FindBy(className = "navigation_page")
     private WebElementFacade orderConfirmationMessage;
 
     @FindBy(className = "page-heading")
     private WebElementFacade paymentLabel;
 
-
-
     @FindBy(xpath = "//*[@class='box cheque-box']//*[@class='page-subheading']")
     private WebElementFacade selectedPayMethod;
 
     @FindBy(xpath = "//*[@id='cart_navigation']//*[contains(@class,'button-exclusive')]")
-    private WebElementFacade clickOtherPaymentMethods;
-
+    private WebElementFacade clickOtherPaymentMethod;
 
     @FindBy(xpath = "//*[@id='center_column']//*[contains(@class,'btn-default')]")
     private WebElementFacade clickBackToOrdersButtonInPaymentTab;
-
-
-
-
 
     public void clickPayByBankWireButton() {
         clickPayByBankWireButton.click();
@@ -67,10 +58,9 @@ public class PaymentCheckoutPage extends PageObject {
         return selectedPayMethod.getText().contains("CHECK PAYMENT");
     }
 
-    public void clickOtherPaymentMethods() {
-        clickOtherPaymentMethods.click();
+    public void clickOtherPaymentMethodButton() {
+        clickOtherPaymentMethod.click();
     }
-
 
     public void clickBackToOrdersButtonInPaymentTab() {
         clickBackToOrdersButtonInPaymentTab.click();

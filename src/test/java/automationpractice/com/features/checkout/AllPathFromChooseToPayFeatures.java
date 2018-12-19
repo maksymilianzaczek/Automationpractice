@@ -1,16 +1,14 @@
 package automationpractice.com.features.checkout;
 
-import automationpractice.com.pages.*;
-import automationpractice.com.steps.LoginSteps;
+import automationpractice.com.pages.AddressCheckoutPage;
+import automationpractice.com.pages.PaymentCheckoutPage;
+import automationpractice.com.pages.ShippingCheckoutPage;
+import automationpractice.com.pages.SummaryCheckoutPage;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import net.thucydides.core.annotations.Steps;
 import org.junit.Assert;
 
 public class AllPathFromChooseToPayFeatures {
-
-    @Steps
-    private LoginSteps loginSteps;
 
     private SummaryCheckoutPage summaryCheckoutPage;
     private AddressCheckoutPage addressCheckoutPage;

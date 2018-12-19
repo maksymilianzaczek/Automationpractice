@@ -4,60 +4,56 @@ import automationpractice.com.pages.ProductDetailsPage;
 import automationpractice.com.pages.HomePage;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.junit.Assert;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SocialMediaFeatures {
 
     private HomePage homePage;
     private ProductDetailsPage productDetailsPage;
 
-    @When("^user select first item from homepage and chose twitter$")
-    public void userSelectFirstItemFromHomepageAndChoseTwitter() {
-        homePage.clickOnNewProductImage();
+    @When("^user chose twitter$")
+    public void userChoseTwitter() {
         productDetailsPage.clickOnTwitterButton();
         productDetailsPage.checkoutToTweeterWindow();
     }
 
     @Then("^new page in twitter domain is open$")
     public void newPageInTwitterDomainIsOpen() {
-        Assert.assertTrue(productDetailsPage.isTwitterDomainDisplayed());
-//        is twitter domain what?
+        assertThat(productDetailsPage.isTwitterDomainDisplayed()).isTrue();
     }
 
-    @When("^user select first item from homepage and chose facebook$")
-    public void userSelectFirstItemFromHomepageAndChoseFacebook() {
-        homePage.clickOnNewProductImage();
+    @When("^user chose facebook$")
+    public void userChoseFacebook() {
         productDetailsPage.clickOnFacebookButton();
         productDetailsPage.checkoutToFacebookWindow();
     }
 
     @Then("^new page in facebook domain is open$")
     public void newPageInFacebookDomainIsOpen() {
-        Assert.assertTrue(productDetailsPage.isFacebookDomainDisplayed());
+        assertThat(productDetailsPage.isFacebookDomainDisplayed()).isTrue();
     }
 
-    @When("^user select first item from homepage and chose google plus$")
-    public void userSelectFirstItemFromHomepageAndChoseGooglePlus() {
-        homePage.clickOnNewProductImage();
+    @When("^user chose google plus$")
+    public void userChoseGooglePlus() {
         productDetailsPage.clickOnGooglePlusButton();
         productDetailsPage.checkoutToGooglePlusWindow();
     }
 
     @Then("^new page in google plus domain is open$")
     public void newPageInPDomainIsOpen() {
-        Assert.assertTrue(productDetailsPage.isGooglePlusDomainDisplayed());
+        assertThat(productDetailsPage.isGooglePlusDomainDisplayed()).isTrue();
     }
 
-    @When("^user select first item from homepage and chose pinterest$")
-    public void userSelectFirstItemFromHomepageAndChosePinterest() {
-        homePage.clickOnNewProductImage();
+    @When("^user chose pinterest$")
+    public void userChosePinterest() {
         productDetailsPage.clickOnPinterestButton();
         productDetailsPage.checkoutToPinterestWindow();
     }
 
     @Then("^new page in pinterest domain is open$")
     public void newPageInPinterestDomainIsOpen() {
-        Assert.assertTrue(productDetailsPage.isPinterestDomainDisplayed());
+        assertThat(productDetailsPage.isPinterestDomainDisplayed()).isTrue();
     }
 
 }
