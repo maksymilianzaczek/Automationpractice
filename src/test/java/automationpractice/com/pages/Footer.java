@@ -17,7 +17,7 @@ public class Footer extends PageObject {
     private WebElementFacade bestSellersButton;
     @FindBy(xpath = "//*[@title='Contact us']")
     private WebElementFacade contactUsButton;
-    @FindBy(xpath = "//*[@title='My Addresses']")
+    @FindBy(xpath = "//*[@title='My addresses']")
     private WebElementFacade myAddressesButton;
     @FindBy(xpath = "//*[@title='My credit slips']")
     private WebElementFacade myCreditSlipsButton;
