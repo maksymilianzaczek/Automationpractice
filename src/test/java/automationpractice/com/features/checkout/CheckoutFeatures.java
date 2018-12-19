@@ -20,6 +20,7 @@ public class CheckoutFeatures {
     private ShippingCheckoutPage shippingCheckoutPage;
     private PaymentCheckoutPage paymentCheckoutPage;
     private OrderHistoryAndDetailsPage orderHistoryAndDetailsPage;
+    private HeaderBox headerBox;
 
     @Steps
     private LoginSteps loginSteps;
@@ -28,7 +29,7 @@ public class CheckoutFeatures {
     public void loggedCustomerIsOnHomePage() {
         homePage.open();
         loginSteps.login();
-        myAccountPage.clickMyStore();
+        headerBox.clickMyStore();
 //        We have something like headerBox. I think this method should be there
     }
 

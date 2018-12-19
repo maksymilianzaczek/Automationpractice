@@ -1,27 +1,24 @@
 Feature: Select payment option
 
-#  Background:
-#    Given logged customer is on home page
-##    I think here in given you should be on checkout page
-#
-#  Scenario: User selects pay by bank wire option
-#    When user select first item from homepage and added it into cart
-#    And he confirms every step to make order and pay by bank wire
-#    Then payment by wire is made
-#
-#  Scenario: User selects pay by check option
-#    When user select first item from homepage and added it into cart
-#    And he confirms every step to make order and pay by check
-#    Then payment by check is made
-#
-#  Scenario: User selects pay by bank wire option and next changes the payment method to pay by check option
-#    When user select first item from homepage and added it into cart
-#    And he confirms every step to make order and pay by bank wire
-#    And he return to the payment selection and chooses payment by check
-#    Then payment by check is made
-#
-#  Scenario: User selects pay by check option and next changes the payment method to pay by bank wire option
-#    When user select first item from homepage and added it into cart
-#    And he confirms every step to make order and pay by check
-#    And he return to the payment selection and chooses payment by bank wire
-#    Then payment by wire is made
+  Background:
+    Given user is in payment checkout page
+
+  Scenario: User selects pay by bank wire option
+    When user pay by bank wire
+    Then payment by bank wire is made
+
+  Scenario: User selects pay by check option
+    When user pay by check
+    Then payment by check is made
+
+  Scenario: User selects pay by bank wire option and next changes the payment method to pay by check option
+    When user pay by bank wire
+    And user return to the payment selection
+    And user pay by check
+    Then payment by check is made
+
+  Scenario: User selects pay by check option and next changes the payment method to pay by bank wire option
+    When user pay by check
+    And user return to the payment selection
+    And user pay by bank wire
+    Then payment by bank wire is made
