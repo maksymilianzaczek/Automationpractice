@@ -15,7 +15,7 @@ public class OrderHistoryAndDetailsPage extends PageObject {
         clickDetailsButtonForLastOneOrders.click();
     }
 
-    public boolean isCommentAboutAddressInLastOneOrders() {
+    public boolean isCommentAboutAddressInLastOneOrdersVisible() {
         return isCommentAboutAddressInLastOneOrders.getText().contains("entrance from the yard");
     }
 }

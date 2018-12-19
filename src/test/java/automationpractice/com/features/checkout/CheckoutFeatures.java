@@ -13,32 +13,56 @@ import org.junit.Assert;
 public class CheckoutFeatures {
 
     private HomePage homePage;
-    private MyAccountPage myAccountPage;
     private ProductDetailsPage productDetailsPage;
     private SummaryCheckoutPage summaryCheckoutPage;
     private AddressCheckoutPage addressCheckoutPage;
     private ShippingCheckoutPage shippingCheckoutPage;
     private PaymentCheckoutPage paymentCheckoutPage;
     private OrderHistoryAndDetailsPage orderHistoryAndDetailsPage;
-    private HeaderBox headerBox;
 
     @Steps
     private LoginSteps loginSteps;
 
     @Given("^logged customer is on home page$")
     public void loggedCustomerIsOnHomePage() {
-        homePage.open();
-        loginSteps.login();
-        headerBox.clickMyStore();
-//        We have something like headerBox. I think this method should be there
+        loginSteps.loginAndMoveIntoMyStorePage();
     }
 
-    @Given("^logged customer is on home page and user select first item from homepage and added it into cart$")
-    public void loggedCustomerIsOnHomePageAndUserSelectFirstItemFromHomepageAndAddedItIntoCart() {
-        homePage.open();
-        loginSteps.login();
-        myAccountPage.clickMyStore();
+//    @Given("^logged customer is on home page and user select first item from homepage and added it into cart$")
+//    public void loggedCustomerIsOnHomePageAndUserSelectFirstItemFromHomepageAndAddedItIntoCart() {
+//        homePage.open();
+//        loginSteps.login();
+//        myAccountPage.clickMyStore();
+////        that 3 lines are in previous step. You could create private method for that here, or you can create it in loginSteps
+//        homePage.clickOnNewProductImage();
+///*      It will be better if you take list of products here, and after that you click first:
+//        productTitle = homePage.getProductsTitles().get(0);
+//        homePage.clickOnProduct(productTitle);        */
+//        productDetailsPage.clickOnAddToCartButton();
+//        productDetailsPage.clickProceedToCheckoutButton();
+////        That shouldn't be on productPage. Create CartBox or something like that
+//    }
+
+
+//    @When("^he confirms every step up to the tab shipping and he do not click agree checkbox in shipping label and click proceed to checkout$")
+//    public void heConfirmsEveryStepUpToTheTabShippingAndHeDoNotClickAgreeCheckboxInShippingLabelAndClickProceedToCheckout() {
+//        summaryCheckoutPage.clickOnProceedToCheckoutButtonInSummaryLabel();
+//        addressCheckoutPage.clickOnProceedToCheckoutButtonInAddressLabel();
+//        shippingCheckoutPage.clickOnProceedToCheckoutButtonInShippingLabel();
+//    }
+
+//    @When("^user confirms every step up to the tab address and type a comment$")
+//    public void userConfirmsEveryStepUpToTheTabAddressAndTypeAComment() {
+//        summaryCheckoutPage.clickOnProceedToCheckoutButtonInSummaryLabel();
+//        addressCheckoutPage.addCommentInAddressTab();
+//    }
+
+
+    @Given("^user add first item into cart$")
+    public void userAddFirstItemIntoCart() {
+        loginSteps.loginAndMoveIntoMyStorePage();
 //        that 3 lines are in previous step. You could create private method for that here, or you can create it in loginSteps
+
         homePage.clickOnNewProductImage();
 /*      It will be better if you take list of products here, and after that you click first:
         productTitle = homePage.getProductsTitles().get(0);
@@ -48,8 +72,8 @@ public class CheckoutFeatures {
 //        That shouldn't be on productPage. Create CartBox or something like that
     }
 
-    @When("^user change quantity used plus and minus button after added to cart$")
-    public void userChangeQuantityUsedPlusAndMinusButtonAfterAddedToCart() {
+    @When("^user change quantity in summary checkout page$")
+    public void userChangeQuantityInSummaryCheckoutPage() {
         summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
         summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
         summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
@@ -67,47 +91,50 @@ public class CheckoutFeatures {
 //        Too much.
     }
 
-    @Then("^checkout page has three items$")
-    public void checkoutPageHasThreeItems() {
+    @Then("^summary checkout page has three items$")
+    public void summaryCheckoutPageHasThreeItems() {
         Assert.assertEquals("3", summaryCheckoutPage.isQuantityAfterAddToCartEqualsThree());
 //        Here it should be checkoutPage.getProductQuantity(productTitle);
 //        Also I don't like that hardcoded three - if you remove one line from previous step test will fail
     }
 
-    @When("^he confirms every step up to the tab shipping and he do not click agree checkbox in shipping label and click proceed to checkout$")
-    public void heConfirmsEveryStepUpToTheTabShippingAndHeDoNotClickAgreeCheckboxInShippingLabelAndClickProceedToCheckout() {
+    @When("^user click proceed to checkout in summary address and shipping tab$")
+    public void userClickProceedToCheckoutInSummaryAddressAndShippingTab() {
         summaryCheckoutPage.clickOnProceedToCheckoutButtonInSummaryLabel();
         addressCheckoutPage.clickOnProceedToCheckoutButtonInAddressLabel();
         shippingCheckoutPage.clickOnProceedToCheckoutButtonInShippingLabel();
     }
 
-    @Then("^new alert is appear$")
-    public void newAlertIsAppear() {
-        Assert.assertTrue(shippingCheckoutPage.newAlertAppear());
-//        isAlertDisplayed() (why new?)
+    @Then("^alert is displayed in shipping checkout page$")
+    public void alertIsDisplayedInShippingCheckoutPage() {
+        Assert.assertTrue(shippingCheckoutPage.isAlertDisplayedInShippingCheckoutPage());
     }
 
-    @When("^new alert is appear and user close it and click agree checkbox and continue$")
-    public void newAlertIsAppearAndUserCloseItAndClickAgreeCheckboxAndContinue() {
+
+    @When("^user click agree checkbox and click proceed to checkout$")
+    public void userClickAgreeCheckboxAndClickProceedToCheckout() {
         shippingCheckoutPage.closeAlertInShippingLabel();
         shippingCheckoutPage.clickAgreeCheckbox();
         shippingCheckoutPage.clickOnProceedToCheckoutButtonInShippingLabel();
     }
 
-    @Then("^user is in payment label$")
-    public void userIsInPaymentLabel() {
-        Assert.assertTrue(paymentCheckoutPage.isPaymentLabel());
-//        is payment label what?
+    @Then("^user is in payment checkout tab$")
+    public void userIsInPaymentCheckoutTab() {
+        Assert.assertTrue(paymentCheckoutPage.isUserIsInPaymentCheckoutTab());
     }
 
-    @When("^user confirms every step up to the tab address and type a comment$")
-    public void userConfirmsEveryStepUpToTheTabAddressAndTypeAComment() {
+    @When("^user click proceed to checkout in summary tab$")
+    public void userClickProceedToCheckoutInSummaryTab() {
         summaryCheckoutPage.clickOnProceedToCheckoutButtonInSummaryLabel();
+    }
+
+    @When("^user type a comment about order in address checkout page$")
+    public void userTypeACommentAboutOrderInAddressCheckoutPage() {
         addressCheckoutPage.addCommentInAddressTab();
     }
 
-    @When("^user confirms every step from tab address to confirms order$")
-    public void userConfirmsEveryStepFromTabAddressToConfirmsOrder() {
+    @When("^user confirms every step from address checkout page up to back to orders button in payment checkout page$")
+    public void useConfirmsEveryStepFromAddressCheckoutPageUpToBackToOrdersButtonInPaymentCheckoutPage() {
         addressCheckoutPage.clickOnProceedToCheckoutButtonInAddressLabel();
         shippingCheckoutPage.clickAgreeCheckbox();
         shippingCheckoutPage.clickOnProceedToCheckoutButtonInShippingLabel();
@@ -117,9 +144,9 @@ public class CheckoutFeatures {
         orderHistoryAndDetailsPage.clickDetailsButtonForLastOneOrders();
     }
 
-    @Then("^is comment about address in last one orders$")
-    public void isCommentAboutAddressInLastOneOrders() {
-        Assert.assertTrue(orderHistoryAndDetailsPage.isCommentAboutAddressInLastOneOrders());
-//        isCommentAboutAddressInLastOneOrders what? exist, displayed, invisible?
+    @Then("^comment about address is displayed in last one orders$")
+    public void commentAboutAddressIsDisplayedInLastOneOrders() {
+        Assert.assertTrue(orderHistoryAndDetailsPage.isCommentAboutAddressInLastOneOrdersVisible());
     }
+
 }

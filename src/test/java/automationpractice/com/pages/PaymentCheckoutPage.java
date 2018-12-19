@@ -21,7 +21,7 @@ public class PaymentCheckoutPage extends PageObject {
     private WebElementFacade isOrderConfirmationMessage;
 
     @FindBy(className = "page-heading")
-    private WebElementFacade isPaymentLabel;
+    private WebElementFacade paymentLabel;
 
 
 
@@ -55,8 +55,8 @@ public class PaymentCheckoutPage extends PageObject {
         return isOrderConfirmationMessage.isVisible();
     }
 
-    public boolean isPaymentLabel() {
-        return isPaymentLabel.getText().contains("PLEASE CHOOSE YOUR PAYMENT METHOD");
+    public boolean isUserIsInPaymentCheckoutTab() {
+        return paymentLabel.getText().contains("PLEASE CHOOSE YOUR PAYMENT METHOD");
     }
 
     public boolean isSelectedPayByBankWire() {

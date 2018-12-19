@@ -14,7 +14,7 @@ public class ShippingCheckoutPage extends PageObject {
     private WebElementFacade clickAgreeCheckbox;
 
     @FindBy(className = "fancybox-error")
-    private WebElementFacade newAlertAppearInShippingLabel;
+    private WebElementFacade alertDisplayedInShippingCheckoutPage;
 
     @FindBy(xpath = "//*[contains(@class,'fancybox-close')]")
     private WebElementFacade closeAlertInShippingLabel;
@@ -28,8 +28,8 @@ public class ShippingCheckoutPage extends PageObject {
         clickAgreeCheckbox.click();
     }
 
-    public boolean newAlertAppear() {
-        return newAlertAppearInShippingLabel.isVisible();
+    public boolean isAlertDisplayedInShippingCheckoutPage() {
+        return alertDisplayedInShippingCheckoutPage.isVisible();
     }
 
     public void closeAlertInShippingLabel() {

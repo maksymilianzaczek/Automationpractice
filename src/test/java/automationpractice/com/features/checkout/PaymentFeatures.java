@@ -23,8 +23,8 @@ public class PaymentFeatures {
     @Given("^user is in payment checkout page$")
     public void userIsInPaymentCheckoutPage() {
         homePage.open();
-        loginSteps.login();
-        headerBox.clickMyStore();
+        loginSteps.loginAndMoveIntoMyStorePage();
+//        headerBox.clickMyStore();
         homePage.clickOnNewProductImage();
         productDetailsPage.clickOnAddToCartButton();
         productDetailsPage.clickProceedToCheckoutButton();
