@@ -3,7 +3,6 @@ package automationpractice.com.pages;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.support.FindBy;
-import org.w3c.dom.html.HTMLInputElement;
 
 public class HeaderBox extends PageObject {
 
@@ -13,6 +12,8 @@ public class HeaderBox extends PageObject {
     private WebElementFacade signOutButton;
     @FindBy(xpath = "//*[@title='Contact Us']")
     private WebElementFacade contactUsButton;
+    @FindBy(xpath = "//*[@class='header_user_info']//*[@class='account']/span")
+    private WebElementFacade loggedUserButton;
 
     public void clickOnSignIn() {
         signInButton.click();
@@ -32,5 +33,9 @@ public class HeaderBox extends PageObject {
 
     public void clickOnContactUs() { contactUsButton.click(); }
 
+
+    public void clickOnLoggedUser(){
+        loggedUserButton.click();
+    }
 }
 

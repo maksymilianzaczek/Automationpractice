@@ -26,7 +26,7 @@ public class ContactUsPage extends PageObject {
     private WebElementFacade SuccessfullMessageSent;
     @FindBy(className = "alert alert-danger")
     private WebElementFacade ErrorMessageSent;
-    @FindBy(xpath = "//*[contains(@class,'navigation_page')]")
+
     private WebElementFacade ContactUsText;
 
 
@@ -67,7 +67,6 @@ public class ContactUsPage extends PageObject {
 
     public boolean isContactUsTextDisplayed() {
         return ContactUsText.isVisible();
-
     }
 }
 

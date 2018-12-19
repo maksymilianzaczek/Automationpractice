@@ -6,15 +6,20 @@ import automationpractice.com.pages.HeaderBox;
 import automationpractice.com.pages.HomePage;
 import automationpractice.com.pages.LoginPage;
 import automationpractice.com.pages.RegistrationPage;
+import automationpractice.com.steps.RegistrationSteps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import net.thucydides.core.annotations.Steps;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.assertj.core.api.SoftAssertions;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RegisterFeatures {
+
+    @Steps
+    private RegistrationSteps registrationSteps;
 
     final private String randomString = RandomStringUtils.randomAlphanumeric(13);
     final private String randomEmail = String.format("%s@gmai.com", randomString);
