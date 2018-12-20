@@ -18,8 +18,6 @@ public class EditAddressPage extends PageObject {
     private WebElementFacade cityField;
     @FindBy(id = "uniform-id_state")
     private WebElementFacade stateList;
-    @FindBy(xpath = "//*[@id='id_state']/option[13]")
-    private WebElementFacade stateSelect;
     @FindBy(id = "postcode")
     private WebElementFacade postcode;
     @FindBy(id = "uniform-id_country")
@@ -74,7 +72,6 @@ public class EditAddressPage extends PageObject {
     }
 
     public void clickStateList() {
-        find(By.xpath("//*[@id='id_state']//*[contains(text(),'Colorado')]"));
         stateList.click();
     }
 

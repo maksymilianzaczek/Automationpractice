@@ -10,6 +10,8 @@ public class MyAccountPage extends PageObject {
     private WebElementFacade myAddress;
     @FindBy(className = "icon-heart")
     private WebElementFacade myWishlist;
+    @FindBy(className = "icon-user")
+    private WebElementFacade myPersonalInformation;
 
     public void clickMyAddresses() {
         myAddress.click();
@@ -17,5 +19,9 @@ public class MyAccountPage extends PageObject {
 
     public void clickMyWishlist() {
         myWishlist.click();
+    }
+
+    public void clickPersonalInformation() {
+        myPersonalInformation.click();
     }
 }
