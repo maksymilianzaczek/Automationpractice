@@ -45,7 +45,7 @@ public class ContactUsFeatures {
 
     @Then("^Message is send$")
     public void messageIsSend() {
-        final boolean isSuccessfullMessageSentVisible = contactUsPage.isSuccessfullMessageSentVisible();
+        final boolean isSuccessfullMessageSentVisible = contactUsPage.isSuccessfulMessageSentVisible();
         final SoftAssertions softAssertions = new SoftAssertions();
         softAssertions.assertThat(isSuccessfullMessageSentVisible).isTrue();
     }

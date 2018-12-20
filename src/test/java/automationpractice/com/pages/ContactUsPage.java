@@ -5,16 +5,14 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 
-import javax.swing.*;
-
 public class ContactUsPage extends PageObject {
 
 
     @FindBy(id = "message")
     private WebElementFacade Message;
-    @FindBy(id = "uniform-id_order")
+    @FindBy(xpath = "//*[@name='id_order']//ancestor::*[@class='selector']")
     private WebElementFacade OrderReferenceList;
-    @FindBy(xpath = "//*[@id='id_order']/option[2]")
+    @FindBy(xpath = "//*[@name = 'id_order']/option[2]")
     private WebElementFacade OrderReferenceSelect;
     @FindBy(id = "uniform-id_contact")
     private WebElementFacade subjectHeadingList;
@@ -23,15 +21,15 @@ public class ContactUsPage extends PageObject {
     @FindBy(id = "submitMessage")
     private WebElementFacade SendMessage;
     @FindBy(className = "alert alert-success")
-    private WebElementFacade SuccessfullMessageSent;
+    private WebElementFacade SuccessfulMessageSent;
     @FindBy(className = "alert alert-danger")
     private WebElementFacade ErrorMessageSent;
     @FindBy(xpath = "//*[contains(@class,'navigation_page') and contains(text(), 'Contact')]")
     private WebElementFacade ContactUsText;
 
 
-    public boolean isSuccessfullMessageSentVisible() {
-        return SuccessfullMessageSent.isVisible();
+    public boolean isSuccessfulMessageSentVisible() {
+        return SuccessfulMessageSent.isVisible();
     }
 
     public boolean isErrorMessageSentVisible() {
