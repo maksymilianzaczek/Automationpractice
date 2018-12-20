@@ -20,7 +20,7 @@ public class AddressCheckoutPage extends PageObject {
     private NewAddressPage newAddressPage;
 
     @FindBy(xpath = "//*[@id='address_delivery']//*[@class='address_firstname address_lastname']")
-    private WebElementFacade nameAndLastInDeliveryAddress;
+    private WebElementFacade nameAndLastNameInDeliveryAddress;
 
     @FindBy(xpath = "//*[@id='address_delivery']//*[@class='address_city address_state_name address_postcode']")
     private WebElementFacade cityAndStateAndZipCodeInDeliveryAddress;
@@ -76,11 +76,11 @@ public class AddressCheckoutPage extends PageObject {
         selectBillingAddressFromList();
     }
 
-    public String isDeliveryAddressCorrectNameAndLastName() {
-        return nameAndLastInDeliveryAddress.getText();
+    public String nameAndLastNameInDeliveryInAddressCheckoutPage() {
+        return nameAndLastNameInDeliveryAddress.getText();
     }
 
-    public String isDeliveryAddressCorrectCityAndStateAndZipCode() {
+    public String cityAndStateAndZipCodeInDeliveryInAddressCheckoutPage() {
         return cityAndStateAndZipCodeInDeliveryAddress.getText();
     }
 

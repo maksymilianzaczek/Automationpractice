@@ -1,6 +1,7 @@
 package automationpractice.com.features.checkout;
 
 import automationpractice.com.data.NewAddressInformation;
+import automationpractice.com.domain.NewAddressData;
 import automationpractice.com.pages.AddressCheckoutPage;
 import automationpractice.com.pages.HomePage;
 import automationpractice.com.pages.ProductDetailsPage;
@@ -44,11 +45,12 @@ public class AddAddressesFeatures {
         addressCheckoutPage.selectDeliveryAddressFromList();
     }
 
+
     @Then("^the new address is selected as delivery address$")
     public void theNewAddressIsSelectedAsDeliveryAddress() {
         Assert.assertEquals((NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getFirstNameAddress()
                         + " " + NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getLastNameAddress())
-                , addressCheckoutPage.isDeliveryAddressCorrectNameAndLastName());
+                , addressCheckoutPage.nameAndLastNameInDeliveryInAddressCheckoutPage());
 
         /*        If you don't return boolean, method name shouldn't start from is. You can do this by:
        final SoftAssertions softAssertions = new SoftAssertions();
@@ -60,7 +62,7 @@ public class AddAddressesFeatures {
         Assert.assertEquals((NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getCity()
                         + ", " + NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getState()
                         + " " + NewAddressInformation.NEW_ADDRESS_INFORMATION_1.getZipCode())
-                , addressCheckoutPage.isDeliveryAddressCorrectCityAndStateAndZipCode());
+                , addressCheckoutPage.cityAndStateAndZipCodeInDeliveryInAddressCheckoutPage());
     }
 
     @When("^user choices new address as billing address$")

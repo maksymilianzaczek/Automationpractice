@@ -8,6 +8,8 @@ import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Assert;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 //try to use assertj, not junit
 
 public class CheckoutFeatures {
@@ -64,6 +66,7 @@ public class CheckoutFeatures {
 
     @Then("^summary checkout page has three items$")
     public void summaryCheckoutPageHasThreeItems() {
+        assertThat(summaryCheckoutPage.isQuantityAfterAddToCartEqualsThree()).isEqualTo("3");
         Assert.assertEquals("3", summaryCheckoutPage.isQuantityAfterAddToCartEqualsThree());
 //        Here it should be checkoutPage.getProductQuantity(productTitle);
 //        Also I don't like that hardcoded three - if you remove one line from previous step test will fail
