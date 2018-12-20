@@ -55,9 +55,11 @@ public class ProductDetailsPage extends PageObject {
         clickMinusQuantityButton.click();
     }
 
-    public void changeSize() {
-        selectMSize.click();
+    public void changeSizeToLSize() {
         selectLSize.click();
+    }
+    public void changeSizeToMSize() {
+        selectMSize.click();
     }
 
     public void changeColorToBlue() {

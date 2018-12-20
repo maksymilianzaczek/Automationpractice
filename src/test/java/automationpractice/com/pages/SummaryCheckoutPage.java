@@ -10,14 +10,10 @@ public class SummaryCheckoutPage extends PageObject {
     private WebElementFacade clickOnProceedToCheckoutButtonInSummaryLabel;
 
     @FindBy(xpath = "//*[contains(@class,'stock-management-on')]//*[contains(@class,'odd')]//*[@class='cart_description']/small[2]/a")
-    private WebElementFacade isSizeL;
-
-    @FindBy(xpath = "//*[contains(@class,'stock-management-on')]//*[contains(@class,'odd')]//*[@class='cart_description']/small[2]/a")
-    private WebElementFacade isBlueColor;
-//    that two xpath are the same...
+    private WebElementFacade colorAndSizeFirstProductOnSummaryCheckoutPage;
 
     @FindBy(className = "cart_quantity_input")
-    private WebElementFacade firstWindowWithTheNumberOfItems;
+    private WebElementFacade quantityOfItemsInSummaryCheckoutPage;
 
     @FindBy(xpath = "//*[contains(@class,'button-plus')]//*[@class='icon-plus']")
     private WebElementFacade clickPlusQuantityButtonInSummaryLabel;
@@ -29,20 +25,20 @@ public class SummaryCheckoutPage extends PageObject {
         clickOnProceedToCheckoutButtonInSummaryLabel.click();
     }
 
+    public String getFirstProductQuantityInSummaryCheckoutPage(){
+        return quantityOfItemsInSummaryCheckoutPage.getValue();
+    }
+
     public boolean isSizeL() {
-        return isSizeL.getText().contains("Size : L");
+        return colorAndSizeFirstProductOnSummaryCheckoutPage.getText().contains("Size : L");
+    }
+
+    public boolean isSizeM() {
+        return colorAndSizeFirstProductOnSummaryCheckoutPage.getText().contains("Size : M");
     }
 
     public boolean isBlueColor() {
-        return isBlueColor.getText().contains("Color : Blue");
-    }
-
-    public String isQuantityAfterAddToCartEqualsTwo() {
-        return firstWindowWithTheNumberOfItems.getValue();
-    }
-
-    public String isQuantityAfterAddToCartEqualsThree() {
-        return firstWindowWithTheNumberOfItems.getValue();
+        return colorAndSizeFirstProductOnSummaryCheckoutPage.getText().contains("Color : Blue");
     }
 
     public void clickPlusQuantityButtonInSummaryLabel() {

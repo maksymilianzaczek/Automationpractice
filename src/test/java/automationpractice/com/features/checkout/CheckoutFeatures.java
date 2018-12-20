@@ -45,32 +45,58 @@ public class CheckoutFeatures {
 //        That shouldn't be on productPage. Create CartBox or something like that
     }
 
-    @When("^user change quantity in summary checkout page$")
-    public void userChangeQuantityInSummaryCheckoutPage() {
+    @When("^user change quantity on summary checkout page$")
+    public int userChangeQuantityOnSummaryCheckoutPage() {
+        int quantityOfItems = 1;
+
         summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
+        quantityOfItems++;
         summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
+        quantityOfItems++;
+
         summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
+        quantityOfItems++;
+
         summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
+        quantityOfItems++;
+
         summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
+        quantityOfItems++;
+
         summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
+        quantityOfItems++;
+
         summaryCheckoutPage.clickMinusQuantityButtonInSummaryLabel();
+        quantityOfItems--;
+
         summaryCheckoutPage.clickMinusQuantityButtonInSummaryLabel();
+        quantityOfItems--;
         summaryCheckoutPage.clickMinusQuantityButtonInSummaryLabel();
+        quantityOfItems--;
+
         summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
+        quantityOfItems++;
+
         summaryCheckoutPage.clickMinusQuantityButtonInSummaryLabel();
+        quantityOfItems--;
+
         summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
+        quantityOfItems++;
+
         summaryCheckoutPage.clickMinusQuantityButtonInSummaryLabel();
+        quantityOfItems--;
         summaryCheckoutPage.clickMinusQuantityButtonInSummaryLabel();
+        quantityOfItems--;
 //        Too much.
+        //do skrócenia
+        return quantityOfItems;
     }
 
-    @Then("^summary checkout page has three items$")
-    public void summaryCheckoutPageHasThreeItems() {
-        assertThat(summaryCheckoutPage.isQuantityAfterAddToCartEqualsThree()).isEqualTo("3");
-        Assert.assertEquals("3", summaryCheckoutPage.isQuantityAfterAddToCartEqualsThree());
-//        Here it should be checkoutPage.getProductQuantity(productTitle);
-//        Also I don't like that hardcoded three - if you remove one line from previous step test will fail
+    @Then("^summary checkout page has a given number of items in summary checkout page$")
+    public void summaryCheckoutPageHasAGivenNumberOfItemsInSummaryCheckoutPage() {
+        assertThat(summaryCheckoutPage.getFirstProductQuantityInSummaryCheckoutPage()).isEqualTo(String.valueOf(userChangeQuantityOnSummaryCheckoutPage()));
     }
+
 
     @When("^user click proceed to checkout in summary address and shipping tab$")
     public void userClickProceedToCheckoutInSummaryAddressAndShippingTab() {

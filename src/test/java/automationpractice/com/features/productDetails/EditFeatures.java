@@ -1,4 +1,4 @@
-package automationpractice.com.features.checkout;
+package automationpractice.com.features.productDetails;
 
 import automationpractice.com.pages.HomePage;
 import automationpractice.com.pages.MyAccountPage;
@@ -11,7 +11,9 @@ import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Assert;
 
-public class EditOnProductDetailsPageFeatures {
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class EditFeatures {
 
     private HomePage homePage;
     private ProductDetailsPage productDetailsPage;
@@ -21,18 +23,24 @@ public class EditOnProductDetailsPageFeatures {
     @Steps
     private LoginSteps loginSteps;
 
-    @Given("^logged in customer is on first product details page$")
-    public void loggedInCustomerIsOnFirstProductDetailsPage() {
+    @Given("^logged in customer is on product details page$")
+    public void loggedInCustomerIsOnProductDetailsPage() {
         loginSteps.loginAndMoveIntoMyStorePage();
         homePage.clickOnNewProductImage();
     }
 
     @When("^user change quantity on product details page$")
-    public void userChangeQuantityOnProductDetailsPage() {
+    public int userChangeQuantityOnProductDetailsPage() {
+        int quantityOfItems = 1;
         productDetailsPage.clickPlusQuantityButton();
+        quantityOfItems++;
         productDetailsPage.clickPlusQuantityButton();
+        quantityOfItems++;
         productDetailsPage.clickMinusQuantityButton();
+        quantityOfItems--;
+        return quantityOfItems;
 
+        // Zrobić ładnie
     }
 
     @When("^user add to cart item on product details page$")
@@ -41,16 +49,14 @@ public class EditOnProductDetailsPageFeatures {
         productDetailsPage.clickProceedToCheckoutButton();
     }
 
-    @Then("^summary checkout page has two items$")
-    public void summaryCheckoutPageHasTwoItems() {
-        Assert.assertEquals("2", summaryCheckoutPage.isQuantityAfterAddToCartEqualsTwo());
-//        I commented before
+    @Then("^summary checkout page has a given number of items in product details page$")
+    public void summaryCheckoutPageHasAGivenNumberOfItemsInProductDetailsPage() {
+        assertThat(summaryCheckoutPage.getFirstProductQuantityInSummaryCheckoutPage()).isEqualTo(String.valueOf(userChangeQuantityOnProductDetailsPage()));
     }
 
-    @When("^user change size on product details page$")
-    public void userChangeSizeOnProductDetailsPage() {
-        productDetailsPage.changeSize();
-//        to with size?
+    @When("^user change size to L size on product details page$")
+    public void userChangeSizeToLSizeOnProductDetailsPage() {
+        productDetailsPage.changeSizeToLSize();
     }
 
     @Then("^summary checkout page has item in L size$")
@@ -58,6 +64,19 @@ public class EditOnProductDetailsPageFeatures {
         Assert.assertTrue(summaryCheckoutPage.isSizeL());
 //        getSize();
     }
+
+    @When("^user change size to M size on product details page$")
+    public void userChangeSizeToMSizeOnProductDetailsPage() {
+        productDetailsPage.changeSizeToMSize();
+    }
+
+    @Then("^summary checkout page has item in M size$")
+    public void summaryCheckoutPageHasItemInMSize() {
+        Assert.assertTrue(summaryCheckoutPage.isSizeM());
+//        getSize();
+    }
+
+
 
     @When("^user change color on product details page$")
     public void userChangeColorOnProductDetailsPage() {
