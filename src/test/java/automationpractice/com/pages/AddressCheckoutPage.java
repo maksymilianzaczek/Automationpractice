@@ -1,23 +1,18 @@
 package automationpractice.com.pages;
 
+import automationpractice.com.domain.NewAddressData;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 
-import static automationpractice.com.data.NewAddressInformation.NEW_ADDRESS_INFORMATION_1;
-
 public class AddressCheckoutPage extends PageObject {
 
-    @FindBy(xpath = "//*[@class='button btn btn-default button-medium']")
-    //It will be better to take this element
-    //    @FindBy(name = "processAddress")
+    @FindBy(name = "processAddress")
     private WebElementFacade clickOnProceedToCheckoutButtonInAddressLabel;
 
     @FindBy(xpath = "//*[contains(@class,'address_add submit')]//*[contains(@class,'button')]")
     private WebElementFacade clickAddANewAddressButton;
-
-    private NewAddressPage newAddressPage;
 
     @FindBy(xpath = "//*[@id='address_delivery']//*[@class='address_firstname address_lastname']")
     private WebElementFacade nameAndLastNameInDeliveryAddress;
@@ -29,35 +24,36 @@ public class AddressCheckoutPage extends PageObject {
     private WebElementFacade clickDisagreeUseTheDeliveryAddressAsTheBillingAddress;
 
     @FindBy(xpath = "//*[@id='address_invoice']//*[@class='address_firstname address_lastname']")
-    private WebElementFacade nameAndLastInBillingAddress;
+    private WebElementFacade nameAndLastNameInBillingAddress;
 
     @FindBy(xpath = "//*[@id='address_invoice']//*[@class='address_city address_state_name address_postcode']")
     private WebElementFacade cityAndStateAndZipCodeInBillingAddress;
 
     @FindBy(xpath = "//*[@id='ordermsg']//*[@class='form-control']")
     private WebElementFacade addCommentInAddressTab;
-
     public void clickOnProceedToCheckoutButtonInAddressLabel() {
         clickOnProceedToCheckoutButtonInAddressLabel.click();
     }
+
+    private NewAddressPage newAddressPage;
 
     public void clickAddANewAddressButton() {
         clickAddANewAddressButton.click();
     }
 
-    public void selectBillingAddressFromList() {
+    public void selectBillingAddressFromList(NewAddressData addressData) {
         clickDisagreeUseTheDeliveryAddressAsTheBillingAddress.click();
         waitABit(1000);
-        find(By.xpath("//*[@id='id_address_invoice']//*[contains(text(), '" + NEW_ADDRESS_INFORMATION_1.getNewAddressName() + "')]")).click();
+        find(By.xpath("//*[@id='id_address_invoice']//*[contains(text(), '" + addressData.getNewAddressName() + "')]")).click();
     }
 
-    public void selectDeliveryAddressFromList() {
-        find(By.xpath("//*[@id='id_address_delivery']//*[contains(text(), '" + NEW_ADDRESS_INFORMATION_1.getNewAddressName() + "')]")).click();
+    public void selectDeliveryAddressFromList(NewAddressData addressData) {
+        find(By.xpath("//*[@id='id_address_delivery']//*[contains(text(), '" + addressData.getNewAddressName() + "')]")).click();
     }
 
-    public void selectDeliveryAndBillingAddressFromList() {
-        selectDeliveryAddressFromList();
-        selectBillingAddressFromList();
+    public void selectDeliveryAndBillingAddressFromList(NewAddressData addressData) {
+        selectDeliveryAddressFromList(addressData);
+        selectBillingAddressFromList(addressData);
     }
 
     public String getNameAndLastNameInDeliveryInAddressCheckoutPage() {
@@ -68,11 +64,11 @@ public class AddressCheckoutPage extends PageObject {
         return cityAndStateAndZipCodeInDeliveryAddress.getText();
     }
 
-    public String isBillingAddressCorrectNameAndLastName() {
-        return nameAndLastInBillingAddress.getText();
+    public String getNameAndLastNameInBillingInAddressCheckoutPage() {
+        return nameAndLastNameInBillingAddress.getText();
     }
 
-    public String isBillingAddressCorrectCityAndStateAndZipCode() {
+    public String getCityAndStateAndZipCodeInBillingInAddressCheckoutPage() {
         return cityAndStateAndZipCodeInBillingAddress.getText();
     }
 
