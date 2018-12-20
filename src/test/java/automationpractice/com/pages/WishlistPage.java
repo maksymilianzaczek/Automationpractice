@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class WishlistPage extends PageObject {
 
     private static final String WISHLIST_NAME_PATTERN = "//*[contains(text(),'%s')]";
-    private final String DELETE_MY_WISHLIST_XPATH_PATTERN = "//*[contains(text(),'%s')]//ancestor::*[contains(@id,'wishlist_')]//*[contains(@class,'wishlist_delete')]/*[@class='icon']";
+    private static final String DELETE_MY_WISHLIST_XPATH_PATTERN = "//*[contains(text(),'%s')]//ancestor::*[contains(@id,'wishlist_')]//*[contains(@class,'wishlist_delete')]/*[@class='icon']";
 
     @FindBy(xpath = "//input[@id='name']")
     private WebElementFacade wishlistName;
@@ -19,9 +19,7 @@ public class WishlistPage extends PageObject {
     private WebElementFacade submitButton;
     @FindBy(xpath = "//*[contains(@class,'table-bordered')]//*[contains(@id, 'wishlist')]/td[1]")
     private List<WebElementFacade> wishlistsNameList;
-    @FindBy(className = "wishlist_delete")
-    private WebElementFacade deleteWishlistButton;
-    @FindBy(xpath = "//*[@class='row wlp_bought_list']//*[@class='product-name']")
+    @FindBy(xpath = "//*[contains(@class,'row wlp_bought_list')]//*[@class='product-name']")
     private List<WebElementFacade> productsList;
 
     public void insertWishlistName(final String listName) {
@@ -53,9 +51,9 @@ public class WishlistPage extends PageObject {
     public List<String> listOfProductsInWishlist() {
         return productsList
                 .stream()
-                .map(WebElementFacade::getText)         //mapuje tekst
-                .map(this::removeTextAfterLineBreak)    //usuwa tekst występujący po lineBreak'u
-                .map(String::trim)                      //usuwa białe przestrzenie/puste spacje sprzed i zza tekstu
+                .map(WebElementFacade::getText)         //mapps text
+                .map(this::removeTextAfterLineBreak)    //deletes all text after line break
+                .map(String::trim)                      //deletes empty spaces and white spots before and after text
                 .collect(Collectors.toList());
     }
 
