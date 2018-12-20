@@ -1,13 +1,10 @@
 package automationpractice.com.features;
 
-import automationpractice.com.pages.Footer;
+import automationpractice.com.pages.FooterBox;
 import automationpractice.com.pages.HomePage;
-import automationpractice.com.pages.LoginPage;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.assertj.core.api.SoftAssertions;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,9 +14,7 @@ public class NewsletterFeatures {
     final private String randomEmail = String.format("%s@gmai.com", randomString);
 
     private HomePage homePage;
-    private LoginPage loginPage;
-    private LoginPage email;
-    private Footer footer;
+    private FooterBox footer;
 
     @When("^he types correct email$")
     public void heTypesCorrectEmail() {

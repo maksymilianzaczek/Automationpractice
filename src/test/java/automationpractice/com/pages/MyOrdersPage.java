@@ -8,10 +8,10 @@ public class MyOrdersPage extends PageObject {
 
 
     @FindBy(xpath = "//*[contains(@class,'navigation_page') and contains(text(), 'Order history')]")
-    private WebElementFacade MyOrdersText;
+    private WebElementFacade myOrdersText;
 
 
-    public boolean isMyOrdersPageTextDisplayed() { return MyOrdersText.isVisible();
+    public boolean isMyOrdersPageTextDisplayed() { return myOrdersText.isVisible();
     }
 }
 

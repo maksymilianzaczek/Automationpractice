@@ -23,4 +23,5 @@ public class LoginSteps {
     public void login() {
         loginAs(MACIEJ_STAFIJOWSKI.getLogin(), MACIEJ_STAFIJOWSKI.getPassword());
     }
+
 }

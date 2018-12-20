@@ -7,10 +7,10 @@ import org.openqa.selenium.support.FindBy;
 public class MyCreditSlipsPage extends PageObject {
 
     @FindBy(xpath = "//*[contains(@class,'navigation_page') and contains(text(), 'Credit slips')]")
-    private WebElementFacade MyCreditSlipsText;
+    private WebElementFacade myCreditSlipsText;
 
     public boolean isMyCreditSlipsTextDisplayed() {
-        return MyCreditSlipsText.isVisible();
+        return myCreditSlipsText.isVisible();
     }
 
 }

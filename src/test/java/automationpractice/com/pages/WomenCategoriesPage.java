@@ -8,10 +8,10 @@ public class WomenCategoriesPage extends PageObject {
 
 
     @FindBy(xpath = "//*[contains(@class,'navigation_page') and contains(text(), 'Women')]")
-    private WebElementFacade WomenCategoriesText;
+    private WebElementFacade womenCategoriesText;
 
 
-    public boolean isWomenCategoriesTextDisplayed() {  return WomenCategoriesText.isVisible();
+    public boolean isWomenCategoriesTextDisplayed() {  return womenCategoriesText.isVisible();
     }
 }
 

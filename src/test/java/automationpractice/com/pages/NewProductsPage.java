@@ -8,10 +8,10 @@ public class NewProductsPage extends PageObject {
 
     @FindBy(xpath = "//*[contains(@class,'navigation_page') and contains(text(), 'New products')]")
 
-    private WebElementFacade NewProductsText;
+    private WebElementFacade newProductsText;
 
 
-    public boolean isNewProductsTextDisplayed() {  return NewProductsText.isVisible();
+    public boolean isNewProductsTextDisplayed() {  return newProductsText.isVisible();
     }
 }
 

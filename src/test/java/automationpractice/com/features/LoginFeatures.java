@@ -1,8 +1,11 @@
 package automationpractice.com.features;
 
+import automationpractice.com.data.Users;
+import automationpractice.com.domain.User;
 import automationpractice.com.pages.HeaderBox;
 import automationpractice.com.pages.HomePage;
 import automationpractice.com.pages.LoginPage;
+import automationpractice.com.steps.LoginSteps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -12,12 +15,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class LoginFeatures {
 
+    private final User validUser = Users.MACIEJ_STAFIJOWSKI;
+
     final private String login = "maksymilian.zaczek@solsoft.pl";
     final private String password = "12345678";
 
     private HomePage homePage;
     private HeaderBox headerBox;
     private LoginPage loginPage;
+    private LoginSteps loginSteps;
 
 
     @Given("^customer is on home page$")
@@ -27,8 +33,13 @@ public class LoginFeatures {
 
     @When("^he logs in using correct credentials$")
     public void heLogsInUsingCorrectCredentials() {
-        loginWithCredentials(login, password);
+//        loginWithCredentials(login, password);
+//loginWithEmail(validUser)
     }
+
+//    private void loginWithEmail(final User user) {
+//        loginSteps.login(user.getPassword(), user.getLogin());
+//    }
 
 
     @Then("^he is logged in$")
@@ -44,9 +55,10 @@ public class LoginFeatures {
 
     private void loginWithCredentials(String login, String password) {
         headerBox.clickOnSignIn();
-        loginPage.typeLogin(login);
-        loginPage.typePassword(password);
-        loginPage.clickOnSignIn();
+//        loginSteps.login(Users.WRONG_PASSWORD);
+//        loginPage.typeLogin(login);
+//        loginPage.typePassword(password);
+//        loginPage.clickOnSignIn();
     }
 
     @Then("^he is not logged in$")

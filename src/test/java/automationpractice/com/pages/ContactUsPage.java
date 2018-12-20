@@ -2,46 +2,45 @@ package automationpractice.com.pages;
 
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 
 public class ContactUsPage extends PageObject {
 
 
     @FindBy(id = "message")
-    private WebElementFacade Message;
+    private WebElementFacade message;
     @FindBy(xpath = "//*[@name='id_order']//ancestor::*[@class='selector']")
-    private WebElementFacade OrderReferenceList;
+    private WebElementFacade orderReferenceList;
     @FindBy(xpath = "//*[@name = 'id_order']/option[2]")
-    private WebElementFacade OrderReferenceSelect;
+    private WebElementFacade orderReferenceSelect;
     @FindBy(id = "uniform-id_contact")
     private WebElementFacade subjectHeadingList;
     @FindBy(xpath = "//*[@id='id_contact']/option[2]")
     private WebElementFacade subjectHeadingSelect;
     @FindBy(id = "submitMessage")
-    private WebElementFacade SendMessage;
+    private WebElementFacade sendMessage;
     @FindBy(className = "alert alert-success")
-    private WebElementFacade SuccessfulMessageSent;
+    private WebElementFacade successfulMessageSent;
     @FindBy(className = "alert alert-danger")
-    private WebElementFacade ErrorMessageSent;
+    private WebElementFacade errorMessageSent;
     @FindBy(xpath = "//*[contains(@class,'navigation_page') and contains(text(), 'Contact')]")
-    private WebElementFacade ContactUsText;
+    private WebElementFacade contactUsText;
 
 
     public boolean isSuccessfulMessageSentVisible() {
-        return SuccessfulMessageSent.isVisible();
+        return successfulMessageSent.isVisible();
     }
 
     public boolean isErrorMessageSentVisible() {
-        return ErrorMessageSent.isVisible();
+        return errorMessageSent.isVisible();
     }
 
     public void clickOnOrderReferenceList() {
-        OrderReferenceList.click();
+        orderReferenceList.click();
     }
 
     public void clickOnOrderReferenceSelect() {
-        OrderReferenceSelect.click();
+        orderReferenceSelect.click();
     }
 
     public void clickOnSubjectHeadingList() {
@@ -49,22 +48,21 @@ public class ContactUsPage extends PageObject {
     }
 
     public void clickOnSubjectHeadingSelect() {
-        find(By.xpath("//*[@id='id_contact']//*[contains(text(), 'Customer service')]")).click();
-//        subjectHeadingSelect.click();
+        subjectHeadingSelect.click();
 
     }
 
 
-    public void typeMessage(final String test_message) {
-        Message.type(test_message);
+    public void typeMessage(final String testMessage) {
+        message.type(testMessage);
     }
 
     public void clickOnSendMessage() {
-        SendMessage.click();
+        sendMessage.click();
     }
 
     public boolean isContactUsTextDisplayed() {
-        return ContactUsText.isVisible();
+        return contactUsText.isVisible();
     }
 }
 

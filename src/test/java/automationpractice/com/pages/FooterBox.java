@@ -4,7 +4,7 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.support.FindBy;
 
-public class Footer extends PageObject {
+public class FooterBox extends PageObject {
 
 
     @FindBy(id = "newsletter-input")

@@ -4,6 +4,7 @@ import automationpractice.com.pages.ContactUsPage;
 import automationpractice.com.pages.HeaderBox;
 import automationpractice.com.pages.HomePage;
 import automationpractice.com.pages.LoginPage;
+import automationpractice.com.steps.LoginSteps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -11,25 +12,17 @@ import org.assertj.core.api.SoftAssertions;
 
 public class ContactUsFeatures {
 
-    final private String login = "maksymilian.zaczek@solsoft.pl";
-    final private String password = "12345678";
-
     private HomePage homePage;
     private HeaderBox headerBox;
     private LoginPage loginPage;
     private ContactUsPage contactUsPage;
+    private LoginSteps loginSteps;
 
-    private void loginWithCredentials(String login, String password) {
-        headerBox.clickOnSignIn();
-        loginPage.typeLogin(login);
-        loginPage.typePassword(password);
-        loginPage.clickOnSignIn();
-    }
 
     @Given("^User is on contact us page$")
     public void userIsOnContactUsPage() {
         homePage.open();
-        loginWithCredentials(login, password);
+        loginSteps.login();
         headerBox.clickOnContactUs();
     }
 
@@ -45,9 +38,11 @@ public class ContactUsFeatures {
 
     @Then("^Message is send$")
     public void messageIsSend() {
-        final boolean isSuccessfullMessageSentVisible = contactUsPage.isSuccessfulMessageSentVisible();
+        final boolean isSuccessfulMessageSentVisible = contactUsPage.isSuccessfulMessageSentVisible();
         final SoftAssertions softAssertions = new SoftAssertions();
-        softAssertions.assertThat(isSuccessfullMessageSentVisible).isTrue();
+        softAssertions.assertThat(isSuccessfulMessageSentVisible).isTrue();
+        softAssertions.assertAll();
+
     }
 
     @When("^he doesn't fill every field$")
@@ -60,10 +55,7 @@ public class ContactUsFeatures {
         final boolean isErrorMessageSentVisible = contactUsPage.isErrorMessageSentVisible();
         final SoftAssertions softAssertions = new SoftAssertions();
         softAssertions.assertThat(isErrorMessageSentVisible).isTrue();
+        softAssertions.assertAll();
     }
 }
-//    @Then("^he is logged in$")
-//    public void heIsLoggedIn() {
-//        final boolean isSignOutButtonVisible = headerBox.isSignOutButtonVisible();
-//        assertThat(isSignOutButtonVisible).isTrue();
-//
+

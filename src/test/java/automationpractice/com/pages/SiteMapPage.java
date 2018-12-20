@@ -9,9 +9,9 @@ public class SiteMapPage extends PageObject {
 
 
     @FindBy(xpath = "//*[contains(@class,'navigation_page') and contains(text(), 'Sitemap')]")
-    private WebElementFacade SiteMapText;
+    private WebElementFacade siteMapText;
 
-    public boolean isSitemapTextDisplayed() { return SiteMapText.isVisible();
+    public boolean isSitemapTextDisplayed() { return siteMapText.isVisible();
     }
 }
 

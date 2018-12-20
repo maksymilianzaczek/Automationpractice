@@ -1,6 +1,7 @@
 package automationpractice.com.features;
 
 import automationpractice.com.pages.*;
+import automationpractice.com.steps.LoginSteps;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -8,13 +9,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class FooterFeatures {
 
-    final private String login = "maksymilian.zaczek@solsoft.pl";
-    final private String password = "12345678";
 
-    private Footer footer;
-    private HomePage homePage;
-    private HeaderBox headerBox;
-    private LoginPage loginPage;
+    private FooterBox footer;
     private AboutUsPage aboutUsPage;
     private BestSellersPage bestSellersPage;
     private ContactUsPage contactUsPage;
@@ -28,6 +24,7 @@ public class FooterFeatures {
     private SpecialsPage specialsPage;
     private TermsAndConditionsOfUsePage termsAndConditionsOfUsePage;
     private WomenCategoriesPage womenCategoriesPage;
+    private LoginSteps loginSteps;
 
     @When("^he clicks on About us button on footer$")
     public void heClicksOnAboutUsButtonOnFooter() {
@@ -37,8 +34,13 @@ public class FooterFeatures {
     @Then("^he is navigated to About us page$")
     public void heIsNavigatedToAboutUsPage() {
         final boolean isAboutUsTextDisplayed = aboutUsPage.isAboutUsTextDisplayed();
+//        getPageHeadlingTitle();
         assertThat(isAboutUsTextDisplayed).isTrue();
     }
+
+//    private void getPageHeadlingTitle() {
+//
+//    }
 
     @When("^he clicks on Best sellers button on footer$")
     public void heClicksOnBestSellersButtonOnFooter() {
@@ -167,7 +169,7 @@ public class FooterFeatures {
     }
 
     @Then("^he is navigated to terms and conditions of use page$")
-    public void heIsNavigatedToTermsAndConditionsOfUsePage(){
+    public void heIsNavigatedToTermsAndConditionsOfUsePage() {
         final boolean isTermsAndConditionsOfUseTextDisplayed = termsAndConditionsOfUsePage.isTermsAndConditionsOfUseTextDisplayed();
         assertThat(isTermsAndConditionsOfUseTextDisplayed).isTrue();
     }

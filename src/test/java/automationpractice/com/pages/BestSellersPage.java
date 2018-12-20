@@ -7,10 +7,10 @@ import org.openqa.selenium.support.FindBy;
 public class BestSellersPage extends PageObject {
 
     @FindBy(xpath = "//*[contains(@class,'navigation_page') and contains(text(), 'Best sellers')]")
-    private WebElementFacade BestSellersText;
+    private WebElementFacade bestSellersText;
 
     public boolean isBestSellersTextDisplayed() {
-        return BestSellersText.isVisible();
+        return bestSellersText.isVisible();
             }
 
 }
