@@ -1,6 +1,9 @@
-package automationpractice.com.features;
+package automationpractice.com.features.address;
 
-import automationpractice.com.pages.*;
+import automationpractice.com.pages.AddressPage;
+import automationpractice.com.pages.HomePage;
+import automationpractice.com.pages.MyAccountPage;
+import automationpractice.com.pages.NewAddressPage;
 import automationpractice.com.steps.LoginSteps;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -8,17 +11,12 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
 
-import java.util.List;
-
 import static automationpractice.com.data.NewAddressInformation.NEW_ADDRESS_INFORMATION;
-import static automationpractice.com.data.NewAddressInformation.NEW_ADDRESS_INFORMATION_1;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class AddressFeatures {
 
     private HomePage homePage;
-    private HeaderBox headerBox;
-    private LoginPage loginPage;
     private MyAccountPage myAccountPage;
     private NewAddressPage newAddressPage;
     private AddressPage addressPage;
@@ -31,7 +29,6 @@ public class AddressFeatures {
         loginSteps.login();
         myAccountPage.clickMyAddresses();
     }
-
 
     @When("^he opens new address page and adds new address with proper data$")
     public void heOpensNewAddressPageAndAddsNewAddressWithProperData() {
@@ -62,17 +59,6 @@ public class AddressFeatures {
         assertThat(addressPage.getAddressNameList()).doesNotContain(NEW_ADDRESS_INFORMATION.getNewAddressName().toUpperCase());
     }
 
-
-    @Then("^new created address is deleted after test$")
-    public void newCreatedAddressIsDeletedAfterTest() {
-
-        headerBox.clickOnLoggedUser();
-        myAccountPage.clickMyAddresses();
-        addressPage.clickDeleteButton(NEW_ADDRESS_INFORMATION_1.getNewAddressName());
-        addressPage.acceptAlert();
-        assertThat(addressPage.getAddressNameList()).doesNotContain(NEW_ADDRESS_INFORMATION_1.getNewAddressName());
-    }
-
     @When("^he tries to add new address with empty fields$")
     public void heTriesToAddNewAddressWithEmptyFields() {
         addressPage.clickAddNewAddressButton();
@@ -84,4 +70,5 @@ public class AddressFeatures {
         final boolean isErrorMessageForCreateNewAddressDisplayed = newAddressPage.isErrorMessageForNewAddressVisible();
         assertThat(isErrorMessageForCreateNewAddressDisplayed).isTrue();
     }
+
 }

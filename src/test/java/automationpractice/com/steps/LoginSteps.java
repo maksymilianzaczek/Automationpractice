@@ -5,7 +5,6 @@ import automationpractice.com.pages.HomePage;
 import automationpractice.com.pages.LoginPage;
 import net.thucydides.core.annotations.Step;
 
-import java.nio.channels.DatagramChannel;
 
 import static automationpractice.com.data.Users.MACIEJ_BOCZKOWSKI;
 import static automationpractice.com.data.Users.MACIEJ_STAFIJOWSKI;
