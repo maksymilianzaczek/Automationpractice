@@ -4,6 +4,10 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class SummaryCheckoutPage extends PageObject {
 
     @FindBy(className = "standard-checkout")
@@ -29,8 +33,18 @@ public class SummaryCheckoutPage extends PageObject {
         return quantityOfItemsInSummaryCheckoutPage.getValue();
     }
 
-    public boolean isSizeL() {
-        return colorAndSizeFirstProductOnSummaryCheckoutPage.getText().contains("Size : L");
+//    public boolean isSizeL() {
+//        return colorAndSizeFirstProductOnSummaryCheckoutPage.getText().contains("Size : L");
+//    }
+
+//    public boolean getGivenSize(String sizeWrittenInLargeLetters){
+//        return colorAndSizeFirstProductOnSummaryCheckoutPage.getText().contains("Size : "+sizeWrittenInLargeLetters);
+//    }
+
+    public String getGivenSize(){
+        String[] givenSize = colorAndSizeFirstProductOnSummaryCheckoutPage.getText().split("Color\\s:\\s.*\\sSize\\s:\\s");
+        System.out.println("Size: " + givenSize[1]);
+          return givenSize[1];
     }
 
     public boolean isSizeM() {

@@ -56,6 +56,8 @@ public class CheckoutFeatures {
     }
 
 
+
+
     @When("^user click proceed to checkout in summary address and shipping tab$")
     public void userClickProceedToCheckoutInSummaryAddressAndShippingTab() {
         summaryCheckoutPage.clickOnProceedToCheckoutButtonInSummaryLabel();

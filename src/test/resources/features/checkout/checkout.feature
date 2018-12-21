@@ -1,9 +1,9 @@
 Feature: Checkout
 
-#  Scenario: User is able to change quantity of items in summary checkout page
-#  Given user add first item into cart
-#  When user change quantity on summary checkout page
-#  Then summary checkout page has a given number of items in summary checkout page
+  Scenario: User is able to change quantity of items in summary checkout page
+  Given user add first item into cart
+  When user change quantity on summary checkout page
+  Then summary checkout page has a given number of items in summary checkout page
 #
 #  Scenario: user not mark checkbox terms of services in shipping checkout page
 #    Given user add first item into cart

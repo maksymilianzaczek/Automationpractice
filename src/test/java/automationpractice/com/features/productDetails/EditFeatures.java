@@ -28,15 +28,15 @@ public class EditFeatures {
         homePage.clickOnNewProductImage();
     }
 
-    @When("^user change quantity on product details page$")
-    public int userChangeQuantityOnProductDetailsPage() {
-        return productDetailsPage.clickPlusAndMinusButtonGivenNumberOfTimesOnDetailsPage(2,1);
-    }
-
     @When("^user add to cart item on product details page$")
     public void userAddToCartItemOnProductDetailsPage() {
         productDetailsPage.clickOnAddToCartButton();
         productDetailsPage.clickProceedToCheckoutButton();
+    }
+
+    @When("^user change quantity on product details page$")
+    public int userChangeQuantityOnProductDetailsPage() {
+        return productDetailsPage.clickPlusAndMinusButtonGivenNumberOfTimesOnDetailsPage(2,1);
     }
 
     @Then("^summary checkout page has a given number of items in product details page$")
@@ -44,15 +44,14 @@ public class EditFeatures {
         assertThat(summaryCheckoutPage.getFirstProductQuantityInSummaryCheckoutPage()).isEqualTo(String.valueOf(userChangeQuantityOnProductDetailsPage()));
     }
 
-    @When("^user change size to L size on product details page$")
-    public void userChangeSizeToLSizeOnProductDetailsPage() {
-        productDetailsPage.changeSizeToLSize();
+    @When("^user change size to given size on product details page$")
+    public String userChangeSizeToGivenSizeOnProductDetailsPage() {
+        return productDetailsPage.changeSizeToGivenSize("L");
     }
 
-    @Then("^summary checkout page has item in L size$")
-    public void summaryCheckoutPageHasItemInLSize() {
-        Assert.assertTrue(summaryCheckoutPage.isSizeL());
-//        getSize();
+    @Then("^summary checkout page has item in given size$")
+    public void summaryCheckoutPageHasItemInGivenSize() {
+        assertThat(summaryCheckoutPage.getGivenSize()).isEqualTo(productDetailsPage.getCurrentSizeSetUpInProductDetailsPage());
     }
 
     @When("^user change size to M size on product details page$")

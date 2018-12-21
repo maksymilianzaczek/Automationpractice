@@ -18,6 +18,9 @@ public class ProductDetailsPage extends PageObject {
     @FindBy(className = "icon-minus")
     private WebElementFacade clickMinusQuantityButtonOnProductDetailsPage;
 
+    @FindBy(xpath = "//*[@id='group_1']//option[1]")
+    private WebElementFacade selectSSize;
+
     @FindBy(xpath = "//*[@id='group_1']//option[2]")
     private WebElementFacade selectMSize;
 
@@ -38,7 +41,9 @@ public class ProductDetailsPage extends PageObject {
 
     @FindBy(className = "btn-pinterest")
     private WebElementFacade clickOnPinteresButton;
-    
+
+    private String currentSize;
+
     public void clickOnAddToCartButton() {
         clickOnAddToCartButton.click();
     }
@@ -68,11 +73,28 @@ public class ProductDetailsPage extends PageObject {
         return quantityOfItems;
     }
 
-    public void changeSizeToLSize() {
-        selectLSize.click();
+    public String getCurrentSizeSetUpInProductDetailsPage() {
+        return currentSize;
     }
+
+    public String changeSizeToGivenSize(String sizeWrittenInLargeLetters) {
+        currentSize = sizeWrittenInLargeLetters;
+        if (sizeWrittenInLargeLetters.equals("S")){
+            selectSSize.click();
+        }
+        if (sizeWrittenInLargeLetters.equals("M")){
+            selectMSize.click();
+        }
+        if (sizeWrittenInLargeLetters.equals("L")){
+            selectLSize.click();
+        }
+        else{
+            selectSSize.click(); //default
+        }
+        return currentSize;
+    }
+
     public void changeSizeToMSize() {
-        selectMSize.click();
     }
 
     public void changeColorToBlue() {
