@@ -4,6 +4,8 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class ProductDetailsPage extends PageObject {
 
     @FindBy(id = "add_to_cart")
@@ -30,6 +32,21 @@ public class ProductDetailsPage extends PageObject {
     @FindBy(id = "color_14")
     private WebElementFacade changeColorToBlue;
 
+    @FindBy(id = "color_13")
+    private WebElementFacade changeColorToOrange;
+
+    @FindBy(id = "color_8")
+    private WebElementFacade changeColorToWhite;
+
+    @FindBy(id = "color_11")
+    private WebElementFacade changeColorToBlack;
+
+    @FindBy(id = "color_15")
+    private WebElementFacade changeColorToGreen;
+
+    @FindBy(id = "color_16")
+    private WebElementFacade changeColorToYellow;
+
     @FindBy(className = "btn-twitter")
     private WebElementFacade clickOnTwitterButton;
 
@@ -43,6 +60,9 @@ public class ProductDetailsPage extends PageObject {
     private WebElementFacade clickOnPinteresButton;
 
     private String currentSize;
+    @FindBy(xpath = "//*[@id = 'color_to_pick_list']//a")
+    private List<WebElementFacade> listOfColors;
+    private String currentColor;
 
     public void clickOnAddToCartButton() {
         clickOnAddToCartButton.click();
@@ -60,7 +80,7 @@ public class ProductDetailsPage extends PageObject {
         clickMinusQuantityButtonOnProductDetailsPage.click();
     }
 
-    public int clickPlusAndMinusButtonGivenNumberOfTimesOnDetailsPage(int plus, int minus){
+    public int clickPlusAndMinusButtonGivenNumberOfTimesOnDetailsPage(int plus, int minus) {
         int quantityOfItems = 1;
         for (int i = 0; i <= plus; i++) {
             clickPlusQuantityButtonOnProductDetailsPage();
@@ -79,26 +99,58 @@ public class ProductDetailsPage extends PageObject {
 
     public String changeSizeToGivenSize(String sizeWrittenInLargeLetters) {
         currentSize = sizeWrittenInLargeLetters;
-        if (sizeWrittenInLargeLetters.equals("S")){
-            selectSSize.click();
+        switch (sizeWrittenInLargeLetters) {
+            case "S":
+                selectSSize.click();
+                break;
+            case "M":
+                selectMSize.click();
+                break;
+            case "L":
+                selectLSize.click();
+                break;
+            default:
+                selectSSize.click();
+                break;
         }
-        if (sizeWrittenInLargeLetters.equals("M")){
-            selectMSize.click();
-        }
-        if (sizeWrittenInLargeLetters.equals("L")){
-            selectLSize.click();
-        }
-        else{
-            selectSSize.click(); //default
-        }
-        return currentSize;
+        return sizeWrittenInLargeLetters;
     }
 
-    public void changeSizeToMSize() {
+    public String getCurrentColor() {
+        return currentColor;
     }
 
-    public void changeColorToBlue() {
-        changeColorToBlue.click();
+    public String changeColorToGivenColor(String colorStartedWithCapitalLetter) {
+        currentColor = colorStartedWithCapitalLetter;
+        Object[] listOfColors = this.listOfColors.toArray();
+
+        for (Object o : listOfColors) {
+            if (o.toString().contains(colorStartedWithCapitalLetter)) {
+
+                System.out.println("przed switch");
+                switch (colorStartedWithCapitalLetter) {
+                    case "Orange":
+                        changeColorToOrange.click();
+                        break;
+                    case "White":
+                        changeColorToWhite.click();
+                        break;
+                    case "Black":
+                        changeColorToBlack.click();
+                        break;
+                    case "Green":
+                        changeColorToGreen.click();
+                        break;
+                    case "Yellow":
+                        changeColorToYellow.click();
+                        break;
+                    case "Blue":
+                        changeColorToBlue.click();
+                        break;
+                }
+            }
+        }
+        return colorStartedWithCapitalLetter;
     }
 
     public void clickOnTwitterButton() {

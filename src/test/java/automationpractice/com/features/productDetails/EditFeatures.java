@@ -9,7 +9,6 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
-import org.junit.Assert;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -44,41 +43,36 @@ public class EditFeatures {
         assertThat(summaryCheckoutPage.getFirstProductQuantityInSummaryCheckoutPage()).isEqualTo(String.valueOf(userChangeQuantityOnProductDetailsPage()));
     }
 
-    @When("^user change size to given size on product details page$")
-    public String userChangeSizeToGivenSizeOnProductDetailsPage() {
+    @When("^user change size to S size on product details page$")
+    public String userChangeSizeToSSizeOnProductDetailsPage() {
+        return productDetailsPage.changeSizeToGivenSize("S");
+    }
+
+    @When("^user change size to M size on product details page$")
+    public String userChangeSizeToMSizeOnProductDetailsPage() {
+        return productDetailsPage.changeSizeToGivenSize("M");
+    }
+
+    @When("^user change size to L size on product details page$")
+    public String userChangeSizeToLSizeOnProductDetailsPage() {
         return productDetailsPage.changeSizeToGivenSize("L");
     }
 
     @Then("^summary checkout page has item in given size$")
     public void summaryCheckoutPageHasItemInGivenSize() {
-        assertThat(summaryCheckoutPage.getGivenSize()).isEqualTo(productDetailsPage.getCurrentSizeSetUpInProductDetailsPage());
+        assertThat(summaryCheckoutPage.getGivenSizeInSummaryCheckoutPage()).isEqualTo(productDetailsPage.getCurrentSizeSetUpInProductDetailsPage());
     }
 
-    @When("^user change size to M size on product details page$")
-    public void userChangeSizeToMSizeOnProductDetailsPage() {
-        productDetailsPage.changeSizeToMSize();
-    }
-
-    @Then("^summary checkout page has item in M size$")
-    public void summaryCheckoutPageHasItemInMSize() {
-        Assert.assertTrue(summaryCheckoutPage.isSizeM());
-//        getSize();
-    }
-
-
-
-    @When("^user change color on product details page$")
-    public void userChangeColorOnProductDetailsPage() {
-        productDetailsPage.changeColorToBlue();
-        //changeColor("blue");
+    @When("^user change color to blue on product details page$")
+    public String userChangeColorToBlueOnProductDetailsPage() {
+        return productDetailsPage.changeColorToGivenColor("Blue");
     }
 
     @Then("^summary checkout page has item in different color$")
     public void summaryCheckoutPageHasItemInDifferentColor() {
-        Assert.assertTrue(summaryCheckoutPage.isBlueColor());
-//        getColor();
+        System.out.println(summaryCheckoutPage.getGivenColorInSummaryCheckoutPage());;
+        System.out.println(productDetailsPage.getCurrentColor());
+        assertThat(summaryCheckoutPage.getGivenColorInSummaryCheckoutPage()).isEqualTo(productDetailsPage.getCurrentColor());
     }
-
-
-
+    
 }

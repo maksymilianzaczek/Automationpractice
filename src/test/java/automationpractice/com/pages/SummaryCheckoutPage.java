@@ -4,10 +4,6 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.Arrays;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class SummaryCheckoutPage extends PageObject {
 
     @FindBy(className = "standard-checkout")
@@ -33,26 +29,17 @@ public class SummaryCheckoutPage extends PageObject {
         return quantityOfItemsInSummaryCheckoutPage.getValue();
     }
 
-//    public boolean isSizeL() {
-//        return colorAndSizeFirstProductOnSummaryCheckoutPage.getText().contains("Size : L");
-//    }
-
-//    public boolean getGivenSize(String sizeWrittenInLargeLetters){
-//        return colorAndSizeFirstProductOnSummaryCheckoutPage.getText().contains("Size : "+sizeWrittenInLargeLetters);
-//    }
-
-    public String getGivenSize(){
+    public String getGivenSizeInSummaryCheckoutPage(){
         String[] givenSize = colorAndSizeFirstProductOnSummaryCheckoutPage.getText().split("Color\\s:\\s.*\\sSize\\s:\\s");
-        System.out.println("Size: " + givenSize[1]);
+        System.out.println(givenSize[1]);
           return givenSize[1];
     }
 
-    public boolean isSizeM() {
-        return colorAndSizeFirstProductOnSummaryCheckoutPage.getText().contains("Size : M");
-    }
 
-    public boolean isBlueColor() {
-        return colorAndSizeFirstProductOnSummaryCheckoutPage.getText().contains("Color : Blue");
+    public String getGivenColorInSummaryCheckoutPage() {
+        String[] split1 = colorAndSizeFirstProductOnSummaryCheckoutPage.getText().split("Color\\s:\\s");
+        String[] color = split1[1].split(",\\sSize\\s:\\s");
+        return color[0];
     }
 
     public void clickPlusQuantityButtonOnSummaryLabel() {
