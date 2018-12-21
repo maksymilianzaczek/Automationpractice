@@ -41,13 +41,26 @@ public class SummaryCheckoutPage extends PageObject {
         return colorAndSizeFirstProductOnSummaryCheckoutPage.getText().contains("Color : Blue");
     }
 
-    public void clickPlusQuantityButtonInSummaryLabel() {
+    public void clickPlusQuantityButtonOnSummaryLabel() {
         clickPlusQuantityButtonInSummaryLabel.click();
         waitABit(2000);
     }
 
-    public void clickMinusQuantityButtonInSummaryLabel() {
+    public void clickMinusQuantityButtonOnSummaryLabel() {
         clickMinusQuantityButtonInSummaryLabel.click();
         waitABit(2000);
+    }
+
+    public int clickPlusAndMinusButtonGivenNumberOfTimesOnSummaryCheckoutPage(int plus, int minus){
+        int quantityOfItems = 1;
+        for (int i = 0; i <= plus; i++) {
+            clickPlusQuantityButtonOnSummaryLabel();
+            quantityOfItems++;
+        }
+        for (int i = 0; i <= minus; i++) {
+            clickMinusQuantityButtonOnSummaryLabel();
+            quantityOfItems--;
+        }
+        return quantityOfItems;
     }
 }

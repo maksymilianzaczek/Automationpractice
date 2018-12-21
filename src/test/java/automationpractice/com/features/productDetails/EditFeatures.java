@@ -18,7 +18,6 @@ public class EditFeatures {
     private HomePage homePage;
     private ProductDetailsPage productDetailsPage;
     private MyAccountPage myAccountPage;
-
     private SummaryCheckoutPage summaryCheckoutPage;
     @Steps
     private LoginSteps loginSteps;
@@ -31,16 +30,7 @@ public class EditFeatures {
 
     @When("^user change quantity on product details page$")
     public int userChangeQuantityOnProductDetailsPage() {
-        int quantityOfItems = 1;
-        productDetailsPage.clickPlusQuantityButton();
-        quantityOfItems++;
-        productDetailsPage.clickPlusQuantityButton();
-        quantityOfItems++;
-        productDetailsPage.clickMinusQuantityButton();
-        quantityOfItems--;
-        return quantityOfItems;
-
-        // Zrobić ładnie
+        return productDetailsPage.clickPlusAndMinusButtonGivenNumberOfTimesOnDetailsPage(2,1);
     }
 
     @When("^user add to cart item on product details page$")

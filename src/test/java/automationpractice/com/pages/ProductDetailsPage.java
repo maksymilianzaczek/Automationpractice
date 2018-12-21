@@ -13,10 +13,10 @@ public class ProductDetailsPage extends PageObject {
     private WebElementFacade clickProceedToCheckoutButton;
 
     @FindBy(className = "icon-plus")
-    private WebElementFacade clickPlusQuantityButton;
+    private WebElementFacade clickPlusQuantityButtonOnProductDetailsPage;
 
     @FindBy(className = "icon-minus")
-    private WebElementFacade clickMinusQuantityButton;
+    private WebElementFacade clickMinusQuantityButtonOnProductDetailsPage;
 
     @FindBy(xpath = "//*[@id='group_1']//option[2]")
     private WebElementFacade selectMSize;
@@ -38,7 +38,7 @@ public class ProductDetailsPage extends PageObject {
 
     @FindBy(className = "btn-pinterest")
     private WebElementFacade clickOnPinteresButton;
-
+    
     public void clickOnAddToCartButton() {
         clickOnAddToCartButton.click();
     }
@@ -47,12 +47,25 @@ public class ProductDetailsPage extends PageObject {
         clickProceedToCheckoutButton.click();
     }
 
-    public void clickPlusQuantityButton() {
-        clickPlusQuantityButton.click();
+    public void clickPlusQuantityButtonOnProductDetailsPage() {
+        clickPlusQuantityButtonOnProductDetailsPage.click();
     }
 
-    public void clickMinusQuantityButton() {
-        clickMinusQuantityButton.click();
+    public void clickMinusQuantityButtonOnProductDetailsPage() {
+        clickMinusQuantityButtonOnProductDetailsPage.click();
+    }
+
+    public int clickPlusAndMinusButtonGivenNumberOfTimesOnDetailsPage(int plus, int minus){
+        int quantityOfItems = 1;
+        for (int i = 0; i <= plus; i++) {
+            clickPlusQuantityButtonOnProductDetailsPage();
+            quantityOfItems++;
+        }
+        for (int i = 0; i <= minus; i++) {
+            clickMinusQuantityButtonOnProductDetailsPage();
+            quantityOfItems--;
+        }
+        return quantityOfItems;
     }
 
     public void changeSizeToLSize() {

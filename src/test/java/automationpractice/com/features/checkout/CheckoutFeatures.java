@@ -47,49 +47,7 @@ public class CheckoutFeatures {
 
     @When("^user change quantity on summary checkout page$")
     public int userChangeQuantityOnSummaryCheckoutPage() {
-        int quantityOfItems = 1;
-
-        summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
-        quantityOfItems++;
-        summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
-        quantityOfItems++;
-
-        summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
-        quantityOfItems++;
-
-        summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
-        quantityOfItems++;
-
-        summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
-        quantityOfItems++;
-
-        summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
-        quantityOfItems++;
-
-        summaryCheckoutPage.clickMinusQuantityButtonInSummaryLabel();
-        quantityOfItems--;
-
-        summaryCheckoutPage.clickMinusQuantityButtonInSummaryLabel();
-        quantityOfItems--;
-        summaryCheckoutPage.clickMinusQuantityButtonInSummaryLabel();
-        quantityOfItems--;
-
-        summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
-        quantityOfItems++;
-
-        summaryCheckoutPage.clickMinusQuantityButtonInSummaryLabel();
-        quantityOfItems--;
-
-        summaryCheckoutPage.clickPlusQuantityButtonInSummaryLabel();
-        quantityOfItems++;
-
-        summaryCheckoutPage.clickMinusQuantityButtonInSummaryLabel();
-        quantityOfItems--;
-        summaryCheckoutPage.clickMinusQuantityButtonInSummaryLabel();
-        quantityOfItems--;
-//        Too much.
-        //do skrócenia
-        return quantityOfItems;
+        return summaryCheckoutPage.clickPlusAndMinusButtonGivenNumberOfTimesOnSummaryCheckoutPage(8,5);
     }
 
     @Then("^summary checkout page has a given number of items in summary checkout page$")
