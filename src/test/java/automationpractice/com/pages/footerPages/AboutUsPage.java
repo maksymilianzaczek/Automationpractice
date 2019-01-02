@@ -1,4 +1,4 @@
-package automationpractice.com.pages;
+package automationpractice.com.pages.footerPages;
 
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;

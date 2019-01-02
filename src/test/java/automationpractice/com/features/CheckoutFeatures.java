@@ -1,6 +1,7 @@
 package automationpractice.com.features;
 
 import automationpractice.com.pages.*;
+import automationpractice.com.pages.footerPages.MyAccountPage;
 import automationpractice.com.steps.LoginSteps;
 import cucumber.api.java.en.Given;
 
