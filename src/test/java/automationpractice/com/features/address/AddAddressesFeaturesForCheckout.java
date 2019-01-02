@@ -33,7 +33,7 @@ public class AddAddressesFeaturesForCheckout {
         myAccountPage.clickMyAddresses();
         addressPage.removeAddressFromAddressPage(NEW_ADDRESS_INFORMATION_1.getNewAddressName());
         headerBox.clickMyStore();
-        homePage.clickOnNewProductImage();
+        homePage.clickOnFirstProductImage();
         productDetailsPage.clickOnAddToCartButton();
         productDetailsPage.clickProceedToCheckoutButton();
         summaryCheckoutPage.clickOnProceedToCheckoutButtonInSummaryLabel();

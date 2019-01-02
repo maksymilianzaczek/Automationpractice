@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class ShippingCheckoutPage extends PageObject {
 
-
     @FindBy(className = "standard-checkout")
     private WebElementFacade clickOnProceedToCheckoutButtonInShippingLabel;
 

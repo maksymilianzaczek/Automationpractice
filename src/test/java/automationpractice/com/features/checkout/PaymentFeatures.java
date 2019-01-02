@@ -24,7 +24,7 @@ public class PaymentFeatures {
     public void userIsInPaymentCheckoutPage() {
         homePage.open();
         loginSteps.loginAndMoveIntoMyStorePage();
-        homePage.clickOnNewProductImage();
+        homePage.clickOnFirstProductImage();
         productDetailsPage.clickOnAddToCartButton();
         productDetailsPage.clickProceedToCheckoutButton();
         summaryCheckoutPage.clickOnProceedToCheckoutButtonInSummaryLabel();

@@ -4,22 +4,21 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.support.FindBy;
 
-public class HomePage extends PageObject
-{
+import java.util.List;
+
+public class HomePage extends PageObject {
 
     @FindBy(id = "create_account_error")
     private WebElementFacade homePageError;
 
-   //You can't put in xpath test data like product title
-   @FindBy(xpath = "//*[contains(@class,'replace-2x img-responsive') and contains(@title,'Faded Short Sleeve T-shirts')]")
-   private WebElementFacade clickOnNewProductImage;
+    @FindBy(xpath = "//*[@class='product_list grid row homefeatured tab-pane active']//*[@class='product-container']")
+    private List<WebElementFacade> listOfItemsOnHomePage;
 
     public boolean isValidationMessageDisplayed() {
         return homePageError.isVisible();
     }
 
-    public void clickOnNewProductImage() {
-        clickOnNewProductImage.click();
+    public void clickOnFirstProductImage() {
+        listOfItemsOnHomePage.get(0).click();
     }
-
 }

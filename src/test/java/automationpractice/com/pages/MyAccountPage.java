@@ -19,5 +19,4 @@ public class MyAccountPage extends PageObject {
         myStore.click();
     }
 
-
 }

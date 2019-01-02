@@ -24,7 +24,7 @@ public class EditFeatures {
     @Given("^logged in customer is on product details page$")
     public void loggedInCustomerIsOnProductDetailsPage() {
         loginSteps.loginAndMoveIntoMyStorePage();
-        homePage.clickOnNewProductImage();
+        homePage.clickOnFirstProductImage();
     }
 
     @When("^user add to cart item on product details page$")
@@ -35,27 +35,27 @@ public class EditFeatures {
 
     @When("^user change quantity on product details page$")
     public int userChangeQuantityOnProductDetailsPage() {
-        return productDetailsPage.clickPlusAndMinusButtonGivenNumberOfTimesOnDetailsPage(2,1);
+        return productDetailsPage.clickPlusAndMinusButtonGivenNumberOfTimesOnProductDetailsPage(2,1);
     }
 
     @Then("^summary checkout page has a given number of items in product details page$")
     public void summaryCheckoutPageHasAGivenNumberOfItemsInProductDetailsPage() {
-        assertThat(summaryCheckoutPage.getFirstProductQuantityInSummaryCheckoutPage()).isEqualTo(String.valueOf(userChangeQuantityOnProductDetailsPage()));
+        assertThat(summaryCheckoutPage.getFirstProductQuantityInSummaryCheckoutPage()).isEqualTo(productDetailsPage.getCurrentQuantitySetUpInProductDetailsPage());
     }
 
     @When("^user change size to S size on product details page$")
     public String userChangeSizeToSSizeOnProductDetailsPage() {
-        return productDetailsPage.changeSizeToGivenSize("S");
+        return productDetailsPage.changeSizeToGivenSizeInProductDetailsPage("S");
     }
 
     @When("^user change size to M size on product details page$")
     public String userChangeSizeToMSizeOnProductDetailsPage() {
-        return productDetailsPage.changeSizeToGivenSize("M");
+        return productDetailsPage.changeSizeToGivenSizeInProductDetailsPage("M");
     }
 
     @When("^user change size to L size on product details page$")
     public String userChangeSizeToLSizeOnProductDetailsPage() {
-        return productDetailsPage.changeSizeToGivenSize("L");
+        return productDetailsPage.changeSizeToGivenSizeInProductDetailsPage("L");
     }
 
     @Then("^summary checkout page has item in given size$")
@@ -65,14 +65,12 @@ public class EditFeatures {
 
     @When("^user change color to blue on product details page$")
     public String userChangeColorToBlueOnProductDetailsPage() {
-        return productDetailsPage.changeColorToGivenColor("Blue");
+        return productDetailsPage.changeColorToGivenColorInProductDetailsPage("Blue");
     }
 
-    @Then("^summary checkout page has item in different color$")
-    public void summaryCheckoutPageHasItemInDifferentColor() {
-        System.out.println(summaryCheckoutPage.getGivenColorInSummaryCheckoutPage());;
-        System.out.println(productDetailsPage.getCurrentColor());
-        assertThat(summaryCheckoutPage.getGivenColorInSummaryCheckoutPage()).isEqualTo(productDetailsPage.getCurrentColor());
+    @Then("^summary checkout page has item in given color$")
+    public void summaryCheckoutPageHasItemInGivenColor() {
+        assertThat(summaryCheckoutPage.getGivenColorInSummaryCheckoutPage()).isEqualTo(productDetailsPage.getCurrentColorSetUpInProductDetailsPage());
     }
-    
+
 }

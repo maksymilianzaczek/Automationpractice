@@ -6,11 +6,8 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
-import org.junit.Assert;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
-//try to use assertj, not junit
 
 public class CheckoutFeatures {
 
@@ -30,33 +27,23 @@ public class CheckoutFeatures {
         loginSteps.loginAndMoveIntoMyStorePage();
     }
 
-
     @Given("^user add first item into cart$")
     public void userAddFirstItemIntoCart() {
         loginSteps.loginAndMoveIntoMyStorePage();
-//        that 3 lines are in previous step. You could create private method for that here, or you can create it in loginSteps
-
-        homePage.clickOnNewProductImage();
-/*      It will be better if you take list of products here, and after that you click first:
-        productTitle = homePage.getProductsTitles().get(0);
-        homePage.clickOnProduct(productTitle);        */
+        homePage.clickOnFirstProductImage();
         productDetailsPage.clickOnAddToCartButton();
         productDetailsPage.clickProceedToCheckoutButton();
-//        That shouldn't be on productPage. Create CartBox or something like that
     }
 
     @When("^user change quantity on summary checkout page$")
     public int userChangeQuantityOnSummaryCheckoutPage() {
-        return summaryCheckoutPage.clickPlusAndMinusButtonGivenNumberOfTimesOnSummaryCheckoutPage(8,5);
+        return summaryCheckoutPage.clickPlusAndMinusButtonGivenNumberOfTimesOnSummaryCheckoutPage(4,3);
     }
 
     @Then("^summary checkout page has a given number of items in summary checkout page$")
     public void summaryCheckoutPageHasAGivenNumberOfItemsInSummaryCheckoutPage() {
-        assertThat(summaryCheckoutPage.getFirstProductQuantityInSummaryCheckoutPage()).isEqualTo(String.valueOf(userChangeQuantityOnSummaryCheckoutPage()));
+        assertThat(summaryCheckoutPage.getFirstProductQuantityInSummaryCheckoutPage()).isEqualTo(summaryCheckoutPage.getCurrentQuantitySetUpInSummaryCheckoutPage());
     }
-
-
-
 
     @When("^user click proceed to checkout in summary address and shipping tab$")
     public void userClickProceedToCheckoutInSummaryAddressAndShippingTab() {
@@ -67,12 +54,11 @@ public class CheckoutFeatures {
 
     @Then("^alert is displayed in shipping checkout page$")
     public void alertIsDisplayedInShippingCheckoutPage() {
-        Assert.assertTrue(shippingCheckoutPage.isAlertDisplayedInShippingCheckoutPage());
+        assertThat(shippingCheckoutPage.isAlertDisplayedInShippingCheckoutPage()).isTrue();
     }
 
-
-    @When("^user click agree checkbox and click proceed to checkout$")
-    public void userClickAgreeCheckboxAndClickProceedToCheckout() {
+    @When("^user exit alert click agree checkbox and click proceed to checkout$")
+    public void userExitAlertClickAgreeCheckboxAndClickProceedToCheckout() {
         shippingCheckoutPage.closeAlertInShippingLabel();
         shippingCheckoutPage.clickAgreeCheckbox();
         shippingCheckoutPage.clickOnProceedToCheckoutButtonInShippingLabel();
@@ -80,7 +66,7 @@ public class CheckoutFeatures {
 
     @Then("^user is in payment checkout tab$")
     public void userIsInPaymentCheckoutTab() {
-        Assert.assertTrue(paymentCheckoutPage.isUserIsInPaymentCheckoutTab());
+        assertThat(paymentCheckoutPage.isUserIsInPaymentCheckoutTab()).isTrue();
     }
 
     @When("^user click proceed to checkout in summary tab$")
@@ -106,7 +92,7 @@ public class CheckoutFeatures {
 
     @Then("^comment about address is displayed in last one orders$")
     public void commentAboutAddressIsDisplayedInLastOneOrders() {
-        Assert.assertTrue(orderHistoryAndDetailsPage.isCommentAboutAddressInLastOneOrdersVisible());
+        assertThat(orderHistoryAndDetailsPage.isCommentAboutAddressInLastOneOrdersVisible()).isTrue();
     }
 
 }

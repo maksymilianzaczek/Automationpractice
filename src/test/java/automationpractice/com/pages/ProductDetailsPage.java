@@ -4,6 +4,7 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDetailsPage extends PageObject {
@@ -59,10 +60,17 @@ public class ProductDetailsPage extends PageObject {
     @FindBy(className = "btn-pinterest")
     private WebElementFacade clickOnPinteresButton;
 
-    private String currentSize;
-    @FindBy(xpath = "//*[@id = 'color_to_pick_list']//a")
-    private List<WebElementFacade> listOfColors;
-    private String currentColor;
+    private int currentQuantityInProductDetailsPage;
+
+    private String currentSizeInProductDetailsPage;
+
+    @FindBy(xpath = "//*[@id = 'color_to_pick_list']//*[contains(@id,'color')]")
+    private List<WebElementFacade> listOfColorsAndSizes;
+
+    private String currentColorInProductDetailsPage;
+
+    public ProductDetailsPage() {
+    }
 
     public void clickOnAddToCartButton() {
         clickOnAddToCartButton.click();
@@ -72,33 +80,35 @@ public class ProductDetailsPage extends PageObject {
         clickProceedToCheckoutButton.click();
     }
 
-    public void clickPlusQuantityButtonOnProductDetailsPage() {
+    private void clickPlusQuantityButtonOnProductDetailsPage() {
         clickPlusQuantityButtonOnProductDetailsPage.click();
     }
 
-    public void clickMinusQuantityButtonOnProductDetailsPage() {
+    private void clickMinusQuantityButtonOnProductDetailsPage() {
         clickMinusQuantityButtonOnProductDetailsPage.click();
     }
 
-    public int clickPlusAndMinusButtonGivenNumberOfTimesOnDetailsPage(int plus, int minus) {
-        int quantityOfItems = 1;
-        for (int i = 0; i <= plus; i++) {
+    public int clickPlusAndMinusButtonGivenNumberOfTimesOnProductDetailsPage(int plus, int minus) {
+        currentQuantityInProductDetailsPage = 1;
+        for (int i = 0; i < plus; i++) {
+            waitABit(1000);
             clickPlusQuantityButtonOnProductDetailsPage();
-            quantityOfItems++;
+            currentQuantityInProductDetailsPage++;
         }
-        for (int i = 0; i <= minus; i++) {
+        for (int i = 0; i < minus; i++) {
+            waitABit(1000);
             clickMinusQuantityButtonOnProductDetailsPage();
-            quantityOfItems--;
+            currentQuantityInProductDetailsPage--;
         }
-        return quantityOfItems;
+        return currentQuantityInProductDetailsPage;
     }
 
-    public String getCurrentSizeSetUpInProductDetailsPage() {
-        return currentSize;
+    public int getCurrentQuantitySetUpInProductDetailsPage() {
+        return currentQuantityInProductDetailsPage;
     }
 
-    public String changeSizeToGivenSize(String sizeWrittenInLargeLetters) {
-        currentSize = sizeWrittenInLargeLetters;
+    public String changeSizeToGivenSizeInProductDetailsPage(String sizeWrittenInLargeLetters) {
+        currentSizeInProductDetailsPage = sizeWrittenInLargeLetters;
         switch (sizeWrittenInLargeLetters) {
             case "S":
                 selectSSize.click();
@@ -116,19 +126,29 @@ public class ProductDetailsPage extends PageObject {
         return sizeWrittenInLargeLetters;
     }
 
-    public String getCurrentColor() {
-        return currentColor;
+    public String getCurrentSizeSetUpInProductDetailsPage() {
+        return currentSizeInProductDetailsPage;
     }
 
-    public String changeColorToGivenColor(String colorStartedWithCapitalLetter) {
-        currentColor = colorStartedWithCapitalLetter;
-        Object[] listOfColors = this.listOfColors.toArray();
+    private ArrayList getAvailableColorsInProductDetailsPage() {
+        ArrayList<String> listOfColors = new ArrayList<>();
 
-        for (Object o : listOfColors) {
-            if (o.toString().contains(colorStartedWithCapitalLetter)) {
+        for (WebElementFacade row : listOfColorsAndSizes) {
+            String[] split = row.toString().split("<a id='color_(.*)' name='");
+            String[] color = split[1].split("'>(.*)");
+            listOfColors.add(color[0]);
+        }
+        return listOfColors;
+    }
 
-                System.out.println("przed switch");
+    public String changeColorToGivenColorInProductDetailsPage(String colorStartedWithCapitalLetter) {
+        currentColorInProductDetailsPage = colorStartedWithCapitalLetter;
+        ArrayList listOfAvailableColors = getAvailableColorsInProductDetailsPage();
+
+        for (Object listOfAvailableColor : listOfAvailableColors) {
+            if (listOfAvailableColor.toString().equals(colorStartedWithCapitalLetter)) {
                 switch (colorStartedWithCapitalLetter) {
+
                     case "Orange":
                         changeColorToOrange.click();
                         break;
@@ -150,7 +170,12 @@ public class ProductDetailsPage extends PageObject {
                 }
             }
         }
+        // TODO: 02.01.2019 default choose first available color
         return colorStartedWithCapitalLetter;
+    }
+
+    public String getCurrentColorSetUpInProductDetailsPage() {
+        return currentColorInProductDetailsPage;
     }
 
     public void clickOnTwitterButton() {

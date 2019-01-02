@@ -15,26 +15,31 @@ public class SummaryCheckoutPage extends PageObject {
     @FindBy(className = "cart_quantity_input")
     private WebElementFacade quantityOfItemsInSummaryCheckoutPage;
 
+    public int getCurrentQuantitySetUpInSummaryCheckoutPage() {
+        return currentQuantityInSummaryCheckoutPage;
+    }
+
     @FindBy(xpath = "//*[contains(@class,'button-plus')]//*[@class='icon-plus']")
     private WebElementFacade clickPlusQuantityButtonInSummaryLabel;
 
     @FindBy(xpath = "//*[contains(@class,'button-minus')]//*[@class='icon-minus']")
     private WebElementFacade clickMinusQuantityButtonInSummaryLabel;
 
+    private int currentQuantityInSummaryCheckoutPage;
+
     public void clickOnProceedToCheckoutButtonInSummaryLabel() {
         clickOnProceedToCheckoutButtonInSummaryLabel.click();
     }
 
-    public String getFirstProductQuantityInSummaryCheckoutPage(){
-        return quantityOfItemsInSummaryCheckoutPage.getValue();
+    public int getFirstProductQuantityInSummaryCheckoutPage() {
+        return Integer.parseInt(quantityOfItemsInSummaryCheckoutPage.getValue());
     }
 
-    public String getGivenSizeInSummaryCheckoutPage(){
+    public String getGivenSizeInSummaryCheckoutPage() {
         String[] givenSize = colorAndSizeFirstProductOnSummaryCheckoutPage.getText().split("Color\\s:\\s.*\\sSize\\s:\\s");
         System.out.println(givenSize[1]);
-          return givenSize[1];
+        return givenSize[1];
     }
-
 
     public String getGivenColorInSummaryCheckoutPage() {
         String[] split1 = colorAndSizeFirstProductOnSummaryCheckoutPage.getText().split("Color\\s:\\s");
@@ -42,26 +47,28 @@ public class SummaryCheckoutPage extends PageObject {
         return color[0];
     }
 
-    public void clickPlusQuantityButtonOnSummaryLabel() {
+    private void clickPlusQuantityButtonOnSummaryLabel() {
         clickPlusQuantityButtonInSummaryLabel.click();
-        waitABit(2000);
     }
 
-    public void clickMinusQuantityButtonOnSummaryLabel() {
+    private void clickMinusQuantityButtonOnSummaryLabel() {
         clickMinusQuantityButtonInSummaryLabel.click();
-        waitABit(2000);
     }
 
-    public int clickPlusAndMinusButtonGivenNumberOfTimesOnSummaryCheckoutPage(int plus, int minus){
-        int quantityOfItems = 1;
-        for (int i = 0; i <= plus; i++) {
+    public int clickPlusAndMinusButtonGivenNumberOfTimesOnSummaryCheckoutPage(int plus, int minus) {
+        currentQuantityInSummaryCheckoutPage = 1;
+        for (int i = 0; i < plus; i++) {
+            waitABit(1000);
             clickPlusQuantityButtonOnSummaryLabel();
-            quantityOfItems++;
+            currentQuantityInSummaryCheckoutPage++;
         }
-        for (int i = 0; i <= minus; i++) {
+        for (int i = 0; i < minus; i++) {
+            waitABit(1000);
             clickMinusQuantityButtonOnSummaryLabel();
-            quantityOfItems--;
+            currentQuantityInSummaryCheckoutPage--;
         }
-        return quantityOfItems;
+        waitABit(1000);
+        return currentQuantityInSummaryCheckoutPage;
     }
+
 }
