@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ProductDetailsPage extends PageObject {
 
@@ -231,7 +233,8 @@ public class ProductDetailsPage extends PageObject {
     }
 
     public boolean isTwitterDomainDisplayed() {
-        return getDriver().getCurrentUrl().contains("https://twitter.");
+        Pattern twitterPattern = Pattern.compile("(.*)twitter(.*)");
+        return twitterPattern.matcher(getDriver().getCurrentUrl()).matches();
     }
 
     public boolean isFacebookDomainDisplayed() {
