@@ -16,8 +16,6 @@ public class AddressFeatures {
 
     private String emptyField = " ";
     private HomePage homePage;
-    private HeaderBox headerBox;
-    private LoginPage loginPage;
     private MyAccountPage myAccountPage;
     private NewAddressPage newAddressPage;
     private AddressPage addressPage;

@@ -4,7 +4,7 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.support.FindBy;
 
-public class ProductDetailPage extends PageObject {
+public class ProductDetailsPage extends PageObject {
 
     @FindBy(id = "wishlist_button")
     private WebElementFacade addToWishlistButton;
