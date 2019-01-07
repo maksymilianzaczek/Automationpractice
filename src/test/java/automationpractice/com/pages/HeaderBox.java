@@ -13,7 +13,7 @@ public class HeaderBox extends PageObject {
     @FindBy(xpath = "//*[@class='header_user_info']//*[@class='account']/span")
     private WebElementFacade loggedUserButton;
     @FindBy(id = "header_logo")
-    private WebElementFacade myStore;
+    private WebElementFacade myStoreLogo;
 
     public void clickOnSignIn() {
         signInButton.click();
@@ -35,8 +35,8 @@ public class HeaderBox extends PageObject {
         loggedUserButton.click();
     }
 
-    public void clickMyStore() {
-        myStore.click();
+    public void clickMyStoreLogo() {
+        myStoreLogo.click();
     }
 }
 

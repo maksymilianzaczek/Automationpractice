@@ -17,11 +17,11 @@ public class AddAddressesFeaturesForCheckout {
     private AddressCheckoutPage addressCheckoutPage;
     private HomePage homePage;
     private MyAccountPage myAccountPage;
-    @Steps
-    private LoginSteps loginSteps;
     private ProductDetailsPage productDetailsPage;
     private AddressPage addressPage;
     private HeaderBox headerBox;
+    @Steps
+    private LoginSteps loginSteps;
     @Steps
     private AddressesDataSteps addressesDataSteps;
     private final SoftAssertions softAssertions = new SoftAssertions();
@@ -32,11 +32,11 @@ public class AddAddressesFeaturesForCheckout {
         loginSteps.login();
         myAccountPage.clickMyAddresses();
         addressPage.removeAddressFromAddressPage(NEW_ADDRESS_INFORMATION_1.getNewAddressName());
-        headerBox.clickMyStore();
+        headerBox.clickMyStoreLogo();
         homePage.clickOnFirstProductImage();
         productDetailsPage.clickOnAddToCartButton();
         productDetailsPage.clickProceedToCheckoutButton();
-        summaryCheckoutPage.clickOnProceedToCheckoutButtonInSummaryLabel();
+        summaryCheckoutPage.clickOnProceedToCheckoutButton();
     }
 
     @When("^user input new address$")

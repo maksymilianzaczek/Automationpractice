@@ -5,9 +5,7 @@ import automationpractice.com.pages.HomePage;
 import automationpractice.com.pages.LoginPage;
 import net.thucydides.core.annotations.Step;
 
-
 import static automationpractice.com.data.Users.MACIEJ_BOCZKOWSKI;
-import static automationpractice.com.data.Users.MACIEJ_STAFIJOWSKI;
 
 public class LoginSteps {
 
@@ -26,7 +24,7 @@ public class LoginSteps {
     private void loginAsAndMoveIntoMyStorePage(final String username, final String password) {
         homePage.open();
         loginAs(username,password);
-        headerBox.clickMyStore();
+        headerBox.clickMyStoreLogo();
 
     }
 
@@ -34,6 +32,7 @@ public class LoginSteps {
     public void login() {
         loginAs(MACIEJ_BOCZKOWSKI.getLogin(), MACIEJ_BOCZKOWSKI.getPassword());
     }
+
     @Step
     public void loginAndMoveIntoMyStorePage() {
         loginAsAndMoveIntoMyStorePage(MACIEJ_BOCZKOWSKI.getLogin(), MACIEJ_BOCZKOWSKI.getPassword());

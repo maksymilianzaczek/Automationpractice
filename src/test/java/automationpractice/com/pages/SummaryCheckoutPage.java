@@ -7,68 +7,68 @@ import org.openqa.selenium.support.FindBy;
 public class SummaryCheckoutPage extends PageObject {
 
     @FindBy(className = "standard-checkout")
-    private WebElementFacade clickOnProceedToCheckoutButtonInSummaryLabel;
+    private WebElementFacade proceedToCheckoutButton;
 
     @FindBy(xpath = "//*[contains(@class,'stock-management-on')]//*[contains(@class,'odd')]//*[@class='cart_description']/small[2]/a")
-    private WebElementFacade colorAndSizeFirstProductOnSummaryCheckoutPage;
+    private WebElementFacade colorAndSizeFirstProduct;
 
     @FindBy(className = "cart_quantity_input")
-    private WebElementFacade quantityOfItemsInSummaryCheckoutPage;
-
-    public int getCurrentQuantitySetUpInSummaryCheckoutPage() {
-        return currentQuantityInSummaryCheckoutPage;
-    }
+    private WebElementFacade quantityOfItems;
 
     @FindBy(xpath = "//*[contains(@class,'button-plus')]//*[@class='icon-plus']")
-    private WebElementFacade clickPlusQuantityButtonInSummaryLabel;
+    private WebElementFacade clickPlusQuantityButton;
 
     @FindBy(xpath = "//*[contains(@class,'button-minus')]//*[@class='icon-minus']")
-    private WebElementFacade clickMinusQuantityButtonInSummaryLabel;
+    private WebElementFacade clickMinusQuantityButton;
 
-    private int currentQuantityInSummaryCheckoutPage;
+    private int currentQuantity;
 
-    public void clickOnProceedToCheckoutButtonInSummaryLabel() {
-        clickOnProceedToCheckoutButtonInSummaryLabel.click();
+    public int getCurrentQuantity() {
+        return currentQuantity;
     }
 
-    public int getFirstProductQuantityInSummaryCheckoutPage() {
-        return Integer.parseInt(quantityOfItemsInSummaryCheckoutPage.getValue());
+    public void clickOnProceedToCheckoutButton() {
+        proceedToCheckoutButton.click();
     }
 
-    public String getGivenSizeInSummaryCheckoutPage() {
-        String[] givenSize = colorAndSizeFirstProductOnSummaryCheckoutPage.getText().split("Color\\s:\\s.*\\sSize\\s:\\s");
+    public int getFirstProductQuantity() {
+        return Integer.parseInt(quantityOfItems.getValue());
+    }
+
+    public String getGivenSize() {
+        String[] givenSize = colorAndSizeFirstProduct.getText().split("Color\\s:\\s.*\\sSize\\s:\\s");
         System.out.println(givenSize[1]);
         return givenSize[1];
     }
 
-    public String getGivenColorInSummaryCheckoutPage() {
-        String[] split1 = colorAndSizeFirstProductOnSummaryCheckoutPage.getText().split("Color\\s:\\s");
+    public String getGivenColor() {
+        String[] split1 = colorAndSizeFirstProduct.getText().split("Color\\s:\\s");
         String[] color = split1[1].split(",\\sSize\\s:\\s");
         return color[0];
     }
 
-    private void clickPlusQuantityButtonOnSummaryLabel() {
-        clickPlusQuantityButtonInSummaryLabel.click();
+    private void clickPlusQuantityButton() {
+        clickPlusQuantityButton.click();
     }
 
-    private void clickMinusQuantityButtonOnSummaryLabel() {
-        clickMinusQuantityButtonInSummaryLabel.click();
+    private void clickMinusQuantityButton() {
+        clickMinusQuantityButton.click();
     }
 
-    public int clickPlusAndMinusButtonGivenNumberOfTimesOnSummaryCheckoutPage(int plus, int minus) {
-        currentQuantityInSummaryCheckoutPage = 1;
+    public int clickPlusAndMinusButtonGivenNumberOfTimes(int plus, int minus) {
+        currentQuantity = 1;
         for (int i = 0; i < plus; i++) {
             waitABit(1000);
-            clickPlusQuantityButtonOnSummaryLabel();
-            currentQuantityInSummaryCheckoutPage++;
+            clickPlusQuantityButton();
+            currentQuantity++;
         }
         for (int i = 0; i < minus; i++) {
             waitABit(1000);
-            clickMinusQuantityButtonOnSummaryLabel();
-            currentQuantityInSummaryCheckoutPage--;
+            clickMinusQuantityButton();
+            currentQuantity--;
         }
         waitABit(1000);
-        return currentQuantityInSummaryCheckoutPage;
+        return currentQuantity;
     }
 
 }

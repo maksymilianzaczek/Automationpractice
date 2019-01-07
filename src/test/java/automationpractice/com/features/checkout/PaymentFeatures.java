@@ -27,10 +27,10 @@ public class PaymentFeatures {
         homePage.clickOnFirstProductImage();
         productDetailsPage.clickOnAddToCartButton();
         productDetailsPage.clickProceedToCheckoutButton();
-        summaryCheckoutPage.clickOnProceedToCheckoutButtonInSummaryLabel();
+        summaryCheckoutPage.clickOnProceedToCheckoutButton();
         addressCheckoutPage.clickOnProceedToCheckoutButtonInAddressLabel();
         shippingCheckoutPage.clickAgreeCheckbox();
-        shippingCheckoutPage.clickOnProceedToCheckoutButtonInShippingLabel();
+        shippingCheckoutPage.clickOnProceedToCheckoutButton();
     }
 
     @When("^user pay by bank wire$")
@@ -40,7 +40,7 @@ public class PaymentFeatures {
 
     @Then("^payment by bank wire is made$")
     public void paymentByBankWireIsMade() {
-        assertThat(paymentCheckoutPage.isSelectedPayByBankWire()).isTrue();
+        assertThat(paymentCheckoutPage.isSelectedPayByBankWireMethod()).isTrue();
     }
 
     @When("^user pay by check$")
@@ -50,7 +50,7 @@ public class PaymentFeatures {
 
     @Then("^payment by check is made$")
     public void paymentByCheckIsMade() {
-        assertThat(paymentCheckoutPage.isSelectedPayByCheck()).isTrue();
+        assertThat(paymentCheckoutPage.isSelectedPayByCheckMethod()).isTrue();
     }
 
     @When("^user return to the payment selection$")

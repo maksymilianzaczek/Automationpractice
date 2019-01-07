@@ -1,7 +1,6 @@
 package automationpractice.com.features;
 
 import automationpractice.com.pages.ProductDetailsPage;
-import automationpractice.com.pages.HomePage;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -9,7 +8,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class SocialMediaFeatures {
 
-    private HomePage homePage;
     private ProductDetailsPage productDetailsPage;
 
     @When("^user chose twitter$")

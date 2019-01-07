@@ -6,22 +6,21 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ProductDetailsPage extends PageObject {
 
     @FindBy(id = "add_to_cart")
-    private WebElementFacade clickOnAddToCartButton;
+    private WebElementFacade addToCartButton;
 
     @FindBy(xpath = "//*[contains(@class,'button-medium')]//*[contains(@class,'icon-chevron-right')]")
-    private WebElementFacade clickProceedToCheckoutButton;
+    private WebElementFacade proceedToCheckoutButton;
 
     @FindBy(className = "icon-plus")
-    private WebElementFacade clickPlusQuantityButtonOnProductDetailsPage;
+    private WebElementFacade plusQuantityButton;
 
     @FindBy(className = "icon-minus")
-    private WebElementFacade clickMinusQuantityButtonOnProductDetailsPage;
+    private WebElementFacade minusQuantityButton;
 
     @FindBy(xpath = "//*[@id='group_1']//option[1]")
     private WebElementFacade selectSSize;
@@ -51,66 +50,66 @@ public class ProductDetailsPage extends PageObject {
     private WebElementFacade changeColorToYellow;
 
     @FindBy(className = "btn-twitter")
-    private WebElementFacade clickOnTwitterButton;
+    private WebElementFacade twitterButton;
 
     @FindBy(className = "btn-facebook")
-    private WebElementFacade clickOnFacebookButton;
+    private WebElementFacade facebookButton;
 
     @FindBy(className = "btn-google-plus")
-    private WebElementFacade clickOnGooglePlusButton;
+    private WebElementFacade googlePlusButton;
 
     @FindBy(className = "btn-pinterest")
-    private WebElementFacade clickOnPinteresButton;
+    private WebElementFacade pinteresButton;
 
-    private int currentQuantityInProductDetailsPage;
+    private int currentQuantity;
 
-    private String currentSizeInProductDetailsPage;
+    private String currentSize;
 
     @FindBy(xpath = "//*[@id = 'color_to_pick_list']//*[contains(@id,'color')]")
     private List<WebElementFacade> listOfColorsAndSizes;
 
-    private String currentColorInProductDetailsPage;
+    private String currentColor;
 
     public ProductDetailsPage() {
     }
 
     public void clickOnAddToCartButton() {
-        clickOnAddToCartButton.click();
+        addToCartButton.click();
     }
 
     public void clickProceedToCheckoutButton() {
-        clickProceedToCheckoutButton.click();
+        proceedToCheckoutButton.click();
     }
 
-    private void clickPlusQuantityButtonOnProductDetailsPage() {
-        clickPlusQuantityButtonOnProductDetailsPage.click();
+    private void clickPlusQuantityButton() {
+        plusQuantityButton.click();
     }
 
-    private void clickMinusQuantityButtonOnProductDetailsPage() {
-        clickMinusQuantityButtonOnProductDetailsPage.click();
+    private void clickMinusQuantityButton() {
+        minusQuantityButton.click();
     }
 
-    public int clickPlusAndMinusButtonGivenNumberOfTimesOnProductDetailsPage(int plus, int minus) {
-        currentQuantityInProductDetailsPage = 1;
+    public int clickPlusAndMinusButtonGivenNumberOfTimes(int plus, int minus) {
+        currentQuantity = 1;
         for (int i = 0; i < plus; i++) {
             waitABit(1000);
-            clickPlusQuantityButtonOnProductDetailsPage();
-            currentQuantityInProductDetailsPage++;
+            clickPlusQuantityButton();
+            currentQuantity++;
         }
         for (int i = 0; i < minus; i++) {
             waitABit(1000);
-            clickMinusQuantityButtonOnProductDetailsPage();
-            currentQuantityInProductDetailsPage--;
+            clickMinusQuantityButton();
+            currentQuantity--;
         }
-        return currentQuantityInProductDetailsPage;
+        return currentQuantity;
     }
 
-    public int getCurrentQuantitySetUpInProductDetailsPage() {
-        return currentQuantityInProductDetailsPage;
+    public int getCurrentQuantity() {
+        return currentQuantity;
     }
 
-    public String changeSizeToGivenSizeInProductDetailsPage(String sizeWrittenInLargeLetters) {
-        currentSizeInProductDetailsPage = sizeWrittenInLargeLetters;
+    public String changeSizeToGivenSize(String sizeWrittenInLargeLetters) {
+        currentSize = sizeWrittenInLargeLetters;
         switch (sizeWrittenInLargeLetters) {
             case "S":
                 selectSSize.click();
@@ -128,11 +127,11 @@ public class ProductDetailsPage extends PageObject {
         return sizeWrittenInLargeLetters;
     }
 
-    public String getCurrentSizeSetUpInProductDetailsPage() {
-        return currentSizeInProductDetailsPage;
+    public String getCurrentSize() {
+        return currentSize;
     }
 
-    private ArrayList getAvailableColorsInProductDetailsPage() {
+    private ArrayList getAvailableColors() {
         ArrayList<String> listOfColors = new ArrayList<>();
 
         for (WebElementFacade row : listOfColorsAndSizes) {
@@ -143,9 +142,9 @@ public class ProductDetailsPage extends PageObject {
         return listOfColors;
     }
 
-    public String changeColorToGivenColorInProductDetailsPage(String colorStartedWithCapitalLetter) {
-        currentColorInProductDetailsPage = colorStartedWithCapitalLetter;
-        ArrayList listOfAvailableColors = getAvailableColorsInProductDetailsPage();
+    public String changeColorToGivenColor(String colorStartedWithCapitalLetter) {
+        currentColor = colorStartedWithCapitalLetter;
+        ArrayList listOfAvailableColors = getAvailableColors();
 
         for (Object listOfAvailableColor : listOfAvailableColors) {
             if (listOfAvailableColor.toString().equals(colorStartedWithCapitalLetter)) {
@@ -176,24 +175,24 @@ public class ProductDetailsPage extends PageObject {
         return colorStartedWithCapitalLetter;
     }
 
-    public String getCurrentColorSetUpInProductDetailsPage() {
-        return currentColorInProductDetailsPage;
+    public String getCurrentColor() {
+        return currentColor;
     }
 
     public void clickOnTwitterButton() {
-        clickOnTwitterButton.click();
+        twitterButton.click();
     }
 
     public void clickOnFacebookButton() {
-        clickOnFacebookButton.click();
+        facebookButton.click();
     }
 
     public void clickOnGooglePlusButton() {
-        clickOnGooglePlusButton.click();
+        googlePlusButton.click();
     }
 
     public void clickOnPinterestButton() {
-        clickOnPinteresButton.click();
+        pinteresButton.click();
     }
 
     public void checkoutToTweeterWindow() {

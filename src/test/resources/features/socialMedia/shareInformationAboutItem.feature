@@ -6,7 +6,7 @@ Feature: Share information about item
 #  Scenario: User is able to share information about item with friends using twitter
 #    When user chose twitter
 #    Then new page in twitter domain is open
-
+#
 #  Scenario: User is able to share information about item with friends using facebook
 #    When user chose facebook
 #    Then new page in facebook domain is open

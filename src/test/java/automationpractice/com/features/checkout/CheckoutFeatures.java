@@ -37,31 +37,31 @@ public class CheckoutFeatures {
 
     @When("^user change quantity on summary checkout page$")
     public int userChangeQuantityOnSummaryCheckoutPage() {
-        return summaryCheckoutPage.clickPlusAndMinusButtonGivenNumberOfTimesOnSummaryCheckoutPage(4,3);
+        return summaryCheckoutPage.clickPlusAndMinusButtonGivenNumberOfTimes(4,3);
     }
 
     @Then("^summary checkout page has a given number of items in summary checkout page$")
     public void summaryCheckoutPageHasAGivenNumberOfItemsInSummaryCheckoutPage() {
-        assertThat(summaryCheckoutPage.getFirstProductQuantityInSummaryCheckoutPage()).isEqualTo(summaryCheckoutPage.getCurrentQuantitySetUpInSummaryCheckoutPage());
+        assertThat(summaryCheckoutPage.getFirstProductQuantity()).isEqualTo(summaryCheckoutPage.getCurrentQuantity());
     }
 
     @When("^user click proceed to checkout in summary address and shipping tab$")
     public void userClickProceedToCheckoutInSummaryAddressAndShippingTab() {
-        summaryCheckoutPage.clickOnProceedToCheckoutButtonInSummaryLabel();
+        summaryCheckoutPage.clickOnProceedToCheckoutButton();
         addressCheckoutPage.clickOnProceedToCheckoutButtonInAddressLabel();
-        shippingCheckoutPage.clickOnProceedToCheckoutButtonInShippingLabel();
+        shippingCheckoutPage.clickOnProceedToCheckoutButton();
     }
 
     @Then("^alert is displayed in shipping checkout page$")
     public void alertIsDisplayedInShippingCheckoutPage() {
-        assertThat(shippingCheckoutPage.isAlertDisplayedInShippingCheckoutPage()).isTrue();
+        assertThat(shippingCheckoutPage.isAlertDisplayed()).isTrue();
     }
 
     @When("^user exit alert click agree checkbox and click proceed to checkout$")
     public void userExitAlertClickAgreeCheckboxAndClickProceedToCheckout() {
-        shippingCheckoutPage.closeAlertInShippingLabel();
+        shippingCheckoutPage.closeAlert();
         shippingCheckoutPage.clickAgreeCheckbox();
-        shippingCheckoutPage.clickOnProceedToCheckoutButtonInShippingLabel();
+        shippingCheckoutPage.clickOnProceedToCheckoutButton();
     }
 
     @Then("^user is in payment checkout tab$")
@@ -71,21 +71,21 @@ public class CheckoutFeatures {
 
     @When("^user click proceed to checkout in summary tab$")
     public void userClickProceedToCheckoutInSummaryTab() {
-        summaryCheckoutPage.clickOnProceedToCheckoutButtonInSummaryLabel();
+        summaryCheckoutPage.clickOnProceedToCheckoutButton();
     }
 
     @When("^user type a comment about order in address checkout page$")
     public void userTypeACommentAboutOrderInAddressCheckoutPage() {
-        addressCheckoutPage.addCommentInAddressTab();
+        addressCheckoutPage.addComment();
     }
 
     @When("^user confirms every step from address checkout page up to back to orders button in payment checkout page$")
     public void useConfirmsEveryStepFromAddressCheckoutPageUpToBackToOrdersButtonInPaymentCheckoutPage() {
         addressCheckoutPage.clickOnProceedToCheckoutButtonInAddressLabel();
         shippingCheckoutPage.clickAgreeCheckbox();
-        shippingCheckoutPage.clickOnProceedToCheckoutButtonInShippingLabel();
+        shippingCheckoutPage.clickOnProceedToCheckoutButton();
         paymentCheckoutPage.clickPayByBankWireButton();
-        paymentCheckoutPage.clickIConfirmMyOrder();
+        paymentCheckoutPage.clickIConfirmMyOrderButton();
         paymentCheckoutPage.clickBackToOrdersButtonInPaymentTab();
         orderHistoryAndDetailsPage.clickDetailsButtonForLastOneOrders();
     }

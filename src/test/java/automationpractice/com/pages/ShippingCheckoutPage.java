@@ -7,32 +7,32 @@ import org.openqa.selenium.support.FindBy;
 public class ShippingCheckoutPage extends PageObject {
 
     @FindBy(className = "standard-checkout")
-    private WebElementFacade clickOnProceedToCheckoutButtonInShippingLabel;
+    private WebElementFacade proceedToCheckoutButton;
 
     @FindBy(id = "uniform-cgv")
-    private WebElementFacade clickAgreeCheckbox;
+    private WebElementFacade agreeCheckbox;
 
     @FindBy(className = "fancybox-error")
-    private WebElementFacade alertDisplayedInShippingCheckoutPage;
+    private WebElementFacade alertDisplayed;
 
     @FindBy(xpath = "//*[contains(@class,'fancybox-close')]")
-    private WebElementFacade closeAlertInShippingLabel;
+    private WebElementFacade closeAlert;
 
 
-    public void clickOnProceedToCheckoutButtonInShippingLabel() {
-        clickOnProceedToCheckoutButtonInShippingLabel.click();
+    public void clickOnProceedToCheckoutButton() {
+        proceedToCheckoutButton.click();
     }
 
     public void clickAgreeCheckbox() {
-        clickAgreeCheckbox.click();
+        agreeCheckbox.click();
     }
 
-    public boolean isAlertDisplayedInShippingCheckoutPage() {
-        return alertDisplayedInShippingCheckoutPage.isVisible();
+    public boolean isAlertDisplayed() {
+        return alertDisplayed.isVisible();
     }
 
-    public void closeAlertInShippingLabel() {
-        closeAlertInShippingLabel.click();
+    public void closeAlert() {
+        closeAlert.click();
         waitABit(500);
     }
 

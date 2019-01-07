@@ -12,13 +12,13 @@ public class HomePage extends PageObject {
     private WebElementFacade homePageError;
 
     @FindBy(xpath = "//*[@class='product_list grid row homefeatured tab-pane active']//*[@class='product-container']")
-    private List<WebElementFacade> listOfItemsOnHomePage;
+    private List<WebElementFacade> listOfItems;
 
     public boolean isValidationMessageDisplayed() {
         return homePageError.isVisible();
     }
 
     public void clickOnFirstProductImage() {
-        listOfItemsOnHomePage.get(0).click();
+        listOfItems.get(0).click();
     }
 }
