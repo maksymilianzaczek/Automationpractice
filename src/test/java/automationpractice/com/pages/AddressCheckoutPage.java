@@ -6,6 +6,8 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 
+import static automationpractice.com.data.CommentAboutOrder.entranceFromTheYard;
+
 public class AddressCheckoutPage extends PageObject {
 
     @FindBy(name = "processAddress")
@@ -73,7 +75,7 @@ public class AddressCheckoutPage extends PageObject {
     }
 
     public void addCommentInAddressTab() {
-        addCommentInAddressTab.type("entrance from the yard!");
+        addCommentInAddressTab.type(entranceFromTheYard.getComment());
     }
 
 }

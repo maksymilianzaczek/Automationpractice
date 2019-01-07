@@ -4,6 +4,8 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.support.FindBy;
 
+import static automationpractice.com.data.CommentAboutOrder.entranceFromTheYard;
+
 public class OrderHistoryAndDetailsPage extends PageObject {
     @FindBy(xpath = "//*[@id='order-list']//*[@class='first_item ']//*[contains(@class,'button-small')]")
     private WebElementFacade clickDetailsButtonForLastOneOrders;
@@ -16,6 +18,6 @@ public class OrderHistoryAndDetailsPage extends PageObject {
     }
 
     public boolean isCommentAboutAddressInLastOneOrdersVisible() {
-        return isCommentAboutAddressInLastOneOrders.getText().contains("entrance from the yard");
+        return isCommentAboutAddressInLastOneOrders.getText().contains(entranceFromTheYard.getComment());
     }
 }
