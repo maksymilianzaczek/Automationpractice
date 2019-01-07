@@ -11,10 +11,10 @@ import static automationpractice.com.data.CommentAboutOrder.entranceFromTheYard;
 public class AddressCheckoutPage extends PageObject {
 
     @FindBy(name = "processAddress")
-    private WebElementFacade clickOnProceedToCheckoutButtonInAddressLabel;
+    private WebElementFacade proceedToCheckoutButton;
 
     @FindBy(xpath = "//*[contains(@class,'address_add submit')]//*[contains(@class,'button')]")
-    private WebElementFacade addANewAddressButton;
+    private WebElementFacade newAddressButton;
 
     @FindBy(xpath = "//*[@id='address_delivery']//*[@class='address_firstname address_lastname']")
     private WebElementFacade nameAndLastNameInDeliveryAddress;
@@ -23,7 +23,7 @@ public class AddressCheckoutPage extends PageObject {
     private WebElementFacade cityAndStateAndZipCodeInDeliveryAddress;
 
     @FindBy(xpath = "//*[@id='center_column']//*[@class='checkbox addressesAreEquals']")
-    private WebElementFacade disagreeUseTheDeliveryAddressAsTheBillingAddressCheckbox;
+    private WebElementFacade useTheDeliveryAddressAsTheBillingAddressCheckbox;
 
     @FindBy(xpath = "//*[@id='address_invoice']//*[@class='address_firstname address_lastname']")
     private WebElementFacade nameAndLastNameInBillingAddress;
@@ -36,16 +36,16 @@ public class AddressCheckoutPage extends PageObject {
 
     private NewAddressPage newAddressPage;
 
-    public void clickOnProceedToCheckoutButtonInAddressLabel() {
-        clickOnProceedToCheckoutButtonInAddressLabel.click();
+    public void clickOnProceedToCheckoutButton() {
+        proceedToCheckoutButton.click();
     }
 
     public void clickAddANewAddressButton() {
-        addANewAddressButton.click();
+        newAddressButton.click();
     }
 
     public void selectBillingAddressFromList(NewAddressData addressData) {
-        disagreeUseTheDeliveryAddressAsTheBillingAddressCheckbox.click();
+        useTheDeliveryAddressAsTheBillingAddressCheckbox.click();
         waitABit(1000);
         find(By.xpath("//*[@id='id_address_invoice']//*[contains(text(), '" + addressData.getNewAddressName() + "')]")).click();
     }
@@ -75,7 +75,7 @@ public class AddressCheckoutPage extends PageObject {
         return cityAndStateAndZipCodeInBillingAddress.getText();
     }
 
-    public void addComment() {
+    public void addCommentEntranceFromTheYard() {
         comment.type(entranceFromTheYard.getComment());
     }
 

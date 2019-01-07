@@ -48,7 +48,7 @@ public class CheckoutFeatures {
     @When("^user click proceed to checkout in summary address and shipping tab$")
     public void userClickProceedToCheckoutInSummaryAddressAndShippingTab() {
         summaryCheckoutPage.clickOnProceedToCheckoutButton();
-        addressCheckoutPage.clickOnProceedToCheckoutButtonInAddressLabel();
+        addressCheckoutPage.clickOnProceedToCheckoutButton();
         shippingCheckoutPage.clickOnProceedToCheckoutButton();
     }
 
@@ -74,14 +74,14 @@ public class CheckoutFeatures {
         summaryCheckoutPage.clickOnProceedToCheckoutButton();
     }
 
-    @When("^user type a comment about order in address checkout page$")
-    public void userTypeACommentAboutOrderInAddressCheckoutPage() {
-        addressCheckoutPage.addComment();
+    @When("^user type a comment entrance from the yard in address checkout page$")
+    public void userTypeACommentEntranceFromTheYardInAddressCheckoutPage() {
+        addressCheckoutPage.addCommentEntranceFromTheYard();
     }
 
     @When("^user confirms every step from address checkout page up to back to orders button in payment checkout page$")
     public void useConfirmsEveryStepFromAddressCheckoutPageUpToBackToOrdersButtonInPaymentCheckoutPage() {
-        addressCheckoutPage.clickOnProceedToCheckoutButtonInAddressLabel();
+        addressCheckoutPage.clickOnProceedToCheckoutButton();
         shippingCheckoutPage.clickAgreeCheckbox();
         shippingCheckoutPage.clickOnProceedToCheckoutButton();
         paymentCheckoutPage.clickPayByBankWireButton();

@@ -28,7 +28,7 @@ public class PaymentFeatures {
         productDetailsPage.clickOnAddToCartButton();
         productDetailsPage.clickProceedToCheckoutButton();
         summaryCheckoutPage.clickOnProceedToCheckoutButton();
-        addressCheckoutPage.clickOnProceedToCheckoutButtonInAddressLabel();
+        addressCheckoutPage.clickOnProceedToCheckoutButton();
         shippingCheckoutPage.clickAgreeCheckbox();
         shippingCheckoutPage.clickOnProceedToCheckoutButton();
     }

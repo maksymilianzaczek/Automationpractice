@@ -41,7 +41,7 @@ public class AllPathFromChooseToPayFeatures {
 
     private void confirmEveryStepToMakeOrder(){
         summaryCheckoutPage.clickOnProceedToCheckoutButton();
-        addressCheckoutPage.clickOnProceedToCheckoutButtonInAddressLabel();
+        addressCheckoutPage.clickOnProceedToCheckoutButton();
         shippingCheckoutPage.clickAgreeCheckbox();
         shippingCheckoutPage.clickOnProceedToCheckoutButton();
     }

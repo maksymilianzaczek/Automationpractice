@@ -16,7 +16,6 @@ public class EditFeatures {
 
     private HomePage homePage;
     private ProductDetailsPage productDetailsPage;
-    private MyAccountPage myAccountPage;
     private SummaryCheckoutPage summaryCheckoutPage;
     @Steps
     private LoginSteps loginSteps;
