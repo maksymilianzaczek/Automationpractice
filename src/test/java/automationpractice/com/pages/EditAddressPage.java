@@ -35,23 +35,23 @@ public class EditAddressPage extends PageObject {
     @FindBy(className = "alert-danger")
     private WebElementFacade errorMessage;
 
-    public void changeFirstName(String firstName) {
+    public void changeFirstName(final String firstName) {
         firstNameField.type(firstName);
     }
 
-    public void changeLastName(String lastName) {
+    public void changeLastName(final String lastName) {
         lastnameField.type(lastName);
     }
 
-    public void changeAddress(String address) {
+    public void changeAddress(final String address) {
         addressField.type(address);
     }
 
-    public void changeCity(String city) {
+    public void changeCity(final String city) {
         cityField.type(city);
     }
 
-    public void changePostCode(String zipCode) {
+    public void changePostCode(final String zipCode) {
         postcode.type(zipCode);
     }
 
@@ -63,11 +63,11 @@ public class EditAddressPage extends PageObject {
         countrySelect.click();
     }
 
-    public void changeMobilePhone(String mobilePhoneNumber) {
+    public void changeMobilePhone(final String mobilePhoneNumber) {
         mobilePhone.type(mobilePhoneNumber);
     }
 
-    public void changeTitle(String addressName) {
+    public void changeTitle(final String addressName) {
         title.type(addressName);
     }
 
@@ -75,7 +75,7 @@ public class EditAddressPage extends PageObject {
         stateList.click();
     }
 
-    public void clickStateSelect(String state) {
+    public void clickStateSelect(final String state) {
         final String stateSelectXpath = String.format("//*[@id='id_state']//*[contains(text(), '%s')]", state);
         find(By.xpath(stateSelectXpath)).click();
     }
@@ -84,7 +84,7 @@ public class EditAddressPage extends PageObject {
         saveAddressButton.click();
     }
 
-    public void changeHomePhone(String homePhoneNumber) {
+    public void changeHomePhone(final String homePhoneNumber) {
         homePhone.type(homePhoneNumber);
     }
 

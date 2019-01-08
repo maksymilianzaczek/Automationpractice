@@ -20,6 +20,5 @@ public class RegistrationData
     private String zipCode;
     private String country;
     private String mobilePhone;
-
 }
 

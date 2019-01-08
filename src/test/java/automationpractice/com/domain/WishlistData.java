@@ -8,5 +8,4 @@ import org.apache.commons.lang3.RandomStringUtils;
 @AllArgsConstructor
 public class WishlistData {
     public final static String WISH_LIST_NAME = String.format("wishlist%s", RandomStringUtils.randomNumeric(5));
-
 }

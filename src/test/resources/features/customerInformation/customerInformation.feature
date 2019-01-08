@@ -1,4 +1,4 @@
-Feature: edition of customer information
+Feature: Edition of customer information
 
   Scenario: As customer I want to edit my personal information
     Given logged in customer is on customer information page

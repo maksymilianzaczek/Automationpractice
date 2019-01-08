@@ -11,7 +11,7 @@ public class CreateWishlistSteps {
 
     @Step
     public void createNewWishlist() {
-        wishlistPage.insertWishlistName(WISH_LIST_NAME);            // create separate step to create new wishlist
+        wishlistPage.insertWishlistName(WISH_LIST_NAME);
         wishlistPage.submitCreatingWishlist();
     }
 }

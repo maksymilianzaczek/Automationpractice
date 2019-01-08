@@ -10,5 +10,3 @@ Feature: Edit product in cart
   Scenario: As logged in user I'm able to change quantity of product in cart
     When he changes product quantity in cart
     Then quantity is changed
-
-

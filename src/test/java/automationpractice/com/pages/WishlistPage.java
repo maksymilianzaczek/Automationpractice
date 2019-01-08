@@ -53,7 +53,7 @@ public class WishlistPage extends PageObject {
                 .stream()
                 .map(WebElementFacade::getText)         //mapps text
                 .map(this::removeTextAfterLineBreak)    //deletes all text after line break
-                .map(String::trim)                      //deletes empty spaces and white spots before and after text
+                .map(String::trim)                      //deletes empno ty spaces and white spots before and after text
                 .collect(Collectors.toList());
     }
 
