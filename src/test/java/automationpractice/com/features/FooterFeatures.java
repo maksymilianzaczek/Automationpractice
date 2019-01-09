@@ -25,7 +25,6 @@ public class FooterFeatures {
     private SpecialsPage specialsPage;
     private TermsAndConditionsOfUsePage termsAndConditionsOfUsePage;
     private WomenCategoriesPage womenCategoriesPage;
-    private LoginSteps loginSteps;
 
     @When("^he clicks on About us button on footer$")
     public void heClicksOnAboutUsButtonOnFooter() {
@@ -38,10 +37,6 @@ public class FooterFeatures {
 //        getPageHeadlingTitle();
         assertThat(isAboutUsTextDisplayed).isTrue();
     }
-
-//    private void getPageHeadlingTitle() {
-//
-//    }
 
     @When("^he clicks on Best sellers button on footer$")
     public void heClicksOnBestSellersButtonOnFooter() {
