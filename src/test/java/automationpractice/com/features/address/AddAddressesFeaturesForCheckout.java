@@ -3,11 +3,14 @@ package automationpractice.com.features.address;
 import automationpractice.com.pages.*;
 import automationpractice.com.steps.AddressesDataSteps;
 import automationpractice.com.steps.LoginSteps;
+import automationpractice.com.steps.RemoveAddressSteps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
 import org.assertj.core.api.SoftAssertions;
+
+import java.util.List;
 
 import static automationpractice.com.data.NewAddressInformation.NEW_ADDRESS_INFORMATION_1;
 
@@ -24,6 +27,8 @@ public class AddAddressesFeaturesForCheckout {
     private LoginSteps loginSteps;
     @Steps
     private AddressesDataSteps addressesDataSteps;
+    @Steps
+    private RemoveAddressSteps removeAddressSteps;
     private final SoftAssertions softAssertions = new SoftAssertions();
 
     @Given("^user is in address checkout page$")
@@ -31,9 +36,9 @@ public class AddAddressesFeaturesForCheckout {
         homePage.open();
         loginSteps.login();
         myAccountPage.clickMyAddresses();
-        addressPage.removeAddressFromAddressPage(NEW_ADDRESS_INFORMATION_1.getNewAddressName());
+        removeAddressSteps.checkAddressNameExistsAndIfIsDeleteIt(NEW_ADDRESS_INFORMATION_1.getNewAddressName());
         headerBox.clickMyStoreLogo();
-        homePage.clickOnFirstProductImage();
+        homePage.clickOnProductImage();
         productDetailsPage.clickOnAddToCartButton();
         productDetailsPage.clickProceedToCheckoutButton();
         summaryCheckoutPage.clickOnProceedToCheckoutButton();
@@ -85,4 +90,12 @@ public class AddAddressesFeaturesForCheckout {
         theNewAddressIsSelectedAsDeliveryAddress();
         theNewAddressIsSelectedAsBillingAddress();
     }
+
+//    private void checkAddressNameExistsAndIfIsDeleteIt(final String addressName) {
+//        List<String> addressNameList = addressPage.getAddressNameList();
+//        for (String name : addressNameList){
+//            if (name.toUpperCase().equals(addressName.toUpperCase())){
+//                addressPage.removeAddressFromAddressPage(addressName);          }
+//        }
+//    }
 }

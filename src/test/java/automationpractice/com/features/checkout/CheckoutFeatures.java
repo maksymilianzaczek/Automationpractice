@@ -30,7 +30,7 @@ public class CheckoutFeatures {
     @Given("^user add first item into cart$")
     public void userAddFirstItemIntoCart() {
         loginSteps.loginAndMoveIntoMyStorePage();
-        homePage.clickOnFirstProductImage();
+        homePage.clickOnSelectedProductImage(0);
         productDetailsPage.clickOnAddToCartButton();
         productDetailsPage.clickProceedToCheckoutButton();
     }

@@ -34,8 +34,6 @@ public class AddressCheckoutPage extends PageObject {
     @FindBy(xpath = "//*[@id='ordermsg']//*[@class='form-control']")
     private WebElementFacade comment;
 
-    private NewAddressPage newAddressPage;
-
     public void clickOnProceedToCheckoutButton() {
         proceedToCheckoutButton.click();
     }
@@ -44,17 +42,17 @@ public class AddressCheckoutPage extends PageObject {
         newAddressButton.click();
     }
 
-    public void selectBillingAddressFromList(NewAddressData addressData) {
+    public void selectBillingAddressFromList(final NewAddressData addressData) {
         useTheDeliveryAddressAsTheBillingAddressCheckbox.click();
         waitABit(1000);
         find(By.xpath("//*[@id='id_address_invoice']//*[contains(text(), '" + addressData.getNewAddressName() + "')]")).click();
     }
 
-    public void selectDeliveryAddressFromList(NewAddressData addressData) {
+    public void selectDeliveryAddressFromList(final NewAddressData addressData) {
         find(By.xpath("//*[@id='id_address_delivery']//*[contains(text(), '" + addressData.getNewAddressName() + "')]")).click();
     }
 
-    public void selectDeliveryAndBillingAddressFromList(NewAddressData addressData) {
+    public void selectDeliveryAndBillingAddressFromList(final NewAddressData addressData) {
         selectDeliveryAddressFromList(addressData);
         selectBillingAddressFromList(addressData);
     }

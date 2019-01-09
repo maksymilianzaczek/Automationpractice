@@ -108,9 +108,9 @@ public class ProductDetailsPage extends PageObject {
         return currentQuantity;
     }
 
-    public String changeSizeToGivenSize(String sizeWrittenInLargeLetters) {
-        currentSize = sizeWrittenInLargeLetters;
-        switch (sizeWrittenInLargeLetters) {
+    public String changeSizeToGivenSize(String size) {
+        currentSize = size.toUpperCase();
+        switch (size) {
             case "S":
                 selectSSize.click();
                 break;
@@ -124,7 +124,7 @@ public class ProductDetailsPage extends PageObject {
                 selectSSize.click();
                 break;
         }
-        return sizeWrittenInLargeLetters;
+        return size;
     }
 
     public String getCurrentSize() {

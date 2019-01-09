@@ -23,7 +23,7 @@ public class EditFeatures {
     @Given("^logged in customer is on product details page$")
     public void loggedInCustomerIsOnProductDetailsPage() {
         loginSteps.loginAndMoveIntoMyStorePage();
-        homePage.clickOnFirstProductImage();
+        homePage.clickOnSelectedProductImage(0);
     }
 
     @When("^user add to cart item on product details page$")
@@ -42,19 +42,9 @@ public class EditFeatures {
         assertThat(summaryCheckoutPage.getFirstProductQuantity()).isEqualTo(productDetailsPage.getCurrentQuantity());
     }
 
-    @When("^user change size to S size on product details page$")
-    public String userChangeSizeToSSizeOnProductDetailsPage() {
-        return productDetailsPage.changeSizeToGivenSize("S");
-    }
-
-    @When("^user change size to M size on product details page$")
-    public String userChangeSizeToMSizeOnProductDetailsPage() {
-        return productDetailsPage.changeSizeToGivenSize("M");
-    }
-
-    @When("^user change size to L size on product details page$")
-    public String userChangeSizeToLSizeOnProductDetailsPage() {
-        return productDetailsPage.changeSizeToGivenSize("L");
+    @When("^user change size to (.*) size on product details page$")
+    public String userChangeSize(final String size) {
+        return productDetailsPage.changeSizeToGivenSize(size);
     }
 
     @Then("^summary checkout page has item in given size$")

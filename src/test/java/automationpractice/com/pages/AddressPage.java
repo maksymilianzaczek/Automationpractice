@@ -10,7 +10,8 @@ import java.util.stream.Collectors;
 
 public class AddressPage extends PageObject {
 
-    private final String DELETE_BUTTON_XPATH_PATTERN = "//*[contains(text(), '%s')]//ancestor::*[contains(@class, 'address') and not(contains(@class, 'addresses'))]//*[contains(@class,'icon-remove')]";
+    private final String DELETE_BUTTON_XPATH_PATTERN = "//*[contains(text(), '%s')]//ancestor::*[" +
+            "contains(@class, 'address') and not(contains(@class, 'addresses'))]//*[contains(@class,'icon-remove')]";
     @FindBy(xpath = "//*[contains(@class,'button-medium')and not(@rel)]")
     private WebElementFacade addNewAddressButton;
     @FindBy(xpath = "//*[@class='addresses']//*[@class='page-subheading']")
@@ -33,12 +34,9 @@ public class AddressPage extends PageObject {
         getDriver().switchTo().alert().accept();
     }
 
-    public void removeAddressFromAddressPage(String addressName){
-        List<String> addressNameList = getAddressNameList();
-        for (String name : addressNameList){
-            if (name.toUpperCase().equals(addressName.toUpperCase())){
-                clickDeleteButton(addressName);
-                acceptAlert();            }
-        }
+    public void removeAddressFromAddressPage(final String addressName) {
+        clickDeleteButton(addressName);
+        acceptAlert();
     }
+
 }
