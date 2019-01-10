@@ -11,7 +11,6 @@ public class CheckoutFeatures {
 
     private HomePage homePage;
     private HeaderBox headerBox;
-    private LoginPage loginPage;
     private MyAccountPage myAccountPage;
     private FirstProductPage firstProductPage;
     private LoginSteps loginSteps;

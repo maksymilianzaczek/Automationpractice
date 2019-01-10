@@ -19,9 +19,9 @@ public class ContactUsPage extends PageObject {
     private WebElementFacade subjectHeadingSelect;
     @FindBy(id = "submitMessage")
     private WebElementFacade sendMessage;
-    @FindBy(className = "alert alert-success")
+    @FindBy(xpath = "//*[contains(@class, 'alert alert-success')]")
     private WebElementFacade successfulMessageSent;
-    @FindBy(className = "alert alert-danger")
+    @FindBy(xpath = "//*[contains(@class, 'alert alert-danger')]")
     private WebElementFacade errorMessageSent;
     @FindBy(xpath = "//*[contains(@class,'navigation_page') and contains(text(), 'Contact')]")
     private WebElementFacade contactUsText;
