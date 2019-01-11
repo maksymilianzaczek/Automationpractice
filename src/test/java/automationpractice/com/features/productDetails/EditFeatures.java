@@ -1,7 +1,6 @@
 package automationpractice.com.features.productDetails;
 
 import automationpractice.com.pages.HomePage;
-import automationpractice.com.pages.MyAccountPage;
 import automationpractice.com.pages.ProductDetailsPage;
 import automationpractice.com.pages.SummaryCheckoutPage;
 import automationpractice.com.steps.LoginSteps;
@@ -33,8 +32,9 @@ public class EditFeatures {
     }
 
     @When("^user change quantity on product details page$")
-    public int userChangeQuantityOnProductDetailsPage() {
-        return productDetailsPage.clickPlusAndMinusButtonGivenNumberOfTimes(2,1);
+    public void userChangeQuantityOnProductDetailsPage() {
+        productDetailsPage.clickPlusAndMinusButtonGivenNumberOfTimes(2,1);
+        productDetailsPage.setCurrentQuantity(productDetailsPage.getQuantityValue());
     }
 
     @Then("^summary checkout page has a given number of items in product details page$")
@@ -43,7 +43,7 @@ public class EditFeatures {
     }
 
     @When("^user change size to (.*) size on product details page$")
-    public String userChangeSize(final String size) {
+    public String userChangeSizeOnProductDetailsPage(final String size) {
         return productDetailsPage.changeSizeToGivenSize(size);
     }
 
@@ -52,9 +52,9 @@ public class EditFeatures {
         assertThat(summaryCheckoutPage.getGivenSize()).isEqualTo(productDetailsPage.getCurrentSize());
     }
 
-    @When("^user change color to blue on product details page$")
-    public String userChangeColorToBlueOnProductDetailsPage() {
-        return productDetailsPage.changeColorToGivenColor("Blue");
+    @When("^user change color to (.*) on product details page$")
+    public String userChangeColorOnProductDetailsPage(final String color) {
+        return productDetailsPage.changeColorToGivenColor(color);
     }
 
     @Then("^summary checkout page has item in given color$")

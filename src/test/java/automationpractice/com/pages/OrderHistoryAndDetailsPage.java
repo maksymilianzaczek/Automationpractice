@@ -10,16 +10,16 @@ import static automationpractice.com.data.CommentAboutOrder.entranceFromTheYardX
 public class OrderHistoryAndDetailsPage extends PageObject {
 
     @FindBy(xpath = "//*[@id='order-list']//*[@class='first_item ']//*[contains(@class,'button-small')]")
-    private WebElementFacade clickDetailsButtonForLastOneOrders;
+    private WebElementFacade detailsButtonForLastOneOrders;
 
     @FindBy(xpath = entranceFromTheYardXpath)
-    private WebElementFacade isCommentAboutAddressInLastOneOrders;
+    private WebElementFacade commentAboutAddressInLastOneOrders;
 
     public void clickDetailsButtonForLastOneOrders() {
-        clickDetailsButtonForLastOneOrders.click();
+        detailsButtonForLastOneOrders.click();
     }
 
     public boolean isCommentAboutAddressInLastOneOrdersVisible() {
-        return isCommentAboutAddressInLastOneOrders.getText().contains(CommentAboutOrder.entranceFromTheYard.getComment());
+        return commentAboutAddressInLastOneOrders.getText().contains(CommentAboutOrder.entranceFromTheYard.getComment());
     }
 }

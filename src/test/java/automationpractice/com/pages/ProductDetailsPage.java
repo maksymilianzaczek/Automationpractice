@@ -1,7 +1,10 @@
 package automationpractice.com.pages;
 
+import automationpractice.com.exceptions.NoColorAvailableException;
+import automationpractice.com.exceptions.NoSizeAvailableException;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
@@ -10,67 +13,72 @@ import java.util.regex.Pattern;
 
 public class ProductDetailsPage extends PageObject {
 
+    private final String SELECT_SIZE_XPATH_PATTERN = "//*[@id='group_1']//option[@title='%s']";
+    private final String SELECT_COLOR_XPATH_PATTERN = "//*[@id='color_to_pick_list']//a[@title='%s']";
     @FindBy(id = "add_to_cart")
     private WebElementFacade addToCartButton;
-
     @FindBy(xpath = "//*[contains(@class,'button-medium')]//*[contains(@class,'icon-chevron-right')]")
     private WebElementFacade proceedToCheckoutButton;
-
     @FindBy(className = "icon-plus")
     private WebElementFacade plusQuantityButton;
-
     @FindBy(className = "icon-minus")
     private WebElementFacade minusQuantityButton;
-
-    @FindBy(xpath = "//*[@id='group_1']//option[1]")
-    private WebElementFacade selectSSize;
-
-    @FindBy(xpath = "//*[@id='group_1']//option[2]")
-    private WebElementFacade selectMSize;
-
-    @FindBy(xpath = "//*[@id='group_1']//option[3]")
-    private WebElementFacade selectLSize;
-
-    @FindBy(id = "color_14")
-    private WebElementFacade changeColorToBlue;
-
-    @FindBy(id = "color_13")
-    private WebElementFacade changeColorToOrange;
-
-    @FindBy(id = "color_8")
-    private WebElementFacade changeColorToWhite;
-
-    @FindBy(id = "color_11")
-    private WebElementFacade changeColorToBlack;
-
-    @FindBy(id = "color_15")
-    private WebElementFacade changeColorToGreen;
-
-    @FindBy(id = "color_16")
-    private WebElementFacade changeColorToYellow;
-
     @FindBy(className = "btn-twitter")
     private WebElementFacade twitterButton;
-
     @FindBy(className = "btn-facebook")
     private WebElementFacade facebookButton;
-
     @FindBy(className = "btn-google-plus")
     private WebElementFacade googlePlusButton;
-
     @FindBy(className = "btn-pinterest")
     private WebElementFacade pinteresButton;
-
-    private int currentQuantity;
-
-    private String currentSize;
-
     @FindBy(xpath = "//*[@id = 'color_to_pick_list']//*[contains(@id,'color')]")
     private List<WebElementFacade> listOfColorsAndSizes;
-
+    @FindBy(id = "quantity_wanted")
+    private WebElementFacade quantityValue;
+    
+    private String currentSize;
     private String currentColor;
+    private String currentQuantity;
 
-    public ProductDetailsPage() {
+    public String getCurrentQuantity() {
+        return currentQuantity;
+    }
+
+    public void setCurrentQuantity(String currentQuantity) {
+        this.currentQuantity = currentQuantity;
+    }
+
+    public String getQuantityValue() {
+        return quantityValue.getValue();
+    }
+
+    public String getCurrentSize() {
+        return currentSize;
+    }
+
+    public String getCurrentColor() {
+        return currentColor;
+    }
+
+    private ArrayList<String> getAvailableColors() {
+        ArrayList<String> listOfColors = new ArrayList<>();
+
+        for (WebElementFacade row : listOfColorsAndSizes) {
+            String[] split = row.toString().split("<a id='color_(.*)' name='");
+            String[] color = split[1].split("'>(.*)");
+            listOfColors.add(color[0]);
+        }
+        return listOfColors;
+    }
+
+    private void selectSize(final String size) {
+        final String sizeXpath = String.format(SELECT_SIZE_XPATH_PATTERN, size);
+        find(By.xpath(sizeXpath)).click();
+    }
+
+    private void selectColor(final String color) {
+        final String colorXpath = String.format(SELECT_COLOR_XPATH_PATTERN, color);
+        find(By.xpath(colorXpath)).click();
     }
 
     public void clickOnAddToCartButton() {
@@ -89,93 +97,81 @@ public class ProductDetailsPage extends PageObject {
         minusQuantityButton.click();
     }
 
-    public int clickPlusAndMinusButtonGivenNumberOfTimes(int plus, int minus) {
-        currentQuantity = 1;
+//    public int clickPlusAndMinusButtonGivenNumberOfTimes(int plus, int minus) {
+    public void clickPlusAndMinusButtonGivenNumberOfTimes(int plus, int minus) {
+//        currentQuantity = 1;
         for (int i = 0; i < plus; i++) {
             waitABit(1000);
             clickPlusQuantityButton();
-            currentQuantity++;
+//            currentQuantity++;
         }
         for (int i = 0; i < minus; i++) {
             waitABit(1000);
             clickMinusQuantityButton();
-            currentQuantity--;
+//            currentQuantity--;
         }
-        return currentQuantity;
-    }
-
-    public int getCurrentQuantity() {
-        return currentQuantity;
+//        return currentQuantity;
     }
 
     public String changeSizeToGivenSize(String size) {
         currentSize = size.toUpperCase();
-        switch (size) {
+        switch (currentSize) {
             case "S":
-                selectSSize.click();
+                selectSize("S");
                 break;
             case "M":
-                selectMSize.click();
+                selectSize("M");
                 break;
             case "L":
-                selectLSize.click();
+                selectSize("L");
                 break;
             default:
-                selectSSize.click();
-                break;
+                selectSize("S");
+                try {
+                    throw new NoSizeAvailableException("Size: " + size + " is not available");
+                } catch (NoSizeAvailableException e) {
+                    e.printStackTrace();
+                }
         }
-        return size;
-    }
-
-    public String getCurrentSize() {
         return currentSize;
     }
 
-    private ArrayList getAvailableColors() {
-        ArrayList<String> listOfColors = new ArrayList<>();
+    public String changeColorToGivenColor(String color) {
+        currentColor = color.toUpperCase();
+        ArrayList<String> listOfAvailableColors = getAvailableColors();
 
-        for (WebElementFacade row : listOfColorsAndSizes) {
-            String[] split = row.toString().split("<a id='color_(.*)' name='");
-            String[] color = split[1].split("'>(.*)");
-            listOfColors.add(color[0]);
-        }
-        return listOfColors;
-    }
+        for (String c : listOfAvailableColors) {
+            if ((c.toUpperCase()).equals(color.toUpperCase())) {
+                switch (color.toUpperCase()) {
 
-    public String changeColorToGivenColor(String colorStartedWithCapitalLetter) {
-        currentColor = colorStartedWithCapitalLetter;
-        ArrayList listOfAvailableColors = getAvailableColors();
+                    case "ORANGE":
+                        selectColor("Orange");
+                        break;
+                    case "WHITE":
+                        selectColor("White");
+                        break;
+                    case "BLACK":
+                        selectColor("Black");
+                        break;
+                    case "GREEN":
+                        selectColor("Green");
+                        break;
+                    case "YELLOW":
+                        selectColor("Yellow");
+                        break;
+                    case "BLUE":
+                        selectColor("Blue");
+                        break;
 
-        for (Object listOfAvailableColor : listOfAvailableColors) {
-            if (listOfAvailableColor.toString().equals(colorStartedWithCapitalLetter)) {
-                switch (colorStartedWithCapitalLetter) {
-
-                    case "Orange":
-                        changeColorToOrange.click();
-                        break;
-                    case "White":
-                        changeColorToWhite.click();
-                        break;
-                    case "Black":
-                        changeColorToBlack.click();
-                        break;
-                    case "Green":
-                        changeColorToGreen.click();
-                        break;
-                    case "Yellow":
-                        changeColorToYellow.click();
-                        break;
-                    case "Blue":
-                        changeColorToBlue.click();
-                        break;
+                    default:
+                        try {
+                            throw new NoColorAvailableException("Color: " + color + " is not available");
+                        } catch (NoColorAvailableException e) {
+                            e.printStackTrace();
+                        }
                 }
             }
         }
-        // TODO: 02.01.2019 default choose first available color
-        return colorStartedWithCapitalLetter;
-    }
-
-    public String getCurrentColor() {
         return currentColor;
     }
 

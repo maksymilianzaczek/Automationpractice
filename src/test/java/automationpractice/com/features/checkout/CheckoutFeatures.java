@@ -66,7 +66,7 @@ public class CheckoutFeatures {
 
     @Then("^user is in payment checkout tab$")
     public void userIsInPaymentCheckoutTab() {
-        assertThat(paymentCheckoutPage.isUserIsInPaymentCheckoutTab()).isTrue();
+        assertThat(paymentCheckoutPage.labelInPaymentCheckoutTab().contains("PLEASE CHOOSE YOUR PAYMENT METHOD")).isTrue();
     }
 
     @When("^user click proceed to checkout in summary tab$")

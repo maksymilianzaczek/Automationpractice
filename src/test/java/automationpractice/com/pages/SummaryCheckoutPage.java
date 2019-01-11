@@ -31,8 +31,8 @@ public class SummaryCheckoutPage extends PageObject {
         proceedToCheckoutButton.click();
     }
 
-    public int getFirstProductQuantity() {
-        return Integer.parseInt(quantityOfItems.getValue());
+    public String getFirstProductQuantity() {
+        return quantityOfItems.getValue();
     }
 
     public String getGivenSize() {
@@ -44,7 +44,7 @@ public class SummaryCheckoutPage extends PageObject {
     public String getGivenColor() {
         String[] split1 = colorAndSizeFirstProduct.getText().split("Color\\s:\\s");
         String[] color = split1[1].split(",\\sSize\\s:\\s");
-        return color[0];
+        return color[0].toUpperCase();
     }
 
     private void clickPlusQuantityButton() {

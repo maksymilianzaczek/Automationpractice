@@ -17,6 +17,10 @@ public class AddressPage extends PageObject {
     @FindBy(xpath = "//*[@class='addresses']//*[@class='page-subheading']")
     private List<WebElementFacade> addressNameList;
 
+    public List<String> getAddressNameList() {
+        return addressNameList.stream().map(WebElementFacade::getText).collect(Collectors.toList());
+    }
+
     public void clickAddNewAddressButton() {
         addNewAddressButton.click();
     }
@@ -24,10 +28,6 @@ public class AddressPage extends PageObject {
     public void clickDeleteButton(final String addressName) {
         final String deleteButtonXpath = String.format(DELETE_BUTTON_XPATH_PATTERN, addressName);
         find(By.xpath(deleteButtonXpath)).click();
-    }
-
-    public List<String> getAddressNameList() {
-        return addressNameList.stream().map(WebElementFacade::getText).collect(Collectors.toList());
     }
 
     public void acceptAlert() {

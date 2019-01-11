@@ -46,16 +46,12 @@ public class PaymentCheckoutPage extends PageObject {
         return orderConfirmationMessage.isVisible();
     }
 
-    public boolean isUserIsInPaymentCheckoutTab() {
-        return paymentLabel.getText().contains("PLEASE CHOOSE YOUR PAYMENT METHOD");
+    public String labelInPaymentCheckoutTab() {
+        return paymentLabel.getText();
     }
 
-    public boolean isSelectedPayByBankWireMethod() {
-        return selectedPaymentMethod.getText().contains("BANK-WIRE");
-    }
-
-    public boolean isSelectedPayByCheckMethod() {
-        return selectedPaymentMethod.getText().contains("CHECK PAYMENT");
+    public String selectedPaymentMethod() {
+        return selectedPaymentMethod.getText();
     }
 
     public void clickOtherPaymentMethodButton() {

@@ -40,7 +40,7 @@ public class PaymentFeatures {
 
     @Then("^payment by bank wire is made$")
     public void paymentByBankWireIsMade() {
-        assertThat(paymentCheckoutPage.isSelectedPayByBankWireMethod()).isTrue();
+        assertThat(paymentCheckoutPage.selectedPaymentMethod().contains("BANK-WIRE")).isTrue();
     }
 
     @When("^user pay by check$")
@@ -50,7 +50,7 @@ public class PaymentFeatures {
 
     @Then("^payment by check is made$")
     public void paymentByCheckIsMade() {
-        assertThat(paymentCheckoutPage.isSelectedPayByCheckMethod()).isTrue();
+        assertThat(paymentCheckoutPage.selectedPaymentMethod().contains("CHECK PAYMENT")).isTrue();
     }
 
     @When("^user return to the payment selection$")
