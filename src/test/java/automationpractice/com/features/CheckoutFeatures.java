@@ -1,6 +1,7 @@
 package automationpractice.com.features;
 
-import automationpractice.com.pages.*;
+import automationpractice.com.pages.ProductDetailsPage;
+import automationpractice.com.pages.HomePage;
 import automationpractice.com.pages.footerPages.MyAccountPage;
 import automationpractice.com.steps.LoginSteps;
 import cucumber.api.java.en.Given;
@@ -10,9 +11,8 @@ public class CheckoutFeatures {
 
 
     private HomePage homePage;
-    private HeaderBox headerBox;
     private MyAccountPage myAccountPage;
-    private FirstProductPage firstProductPage;
+    private ProductDetailsPage productDetailsPage;
     private LoginSteps loginSteps;
 
 
@@ -22,7 +22,7 @@ public class CheckoutFeatures {
         loginSteps.login();
         myAccountPage.clickMyStore();
         homePage.clickOnNewProductImage();
-        firstProductPage.clickOnAddToCartButton();
-        firstProductPage.clickProceedToCheckoutButton();
+        productDetailsPage.clickOnAddToCartButton();
+        productDetailsPage.clickProceedToCheckoutButton();
     }
 }

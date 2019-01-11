@@ -1,5 +1,6 @@
 package automationpractice.com.features;
 
+import automationpractice.com.data.PageHeadlingTitles;
 import automationpractice.com.pages.*;
 import automationpractice.com.pages.footerPages.*;
 import automationpractice.com.steps.LoginSteps;
@@ -31,18 +32,10 @@ public class FooterFeatures {
         footer.clickOnAboutUsButton();
     }
 
-    @Then("^he is navigated to About us page$")
-    public void heIsNavigatedToAboutUsPage() {
-        final boolean isAboutUsTextDisplayed = aboutUsPage.isAboutUsTextDisplayed();
-//        getPageHeadlingTitle();
-        assertThat(isAboutUsTextDisplayed).isTrue();
-    }
-
     @When("^he clicks on Best sellers button on footer$")
     public void heClicksOnBestSellersButtonOnFooter() {
         footer.clickOnBestSellersButton();
     }
-
 
     @When("^he clicks on Contact us info button on footer$")
     public void heClicksOnContactUsInfoButtonOnFooter() {
@@ -102,6 +95,12 @@ public class FooterFeatures {
     @When("^he clicks on women button on footer$")
     public void heClicksOnWomenButtonOnFooter() {
         footer.clickOnWomenCategoriesButton();
+    }
+
+    @Then("^he is navigated to About us page$")
+    public void heIsNavigatedToAboutUsPage() {
+        final boolean getHeadlingTitle() = aboutUsPage.getHeadlingTitle();
+        assertThat(PageHeadlingTitles.getAboutUsTitle().equals(aboutUsPage.getHeadlingTitle());
     }
 
     @Then("^he is navigated to Best sellers page$")

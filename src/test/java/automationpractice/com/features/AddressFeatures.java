@@ -1,6 +1,8 @@
 package automationpractice.com.features;
 
-import automationpractice.com.pages.*;
+import automationpractice.com.pages.AddressPage;
+import automationpractice.com.pages.HomePage;
+import automationpractice.com.pages.NewAddressPage;
 import automationpractice.com.pages.footerPages.MyAccountPage;
 import automationpractice.com.steps.LoginSteps;
 import cucumber.api.java.en.And;
@@ -15,7 +17,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class AddressFeatures {
 
     private HomePage homePage;
-    private HeaderBox headerBox;
     private MyAccountPage myAccountPage;
     private NewAddressPage newAddressPage;
     private AddressPage addressPage;

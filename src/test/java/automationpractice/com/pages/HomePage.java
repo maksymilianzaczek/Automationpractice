@@ -9,7 +9,7 @@ public class HomePage extends PageObject {
     @FindBy(id = "create_account_error")
     private WebElementFacade homePageError;
 
-    @FindBy(xpath = "//*[@id = 'homefeatured']//*[contains (@class, 'ajax_block_product col-xs-12 col-sm-4 col-md-3 first-in-line first')]")
+    @FindBy(xpath = "//*[@id = 'homefeatured']//*[contains(@class,'replace-2x img-responsive') and contains(@src,'http://automationpractice.com/img/p/1/1-home_default.jpg')]")
     private WebElementFacade clickOnNewProductImage;
     @FindBy(xpath = "//*[contains(@class,'alert-success')]")
     private WebElementFacade successfulMessage;
