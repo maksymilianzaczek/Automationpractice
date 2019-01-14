@@ -99,8 +99,8 @@ public class FooterFeatures {
 
     @Then("^he is navigated to About us page$")
     public void heIsNavigatedToAboutUsPage() {
-        final boolean getHeadlingTitle() = aboutUsPage.getHeadlingTitle();
-        assertThat(PageHeadlingTitles.getAboutUsTitle().equals(aboutUsPage.getHeadlingTitle());
+        final String HeadlingTitle = aboutUsPage.HeadlingTitle();
+        assertThat(PageHeadlingTitles.getAboutUsTitle().equals(aboutUsPage.HeadlingTitle());
     }
 
     @Then("^he is navigated to Best sellers page$")

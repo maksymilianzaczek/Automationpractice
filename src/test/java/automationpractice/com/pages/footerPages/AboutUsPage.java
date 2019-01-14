@@ -13,7 +13,7 @@ public class AboutUsPage extends PageObject {
 //        return aboutUsText.isVisible();
 //    }
 
-    public boolean getHeadlingTitle() { return aboutUsText.isVisible();
+    public String HeadlingTitle() { return aboutUsText.isVisible();
     }
 }
 
