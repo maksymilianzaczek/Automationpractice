@@ -1,7 +1,7 @@
 Feature: Checkout
 
-#  Background:
-#    Given user add first item into cart
+  Background:
+    Given user add first item into cart
 #
 #  Scenario: User is able to change quantity of items in summary checkout page
 #    When user change quantity on summary checkout page
@@ -11,10 +11,10 @@ Feature: Checkout
 #    When user click proceed to checkout in summary address and shipping tab
 #    Then alert is displayed in shipping checkout page
 #
-#  Scenario: user not mark checkbox terms of services and after the alert appear mark it
-#    When user click proceed to checkout in summary address and shipping tab
-#    And user exit alert click agree checkbox and click proceed to checkout
-#    Then user is in payment checkout tab
+  Scenario: user not mark checkbox terms of services and after the alert appear mark it
+    When user click proceed to checkout in summary address and shipping tab
+    And user exit alert click agree checkbox and click proceed to checkout
+    Then user is in payment checkout tab
 #
 #  Scenario: user add comment about order in address checkout page
 #    When user click proceed to checkout in summary tab

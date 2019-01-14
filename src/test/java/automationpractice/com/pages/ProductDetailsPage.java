@@ -10,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class ProductDetailsPage extends PageObject {
 
@@ -35,18 +36,10 @@ public class ProductDetailsPage extends PageObject {
     private List<WebElementFacade> listOfColorsAndSizes;
     @FindBy(id = "quantity_wanted")
     private WebElementFacade quantityValue;
-    
+
     private String currentSize;
     private String currentColor;
     private String currentQuantity;
-
-    public String getCurrentQuantity() {
-        return currentQuantity;
-    }
-
-    public void setCurrentQuantity(String currentQuantity) {
-        this.currentQuantity = currentQuantity;
-    }
 
     public String getQuantityValue() {
         return quantityValue.getValue();
@@ -59,16 +52,16 @@ public class ProductDetailsPage extends PageObject {
     public String getCurrentColor() {
         return currentColor;
     }
+    public String getCurrentQuantity() {
+        return currentQuantity;
+    }
 
-    private ArrayList<String> getAvailableColors() {
-        ArrayList<String> listOfColors = new ArrayList<>();
+    public void setCurrentQuantity(final String currentQuantity) {
+        this.currentQuantity = currentQuantity;
+    }
 
-        for (WebElementFacade row : listOfColorsAndSizes) {
-            String[] split = row.toString().split("<a id='color_(.*)' name='");
-            String[] color = split[1].split("'>(.*)");
-            listOfColors.add(color[0]);
-        }
-        return listOfColors;
+    private List<String> getAvailableColors() {
+        return listOfColorsAndSizes.stream().map(row -> row.getAttribute("name")).collect(Collectors.toList());
     }
 
     private void selectSize(final String size) {
@@ -97,23 +90,18 @@ public class ProductDetailsPage extends PageObject {
         minusQuantityButton.click();
     }
 
-//    public int clickPlusAndMinusButtonGivenNumberOfTimes(int plus, int minus) {
     public void clickPlusAndMinusButtonGivenNumberOfTimes(int plus, int minus) {
-//        currentQuantity = 1;
         for (int i = 0; i < plus; i++) {
             waitABit(1000);
             clickPlusQuantityButton();
-//            currentQuantity++;
         }
         for (int i = 0; i < minus; i++) {
             waitABit(1000);
             clickMinusQuantityButton();
-//            currentQuantity--;
         }
-//        return currentQuantity;
     }
 
-    public String changeSizeToGivenSize(String size) {
+    public String changeSizeToGivenSize(final String size) {
         currentSize = size.toUpperCase();
         switch (currentSize) {
             case "S":
@@ -136,9 +124,9 @@ public class ProductDetailsPage extends PageObject {
         return currentSize;
     }
 
-    public String changeColorToGivenColor(String color) {
+    public String changeColorToGivenColor(final String color) {
         currentColor = color.toUpperCase();
-        ArrayList<String> listOfAvailableColors = getAvailableColors();
+        List<String> listOfAvailableColors = getAvailableColors();
 
         for (String c : listOfAvailableColors) {
             if ((c.toUpperCase()).equals(color.toUpperCase())) {
@@ -191,40 +179,10 @@ public class ProductDetailsPage extends PageObject {
         pinteresButton.click();
     }
 
-    public void checkoutToTweeterWindow() {
+    public void checkoutToExternalSocialMediaWindow() {
         waitABit(1000);
-        for (String s : getDriver().getWindowHandles()) {
-            if (!s.equals("2147483649")) {
-                getDriver().switchTo().window(s);
-            }
-        }
-    }
-
-    public void checkoutToFacebookWindow() {
-        waitABit(1000);
-        for (String s : getDriver().getWindowHandles()) {
-            if (!s.equals("2147483649")) {
-                getDriver().switchTo().window(s);
-            }
-        }
-    }
-
-    public void checkoutToGooglePlusWindow() {
-        waitABit(1000);
-        for (String s : getDriver().getWindowHandles()) {
-            if (!s.equals("2147483649")) {
-                getDriver().switchTo().window(s);
-            }
-        }
-    }
-
-    public void checkoutToPinterestWindow() {
-        waitABit(3000);
-        for (String s : getDriver().getWindowHandles()) {
-            if (!s.equals("2147483649")) {
-                getDriver().switchTo().window(s);
-            }
-        }
+        final ArrayList tabs = new ArrayList<>(getDriver().getWindowHandles());
+        getDriver().switchTo().window(tabs.get(1).toString());
     }
 
     public boolean isTwitterDomainDisplayed() {

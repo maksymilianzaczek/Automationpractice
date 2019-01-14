@@ -18,12 +18,16 @@ public class ShippingCheckoutPage extends PageObject {
     @FindBy(xpath = "//*[contains(@class,'fancybox-close')]")
     private WebElementFacade closeAlert;
 
+    @FindBy(className = "fancybox-error")
+    private WebElementFacade allertMessage;
+
 
     public void clickOnProceedToCheckoutButton() {
         proceedToCheckoutButton.click();
     }
 
     public void clickAgreeCheckbox() {
+        allertMessage.waitUntilNotVisible();
         agreeCheckbox.click();
     }
 
@@ -33,7 +37,5 @@ public class ShippingCheckoutPage extends PageObject {
 
     public void closeAlert() {
         closeAlert.click();
-        waitABit(500);
     }
-
 }

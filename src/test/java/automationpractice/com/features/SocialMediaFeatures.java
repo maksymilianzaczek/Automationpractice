@@ -13,7 +13,7 @@ public class SocialMediaFeatures {
     @When("^user chose twitter$")
     public void userChoseTwitter() {
         productDetailsPage.clickOnTwitterButton();
-        productDetailsPage.checkoutToTweeterWindow();
+        productDetailsPage.checkoutToExternalSocialMediaWindow();
     }
 
     @Then("^new page in twitter domain is open$")
@@ -24,7 +24,7 @@ public class SocialMediaFeatures {
     @When("^user chose facebook$")
     public void userChoseFacebook() {
         productDetailsPage.clickOnFacebookButton();
-        productDetailsPage.checkoutToFacebookWindow();
+        productDetailsPage.checkoutToExternalSocialMediaWindow();
     }
 
     @Then("^new page in facebook domain is open$")
@@ -35,7 +35,7 @@ public class SocialMediaFeatures {
     @When("^user chose google plus$")
     public void userChoseGooglePlus() {
         productDetailsPage.clickOnGooglePlusButton();
-        productDetailsPage.checkoutToGooglePlusWindow();
+        productDetailsPage.checkoutToExternalSocialMediaWindow();
     }
 
     @Then("^new page in google plus domain is open$")
@@ -46,7 +46,7 @@ public class SocialMediaFeatures {
     @When("^user chose pinterest$")
     public void userChosePinterest() {
         productDetailsPage.clickOnPinterestButton();
-        productDetailsPage.checkoutToPinterestWindow();
+        productDetailsPage.checkoutToExternalSocialMediaWindow();
     }
 
     @Then("^new page in pinterest domain is open$")
