@@ -9,8 +9,11 @@ public class AboutUsPage extends PageObject {
     @FindBy(xpath = "//*[contains(@class,'navigation_page') and contains(text(), 'About us')]")
     private WebElementFacade aboutUsText;
 
-    public boolean isAboutUsTextDisplayed() {
-        return aboutUsText.isVisible();
+//    public boolean isAboutUsTextDisplayed() {
+//        return aboutUsText.isVisible();
+//    }
+
+    public boolean getHeadlingTitle() { return aboutUsText.isVisible();
     }
 }
 
