@@ -37,7 +37,6 @@ public class SummaryCheckoutPage extends PageObject {
 
     public String getGivenSize() {
         String[] givenSize = colorAndSizeFirstProduct.getText().split("Color\\s:\\s.*\\sSize\\s:\\s");
-        System.out.println(givenSize[1]);
         return givenSize[1];
     }
 

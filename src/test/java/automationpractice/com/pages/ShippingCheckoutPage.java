@@ -19,7 +19,7 @@ public class ShippingCheckoutPage extends PageObject {
     private WebElementFacade closeAlert;
 
     @FindBy(className = "fancybox-error")
-    private WebElementFacade allertMessage;
+    private WebElementFacade alertMessage;
 
 
     public void clickOnProceedToCheckoutButton() {
@@ -27,7 +27,7 @@ public class ShippingCheckoutPage extends PageObject {
     }
 
     public void clickAgreeCheckbox() {
-        allertMessage.waitUntilNotVisible();
+        alertMessage.waitUntilNotVisible();
         agreeCheckbox.click();
     }
 
