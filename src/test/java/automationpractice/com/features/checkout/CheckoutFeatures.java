@@ -52,7 +52,7 @@ public class CheckoutFeatures {
 
     @Then("^summary checkout page has a given number of items in summary checkout page$")
     public void summaryCheckoutPageHasAGivenNumberOfItemsInSummaryCheckoutPage() {
-        assertThat(paymentCheckoutPage.getQuantity()).isEqualTo(summaryCheckoutPage.getQuantity());
+        assertThat(summaryCheckoutPage.getQuantity()).isEqualTo(paymentCheckoutPage.getQuantity());
     }
 
     @When("^user click proceed to checkout in summary address and shipping tab$")

@@ -3,6 +3,7 @@ package automationpractice.com.pages;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class SummaryCheckoutPage extends PageObject {
 
@@ -16,16 +17,16 @@ public class SummaryCheckoutPage extends PageObject {
     private WebElementFacade quantityOfItems;
 
     @FindBy(xpath = "//*[contains(@class,'button-plus')]//*[@class='icon-plus']")
-    private WebElementFacade clickPlusQuantityButton;
+    private WebElementFacade plusQuantityButton;
 
     @FindBy(xpath = "//*[contains(@class,'button-minus')]//*[@class='icon-minus']")
-    private WebElementFacade clickMinusQuantityButton;
+    private WebElementFacade minusQuantityButton;
+
+    private String quantity;
 
     public String getCurrentQuantity() {
         return quantityOfItems.getValue();
     }
-
-    private String quantity;
 
     public String getQuantity() {
         return quantity;
@@ -50,23 +51,70 @@ public class SummaryCheckoutPage extends PageObject {
         return color[0].toUpperCase();
     }
 
+    /**
+     * This method checks 10 times per second whether the quantity value is changed
+     */
     private void clickPlusQuantityButton() {
-        clickPlusQuantityButton.click();
+        String valueBeforeClick = getCurrentQuantity();
+        plusQuantityButton.click();
+
+        for (int i = 0; i < 50; i++) {
+            String valueAfterClick = getCurrentQuantity();
+            if (!valueBeforeClick.equals(valueAfterClick)){
+                break;
+            }
+            else {
+                waitABit(100);
+            }
+        }
     }
 
+//    /**
+//     * This method checks 10 times per second whether the quantity value is changed
+//     */
+//    private void minusQuantityButton() {
+//        String valueBeforeClick = getCurrentQuantity();
+//        minusQuantityButton.click();
+//
+//        for (int i = 0; i < 50; i++) {
+//            String valueAfterClick = getCurrentQuantity();
+//            if (!valueBeforeClick.equals(valueAfterClick)){
+//                break;
+//            }
+//            else {
+//                waitABit(100);
+//            }
+//        }
+//    }
+    /**
+     * This method checks 10 times per second whether the quantity value is changed
+     */
     private void clickMinusQuantityButton() {
-        clickMinusQuantityButton.click();
+        int valueBeforeClick = Integer.parseInt(getCurrentQuantity());
+        System.out.println("valueBeforeClick: " + valueBeforeClick);
+
+
+        minusQuantityButton.click();
+//        waitForCondition().until(ExpectedConditions.attributeToBe(minusQuantityButton, "value", String.valueOf(valueBeforeClick + 1)));
+        waitForCondition().until(ExpectedConditions.attributeToBe(quantityOfItems, "value", String.valueOf(valueBeforeClick + 1)));
+
+//        for (int i = 0; i < 50; i++) {
+//            String valueAfterClick = getCurrentQuantity();
+//            if (!valueBeforeClick.equals(valueAfterClick)){
+//                break;
+//            }
+//            else {
+//                waitABit(100);
+//            }
+//        }
     }
 
     public void clickPlusAndMinusButtonGivenNumberOfTimes(int plus, int minus) {
         for (int i = 0; i < plus; i++) {
-            waitABit(1000);
             clickPlusQuantityButton();
         }
         for (int i = 0; i < minus; i++) {
-            waitABit(1000);
             clickMinusQuantityButton();
         }
-        waitABit(1000);
     }
 }
