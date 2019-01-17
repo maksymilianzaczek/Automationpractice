@@ -30,6 +30,23 @@ public class PaymentCheckoutPage extends PageObject {
     @FindBy(xpath = "//*[@id='center_column']//*[contains(@class,'btn-default')]")
     private WebElementFacade backToOrdersButton;
 
+    @FindBy(xpath = "//*[@class='cart_quantity text-center']/span")
+    private WebElementFacade currentQuantity;
+
+    private String quantity;
+
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getCurrentQuantity() {
+        return currentQuantity.getText();
+    }
+
     public void clickPayByBankWireButton() {
         payByBankWireButton.click();
     }

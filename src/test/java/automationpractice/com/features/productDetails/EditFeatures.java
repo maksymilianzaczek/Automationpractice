@@ -1,6 +1,7 @@
 package automationpractice.com.features.productDetails;
 
 import automationpractice.com.pages.HomePage;
+import automationpractice.com.pages.PaymentCheckoutPage;
 import automationpractice.com.pages.ProductDetailsPage;
 import automationpractice.com.pages.SummaryCheckoutPage;
 import automationpractice.com.steps.LoginSteps;
@@ -16,6 +17,7 @@ public class EditFeatures {
     private HomePage homePage;
     private ProductDetailsPage productDetailsPage;
     private SummaryCheckoutPage summaryCheckoutPage;
+    private PaymentCheckoutPage paymentCheckoutPage;
     @Steps
     private LoginSteps loginSteps;
 
@@ -39,7 +41,7 @@ public class EditFeatures {
 
     @Then("^summary checkout page has a given number of items in product details page$")
     public void summaryCheckoutPageHasAGivenNumberOfItemsInProductDetailsPage() {
-        assertThat(summaryCheckoutPage.getFirstProductQuantity()).isEqualTo(productDetailsPage.getCurrentQuantity());
+        assertThat(summaryCheckoutPage.getCurrentQuantity()).isEqualTo(productDetailsPage.getCurrentQuantity());
     }
 
     @When("^user change size to (.*) size on product details page$")
@@ -61,5 +63,4 @@ public class EditFeatures {
     public void summaryCheckoutPageHasItemInGivenColor() {
         assertThat(summaryCheckoutPage.getGivenColor()).isEqualTo(productDetailsPage.getCurrentColor());
     }
-
 }

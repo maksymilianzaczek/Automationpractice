@@ -2,6 +2,7 @@ package automationpractice.com.features.checkout;
 
 import automationpractice.com.pages.*;
 import automationpractice.com.steps.LoginSteps;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -34,15 +35,24 @@ public class CheckoutFeatures {
         productDetailsPage.clickOnAddToCartButton();
         productDetailsPage.clickProceedToCheckoutButton();
     }
-
     @When("^user change quantity on summary checkout page$")
-    public int userChangeQuantityOnSummaryCheckoutPage() {
-        return summaryCheckoutPage.clickPlusAndMinusButtonGivenNumberOfTimes(4,3);
+    public void userChangeQuantityOnSummaryCheckoutPage() {
+        summaryCheckoutPage.clickPlusAndMinusButtonGivenNumberOfTimes(4,3);
+        summaryCheckoutPage.setQuantity(summaryCheckoutPage.getCurrentQuantity());
+    }
+
+    @And("^user confirms every step from summary checkout page up to payment checkout page$")
+    public void userConfirmsEveryStepFromSummaryCheckoutPageUpToPaymentCheckoutPage() {
+        summaryCheckoutPage.clickOnProceedToCheckoutButton();
+        addressCheckoutPage.clickOnProceedToCheckoutButton();
+        shippingCheckoutPage.clickAgreeCheckbox();
+        shippingCheckoutPage.clickOnProceedToCheckoutButton();
+        paymentCheckoutPage.setQuantity(paymentCheckoutPage.getCurrentQuantity());
     }
 
     @Then("^summary checkout page has a given number of items in summary checkout page$")
     public void summaryCheckoutPageHasAGivenNumberOfItemsInSummaryCheckoutPage() {
-        assertThat(summaryCheckoutPage.getFirstProductQuantity()).isEqualTo(summaryCheckoutPage.getCurrentQuantity());
+        assertThat(paymentCheckoutPage.getQuantity()).isEqualTo(summaryCheckoutPage.getQuantity());
     }
 
     @When("^user click proceed to checkout in summary address and shipping tab$")

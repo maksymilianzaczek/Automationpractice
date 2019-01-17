@@ -5,6 +5,7 @@ import automationpractice.com.exceptions.NoSizeAvailableException;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
@@ -180,9 +181,24 @@ public class ProductDetailsPage extends PageObject {
     }
 
     public void checkoutToExternalSocialMediaWindow() {
-        waitABit(1000);
         final ArrayList tabs = new ArrayList<>(getDriver().getWindowHandles());
         getDriver().switchTo().window(tabs.get(1).toString());
+        waitForOpenedNewDomain();
+    }
+
+    /**
+     * This method checks 10 times per second if the new domain has been opened
+     */
+    private void waitForOpenedNewDomain() {
+        for (int i = 0; i < 100; i++) {
+            String currentUrl = getDriver().getCurrentUrl();
+            if (currentUrl.contains("about:blank")) {
+                waitABit(100);
+            }
+            if (!currentUrl.contains("about:blank")){
+                break;
+            }
+        }
     }
 
     public boolean isTwitterDomainDisplayed() {
