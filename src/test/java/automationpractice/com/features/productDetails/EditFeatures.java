@@ -36,7 +36,7 @@ public class EditFeatures {
     @When("^user change quantity on product details page$")
     public void userChangeQuantityOnProductDetailsPage() {
         productDetailsPage.clickPlusAndMinusButtonGivenNumberOfTimes(2,1);
-        productDetailsPage.setCurrentQuantity(productDetailsPage.getQuantityValue());
+        productDetailsPage.setCurrentQuantity(productDetailsPage.getQuantityOfItem());
     }
 
     @Then("^summary checkout page has a given number of items in product details page$")

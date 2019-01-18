@@ -10,8 +10,6 @@ import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
 import org.assertj.core.api.SoftAssertions;
 
-import java.util.List;
-
 import static automationpractice.com.data.NewAddressInformation.NEW_ADDRESS_INFORMATION_1;
 
 public class AddAddressesFeaturesForCheckout {
@@ -90,12 +88,4 @@ public class AddAddressesFeaturesForCheckout {
         theNewAddressIsSelectedAsDeliveryAddress();
         theNewAddressIsSelectedAsBillingAddress();
     }
-
-//    private void checkAddressNameExistsAndIfIsDeleteIt(final String addressName) {
-//        List<String> addressNameList = addressPage.getAddressNameList();
-//        for (String name : addressNameList){
-//            if (name.toUpperCase().equals(addressName.toUpperCase())){
-//                addressPage.removeAddressFromAddressPage(addressName);          }
-//        }
-//    }
 }

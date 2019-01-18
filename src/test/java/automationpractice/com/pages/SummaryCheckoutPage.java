@@ -3,7 +3,7 @@ package automationpractice.com.pages;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 
 public class SummaryCheckoutPage extends PageObject {
 
@@ -51,62 +51,18 @@ public class SummaryCheckoutPage extends PageObject {
         return color[0].toUpperCase();
     }
 
-    /**
-     * This method checks 10 times per second whether the quantity value is changed
-     */
     private void clickPlusQuantityButton() {
-        String valueBeforeClick = getCurrentQuantity();
+        int valueBeforeClick = Integer.parseInt(getCurrentQuantity());
         plusQuantityButton.click();
-
-        for (int i = 0; i < 50; i++) {
-            String valueAfterClick = getCurrentQuantity();
-            if (!valueBeforeClick.equals(valueAfterClick)){
-                break;
-            }
-            else {
-                waitABit(100);
-            }
-        }
+        waitForCondition().until((ExpectedCondition<Boolean>) webDriver ->
+                quantityOfItems.getValue().equals(String.valueOf(valueBeforeClick + 1)));
     }
 
-//    /**
-//     * This method checks 10 times per second whether the quantity value is changed
-//     */
-//    private void minusQuantityButton() {
-//        String valueBeforeClick = getCurrentQuantity();
-//        minusQuantityButton.click();
-//
-//        for (int i = 0; i < 50; i++) {
-//            String valueAfterClick = getCurrentQuantity();
-//            if (!valueBeforeClick.equals(valueAfterClick)){
-//                break;
-//            }
-//            else {
-//                waitABit(100);
-//            }
-//        }
-//    }
-    /**
-     * This method checks 10 times per second whether the quantity value is changed
-     */
     private void clickMinusQuantityButton() {
         int valueBeforeClick = Integer.parseInt(getCurrentQuantity());
-        System.out.println("valueBeforeClick: " + valueBeforeClick);
-
-
         minusQuantityButton.click();
-//        waitForCondition().until(ExpectedConditions.attributeToBe(minusQuantityButton, "value", String.valueOf(valueBeforeClick + 1)));
-        waitForCondition().until(ExpectedConditions.attributeToBe(quantityOfItems, "value", String.valueOf(valueBeforeClick + 1)));
-
-//        for (int i = 0; i < 50; i++) {
-//            String valueAfterClick = getCurrentQuantity();
-//            if (!valueBeforeClick.equals(valueAfterClick)){
-//                break;
-//            }
-//            else {
-//                waitABit(100);
-//            }
-//        }
+        waitForCondition().until((ExpectedCondition<Boolean>) webDriver ->
+                quantityOfItems.getValue().equals(String.valueOf(valueBeforeClick - 1)));
     }
 
     public void clickPlusAndMinusButtonGivenNumberOfTimes(int plus, int minus) {

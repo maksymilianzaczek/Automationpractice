@@ -5,8 +5,8 @@ import automationpractice.com.exceptions.NoSizeAvailableException;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,14 +36,14 @@ public class ProductDetailsPage extends PageObject {
     @FindBy(xpath = "//*[@id = 'color_to_pick_list']//*[contains(@id,'color')]")
     private List<WebElementFacade> listOfColorsAndSizes;
     @FindBy(id = "quantity_wanted")
-    private WebElementFacade quantityValue;
+    private WebElementFacade quantityOfItem;
 
     private String currentSize;
     private String currentColor;
     private String currentQuantity;
 
-    public String getQuantityValue() {
-        return quantityValue.getValue();
+    public String getQuantityOfItem() {
+        return quantityOfItem.getValue();
     }
 
     public String getCurrentSize() {
@@ -53,6 +53,7 @@ public class ProductDetailsPage extends PageObject {
     public String getCurrentColor() {
         return currentColor;
     }
+
     public String getCurrentQuantity() {
         return currentQuantity;
     }
@@ -84,20 +85,24 @@ public class ProductDetailsPage extends PageObject {
     }
 
     private void clickPlusQuantityButton() {
+        int valueBeforeClick = Integer.parseInt(quantityOfItem.getValue());
         plusQuantityButton.click();
+        waitForCondition().until((ExpectedCondition<Boolean>) webDriver ->
+                quantityOfItem.getValue().equals(String.valueOf(valueBeforeClick + 1)));
     }
 
     private void clickMinusQuantityButton() {
+        int valueBeforeClick = Integer.parseInt(quantityOfItem.getValue());
         minusQuantityButton.click();
+        waitForCondition().until((ExpectedCondition<Boolean>) webDriver ->
+                quantityOfItem.getValue().equals(String.valueOf(valueBeforeClick - 1)));
     }
 
     public void clickPlusAndMinusButtonGivenNumberOfTimes(int plus, int minus) {
         for (int i = 0; i < plus; i++) {
-            waitABit(1000);
             clickPlusQuantityButton();
         }
         for (int i = 0; i < minus; i++) {
-            waitABit(1000);
             clickMinusQuantityButton();
         }
     }
@@ -186,19 +191,9 @@ public class ProductDetailsPage extends PageObject {
         waitForOpenedNewDomain();
     }
 
-    /**
-     * This method checks 10 times per second if the new domain has been opened
-     */
     private void waitForOpenedNewDomain() {
-        for (int i = 0; i < 100; i++) {
-            String currentUrl = getDriver().getCurrentUrl();
-            if (currentUrl.contains("about:blank")) {
-                waitABit(100);
-            }
-            if (!currentUrl.contains("about:blank")){
-                break;
-            }
-        }
+        waitForCondition().until((ExpectedCondition<Boolean>) webDriver ->
+                !getDriver().getCurrentUrl().contains("about:blank"));
     }
 
     public boolean isTwitterDomainDisplayed() {

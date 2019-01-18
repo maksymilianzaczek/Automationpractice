@@ -1,12 +1,12 @@
 Feature: Checkout
 
-  Background:
-    Given user add first item into cart
-
-  Scenario: User is able to change quantity of items in summary checkout page
-    When user change quantity on summary checkout page
-    And user confirms every step from summary checkout page up to payment checkout page
-    Then summary checkout page has a given number of items in summary checkout page
+#  Background:
+#    Given user add first item into cart
+#
+#  Scenario: User is able to change quantity of items in summary checkout page
+#    When user change quantity on summary checkout page
+#    And user confirms every step from summary checkout page up to payment checkout page
+#    Then summary checkout page has a given number of items in summary checkout page
 #
 #  Scenario: user not mark checkbox terms of services in shipping checkout page
 #    When user click proceed to checkout in summary address and shipping tab
