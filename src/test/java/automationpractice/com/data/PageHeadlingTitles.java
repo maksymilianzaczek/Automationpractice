@@ -16,6 +16,6 @@ public class PageHeadlingTitles {
     private static final String WomenCategoriesTitle = "PageHeadlingTitles";
 
 
-    public static Object getAboutUsTitle;
-    
+    public static Object getAboutUsTitle()
+
 }
