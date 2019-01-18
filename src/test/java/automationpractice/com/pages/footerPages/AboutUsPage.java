@@ -6,14 +6,11 @@ import org.openqa.selenium.support.FindBy;
 
 public class AboutUsPage extends PageObject {
 
-    @FindBy(xpath = "//*[contains(@class,'navigation_page') and contains(text(), 'About us')]")
+    @FindBy(xpath = "//*[contains(@class, 'page-heading')]")
     private WebElementFacade aboutUsText;
 
-//    public boolean isAboutUsTextDisplayed() {
-//        return aboutUsText.isVisible();
-//    }
-
-    public String HeadlingTitle() { return aboutUsText.isVisible();
+    public String HeadlingTitle() {
+        return aboutUsText.isVisible();
     }
 }
 

@@ -6,12 +6,12 @@ import org.openqa.selenium.support.FindBy;
 
 public class TermsAndConditionsOfUsePage extends PageObject {
 
-    @FindBy(xpath = "//*[contains(@class,'navigation_page') and contains(text(), 'Terms and conditions of use')]")
+    @FindBy(xpath = "//*[contains(@class, 'page-heading')]")
     private WebElementFacade termsAndConditionsOfUseText;
 
 
-    public boolean isTermsAndConditionsOfUseTextDisplayed() {  return termsAndConditionsOfUseText.isVisible();
+    public String HeadlingTitle() {
+        return termsAndConditionsOfUseText.isVisible();
     }
 }
-
 

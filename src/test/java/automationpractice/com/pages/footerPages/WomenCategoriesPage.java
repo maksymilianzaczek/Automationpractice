@@ -7,12 +7,12 @@ import org.openqa.selenium.support.FindBy;
 public class WomenCategoriesPage extends PageObject {
 
 
-    @FindBy(xpath = "//*[contains(@class,'navigation_page') and contains(text(), 'Women')]")
+    @FindBy(xpath = "//*[contains(@class, 'page-heading')]")
     private WebElementFacade womenCategoriesText;
 
 
-    public boolean isWomenCategoriesTextDisplayed() {  return womenCategoriesText.isVisible();
+    public String HeadlingTitle() {
+        return womenCategoriesText.isVisible();
     }
 }
-
 

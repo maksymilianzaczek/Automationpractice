@@ -7,11 +7,11 @@ import org.openqa.selenium.support.FindBy;
 public class MyOrdersPage extends PageObject {
 
 
-    @FindBy(xpath = "//*[contains(@class,'navigation_page') and contains(text(), 'Order history')]")
+    @FindBy(xpath = "//*[contains(@class, 'page-heading')]")
     private WebElementFacade myOrdersText;
 
-
-    public boolean isMyOrdersPageTextDisplayed() { return myOrdersText.isVisible();
+    public String HeadlingTitle() {
+        return myOrdersText.isVisible();
     }
 }
 

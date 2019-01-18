@@ -99,79 +99,66 @@ public class FooterFeatures {
 
     @Then("^he is navigated to About us page$")
     public void heIsNavigatedToAboutUsPage() {
-        final String HeadlingTitle = aboutUsPage.HeadlingTitle();
-        assertThat(PageHeadlingTitles.getAboutUsTitle().equals(aboutUsPage.HeadlingTitle());
+        assertThat(PageHeadlingTitles.getAboutUsTitle().equals(aboutUsPage.HeadlingTitle()));
     }
 
     @Then("^he is navigated to Best sellers page$")
     public void heIsNavigatedToBestSellersPage() {
-        final boolean isBestSellersTextDisplayed = bestSellersPage.isBestSellersTextDisplayed();
-        assertThat(isBestSellersTextDisplayed).isTrue();
+        assertThat(PageHeadlingTitles.getBestSellersTitle().equals(bestSellersPage.HeadlingTitle()));
     }
 
     @Then("^he is navigated to Contact us info page$")
     public void heIsNavigatedToContactUsInfoPage() {
-        final boolean isContactUsTextDisplayed = contactUsPage.isContactUsTextDisplayed();
-        assertThat(isContactUsTextDisplayed).isTrue();
+        assertThat(PageHeadlingTitles.getContactUsTitle().equals(contactUsPage.HeadlingTitle()));
     }
 
     @Then("^he is navigated to My addresses page$")
     public void heIsNavigatedToMyAddressesPage() {
-        final boolean isMyAddressesTextDisplayed = myAddressesPage.isMyAddressesTextDisplayed();
-        assertThat(isMyAddressesTextDisplayed).isTrue();
+        assertThat(PageHeadlingTitles.getMyAddressesTitle().equals(myAddressesPage.HeadlingTitle()));
     }
 
     @Then("^he is navigated to My credit slips page$")
     public void heIsNavigatedToMyCreditSlipsPage() {
-        final boolean isMyCreditSlipsTextDisplayed = myCreditSlipsPage.isMyCreditSlipsTextDisplayed();
-        assertThat(isMyCreditSlipsTextDisplayed).isTrue();
+        assertThat(PageHeadlingTitles.getMyCreditSlipsTitle().equals(myCreditSlipsPage.HeadlingTitle()));
     }
 
     @Then("^he is navigated to My orders page$")
     public void heIsNavigatedToMyOrdersPage() {
-        final boolean isMyOrdersPageTextDisplayed = myOrdersPage.isMyOrdersPageTextDisplayed();
-        assertThat(isMyOrdersPageTextDisplayed).isTrue();
+        assertThat(PageHeadlingTitles.getMyOrdersTitle().equals(myOrdersPage.HeadlingTitle()));
     }
 
     @Then("^he is navigated to My personal info page$")
     public void heIsNavigatedToMyPersonalInfoPage() {
-        final boolean isMyPersonalInfoTextDisplayed = myPersonalInfoPage.isMyPersonalInfoTextDisplayed();
-        assertThat(isMyPersonalInfoTextDisplayed).isTrue();
+        assertThat(PageHeadlingTitles.getMyPersonalInfoTitle().equals(myPersonalInfoPage.HeadlingTitle()));
     }
 
     @Then("^he is navigated to New products page$")
     public void heIsNavigatedToNewProductsPage() {
-        final boolean isNewProductsTextDisplayed = newProductsPage.isNewProductsTextDisplayed();
-        assertThat(isNewProductsTextDisplayed).isTrue();
+        assertThat(PageHeadlingTitles.getNewProductsTitle().equals(newProductsPage.HeadlingTitle()));
     }
 
     @Then("^he is navigated to Our stores page$")
     public void heIsNavigatedToOurStoresPage() {
-        final boolean isOurStoresTextDisplayed = ourStoresPage.isOurStoresTextDisplayed();
-        assertThat(isOurStoresTextDisplayed).isTrue();
+        assertThat(PageHeadlingTitles.getOurStoresTitle().equals(ourStoresPage.HeadlingTitle()));
     }
 
     @Then("^he is navigated to Sitemap page$")
     public void heIsNavigatedToSitemapPage() {
-        final boolean isSitemapTextDisplayed = sitemapPage.isSitemapTextDisplayed();
-        assertThat(isSitemapTextDisplayed).isTrue();
+        assertThat(PageHeadlingTitles.getSitemapTitle().equals(sitemapPage.HeadlingTitle()));
     }
 
     @Then("^he is navigated to Specials page$")
     public void heIsNavigatedToSpecialsPage() {
-        final boolean isSpecialsTextDisplayed = specialsPage.isSpecialsTextDisplayed();
-        assertThat(isSpecialsTextDisplayed).isTrue();
+        assertThat(PageHeadlingTitles.getSpecialsTitle().equals(specialsPage.HeadlingTitle()));
     }
 
     @Then("^he is navigated to terms and conditions of use page$")
     public void heIsNavigatedToTermsAndConditionsOfUsePage() {
-        final boolean isTermsAndConditionsOfUseTextDisplayed = termsAndConditionsOfUsePage.isTermsAndConditionsOfUseTextDisplayed();
-        assertThat(isTermsAndConditionsOfUseTextDisplayed).isTrue();
+        assertThat(PageHeadlingTitles.getTermsAndConditionsOfUseTitle().equals(termsAndConditionsOfUsePage.HeadlingTitle()));
     }
 
     @Then("^he is navigated to women categories page$")
     public void heIsNavigatedToWomenCategoriesPage() {
-        final boolean isWomenCategoriesTextDisplayed = womenCategoriesPage.isWomenCategoriesTextDisplayed();
-        assertThat(isWomenCategoriesTextDisplayed).isTrue();
+        assertThat(PageHeadlingTitles.getWomenCategoriesTitle().equals(womenCategoriesPage.HeadlingTitle()));
     }
 }

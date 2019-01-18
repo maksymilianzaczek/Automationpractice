@@ -23,7 +23,7 @@ public class ContactUsPage extends PageObject {
     private WebElementFacade successfulMessageSent;
     @FindBy(xpath = "//*[contains(@class, 'alert alert-danger')]")
     private WebElementFacade errorMessageSent;
-    @FindBy(xpath = "//*[contains(@class,'navigation_page') and contains(text(), 'Contact')]")
+    @FindBy(xpath = "//*[contains(@class, 'page-heading')]")
     private WebElementFacade contactUsText;
 
 
@@ -61,11 +61,10 @@ public class ContactUsPage extends PageObject {
         sendMessage.click();
     }
 
-    public boolean isContactUsTextDisplayed() {
+    public String HeadlingTitle() {
         return contactUsText.isVisible();
     }
 }
-
 
 
 

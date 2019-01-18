@@ -6,12 +6,13 @@ import org.openqa.selenium.support.FindBy;
 
 public class NewProductsPage extends PageObject {
 
-    @FindBy(xpath = "//*[contains(@class,'navigation_page') and contains(text(), 'New products')]")
+    @FindBy(xpath = "//*[contains(@class, 'page-heading')]")
 
     private WebElementFacade newProductsText;
 
 
-    public boolean isNewProductsTextDisplayed() {  return newProductsText.isVisible();
+    public String HeadlingTitle() {
+        return newProductsText.isVisible();
     }
 }
 

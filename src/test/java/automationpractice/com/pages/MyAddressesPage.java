@@ -6,11 +6,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class MyAddressesPage extends PageObject {
 
-    @FindBy(xpath = "//*[contains(@class,'navigation_page') and contains(text(), 'My addresses')]")
+    @FindBy(xpath = "//*[contains(@class, 'page-heading')]")
     private WebElementFacade myAddressesText;
 
-    public boolean isMyAddressesTextDisplayed() {
+    public String HeadlingTitle() {
         return myAddressesText.isVisible();
     }
-
 }
