@@ -1,13 +1,13 @@
 package automationpractice.com.features;
 
 import automationpractice.com.data.PageHeadlingTitles;
-import automationpractice.com.pages.*;
+import automationpractice.com.pages.ContactUsPage;
+import automationpractice.com.pages.FooterBox;
+import automationpractice.com.pages.MyAddressesPage;
+import automationpractice.com.pages.MyOrdersPage;
 import automationpractice.com.pages.footerPages.*;
-import automationpractice.com.steps.LoginSteps;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class FooterFeatures {
 
