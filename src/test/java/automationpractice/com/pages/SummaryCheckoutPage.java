@@ -5,6 +5,9 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class SummaryCheckoutPage extends PageObject {
 
     @FindBy(className = "standard-checkout")
@@ -41,14 +44,19 @@ public class SummaryCheckoutPage extends PageObject {
     }
 
     public String getGivenSize() {
-        String[] givenSize = colorAndSizeFirstProduct.getText().split("Color\\s:\\s.*\\sSize\\s:\\s");
-        return givenSize[1];
+        return divideColorAndSizeTextUsingRegex().group(2).toUpperCase();
     }
 
     public String getGivenColor() {
-        String[] split1 = colorAndSizeFirstProduct.getText().split("Color\\s:\\s");
-        String[] color = split1[1].split(",\\sSize\\s:\\s");
-        return color[0].toUpperCase();
+        return divideColorAndSizeTextUsingRegex().group(1).toUpperCase();
+    }
+
+    private Matcher divideColorAndSizeTextUsingRegex(){
+        String stringRegex = "Color : (.+)?,.*: (.+)?";
+        Pattern regex = Pattern.compile(stringRegex);
+        Matcher color = regex.matcher(colorAndSizeFirstProduct.getText());
+        color.matches();
+        return color;
     }
 
     private void clickPlusQuantityButton() {
