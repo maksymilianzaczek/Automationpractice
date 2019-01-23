@@ -9,6 +9,8 @@ import automationpractice.com.pages.footerPages.*;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+import static org.junit.Assert.assertThat;
+
 public class FooterFeatures {
 
 

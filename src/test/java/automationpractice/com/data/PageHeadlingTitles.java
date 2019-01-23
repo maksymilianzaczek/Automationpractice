@@ -14,5 +14,4 @@ public class PageHeadlingTitles {
     private static final String specialsTitle = "PageHeadlingTitles";
     private static final String termsAndConditionsOfUseTitle = "PageHeadlingTitles";
     private static final String womenCategoriesTitle = "PageHeadlingTitles";
-
 }
