@@ -9,7 +9,7 @@ import automationpractice.com.pages.footerPages.*;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class FooterFeatures {
 
@@ -28,6 +28,8 @@ public class FooterFeatures {
     private SpecialsPage specialsPage;
     private TermsAndConditionsOfUsePage termsAndConditionsOfUsePage;
     private WomenCategoriesPage womenCategoriesPage;
+
+    private final PageHeadlingTitles pageHeadlingTitles = new PageHeadlingTitles();
 
     @When("^he clicks on About us button on footer$")
     public void heClicksOnAboutUsButtonOnFooter() {
@@ -101,66 +103,66 @@ public class FooterFeatures {
 
     @Then("^he is navigated to About us page$")
     public void heIsNavigatedToAboutUsPage() {
-        assertThat(PageHeadlingTitles.getAboutUsTitle().equals(aboutUsPage.HeadlingTitle()));
+        assertThat(pageHeadlingTitles.getAboutUsTitle()).isEqualTo(aboutUsPage.HeadlingTitle());
     }
 
     @Then("^he is navigated to Best sellers page$")
     public void heIsNavigatedToBestSellersPage() {
-        assertThat(PageHeadlingTitles.getBestSellersTitle().equals(bestSellersPage.HeadlingTitle()));
+        assertThat(pageHeadlingTitles.getBestSellersTitle().equals(bestSellersPage.HeadlingTitle()));
     }
 
     @Then("^he is navigated to Contact us info page$")
     public void heIsNavigatedToContactUsInfoPage() {
-        assertThat(PageHeadlingTitles.getContactUsTitle().equals(contactUsPage.HeadlingTitle()));
+        assertThat(pageHeadlingTitles.getContactUsTitle().equals(contactUsPage.HeadlingTitle()));
     }
 
     @Then("^he is navigated to My addresses page$")
     public void heIsNavigatedToMyAddressesPage() {
-        assertThat(PageHeadlingTitles.getMyAddressesTitle().equals(myAddressesPage.HeadlingTitle()));
+        assertThat(pageHeadlingTitles.getMyAddressesTitle().equals(myAddressesPage.HeadlingTitle()));
     }
 
     @Then("^he is navigated to My credit slips page$")
     public void heIsNavigatedToMyCreditSlipsPage() {
-        assertThat(PageHeadlingTitles.getMyCreditSlipsTitle().equals(myCreditSlipsPage.HeadlingTitle()));
+        assertThat(pageHeadlingTitles.getMyCreditSlipsTitle().equals(myCreditSlipsPage.HeadlingTitle()));
     }
 
     @Then("^he is navigated to My orders page$")
     public void heIsNavigatedToMyOrdersPage() {
-        assertThat(PageHeadlingTitles.getMyOrdersTitle().equals(myOrdersPage.HeadlingTitle()));
+        assertThat(pageHeadlingTitles.getMyOrdersTitle().equals(myOrdersPage.HeadlingTitle()));
     }
 
     @Then("^he is navigated to My personal info page$")
     public void heIsNavigatedToMyPersonalInfoPage() {
-        assertThat(PageHeadlingTitles.getMyPersonalInfoTitle().equals(myPersonalInfoPage.HeadlingTitle()));
+        assertThat(pageHeadlingTitles.getMyPersonalInfoTitle().equals(myPersonalInfoPage.HeadlingTitle()));
     }
 
     @Then("^he is navigated to New products page$")
     public void heIsNavigatedToNewProductsPage() {
-        assertThat(PageHeadlingTitles.getNewProductsTitle().equals(newProductsPage.HeadlingTitle()));
+        assertThat(pageHeadlingTitles.getNewProductsTitle().equals(newProductsPage.HeadlingTitle()));
     }
 
     @Then("^he is navigated to Our stores page$")
     public void heIsNavigatedToOurStoresPage() {
-        assertThat(PageHeadlingTitles.getOurStoresTitle().equals(ourStoresPage.HeadlingTitle()));
+        assertThat(pageHeadlingTitles.getOurStoresTitle().equals(ourStoresPage.HeadlingTitle()));
     }
 
     @Then("^he is navigated to Sitemap page$")
     public void heIsNavigatedToSitemapPage() {
-        assertThat(PageHeadlingTitles.getSitemapTitle().equals(sitemapPage.HeadlingTitle()));
+        assertThat(pageHeadlingTitles.getSitemapTitle().equals(sitemapPage.HeadlingTitle()));
     }
 
     @Then("^he is navigated to Specials page$")
     public void heIsNavigatedToSpecialsPage() {
-        assertThat(PageHeadlingTitles.getSpecialsTitle().equals(specialsPage.HeadlingTitle()));
+        assertThat(pageHeadlingTitles.getSpecialsTitle().equals(specialsPage.HeadlingTitle()));
     }
 
     @Then("^he is navigated to terms and conditions of use page$")
     public void heIsNavigatedToTermsAndConditionsOfUsePage() {
-        assertThat(PageHeadlingTitles.getTermsAndConditionsOfUseTitle().equals(termsAndConditionsOfUsePage.HeadlingTitle()));
+        assertThat(pageHeadlingTitles.getTermsAndConditionsOfUseTitle().equals(termsAndConditionsOfUsePage.HeadlingTitle()));
     }
 
     @Then("^he is navigated to women categories page$")
     public void heIsNavigatedToWomenCategoriesPage() {
-        assertThat(PageHeadlingTitles.getWomenCategoriesTitle().equals(womenCategoriesPage.HeadlingTitle()));
+        assertThat(pageHeadlingTitles.getWomenCategoriesTitle().equals(womenCategoriesPage.HeadlingTitle()));
     }
 }
