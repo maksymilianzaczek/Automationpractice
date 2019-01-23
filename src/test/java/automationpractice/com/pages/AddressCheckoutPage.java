@@ -13,22 +13,22 @@ public class AddressCheckoutPage extends PageObject {
     @FindBy(name = "processAddress")
     private WebElementFacade proceedToCheckoutButton;
 
-    @FindBy(xpath = "//*[contains(@class,'address_add submit')]//*[contains(@class,'button')]")
+    @FindBy(xpath = "//*[contains(@class,'address_add')]//*[contains(@class,'button')]")
     private WebElementFacade newAddressButton;
 
-    @FindBy(xpath = "//*[@id='address_delivery']//*[@class='address_firstname address_lastname']")
+    @FindBy(xpath = "//*[@id='address_delivery']//*[contains(@class,'lastname')]")
     private WebElementFacade nameAndLastNameInDeliveryAddress;
 
-    @FindBy(xpath = "//*[@id='address_delivery']//*[@class='address_city address_state_name address_postcode']")
+    @FindBy(xpath = "//*[@id='address_delivery']//*[contains(@class,'address_city')]")
     private WebElementFacade cityAndStateAndZipCodeInDeliveryAddress;
 
-    @FindBy(xpath = "//*[@id='center_column']//*[@class='checkbox addressesAreEquals']")
+    @FindBy(xpath = "//*[@id='center_column']//*[contains(@class,'addressesAreEquals')]")
     private WebElementFacade useTheDeliveryAddressAsTheBillingAddressCheckbox;
 
-    @FindBy(xpath = "//*[@id='address_invoice']//*[@class='address_firstname address_lastname']")
+    @FindBy(xpath = "//*[@id='address_invoice']//*[contains(@class,'address_lastname')]")
     private WebElementFacade nameAndLastNameInBillingAddress;
 
-    @FindBy(xpath = "//*[@id='address_invoice']//*[@class='address_city address_state_name address_postcode']")
+    @FindBy(xpath = "//*[@id='address_invoice']//*[contains(@class,'address_city')]")
     private WebElementFacade cityAndStateAndZipCodeInBillingAddress;
 
     @FindBy(xpath = "//*[@id='ordermsg']//*[@class='form-control']")
@@ -36,6 +36,9 @@ public class AddressCheckoutPage extends PageObject {
 
     @FindBy(id = "address_invoice_form")
     private WebElementFacade chooseABillingAddressText;
+
+    private String xpathToBillingAddressesList = "//*[@id='id_address_invoice']//*[contains(text(), '%s')]";
+    private String xpathToDeliveryAddressList = "//*[@id='id_address_delivery']//*[contains(text(), '%s')]";
 
     public void clickOnProceedToCheckoutButton() {
         proceedToCheckoutButton.click();
@@ -48,11 +51,13 @@ public class AddressCheckoutPage extends PageObject {
     public void selectBillingAddressFromList(final NewAddressData addressData) {
         useTheDeliveryAddressAsTheBillingAddressCheckbox.click();
         chooseABillingAddressText.waitUntilVisible();
-        find(By.xpath("//*[@id='id_address_invoice']//*[contains(text(), '" + addressData.getNewAddressName() + "')]")).click();
+        String xpathToInputedAddress = String.format(xpathToBillingAddressesList, addressData.getNewAddressName());
+        find(By.xpath(xpathToInputedAddress)).click();
     }
 
     public void selectDeliveryAddressFromList(final NewAddressData addressData) {
-        find(By.xpath("//*[@id='id_address_delivery']//*[contains(text(), '" + addressData.getNewAddressName() + "')]")).click();
+        String xpathToInputedAddress = String.format(xpathToDeliveryAddressList, addressData.getNewAddressName());
+        find(By.xpath(xpathToInputedAddress)).click();
     }
 
     public void selectDeliveryAndBillingAddressFromList(final NewAddressData addressData) {

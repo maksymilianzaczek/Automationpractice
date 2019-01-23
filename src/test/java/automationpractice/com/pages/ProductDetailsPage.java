@@ -19,7 +19,7 @@ public class ProductDetailsPage extends PageObject {
     private final String SELECT_COLOR_XPATH_PATTERN = "//*[@id='color_to_pick_list']//a[@title='%s']";
     @FindBy(id = "add_to_cart")
     private WebElementFacade addToCartButton;
-    @FindBy(xpath = "//*[contains(@class,'button-medium')]//*[contains(@class,'icon-chevron-right')]")
+    @FindBy(xpath = "//*[contains(@class,'medium')]//*[contains(@class,'right')]")
     private WebElementFacade proceedToCheckoutButton;
     @FindBy(className = "icon-plus")
     private WebElementFacade plusQuantityButton;

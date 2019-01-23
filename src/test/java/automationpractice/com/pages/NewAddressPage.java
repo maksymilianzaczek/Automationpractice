@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class NewAddressPage extends PageObject {
 
-
     @FindBy(id = "firstname")
     private WebElementFacade firstNameAddressInput;
     @FindBy(id = "lastname")
@@ -32,7 +31,7 @@ public class NewAddressPage extends PageObject {
     private WebElementFacade title;
     @FindBy(id = "submitAddress")
     private WebElementFacade saveNewAddressButton;
-    @FindBy(xpath = "//*[@class='alert alert-danger']")
+    @FindBy(xpath = "//*[contains(@class,'danger')]")
     private WebElementFacade errorMessage;
 
     public void typeFirstNameAddress(final String firstNameAddress) {

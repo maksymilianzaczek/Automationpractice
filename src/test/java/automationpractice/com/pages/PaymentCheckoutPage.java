@@ -12,7 +12,7 @@ public class PaymentCheckoutPage extends PageObject {
     @FindBy(className = "cheque")
     private WebElementFacade payByCheckButton;
 
-    @FindBy(xpath = "//*[@id='cart_navigation']//*[contains(text(),'confirm')]")
+    @FindBy(xpath = "//*[@id='cart_navigation']//*[contains(@class,'medium')]")
     private WebElementFacade iConfirmMyOrderButton;
 
     @FindBy(className = "navigation_page")
@@ -21,16 +21,16 @@ public class PaymentCheckoutPage extends PageObject {
     @FindBy(className = "page-heading")
     private WebElementFacade paymentLabel;
 
-    @FindBy(xpath = "//*[@class='box cheque-box']//*[@class='page-subheading']")
+    @FindBy(xpath = "//*[contains(@class,'cheque-box')]//*[contains(@class,'subheading')]")
     private WebElementFacade selectedPaymentMethod;
 
-    @FindBy(xpath = "//*[@id='cart_navigation']//*[contains(@class,'button-exclusive')]")
+    @FindBy(xpath = "//*[@id='cart_navigation']//*[contains(@class,'exclusive')]")
     private WebElementFacade otherPaymentMethodButton;
 
-    @FindBy(xpath = "//*[@id='center_column']//*[contains(@class,'btn-default')]")
+    @FindBy(xpath = "//*[@id='center_column']//*[contains(@class,'default')]")
     private WebElementFacade backToOrdersButton;
 
-    @FindBy(xpath = "//*[@class='cart_quantity text-center']/span")
+    @FindBy(xpath = "//*[contains(@class,'text-center')]")
     private WebElementFacade currentQuantity;
 
     private String quantity;

@@ -13,7 +13,7 @@ public class SummaryCheckoutPage extends PageObject {
     @FindBy(className = "standard-checkout")
     private WebElementFacade proceedToCheckoutButton;
 
-    @FindBy(xpath = "//*[contains(@class,'stock-management-on')]//*[contains(@class,'odd')]//*[@class='cart_description']/small[2]/a")
+    @FindBy(xpath = "//*[contains(@class,'on')]//*[contains(@class,'odd')]//*[@class='cart_description']/small[2]")
     private WebElementFacade colorAndSizeFirstProduct;
 
     @FindBy(className = "cart_quantity_input")

@@ -12,7 +12,7 @@ public class LoginPage extends PageObject {
     private WebElementFacade passwordInput;
     @FindBy(id = "SubmitLogin")
     private WebElementFacade signInButton;
-    @FindBy(xpath = "//*[contains(@class,'alert-danger')and not(@id='create_account_error')]")
+    @FindBy(xpath = "//*[contains(@class,'danger')and not(@id='create_account_error')]")
     private WebElementFacade validationMessage;
     @FindBy(id = "SubmitCreate")
     private WebElementFacade createAnAccountButton;

@@ -6,8 +6,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class RegistrationData
-{
+public class RegistrationData{
     private String firstName;
     private String lastName;
     private String email;

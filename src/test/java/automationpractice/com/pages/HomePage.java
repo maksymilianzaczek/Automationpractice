@@ -11,16 +11,16 @@ public class HomePage extends PageObject {
     @FindBy(id = "create_account_error")
     private WebElementFacade homePageError;
 
-    @FindBy(xpath = "//*[@class='product_list grid row homefeatured tab-pane active']//*[@class='product-container']")
+    @FindBy(xpath = "//*[@id='homefeatured']//*[@class='product-container']")
     private List<WebElementFacade> listOfProducts;
 
     private List<WebElementFacade> getListOfProducts() {
         return listOfProducts;
     }
 
-    public boolean isValidationMessageDisplayed() {
-        return homePageError.isVisible();
-    }
+//    public boolean isValidationMessageDisplayed() {
+//        return homePageError.isVisible();
+//    }
 
     public void clickOnProductImage(){
         getListOfProducts().stream().findAny().get().click();

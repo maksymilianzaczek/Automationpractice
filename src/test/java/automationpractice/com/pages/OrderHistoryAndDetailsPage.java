@@ -9,7 +9,7 @@ import static automationpractice.com.data.CommentAboutOrder.entranceFromTheYardX
 
 public class OrderHistoryAndDetailsPage extends PageObject {
 
-    @FindBy(xpath = "//*[@id='order-list']//*[@class='first_item ']//*[contains(@class,'button-small')]")
+    @FindBy(xpath = "//*[@id='order-list']//*[@class='first_item ']//*[contains(@class,'small')]")
     private WebElementFacade detailsButtonForLastOneOrders;
 
     @FindBy(xpath = entranceFromTheYardXpath)
