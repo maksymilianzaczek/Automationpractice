@@ -13,7 +13,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class FooterFeatures {
 
-
     private FooterBox footer;
     private AboutUsPage aboutUsPage;
     private BestSellersPage bestSellersPage;
