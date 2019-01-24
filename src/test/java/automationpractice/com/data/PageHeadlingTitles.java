@@ -15,11 +15,11 @@ public class PageHeadlingTitles {
     private final String specialsTitle = "PageHeadlingTitles";
     private final String termsAndConditionsOfUseTitle = "PageHeadlingTitles";
     private final String womenCategoriesTitle = "PageHeadlingTitles";
-    private final String getContactUsTitle = "PageHeadlingTitles";
-    private final String getMyAddressesTitle = "PageHeadlingTitles";
-    private final String getMyOrdersTitle = "PageHeadlingTitles";
-    private final String getMyPersonalInfoTitle = "PageHeadlingTitles";
-    private final String getSitemapTitle = "PageHeadlingTitles";
+    private final String ContactUsTitle = "PageHeadlingTitles";
+    private final String MyAddressesTitle = "PageHeadlingTitles";
+    private final String MyOrdersTitle = "PageHeadlingTitles";
+    private final String MyPersonalInfoTitle = "PageHeadlingTitles";
+    private final String SitemapTitle = "PageHeadlingTitles";
 
 
 
