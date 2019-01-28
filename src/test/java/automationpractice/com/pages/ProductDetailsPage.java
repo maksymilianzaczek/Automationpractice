@@ -15,8 +15,8 @@ import java.util.stream.Collectors;
 
 public class ProductDetailsPage extends PageObject {
 
-    private final String SELECT_SIZE_XPATH_PATTERN = "//*[@id='group_1']//option[@title='%s']";
-    private final String SELECT_COLOR_XPATH_PATTERN = "//*[@id='color_to_pick_list']//a[@title='%s']";
+    private final String selectSizeXpathPattern = "//*[@id='group_1']//option[@title='%s']";
+    private final String selectColorXpathPattern = "//*[@id='color_to_pick_list']//a[@title='%s']";
     @FindBy(id = "add_to_cart")
     private WebElementFacade addToCartButton;
     @FindBy(xpath = "//*[contains(@class,'medium')]//*[contains(@class,'right')]")
@@ -67,12 +67,12 @@ public class ProductDetailsPage extends PageObject {
     }
 
     private void selectSize(final String size) {
-        final String sizeXpath = String.format(SELECT_SIZE_XPATH_PATTERN, size);
+        final String sizeXpath = String.format(selectSizeXpathPattern, size);
         find(By.xpath(sizeXpath)).click();
     }
 
     private void selectColor(final String color) {
-        final String colorXpath = String.format(SELECT_COLOR_XPATH_PATTERN, color);
+        final String colorXpath = String.format(selectColorXpathPattern, color);
         find(By.xpath(colorXpath)).click();
     }
 
