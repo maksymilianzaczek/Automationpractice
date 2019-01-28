@@ -51,12 +51,12 @@ public class AddressCheckoutPage extends PageObject {
     public void selectBillingAddressFromList(final NewAddressData addressData) {
         useTheDeliveryAddressAsTheBillingAddressCheckbox.click();
         chooseABillingAddressText.waitUntilVisible();
-        String xpathToInputedAddress = String.format(xpathToBillingAddressesList, addressData.getNewAddressName());
+        final String xpathToInputedAddress = String.format(xpathToBillingAddressesList, addressData.getNewAddressName());
         find(By.xpath(xpathToInputedAddress)).click();
     }
 
     public void selectDeliveryAddressFromList(final NewAddressData addressData) {
-        String xpathToInputedAddress = String.format(xpathToDeliveryAddressList, addressData.getNewAddressName());
+        final String xpathToInputedAddress = String.format(xpathToDeliveryAddressList, addressData.getNewAddressName());
         find(By.xpath(xpathToInputedAddress)).click();
     }
 

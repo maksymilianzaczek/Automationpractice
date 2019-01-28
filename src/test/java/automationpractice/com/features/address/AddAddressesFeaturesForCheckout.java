@@ -1,6 +1,12 @@
 package automationpractice.com.features.address;
 
-import automationpractice.com.pages.*;
+import automationpractice.com.pages.AddressCheckoutPage;
+import automationpractice.com.pages.HomePage;
+import automationpractice.com.pages.MyAccountPage;
+import automationpractice.com.pages.SummaryCheckoutPage;
+import automationpractice.com.pages.ProductDetailsPage;
+import automationpractice.com.pages.AddressPage;
+import automationpractice.com.pages.HeaderBox;
 import automationpractice.com.steps.AddressesDataSteps;
 import automationpractice.com.steps.LoginSteps;
 import automationpractice.com.steps.RemoveAddressSteps;

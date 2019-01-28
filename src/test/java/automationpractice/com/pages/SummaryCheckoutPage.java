@@ -35,7 +35,7 @@ public class SummaryCheckoutPage extends PageObject {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(final String quantity) {
         this.quantity = quantity;
     }
 
@@ -51,29 +51,29 @@ public class SummaryCheckoutPage extends PageObject {
         return divideColorAndSizeTextUsingRegex().group(1).toUpperCase();
     }
 
-    private Matcher divideColorAndSizeTextUsingRegex(){
-        String stringRegex = "Color : (.+)?,.*: (.+)?";
-        Pattern regex = Pattern.compile(stringRegex);
-        Matcher color = regex.matcher(colorAndSizeFirstProduct.getText());
+    private Matcher divideColorAndSizeTextUsingRegex() {
+        final String stringRegex = "Color : (.+)?,.*: (.+)?";
+        final Pattern regex = Pattern.compile(stringRegex);
+        final Matcher color = regex.matcher(colorAndSizeFirstProduct.getText());
         color.matches();
         return color;
     }
 
     private void clickPlusQuantityButton() {
-        int valueBeforeClick = Integer.parseInt(getCurrentQuantity());
+        final int valueBeforeClick = Integer.parseInt(getCurrentQuantity());
         plusQuantityButton.click();
         waitForCondition().until((ExpectedCondition<Boolean>) webDriver ->
                 quantityOfItems.getValue().equals(String.valueOf(valueBeforeClick + 1)));
     }
 
     private void clickMinusQuantityButton() {
-        int valueBeforeClick = Integer.parseInt(getCurrentQuantity());
+        final int valueBeforeClick = Integer.parseInt(getCurrentQuantity());
         minusQuantityButton.click();
         waitForCondition().until((ExpectedCondition<Boolean>) webDriver ->
                 quantityOfItems.getValue().equals(String.valueOf(valueBeforeClick - 1)));
     }
 
-    public void clickPlusAndMinusButtonGivenNumberOfTimes(int plus, int minus) {
+    public void clickPlusAndMinusButtonGivenNumberOfTimes(final int plus,final int minus) {
         for (int i = 0; i < plus; i++) {
             clickPlusQuantityButton();
         }

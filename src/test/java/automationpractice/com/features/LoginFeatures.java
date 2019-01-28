@@ -42,7 +42,7 @@ public class LoginFeatures {
         loginWithCredentials(login, "3213");
     }
 
-    private void loginWithCredentials(String login, String password) {
+    private void loginWithCredentials(final String login, final String password) {
         headerBox.clickOnSignIn();
         loginPage.typeLogin(login);
         loginPage.typePassword(password);

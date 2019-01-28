@@ -18,21 +18,15 @@ public class HomePage extends PageObject {
         return listOfProducts;
     }
 
-//    public boolean isValidationMessageDisplayed() {
-//        return homePageError.isVisible();
-//    }
-
-    public void clickOnProductImage(){
+    public void clickOnProductImage() {
         getListOfProducts().stream().findAny().get().click();
     }
 
-    public void clickOnSelectedProductImage(int indexOfProduct) {
-        if (indexOfProduct < listOfProducts.size()){
+    public void clickOnSelectedProductImage(final int indexOfProduct) {
+        if (indexOfProduct < listOfProducts.size()) {
             listOfProducts.get(indexOfProduct).click();
-        }
-        else {
+        } else {
             clickOnProductImage();
         }
     }
-
 }

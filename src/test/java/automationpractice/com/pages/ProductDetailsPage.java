@@ -85,20 +85,20 @@ public class ProductDetailsPage extends PageObject {
     }
 
     private void clickPlusQuantityButton() {
-        int valueBeforeClick = Integer.parseInt(quantityOfItem.getValue());
+        final int valueBeforeClick = Integer.parseInt(quantityOfItem.getValue());
         plusQuantityButton.click();
         waitForCondition().until((ExpectedCondition<Boolean>) webDriver ->
                 quantityOfItem.getValue().equals(String.valueOf(valueBeforeClick + 1)));
     }
 
     private void clickMinusQuantityButton() {
-        int valueBeforeClick = Integer.parseInt(quantityOfItem.getValue());
+        final int valueBeforeClick = Integer.parseInt(quantityOfItem.getValue());
         minusQuantityButton.click();
         waitForCondition().until((ExpectedCondition<Boolean>) webDriver ->
                 quantityOfItem.getValue().equals(String.valueOf(valueBeforeClick - 1)));
     }
 
-    public void clickPlusAndMinusButtonGivenNumberOfTimes(int plus, int minus) {
+    public void clickPlusAndMinusButtonGivenNumberOfTimes(final int plus,final int minus) {
         for (int i = 0; i < plus; i++) {
             clickPlusQuantityButton();
         }
@@ -132,7 +132,7 @@ public class ProductDetailsPage extends PageObject {
 
     public String changeColorToGivenColor(final String color) {
         currentColor = color.toUpperCase();
-        List<String> listOfAvailableColors = getAvailableColors();
+        final List<String> listOfAvailableColors = getAvailableColors();
 
         for (String c : listOfAvailableColors) {
             if ((c.toUpperCase()).equals(color.toUpperCase())) {
@@ -197,7 +197,7 @@ public class ProductDetailsPage extends PageObject {
     }
 
     public boolean isTwitterDomainDisplayed() {
-        Pattern twitterPattern = Pattern.compile("(.*)twitter(.*)");
+        final Pattern twitterPattern = Pattern.compile("(.*)twitter(.*)");
         return twitterPattern.matcher(getDriver().getCurrentUrl()).matches();
     }
 

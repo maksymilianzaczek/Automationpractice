@@ -1,6 +1,12 @@
 package automationpractice.com.features.checkout;
 
-import automationpractice.com.pages.*;
+import automationpractice.com.pages.AddressCheckoutPage;
+import automationpractice.com.pages.HomePage;
+import automationpractice.com.pages.ProductDetailsPage;
+import automationpractice.com.pages.SummaryCheckoutPage;
+import automationpractice.com.pages.OrderHistoryAndDetailsPage;
+import automationpractice.com.pages.PaymentCheckoutPage;
+import automationpractice.com.pages.ShippingCheckoutPage;
 import automationpractice.com.steps.LoginSteps;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -35,6 +41,7 @@ public class CheckoutFeatures {
         productDetailsPage.clickOnAddToCartButton();
         productDetailsPage.clickProceedToCheckoutButton();
     }
+
     @When("^user change quantity on summary checkout page$")
     public void userChangeQuantityOnSummaryCheckoutPage() {
         summaryCheckoutPage.clickPlusAndMinusButtonGivenNumberOfTimes(4,3);

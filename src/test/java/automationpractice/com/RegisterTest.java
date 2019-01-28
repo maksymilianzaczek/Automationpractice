@@ -6,6 +6,5 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(features = "src/test/resources/features/register", plugin = ("json:target/json"))
-public class RegisterTest
-{
+public class RegisterTest {
 }

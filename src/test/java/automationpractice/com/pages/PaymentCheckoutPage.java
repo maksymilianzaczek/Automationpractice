@@ -13,7 +13,7 @@ public class PaymentCheckoutPage extends PageObject {
     private WebElementFacade payByCheckButton;
 
     @FindBy(xpath = "//*[@id='cart_navigation']//*[contains(@class,'medium')]")
-    private WebElementFacade iConfirmMyOrderButton;
+    private WebElementFacade confirmMyOrderButton;
 
     @FindBy(className = "navigation_page")
     private WebElementFacade orderConfirmationMessage;
@@ -39,7 +39,7 @@ public class PaymentCheckoutPage extends PageObject {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(final String quantity) {
         this.quantity = quantity;
     }
 
@@ -56,7 +56,7 @@ public class PaymentCheckoutPage extends PageObject {
     }
 
     public void clickIConfirmMyOrderButton() {
-        iConfirmMyOrderButton.click();
+        confirmMyOrderButton.click();
     }
 
     public boolean isOrderConfirmationMessageVisible() {
