@@ -40,10 +40,9 @@ public class ProductDetailsPage extends PageObject {
 
     private String currentSize;
     private String currentColor;
-    private String currentQuantity;
 
-    public String getQuantityOfItem() {
-        return quantityOfItem.getValue();
+    public int getQuantityOfItem() {
+        return Integer.parseInt(quantityOfItem.getValue());
     }
 
     public String getCurrentSize() {
@@ -52,14 +51,6 @@ public class ProductDetailsPage extends PageObject {
 
     public String getCurrentColor() {
         return currentColor;
-    }
-
-    public String getCurrentQuantity() {
-        return currentQuantity;
-    }
-
-    public void setCurrentQuantity(final String currentQuantity) {
-        this.currentQuantity = currentQuantity;
     }
 
     private List<String> getAvailableColors() {

@@ -25,18 +25,8 @@ public class SummaryCheckoutPage extends PageObject {
     @FindBy(xpath = "//*[contains(@class,'button-minus')]//*[@class='icon-minus']")
     private WebElementFacade minusQuantityButton;
 
-    private String quantity;
-
-    public String getCurrentQuantity() {
-        return quantityOfItems.getValue();
-    }
-
-    public String getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(final String quantity) {
-        this.quantity = quantity;
+    public int getCurrentQuantity() {
+        return Integer.parseInt(quantityOfItems.getValue());
     }
 
     public void clickOnProceedToCheckoutButton() {
@@ -60,14 +50,14 @@ public class SummaryCheckoutPage extends PageObject {
     }
 
     private void clickPlusQuantityButton() {
-        final int valueBeforeClick = Integer.parseInt(getCurrentQuantity());
+        final int valueBeforeClick = getCurrentQuantity();
         plusQuantityButton.click();
         waitForCondition().until((ExpectedCondition<Boolean>) webDriver ->
                 quantityOfItems.getValue().equals(String.valueOf(valueBeforeClick + 1)));
     }
 
     private void clickMinusQuantityButton() {
-        final int valueBeforeClick = Integer.parseInt(getCurrentQuantity());
+        final int valueBeforeClick = getCurrentQuantity();
         minusQuantityButton.click();
         waitForCondition().until((ExpectedCondition<Boolean>) webDriver ->
                 quantityOfItems.getValue().equals(String.valueOf(valueBeforeClick - 1)));

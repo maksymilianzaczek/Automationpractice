@@ -43,8 +43,8 @@ public class PaymentCheckoutPage extends PageObject {
         this.quantity = quantity;
     }
 
-    public String getCurrentQuantity() {
-        return currentQuantity.getText();
+    public int getCurrentQuantity() {
+        return Integer.parseInt(currentQuantity.getText());
     }
 
     public void clickPayByBankWireButton() {

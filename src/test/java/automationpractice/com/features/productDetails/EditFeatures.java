@@ -21,6 +21,7 @@ public class EditFeatures {
     private PaymentCheckoutPage paymentCheckoutPage;
     @Steps
     private LoginSteps loginSteps;
+    private int quantityInProductDetailsPage;
 
     @Given("^logged in customer is on product details page$")
     public void loggedInCustomerIsOnProductDetailsPage() {
@@ -39,12 +40,12 @@ public class EditFeatures {
     @When("^user change quantity on product details page$")
     public void userChangeQuantityOnProductDetailsPage() {
         productDetailsPage.clickPlusAndMinusButtonGivenNumberOfTimes(2, 1);
-        productDetailsPage.setCurrentQuantity(productDetailsPage.getQuantityOfItem());
+        quantityInProductDetailsPage = productDetailsPage.getQuantityOfItem();
     }
 
     @Then("^summary checkout page has a given number of items in product details page$")
     public void summaryCheckoutPageHasAGivenNumberOfItemsInProductDetailsPage() {
-        assertThat(summaryCheckoutPage.getCurrentQuantity()).isEqualTo(productDetailsPage.getCurrentQuantity());
+        assertThat(summaryCheckoutPage.getCurrentQuantity()).isEqualTo(quantityInProductDetailsPage);
     }
 
     @When("^user change size to (.*) size on product details page$")

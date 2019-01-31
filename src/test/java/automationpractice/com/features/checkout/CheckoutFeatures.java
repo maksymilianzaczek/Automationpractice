@@ -25,7 +25,8 @@ public class CheckoutFeatures {
     private ShippingCheckoutPage shippingCheckoutPage;
     private PaymentCheckoutPage paymentCheckoutPage;
     private OrderHistoryAndDetailsPage orderHistoryAndDetailsPage;
-
+    private int quantityInSummaryCheckoutPage;
+    private int quantityInPaymentCheckoutPage;
     @Steps
     private LoginSteps loginSteps;
 
@@ -47,8 +48,7 @@ public class CheckoutFeatures {
     @When("^user change quantity on summary checkout page$")
     public void userChangeQuantityOnSummaryCheckoutPage() {
         summaryCheckoutPage.clickPlusAndMinusButtonGivenNumberOfTimes(4, 3);
-        final String quantity = summaryCheckoutPage.getCurrentQuantity();
-        summaryCheckoutPage.setQuantity(summaryCheckoutPage.getCurrentQuantity());
+        quantityInSummaryCheckoutPage = summaryCheckoutPage.getCurrentQuantity();
     }
 
     @When("^user confirms every step from summary checkout page up to payment checkout page$")
@@ -57,12 +57,12 @@ public class CheckoutFeatures {
         addressCheckoutPage.clickOnProceedToCheckoutButton();
         shippingCheckoutPage.clickAgreeCheckbox();
         shippingCheckoutPage.clickOnProceedToCheckoutButton();
-        paymentCheckoutPage.setQuantity(paymentCheckoutPage.getCurrentQuantity());
+        quantityInPaymentCheckoutPage = paymentCheckoutPage.getCurrentQuantity();
     }
 
     @Then("^summary checkout page has a given number of items in summary checkout page$")
     public void summaryCheckoutPageHasAGivenNumberOfItemsInSummaryCheckoutPage() {
-        assertThat(summaryCheckoutPage.getQuantity()).isEqualTo(paymentCheckoutPage.getQuantity());
+        assertThat(quantityInSummaryCheckoutPage).isEqualTo(quantityInPaymentCheckoutPage);
     }
 
     @When("^user click proceed to checkout in summary address and shipping tab$")
