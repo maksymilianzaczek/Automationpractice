@@ -24,7 +24,8 @@ public class EditFeatures {
     @Given("^logged in customer is on product details page$")
     public void loggedInCustomerIsOnProductDetailsPage() {
         loginSteps.loginAndMoveIntoMyStorePage();
-        homePage.clickOnSelectedProductImage(0);
+        final String productName = homePage.getListOfProducts().stream().findAny().get().getText();
+        homePage.clickOnSelectedProductImage(productName);
     }
 
     @When("^user add to cart item on product details page$")

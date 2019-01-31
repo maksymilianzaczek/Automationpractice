@@ -9,7 +9,7 @@ public class RemoveAddressSteps {
     private AddressPage addressPage;
 
     @Step
-    public void checkAddressNameExistsAndIfIsDeleteIt(final String addressName) {
+    public void deleteAddressIfExist(final String addressName) {
         final List<String> addressNameList = addressPage.getAddressNameList();
         for (String name : addressNameList) {
             if (name.toUpperCase().equals(addressName.toUpperCase())) {

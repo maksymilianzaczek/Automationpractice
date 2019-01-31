@@ -52,7 +52,7 @@ public class AddressFeatures {
         assertThat(addressPage.getAddressNameList()).contains(NEW_ADDRESS_INFORMATION.getNewAddressName().toUpperCase());
     }
 
-    @And("^new created address is deleted$")
+    @Then("^new created address is deleted$")
     public void newCreatedAddressIsDeleted() {
         addressPage.clickDeleteButton(NEW_ADDRESS_INFORMATION.getNewAddressName());
         addressPage.acceptAlert();

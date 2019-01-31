@@ -5,7 +5,6 @@ import automationpractice.com.pages.HomePage;
 import automationpractice.com.pages.MyAccountPage;
 import automationpractice.com.pages.SummaryCheckoutPage;
 import automationpractice.com.pages.ProductDetailsPage;
-import automationpractice.com.pages.AddressPage;
 import automationpractice.com.pages.HeaderBox;
 import automationpractice.com.steps.AddressesDataSteps;
 import automationpractice.com.steps.LoginSteps;
@@ -18,14 +17,14 @@ import org.assertj.core.api.SoftAssertions;
 
 import static automationpractice.com.data.NewAddressInformation.NEW_ADDRESS_INFORMATION_1;
 
-public class AddAddressesFeaturesForCheckout {
+public class AddAddressesForCheckoutFeatures {
 
+    private final SoftAssertions softAssertions = new SoftAssertions();
     private SummaryCheckoutPage summaryCheckoutPage;
     private AddressCheckoutPage addressCheckoutPage;
     private HomePage homePage;
     private MyAccountPage myAccountPage;
     private ProductDetailsPage productDetailsPage;
-    private AddressPage addressPage;
     private HeaderBox headerBox;
     @Steps
     private LoginSteps loginSteps;
@@ -33,16 +32,16 @@ public class AddAddressesFeaturesForCheckout {
     private AddressesDataSteps addressesDataSteps;
     @Steps
     private RemoveAddressSteps removeAddressSteps;
-    private final SoftAssertions softAssertions = new SoftAssertions();
 
     @Given("^user is in address checkout page$")
     public void userIsInAddressCheckoutPage() {
         homePage.open();
         loginSteps.login();
         myAccountPage.clickMyAddresses();
-        removeAddressSteps.checkAddressNameExistsAndIfIsDeleteIt(NEW_ADDRESS_INFORMATION_1.getNewAddressName());
+        removeAddressSteps.deleteAddressIfExist(NEW_ADDRESS_INFORMATION_1.getNewAddressName());
         headerBox.clickMyStoreLogo();
-        homePage.clickOnProductImage();
+        final String productName = homePage.getListOfProducts().stream().findAny().get().getText();
+        homePage.clickOnSelectedProductImage(productName);
         productDetailsPage.clickOnAddToCartButton();
         productDetailsPage.clickProceedToCheckoutButton();
         summaryCheckoutPage.clickOnProceedToCheckoutButton();
@@ -61,11 +60,13 @@ public class AddAddressesFeaturesForCheckout {
 
     @Then("^the new address is selected as delivery address$")
     public void theNewAddressIsSelectedAsDeliveryAddress() {
-        softAssertions.assertThat(addressCheckoutPage.getNameAndLastNameInDeliveryInAddressCheckoutPage().contains(NEW_ADDRESS_INFORMATION_1.getFirstNameAddress())).isTrue();
-        softAssertions.assertThat(addressCheckoutPage.getNameAndLastNameInDeliveryInAddressCheckoutPage().contains(NEW_ADDRESS_INFORMATION_1.getLastNameAddress())).isTrue();
-        softAssertions.assertThat(addressCheckoutPage.getCityAndStateAndZipCodeInDeliveryInAddressCheckoutPage().contains(NEW_ADDRESS_INFORMATION_1.getCity())).isTrue();
-        softAssertions.assertThat(addressCheckoutPage.getCityAndStateAndZipCodeInDeliveryInAddressCheckoutPage().contains(NEW_ADDRESS_INFORMATION_1.getState())).isTrue();
-        softAssertions.assertThat(addressCheckoutPage.getCityAndStateAndZipCodeInDeliveryInAddressCheckoutPage().contains(NEW_ADDRESS_INFORMATION_1.getZipCode())).isTrue();
+        final String cityStateZipCode = addressCheckoutPage.getCityAndStateAndZipCodeInDeliveryAddress();
+        final String nameLastName = addressCheckoutPage.getNameAndLastNameInDeliveryAddress();
+        softAssertions.assertThat(nameLastName.contains(NEW_ADDRESS_INFORMATION_1.getFirstNameAddress())).isTrue();
+        softAssertions.assertThat(nameLastName.contains(NEW_ADDRESS_INFORMATION_1.getLastNameAddress())).isTrue();
+        softAssertions.assertThat(cityStateZipCode.contains(NEW_ADDRESS_INFORMATION_1.getCity())).isTrue();
+        softAssertions.assertThat(cityStateZipCode.contains(NEW_ADDRESS_INFORMATION_1.getState())).isTrue();
+        softAssertions.assertThat(cityStateZipCode.contains(NEW_ADDRESS_INFORMATION_1.getZipCode())).isTrue();
         softAssertions.assertAll();
     }
 
@@ -76,11 +77,13 @@ public class AddAddressesFeaturesForCheckout {
 
     @Then("^the new address is selected as billing address$")
     public void theNewAddressIsSelectedAsBillingAddress() {
-        softAssertions.assertThat(addressCheckoutPage.getNameAndLastNameInBillingInAddressCheckoutPage().contains(NEW_ADDRESS_INFORMATION_1.getFirstNameAddress())).isTrue();
-        softAssertions.assertThat(addressCheckoutPage.getNameAndLastNameInBillingInAddressCheckoutPage().contains(NEW_ADDRESS_INFORMATION_1.getLastNameAddress())).isTrue();
-        softAssertions.assertThat(addressCheckoutPage.getCityAndStateAndZipCodeInBillingInAddressCheckoutPage().contains(NEW_ADDRESS_INFORMATION_1.getCity())).isTrue();
-        softAssertions.assertThat(addressCheckoutPage.getCityAndStateAndZipCodeInBillingInAddressCheckoutPage().contains(NEW_ADDRESS_INFORMATION_1.getState())).isTrue();
-        softAssertions.assertThat(addressCheckoutPage.getCityAndStateAndZipCodeInBillingInAddressCheckoutPage().contains(NEW_ADDRESS_INFORMATION_1.getZipCode())).isTrue();
+        final String cityStateZipCode = addressCheckoutPage.getCityAndStateAndZipCodeInBillingInAddressCheckoutPage();
+        final String nameLastName = addressCheckoutPage.getNameAndLastNameInBillingInAddressCheckoutPage();
+        softAssertions.assertThat(nameLastName.contains(NEW_ADDRESS_INFORMATION_1.getFirstNameAddress())).isTrue();
+        softAssertions.assertThat(nameLastName.contains(NEW_ADDRESS_INFORMATION_1.getLastNameAddress())).isTrue();
+        softAssertions.assertThat(cityStateZipCode.contains(NEW_ADDRESS_INFORMATION_1.getCity())).isTrue();
+        softAssertions.assertThat(cityStateZipCode.contains(NEW_ADDRESS_INFORMATION_1.getState())).isTrue();
+        softAssertions.assertThat(cityStateZipCode.contains(NEW_ADDRESS_INFORMATION_1.getZipCode())).isTrue();
         softAssertions.assertAll();
     }
 

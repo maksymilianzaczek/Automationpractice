@@ -1,5 +1,6 @@
 package automationpractice.com.pages;
 
+import automationpractice.com.exceptions.NoProductsOnHomePageException;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.support.FindBy;
@@ -14,19 +15,19 @@ public class HomePage extends PageObject {
     @FindBy(xpath = "//*[@id='homefeatured']//*[@class='product-container']")
     private List<WebElementFacade> listOfProducts;
 
-    private List<WebElementFacade> getListOfProducts() {
+    public List<WebElementFacade> getListOfProducts() {
+        if (listOfProducts.isEmpty()) {
+            throw new NoProductsOnHomePageException("List of product in home page is empty");
+        }
         return listOfProducts;
     }
 
-    public void clickOnProductImage() {
-        getListOfProducts().stream().findAny().get().click();
-    }
-
-    public void clickOnSelectedProductImage(final int indexOfProduct) {
-        if (indexOfProduct < listOfProducts.size()) {
-            listOfProducts.get(indexOfProduct).click();
-        } else {
-            clickOnProductImage();
+    public void clickOnSelectedProductImage(final String productName) {
+        for (WebElementFacade product : listOfProducts) {
+            if (productName.equals(product.getText())) {
+                product.click();
+                break;
+            }
         }
     }
 }

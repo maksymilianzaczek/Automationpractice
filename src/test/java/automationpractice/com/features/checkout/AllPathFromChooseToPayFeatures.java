@@ -16,7 +16,6 @@ public class AllPathFromChooseToPayFeatures {
     private ShippingCheckoutPage shippingCheckoutPage;
     private PaymentCheckoutPage paymentCheckoutPage;
 
-
     @When("^user confirms every step to make order and pay by bank wire$")
     public void userConfirmsEveryStepToMakeOrderAndPayByBankWire() {
         confirmEveryStepToMakeOrder();
@@ -30,7 +29,7 @@ public class AllPathFromChooseToPayFeatures {
 
     @Then("^order is created$")
     public void orderIsCreated() {
-        assertThat(paymentCheckoutPage.isOrderConfirmationMessageVisible());
+        assertThat(paymentCheckoutPage.orderConfirmationMessage().contains("ORDER CONFIRMATION")).isTrue();
     }
 
     @When("^user confirms every step to make order and pay by check$")

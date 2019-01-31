@@ -65,11 +65,11 @@ public class AddressCheckoutPage extends PageObject {
         selectBillingAddressFromList(addressData);
     }
 
-    public String getNameAndLastNameInDeliveryInAddressCheckoutPage() {
+    public String getNameAndLastNameInDeliveryAddress() {
         return nameAndLastNameInDeliveryAddress.getText();
     }
 
-    public String getCityAndStateAndZipCodeInDeliveryInAddressCheckoutPage() {
+    public String getCityAndStateAndZipCodeInDeliveryAddress() {
         return cityAndStateAndZipCodeInDeliveryAddress.getText();
     }
 

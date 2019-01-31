@@ -59,8 +59,8 @@ public class PaymentCheckoutPage extends PageObject {
         confirmMyOrderButton.click();
     }
 
-    public boolean isOrderConfirmationMessageVisible() {
-        return orderConfirmationMessage.isVisible();
+    public String orderConfirmationMessage() {
+        return orderConfirmationMessage.getText().toUpperCase();
     }
 
     public String labelInPaymentCheckoutTab() {

@@ -29,7 +29,8 @@ public class PaymentFeatures {
     public void userIsInPaymentCheckoutPage() {
         homePage.open();
         loginSteps.loginAndMoveIntoMyStorePage();
-        homePage.clickOnSelectedProductImage(0);
+        final String productName = homePage.getListOfProducts().stream().findAny().get().getText();
+        homePage.clickOnSelectedProductImage(productName);
         productDetailsPage.clickOnAddToCartButton();
         productDetailsPage.clickProceedToCheckoutButton();
         summaryCheckoutPage.clickOnProceedToCheckoutButton();

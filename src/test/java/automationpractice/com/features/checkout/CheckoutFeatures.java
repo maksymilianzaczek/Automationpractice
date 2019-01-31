@@ -8,7 +8,6 @@ import automationpractice.com.pages.OrderHistoryAndDetailsPage;
 import automationpractice.com.pages.PaymentCheckoutPage;
 import automationpractice.com.pages.ShippingCheckoutPage;
 import automationpractice.com.steps.LoginSteps;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -37,7 +36,8 @@ public class CheckoutFeatures {
     @Given("^user add first item into cart$")
     public void userAddFirstItemIntoCart() {
         loginSteps.loginAndMoveIntoMyStorePage();
-        homePage.clickOnSelectedProductImage(0);
+        final String productName = homePage.getListOfProducts().stream().findAny().get().getText();
+        homePage.clickOnSelectedProductImage(productName);
         productDetailsPage.clickOnAddToCartButton();
         productDetailsPage.clickProceedToCheckoutButton();
     }
@@ -48,7 +48,7 @@ public class CheckoutFeatures {
         summaryCheckoutPage.setQuantity(summaryCheckoutPage.getCurrentQuantity());
     }
 
-    @And("^user confirms every step from summary checkout page up to payment checkout page$")
+    @When("^user confirms every step from summary checkout page up to payment checkout page$")
     public void userConfirmsEveryStepFromSummaryCheckoutPageUpToPaymentCheckoutPage() {
         summaryCheckoutPage.clickOnProceedToCheckoutButton();
         addressCheckoutPage.clickOnProceedToCheckoutButton();

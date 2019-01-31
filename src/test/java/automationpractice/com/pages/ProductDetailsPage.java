@@ -88,17 +88,17 @@ public class ProductDetailsPage extends PageObject {
         final int valueBeforeClick = Integer.parseInt(quantityOfItem.getValue());
         plusQuantityButton.click();
         waitForCondition().until((ExpectedCondition<Boolean>) webDriver ->
-                quantityOfItem.getValue().equals(String.valueOf(valueBeforeClick + 1)));
+            quantityOfItem.getValue().equals(String.valueOf(valueBeforeClick + 1)));
     }
 
     private void clickMinusQuantityButton() {
         final int valueBeforeClick = Integer.parseInt(quantityOfItem.getValue());
         minusQuantityButton.click();
         waitForCondition().until((ExpectedCondition<Boolean>) webDriver ->
-                quantityOfItem.getValue().equals(String.valueOf(valueBeforeClick - 1)));
+            quantityOfItem.getValue().equals(String.valueOf(valueBeforeClick - 1)));
     }
 
-    public void clickPlusAndMinusButtonGivenNumberOfTimes(final int plus,final int minus) {
+    public void clickPlusAndMinusButtonGivenNumberOfTimes(final int plus, final int minus) {
         for (int i = 0; i < plus; i++) {
             clickPlusQuantityButton();
         }
@@ -121,11 +121,7 @@ public class ProductDetailsPage extends PageObject {
                 break;
             default:
                 selectSize("S");
-                try {
-                    throw new NoSizeAvailableException("Size: " + size + " is not available");
-                } catch (NoSizeAvailableException e) {
-                    e.printStackTrace();
-                }
+                throw new NoSizeAvailableException("Size: " + size + " is not available");
         }
         return currentSize;
     }
@@ -158,11 +154,7 @@ public class ProductDetailsPage extends PageObject {
                         break;
 
                     default:
-                        try {
-                            throw new NoColorAvailableException("Color: " + color + " is not available");
-                        } catch (NoColorAvailableException e) {
-                            e.printStackTrace();
-                        }
+                        throw new NoColorAvailableException("Color: " + color + " is not available");
                 }
             }
         }
@@ -193,7 +185,7 @@ public class ProductDetailsPage extends PageObject {
 
     private void waitForOpenedNewDomain() {
         waitForCondition().until((ExpectedCondition<Boolean>) webDriver ->
-                !getDriver().getCurrentUrl().contains("about:blank"));
+            !getDriver().getCurrentUrl().contains("about:blank"));
     }
 
     public boolean isTwitterDomainDisplayed() {
