@@ -1,5 +1,6 @@
 package automationpractice.com.features.checkout;
 
+import automationpractice.com.exceptions.NoProductsOnHomePageException;
 import automationpractice.com.pages.AddressCheckoutPage;
 import automationpractice.com.pages.HomePage;
 import automationpractice.com.pages.ProductDetailsPage;
@@ -36,7 +37,8 @@ public class CheckoutFeatures {
     @Given("^user add first item into cart$")
     public void userAddFirstItemIntoCart() {
         loginSteps.loginAndMoveIntoMyStorePage();
-        final String productName = homePage.getListOfProducts().stream().findAny().get().getText();
+        String productName = homePage.getListOfProducts().stream().findAny()
+            .orElseThrow(() -> new NoProductsOnHomePageException("List of product in home page is empty")).getText();
         homePage.clickOnSelectedProductImage(productName);
         productDetailsPage.clickOnAddToCartButton();
         productDetailsPage.clickProceedToCheckoutButton();
@@ -44,7 +46,8 @@ public class CheckoutFeatures {
 
     @When("^user change quantity on summary checkout page$")
     public void userChangeQuantityOnSummaryCheckoutPage() {
-        summaryCheckoutPage.clickPlusAndMinusButtonGivenNumberOfTimes(4,3);
+        summaryCheckoutPage.clickPlusAndMinusButtonGivenNumberOfTimes(4, 3);
+        final String quantity = summaryCheckoutPage.getCurrentQuantity();
         summaryCheckoutPage.setQuantity(summaryCheckoutPage.getCurrentQuantity());
     }
 

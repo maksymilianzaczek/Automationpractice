@@ -107,8 +107,7 @@ public class ProductDetailsPage extends PageObject {
         }
     }
 
-    public String changeSizeToGivenSize(final String size) {
-        currentSize = size.toUpperCase();
+    public void changeSizeToGivenSize(final String size) {
         switch (currentSize) {
             case "S":
                 selectSize("S");
@@ -123,10 +122,9 @@ public class ProductDetailsPage extends PageObject {
                 selectSize("S");
                 throw new NoSizeAvailableException("Size: " + size + " is not available");
         }
-        return currentSize;
     }
 
-    public String changeColorToGivenColor(final String color) {
+    public void changeColorToGivenColor(final String color) {
         currentColor = color.toUpperCase();
         final List<String> listOfAvailableColors = getAvailableColors();
 
@@ -152,13 +150,11 @@ public class ProductDetailsPage extends PageObject {
                     case "BLUE":
                         selectColor("Blue");
                         break;
-
                     default:
                         throw new NoColorAvailableException("Color: " + color + " is not available");
                 }
             }
         }
-        return currentColor;
     }
 
     public void clickOnTwitterButton() {

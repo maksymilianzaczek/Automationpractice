@@ -1,5 +1,6 @@
 package automationpractice.com.features.address;
 
+import automationpractice.com.exceptions.NoProductsOnHomePageException;
 import automationpractice.com.pages.AddressCheckoutPage;
 import automationpractice.com.pages.HomePage;
 import automationpractice.com.pages.MyAccountPage;
@@ -40,7 +41,8 @@ public class AddAddressesForCheckoutFeatures {
         myAccountPage.clickMyAddresses();
         removeAddressSteps.deleteAddressIfExist(NEW_ADDRESS_INFORMATION_1.getNewAddressName());
         headerBox.clickMyStoreLogo();
-        final String productName = homePage.getListOfProducts().stream().findAny().get().getText();
+        String productName = homePage.getListOfProducts().stream().findAny()
+            .orElseThrow(() -> new NoProductsOnHomePageException("List of product in home page is empty")).getText();
         homePage.clickOnSelectedProductImage(productName);
         productDetailsPage.clickOnAddToCartButton();
         productDetailsPage.clickProceedToCheckoutButton();

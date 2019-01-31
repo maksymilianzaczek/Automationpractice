@@ -1,5 +1,6 @@
 package automationpractice.com.features.productDetails;
 
+import automationpractice.com.exceptions.NoProductsOnHomePageException;
 import automationpractice.com.pages.HomePage;
 import automationpractice.com.pages.PaymentCheckoutPage;
 import automationpractice.com.pages.ProductDetailsPage;
@@ -24,7 +25,8 @@ public class EditFeatures {
     @Given("^logged in customer is on product details page$")
     public void loggedInCustomerIsOnProductDetailsPage() {
         loginSteps.loginAndMoveIntoMyStorePage();
-        final String productName = homePage.getListOfProducts().stream().findAny().get().getText();
+        String productName = homePage.getListOfProducts().stream().findAny()
+            .orElseThrow(() -> new NoProductsOnHomePageException("List of product in home page is empty")).getText();
         homePage.clickOnSelectedProductImage(productName);
     }
 
@@ -36,7 +38,7 @@ public class EditFeatures {
 
     @When("^user change quantity on product details page$")
     public void userChangeQuantityOnProductDetailsPage() {
-        productDetailsPage.clickPlusAndMinusButtonGivenNumberOfTimes(2,1);
+        productDetailsPage.clickPlusAndMinusButtonGivenNumberOfTimes(2, 1);
         productDetailsPage.setCurrentQuantity(productDetailsPage.getQuantityOfItem());
     }
 
@@ -46,8 +48,8 @@ public class EditFeatures {
     }
 
     @When("^user change size to (.*) size on product details page$")
-    public String userChangeSizeOnProductDetailsPage(final String size) {
-        return productDetailsPage.changeSizeToGivenSize(size);
+    public void userChangeSizeOnProductDetailsPage(final String size) {
+        productDetailsPage.changeSizeToGivenSize(size);
     }
 
     @Then("^summary checkout page has item in given size$")
@@ -56,11 +58,11 @@ public class EditFeatures {
     }
 
     @When("^user change color to (.*) on product details page$")
-    public String userChangeColorOnProductDetailsPage(final String color) {
-        return productDetailsPage.changeColorToGivenColor(color);
+    public void userChangeColorOnProductDetailsPage(final String color) {
+        productDetailsPage.changeColorToGivenColor(color);
     }
 
-    @Then("^summary checkout page has item in given color$")
+    @Then("^summary checkout page has item in given color in product details page$")
     public void summaryCheckoutPageHasItemInGivenColor() {
         assertThat(summaryCheckoutPage.getGivenColor()).isEqualTo(productDetailsPage.getCurrentColor());
     }

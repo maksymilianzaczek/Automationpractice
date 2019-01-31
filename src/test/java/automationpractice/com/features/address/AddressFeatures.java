@@ -5,7 +5,6 @@ import automationpractice.com.pages.HomePage;
 import automationpractice.com.pages.MyAccountPage;
 import automationpractice.com.pages.NewAddressPage;
 import automationpractice.com.steps.LoginSteps;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;

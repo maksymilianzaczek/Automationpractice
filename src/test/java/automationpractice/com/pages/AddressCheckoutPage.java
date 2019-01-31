@@ -51,8 +51,8 @@ public class AddressCheckoutPage extends PageObject {
     public void selectBillingAddressFromList(final NewAddressData addressData) {
         useTheDeliveryAddressAsTheBillingAddressCheckbox.click();
         chooseABillingAddressText.waitUntilVisible();
-        final String xpathToInputedAddress = String.format(xpathToBillingAddressesList, addressData.getNewAddressName());
-        find(By.xpath(xpathToInputedAddress)).click();
+        final String xpathToInputtedAddress = String.format(xpathToBillingAddressesList, addressData.getNewAddressName());
+        find(By.xpath(xpathToInputtedAddress)).click();
     }
 
     public void selectDeliveryAddressFromList(final NewAddressData addressData) {

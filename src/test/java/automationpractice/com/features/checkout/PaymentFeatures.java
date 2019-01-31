@@ -1,5 +1,6 @@
 package automationpractice.com.features.checkout;
 
+import automationpractice.com.exceptions.NoProductsOnHomePageException;
 import automationpractice.com.pages.HomePage;
 import automationpractice.com.pages.PaymentCheckoutPage;
 import automationpractice.com.pages.ProductDetailsPage;
@@ -18,18 +19,19 @@ public class PaymentFeatures {
 
     private HomePage homePage;
     private ProductDetailsPage productDetailsPage;
-    private PaymentCheckoutPage paymentCheckoutPage;
-    @Steps
-    private LoginSteps loginSteps;
     private SummaryCheckoutPage summaryCheckoutPage;
     private AddressCheckoutPage addressCheckoutPage;
     private ShippingCheckoutPage shippingCheckoutPage;
+    private PaymentCheckoutPage paymentCheckoutPage;
+    @Steps
+    private LoginSteps loginSteps;
 
     @Given("^user is in payment checkout page$")
     public void userIsInPaymentCheckoutPage() {
         homePage.open();
         loginSteps.loginAndMoveIntoMyStorePage();
-        final String productName = homePage.getListOfProducts().stream().findAny().get().getText();
+        String productName = homePage.getListOfProducts().stream().findAny()
+            .orElseThrow(() -> new NoProductsOnHomePageException("List of product in home page is empty")).getText();
         homePage.clickOnSelectedProductImage(productName);
         productDetailsPage.clickOnAddToCartButton();
         productDetailsPage.clickProceedToCheckoutButton();

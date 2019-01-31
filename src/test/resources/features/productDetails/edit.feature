@@ -18,10 +18,10 @@ Feature: Edit order on product details page
       |    M |
       |    L |
 
-  Scenario Outline: User is able to change color of items on product details page
+  Scenario Outline: User is able to change color of items in product details page
     When user change color to <color> on product details page
     And user add to cart item on product details page
-    Then summary checkout page has item in given color
+    Then summary checkout page has item in given color in product details page
     Examples:
       | color  |
       | blue   |

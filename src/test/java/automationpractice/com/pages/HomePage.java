@@ -1,6 +1,5 @@
 package automationpractice.com.pages;
 
-import automationpractice.com.exceptions.NoProductsOnHomePageException;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.support.FindBy;
@@ -16,9 +15,6 @@ public class HomePage extends PageObject {
     private List<WebElementFacade> listOfProducts;
 
     public List<WebElementFacade> getListOfProducts() {
-        if (listOfProducts.isEmpty()) {
-            throw new NoProductsOnHomePageException("List of product in home page is empty");
-        }
         return listOfProducts;
     }
 
