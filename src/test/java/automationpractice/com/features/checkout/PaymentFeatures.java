@@ -30,7 +30,7 @@ public class PaymentFeatures {
     public void userIsInPaymentCheckoutPage() {
         homePage.open();
         loginSteps.loginAndMoveIntoMyStorePage();
-        String productName = homePage.getListOfProducts().stream().findAny()
+        final String productName = homePage.getListOfProducts().stream().findAny()
             .orElseThrow(() -> new NoProductsOnHomePageException("List of product in home page is empty")).getText();
         homePage.clickOnSelectedProductImage(productName);
         productDetailsPage.clickOnAddToCartButton();

@@ -31,7 +31,7 @@ public class AddressPage extends PageObject {
     }
 
     public void acceptAlert() {
-        getDriver().switchTo().alert().accept();
+        getAlert().accept();
     }
 
     public void removeAddressFromAddressPage(final String addressName) {

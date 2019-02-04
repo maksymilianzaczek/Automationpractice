@@ -41,7 +41,7 @@ public class AddAddressesForCheckoutFeatures {
         myAccountPage.clickMyAddresses();
         removeAddressSteps.deleteAddressIfExist(NEW_ADDRESS_INFORMATION_1.getNewAddressName());
         headerBox.clickMyStoreLogo();
-        String productName = homePage.getListOfProducts().stream().findAny()
+        final String productName = homePage.getListOfProducts().stream().findAny()
             .orElseThrow(() -> new NoProductsOnHomePageException("List of product in home page is empty")).getText();
         homePage.clickOnSelectedProductImage(productName);
         productDetailsPage.clickOnAddToCartButton();

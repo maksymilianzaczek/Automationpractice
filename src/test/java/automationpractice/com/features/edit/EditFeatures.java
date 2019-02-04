@@ -1,4 +1,4 @@
-package automationpractice.com.features.productDetails;
+package automationpractice.com.features.edit;
 
 import automationpractice.com.exceptions.NoProductsOnHomePageException;
 import automationpractice.com.pages.HomePage;
@@ -26,7 +26,7 @@ public class EditFeatures {
     @Given("^logged in customer is on product details page$")
     public void loggedInCustomerIsOnProductDetailsPage() {
         loginSteps.loginAndMoveIntoMyStorePage();
-        String productName = homePage.getListOfProducts().stream().findAny()
+        final String productName = homePage.getListOfProducts().stream().findAny()
             .orElseThrow(() -> new NoProductsOnHomePageException("List of product in home page is empty")).getText();
         homePage.clickOnSelectedProductImage(productName);
     }

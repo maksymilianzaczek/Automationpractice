@@ -99,6 +99,7 @@ public class ProductDetailsPage extends PageObject {
     }
 
     public void changeSizeToGivenSize(final String size) {
+        currentSize = size;
         switch (currentSize) {
             case "S":
                 selectSize("S");
